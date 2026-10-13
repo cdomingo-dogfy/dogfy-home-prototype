@@ -1210,8 +1210,11 @@ addEventListener('scroll',()=>{if(!tick){tick=true;requestAnimationFrame(update)
     const s=ease(Math.min(1,Math.max(0,(p-.3)/.4)));                 // 0 = "¿Qué hay en su bol?", 1 = "¿Qué cambios notarás?"
     const mobile=wrap.clientWidth<=600,W=wrap.clientWidth;
     const stage=track.parentElement,avail=stage.clientHeight-48;              // 48px de aire bajo la tira
-    const k=Math.min(1,Math.max(.6,avail/track.offsetHeight));              // escala la tira si no cabe en alto
-    const bw=mobile?385:611,bl=mobile?214:403,vis=(mobile?151:305)*k;    // ancho del bol, su x dentro de la tira y parte visible
+    // móvil: la tira ocupa el 75 % del alto del viewport (puede ampliarse), pero nunca tanto que una etiqueta se salga por el lado (bol visible 151 + etiqueta más ancha + 24 de aire)
+    const maxLbl=Math.max(...[...track.querySelectorAll('.hs')].map(h=>h.offsetWidth));
+    const kFit=(W-32)/maxLbl;                                                      // tope: la etiqueta más ancha cabe entre los dos márgenes de 16px (las miniaturas pisan ~75px el bol)
+    const k=mobile?Math.max(.6,Math.min(kFit,Math.min(avail,innerHeight*.75)/track.offsetHeight)):Math.min(1,Math.max(.6,avail/track.offsetHeight));
+    const bw=mobile?385:611,bl=mobile?214:403,vis=mobile?Math.min(Math.max(151*k,16+75*k),W-16+75*k-maxLbl*k):305*k;   // móvil: parte visible del bol acotada para que las etiquetas de los dos estados queden a ≥16px de los bordes    // ancho del bol, su x dentro de la tira y parte visible
     const x1=mobile?W-vis-bl*k:Math.max(60*k,W-1045*k), x2=mobile?vis-(bl+bw)*k+8*k:Math.min(W-(1468+60)*k,-403*k);   // la columna contraria nunca asoma   // tablet/intermedio (Figma 469:40559 y 768): tira a 60px del borde; estado 2 a 60px del borde derecho · móvil: bol asomando
     const ty=Math.max(0,(avail-track.offsetHeight*k)/2);                       // reparte el aire sobrante arriba y abajo de la tira
     track.style.transform=`translate(${(x1+(x2-x1)*s).toFixed(1)}px,${ty.toFixed(1)}px) scale(${k.toFixed(3)})`;
