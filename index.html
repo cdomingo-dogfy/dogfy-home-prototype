@@ -329,7 +329,9 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
   .acc{display:flex;flex-direction:column;gap:20px;align-items:stretch}
   .acc-media{order:1;position:relative;display:flex;gap:0;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;aspect-ratio:auto;max-height:none;border-radius:0;background:transparent;max-width:none;margin:0 calc(-1 * var(--gutter));padding:0}  /* sin padding: con padding, el borde se "cuela" entre diapositivas y asoma la siguiente */
   .acc-media::-webkit-scrollbar{display:none}
-  .acc-media img,.acc-media .ph{position:static;flex:0 0 100%;max-width:none;aspect-ratio:4/5;height:auto;border-radius:0;opacity:1;transform:none;scroll-snap-align:center;object-fit:cover}  /* una sola imagen a pantalla completa, sin asomo de la siguiente */
+  .acc-media img,.acc-media .ph{position:static;flex:0 0 100%;max-width:none;aspect-ratio:4/5;height:auto;border-radius:0;opacity:1;transform:none;scroll-snap-align:center;object-fit:cover}
+  .acc-media img,.acc-media .ph{max-height:calc(100svh - 200px)}  /* nunca más alta que el viewport: en tablet (≈760px de ancho) el 4/5 daba 950px y el bloque no cabía en pantalla */
+  @media (min-width:601px){.acc-media img,.acc-media .ph{aspect-ratio:4/3}}  /* tablet: formato apaisado, el bloque pesa menos */  /* una sola imagen a pantalla completa, sin asomo de la siguiente */
   /* Indicador vertical a la izquierda, como en klarna.com: una raya para el activo y puntos para el resto, superpuestos a la foto */
   .acc-dots{order:2;position:absolute;left:24px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;z-index:2}
   .acc-dots i{width:6px;height:6px;background:rgba(255,255,255,.55);filter:drop-shadow(0 1px 2px rgba(0,0,0,.25))}
@@ -603,7 +605,7 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
   .hero{min-height:640px}
   .hero-bg img{object-position:63% 25%}  /* imagen panorámica: encuadre sobre la cara del perro */
   .hero-content{padding-block:48px}
-  .sms-row{display:contents}.sms-form .sms-field{order:1;align-self:stretch;width:100%;padding:0;margin:0}.sms-form .sms-field .input{flex:1 1 100%;width:100%;max-width:none;margin:0}.sms-form .check{order:2}.sms-form .sms-row .btn{order:3;width:100%}  /* móvil: icono+campo en una línea · consentimiento · botón a todo el ancho */
+  .sms-row{display:contents}.sms-form .sms-field{order:1;align-self:stretch;width:100%;padding:0;margin:0}.sms-form .sms-field .input{flex:1 1 100%;width:100%;max-width:none;margin:0}.sms-form .check{order:2}.sms-form .sms-row .btn{order:3;width:auto;min-width:280px;align-self:center}  /* móvil: icono+campo en una línea · consentimiento · botón a todo el ancho */
   .sms-form{align-items:stretch}
   .input{max-width:280px}  /* el número solo tiene 9 cifras: no hace falta que el campo ocupe todo el ancho */
   .sms-form .check{justify-content:center;text-align:center}  /* consentimiento centrado bajo el CTA */
@@ -638,7 +640,8 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
   .dots i.active{background:#3d3d3d}
   .s-recetas .cta{padding-top:40px}
 }
-@media (max-width:600px){
+@media (max-width:600px){.sms-form .sms-row .btn{width:100%;min-width:0}  /* móvil: el CTA ocupa todo el ancho; en tablet vuelve a su ancho natural */
+
   .precio-grid{grid-template-columns:1fr}
   /* 06: tarjetas de precio móvil (Figma 272:40193): grid 2×2 de 165px, marco 172px, título 30px */
   .s-precio .h2{font-size:30px;line-height:36px}
