@@ -654,17 +654,19 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
   .precio-grid{grid-template-columns:1fr}
   /* 06: tarjetas de precio móvil (Figma 272:40193): grid 2×2 de 165px, marco 172px, título 30px */
   .s-precio .h2{font-size:30px;line-height:36px}
-  .precio-grid{grid-template-columns:repeat(2,165px);gap:12px;justify-content:center}
-  .pcard{width:165px;overflow:hidden;padding:8px 8px 16px;border-radius:16px;margin-top:0!important}
-  .pcard .img{height:172px}
+  /* Fluido: la tarjeta ocupa la mitad del ancho disponible (165px en el Figma de 375) y todo lo de dentro va en % de la tarjeta, así escala con la pantalla */
+  .precio-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;justify-content:center;max-width:420px}
+  .pcard{width:auto;overflow:hidden;padding:8px 8px 16px;border-radius:16px;margin-top:0!important}
+  .pcard .img{position:relative;height:auto;aspect-ratio:149/172;overflow:visible}
   .pcard .badge{top:16px;right:14px}
   .pcard .desde{font-size:12px;line-height:18px}
-  .pcard .price b{font-size:24px}
-  .pcard .img img{left:auto;transform:none;max-height:none;max-width:none}
-  .pcard.c-minis img{width:120px;height:168px;left:22px;top:19px;bottom:auto}
-  .pcard.c-peq img{width:158px;height:120px;left:-1px;top:72px;bottom:auto;object-fit:cover}
-  .pcard.c-med img{width:243px;height:184px;left:-41px;top:25px;bottom:auto}
-  .pcard.c-gra img{width:226px;height:172px;left:8px;top:8px;clip-path:inset(0 calc(100% - 126px) 0 0)}
+  .pcard .price b{font-size:clamp(22px,6.4vw,30px);line-height:1.1}
+  .pcard .price span{font-size:clamp(16px,4.8vw,22px)}
+  .pcard .img img{left:auto;transform:none;max-height:none;max-width:none;height:auto;bottom:auto;object-fit:cover}
+  .pcard.c-minis img{width:80.5%;aspect-ratio:120/168;left:9.4%;top:6.4%}
+  .pcard.c-peq img{width:106%;aspect-ratio:158/120;left:-6%;top:37.2%}
+  .pcard.c-med img{width:163%;aspect-ratio:243/184;left:-32.9%;top:9.9%}
+  .pcard.c-gra img{width:151.7%;aspect-ratio:226/172;left:0;top:0;clip-path:inset(0 44.25% 0 0)}
   /* 09: carrusel de opiniones con bullets */
   /* Footer compacto en móvil: 2 columnas, menos solape con FAQ, tipografía y badges menores */
   .s-faq{margin-bottom:-120px}
