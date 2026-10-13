@@ -837,7 +837,7 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
     <h2 class="h2" style="margin-top:12px">Descubre <span class="accent">nuestras</span> recetas naturales</h2>
   </div>
   <div class="receta-tabs" role="tablist" aria-label="Recetas">
-    <button class="tab active" data-key="pollo" role="tab" aria-selected="true"><img src="assets/tab-pollo.svg" alt="">Pollo</button>
+    <button class="tab" data-key="pollo" role="tab" aria-selected="false"><img src="assets/tab-pollo.svg" alt="">Pollo</button>
     <button class="tab" data-key="pavo" role="tab" aria-selected="false"><img src="assets/tab-pavo.svg" alt="">Pavo</button>
     <button class="tab" data-key="buey" role="tab" aria-selected="false"><img src="assets/tab-buey.svg" alt="">Buey</button>
     <button class="tab" data-key="salmon" role="tab" aria-selected="false"><img src="assets/tab-salmon.svg" alt="">Salmón</button>
@@ -1113,9 +1113,9 @@ size();update();if(document.fonts)document.fonts.ready.then(()=>{size();update()
   ['touchstart','pointerdown'].forEach(ev=>grid.addEventListener(ev,()=>grid.classList.add('paused'),{passive:true}));['touchend','pointerup','pointercancel','mouseleave'].forEach(ev=>grid.addEventListener(ev,()=>setTimeout(()=>grid.classList.remove('paused'),1200),{passive:true}));
   const setActive=(box,i)=>{if(box)[...box.children].forEach((d,j)=>d.classList.toggle('active',j===i));};
   const current=()=>{const c=grid.scrollLeft+grid.clientWidth/2;let best=0,bd=1e9;cards.forEach((card,i)=>{const d=Math.abs(card.offsetLeft+card.offsetWidth/2-c);if(d<bd){bd=d;best=i;}});return best;};
-  const sync=()=>{const i=current();setActive(rDots,i);tabs.forEach(t=>{const on=t.dataset.key===cards[i].dataset.key;t.classList.toggle('active',on);t.setAttribute('aria-selected',on);});};
+  const sync=()=>{const i=current();setActive(rDots,i);if(!grid.dataset.userTab)return;tabs.forEach(t=>{const on=t.dataset.key===cards[i].dataset.key;t.classList.toggle('active',on);t.setAttribute('aria-selected',on);});};   // sin pestaña activa por defecto: solo se marca tras elegir una
   grid.addEventListener('scroll',()=>requestAnimationFrame(sync),{passive:true});
-  tabs.forEach(t=>t.addEventListener('click',()=>{const card=cards.find(c=>c.dataset.key===t.dataset.key);if(!card)return;if(marquee()){tabs.forEach(x=>{x.classList.toggle('active',x===t);x.setAttribute('aria-selected',x===t);});[...grid.children].forEach(c=>c.classList.toggle('is-hi',c.dataset.key===t.dataset.key));t.blur();
+  tabs.forEach(t=>t.addEventListener('click',()=>{grid.dataset.userTab='1';const card=cards.find(c=>c.dataset.key===t.dataset.key);if(!card)return;if(marquee()){tabs.forEach(x=>{x.classList.toggle('active',x===t);x.setAttribute('aria-selected',x===t);});[...grid.children].forEach(c=>c.classList.toggle('is-hi',c.dataset.key===t.dataset.key));t.blur();
       // la cinta se detiene y se desplaza hasta centrar la tarjeta elegida
       grid.classList.add('stopped');const host=grid.parentElement.getBoundingClientRect();const x=card.offsetLeft-(host.width-card.offsetWidth)/2;grid.style.transform='translateX('+(-x).toFixed(1)+'px)';}else{tabs.forEach(x=>{x.classList.toggle('active',x===t);x.setAttribute('aria-selected',x===t);});cards.forEach(c=>c.classList.toggle('is-hi',c===card));card.scrollIntoView({block:'nearest',behavior:'smooth'});}}));
   const rev=document.getElementById('reviews'),rvCards=[...rev.children],rvDots=document.getElementById('rvDots');
