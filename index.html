@@ -286,8 +286,8 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
 .pcard .badge{position:absolute;top:22px;right:22px;background:rgba(255,255,255,.88);border-radius:8px;padding:8px 12px;display:flex;flex-direction:column;gap:2px}
 .pcard .badge b{font-family:var(--font-display);font-weight:700;font-size:18px;line-height:20px;color:var(--primary)}
 .pcard .badge span{font-size:13px;line-height:16px;color:var(--text)}
-.pcard .body{padding-top:24px;display:flex;flex-direction:column;gap:8px}
-.pcard .desde{font-size:18px;line-height:28px;display:flex;gap:4px}
+.pcard .body{padding-top:16px;display:flex;flex-direction:column;gap:2px}
+.pcard .desde{font-size:15px;line-height:22px;display:flex;gap:4px}
 .pcard .desde s{color:var(--text)}
 .pcard .price{display:flex;align-items:center;gap:8px;color:var(--text-hi)}
 .pcard .price b{font-family:var(--font-display);font-weight:700;font-size:48px;line-height:48px}
@@ -469,14 +469,13 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
 @media (max-width:767px){
   /* Móvil: cinta de opiniones en bucle (tarjetas duplicadas en JS); se pausa al tocar */
   .s-opiniones{overflow:clip}
-  .reviews{gap:0;width:max-content;overflow:visible;scroll-snap-type:none;padding:24px 0 32px;animation:marquee 44s linear infinite;will-change:transform}
-  .reviews.paused{animation-play-state:paused}
+  .reviews{gap:0;width:max-content;overflow:visible;scroll-snap-type:none;padding:24px 0 32px}
   .rv-card{flex:0 0 300px;margin-right:16px;transform:none}
   .rv-card.is-active{flex-basis:300px;transform:none;background:#fff;border-color:#e8e8e8;box-shadow:none}
   .rv-card.is-active .rv-text{font-size:17px;-webkit-line-clamp:4}
   .rv-dots{display:none}
   .rv-tpstars i{width:36px;height:36px}.rv-tp{font-size:22px}
-  @media (prefers-reduced-motion:reduce){.reviews{animation:none;width:auto;overflow-x:auto;padding:24px 16px 32px}.rv-dots{display:flex}}
+  @media (prefers-reduced-motion:reduce){.reviews{width:auto;overflow-x:auto;padding:24px 16px 32px}.rv-dots{display:flex}}
 }
 
 /* SMS */
@@ -629,12 +628,11 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
   .tab img{width:40px;height:40px}
   .tab.active{background:#ffee99;color:#3d3d3d;font-weight:600}
   /* Tablet/móvil: cinta en bucle (las tarjetas se duplican en JS y la pista se desplaza media vuelta); se pausa al tocarla */
-  .recetas-grid{display:flex;gap:0;overflow:visible;width:max-content;padding:0;box-sizing:border-box;max-width:none;animation:marquee 36s linear infinite;will-change:transform}
-  .recetas-grid.paused{animation-play-state:paused}
-  .recetas-grid.stopped{animation:none;transition:transform .55s cubic-bezier(.22,.61,.36,1)}
+  .recetas-grid{display:flex;gap:0;overflow:visible;width:max-content;padding:0;box-sizing:border-box;max-width:none}
+  .recetas-grid.stopped{transition:transform .55s cubic-bezier(.22,.61,.36,1)}
   .recetas-grid .receta{margin-right:16px}
   .s-recetas{overflow:clip}
-  @media (prefers-reduced-motion:reduce){.recetas-grid{animation:none;overflow-x:auto;width:auto;padding:0 22px}}
+  @media (prefers-reduced-motion:reduce){.recetas-grid{overflow-x:auto;width:auto;padding:0 22px}}
   .recetas-grid::-webkit-scrollbar{display:none}
   .receta{flex:0 0 min(calc(100vw - 44px),332px)}
   .dots{display:none}  /* puntos del carrusel de opiniones ocultos */
@@ -650,7 +648,7 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
   .pcard{width:165px;overflow:hidden;padding:8px 8px 16px;border-radius:16px;margin-top:0!important}
   .pcard .img{height:172px}
   .pcard .badge{top:16px;right:14px}
-  .pcard .desde{font-size:18px;line-height:28px}
+  .pcard .desde{font-size:14px;line-height:20px}
   .pcard .price b{font-size:24px}
   .pcard .img img{left:auto;transform:none;max-height:none;max-width:none}
   .pcard.c-minis img{width:120px;height:168px;left:22px;top:19px;bottom:auto}
@@ -689,7 +687,7 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
 @keyframes ansIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
 .faq summary img{transition:transform .3s cubic-bezier(.34,1.56,.64,1)}
 .rv-dots button{position:relative}.rv-dots button::before{content:"";position:absolute;inset:-18px -8px}  /* área táctil ≥44px */
-.recetas-grid:focus-within,.reviews:focus-within{animation-play-state:paused}
+
 /* Menú móvil: cerrado = display:none (sin capa fija gigante que rompa el pintado); abierto = animación de entrada */
 .mobile-menu.open{animation:menuIn .25s ease both}
 @keyframes menuIn{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
@@ -1138,6 +1136,14 @@ media.addEventListener('scroll',()=>{if(!tick){tick=true;requestAnimationFrame(u
 addEventListener('scroll',()=>{if(!tick){tick=true;requestAnimationFrame(upd)}},{passive:true});addEventListener('resize',upd);
 items.forEach((it,i)=>it.addEventListener('click',()=>{if(narrow()){const im=imgs[i+1];media.scrollTo({left:im.offsetLeft-(media.clientWidth-im.offsetWidth)/2,behavior:'smooth'});return;}const r=track.getBoundingClientRect(),total=r.height-innerHeight,p=(i+1.5)/N;scrollTo({top:scrollY+r.top+p*total,behavior:'smooth'});}));
 upd();})();
+// Cintas en bucle (recetas ≤1074px, opiniones ≤767px): movidas por JS a 38px/s con rAF. Evita la animación CSS sobre una capa de miles de px, que en algunos móviles se acelera o deja de pintarse
+(()=>{if(matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+const run=(el,isOn,speed)=>{if(!el)return;let x=0,last=null,raf=null;const half=()=>el.scrollWidth/2;
+const step=t=>{raf=null;if(!isOn()||el.classList.contains('stopped')||el.classList.contains('paused')){last=null;raf=requestAnimationFrame(step);return;}if(last!=null){x-=speed*Math.min(.05,(t-last)/1000);const h=half();if(h>0&&-x>=h)x+=h;el.style.transform='translateX('+x.toFixed(2)+'px)';}last=t;raf=requestAnimationFrame(step);};
+raf=requestAnimationFrame(step);
+el.addEventListener('transitionend',()=>{const m=/translateX\((-?[\d.]+)px\)/.exec(el.style.transform||'');if(m)x=parseFloat(m[1]);});};
+run(document.getElementById('recetasGrid'),()=>innerWidth<=1074,38);
+run(document.getElementById('reviews'),()=>innerWidth<=767,34);})();
 // Stepper: reserva la altura del estado más alto (un paso abierto) para que el botón no baile al colapsar/expandir
 (()=>{const st=document.querySelector('.stepper');if(!st)return;const fit=()=>{const bodies=[...st.querySelectorAll('.step-body p')];const open=Math.max(0,...bodies.map(p=>p.scrollHeight+8));const act=st.querySelector('.step.active .step-body p');st.style.minHeight='';const base=st.getBoundingClientRect().height-(act?act.scrollHeight+8:0);st.style.minHeight=Math.ceil(base+open)+'px';};fit();addEventListener('resize',fit);addEventListener('load',fit);if(document.fonts)document.fonts.ready.then(fit);})();
 // Stepper: el bloque queda fijo (como la caja de prueba) y cada 100vh de scroll activa un paso. En escritorio la pista es la sección entera (imagen + pasos fijos juntos); en tablet/móvil es solo el split (la imagen se desplaza normal y únicamente los pasos quedan fijos)
