@@ -108,8 +108,9 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
   /* Tablet/móvil: todo centrado, titular arriba y cifras en rejilla de dos columnas (la tercera centrada debajo) */
   .stats-m{flex-direction:column;align-items:center;gap:36px;padding:56px var(--gutter)}
   .stats-m .trust-eyebrow{text-align:center;font-size:clamp(30px,7.5vw,40px);max-width:22ch}
-  .stats-row{width:100%;max-width:480px;justify-content:center;gap:32px 24px}
-  .stat{align-items:center;flex:0 0 calc(50% - 12px);min-width:0;background:var(--sand);border-radius:18px;padding:14px 10px 12px}
+  .stats-row{width:100%;max-width:480px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;align-items:stretch}  /* tarjetas de igual tamaño; la tercera centrada ocupando el mismo ancho */
+  .stats-row .stat:nth-child(3){grid-column:1/-1;width:calc(50% - 8px);justify-self:center}
+  .stat{align-items:center;justify-content:center;min-width:0;min-height:112px;box-sizing:border-box;background:var(--sand);border-radius:18px;padding:14px 10px 12px}
   .stat b{font-size:32px}
   .stat span{white-space:normal;text-align:center;font-size:15px;line-height:19px}
 }
@@ -159,7 +160,7 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
 .step.active .dot img.muted,.step.done .dot img.muted{opacity:0}
 .step .txt{flex:1;min-width:0;padding-bottom:28px;font-size:14px;line-height:20px;opacity:.55;transform:translateY(6px);transition:opacity .4s ease,transform .4s ease}
 .step.active .txt,.step.done .txt{opacity:1;transform:none}
-.step h3{font-family:var(--font-display);font-weight:700;font-size:clamp(24px,2.3vw,32px);line-height:1.15;letter-spacing:-.015em;color:var(--text-hi)}
+.step h3{font-family:var(--font-display);font-weight:700;font-size:clamp(20px,2.3vw,32px);line-height:1.2;letter-spacing:-.015em;color:var(--text-hi)}
 .step.active h3{color:var(--text-hi)}
 .step p{font-size:16px;line-height:1.5;color:var(--text);margin-top:0}
 /* Descripción colapsada por defecto: solo se ve el título; al activarse el punto se expande, igual que el acordeón de la caja de prueba */
