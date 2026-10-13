@@ -1,0 +1,1199 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dogfy Diet · Comida real para perros</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@500;600;700;800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Manrope:wght@400;600&display=swap" rel="stylesheet">
+<style>
+@property --fill{syntax:"<percentage>";inherits:false;initial-value:0%}
+:root{
+  --cream:#fffae5; --sand:#f4f1ec;
+  --primary:#fa592d; --primary-dark:#ef6948;
+  --text-hi:#2a2724; --text:#565049; --text-toned:#767066; --text-muted:#968d82; --text-dimmed:#bcb2a6;
+  --border:#ebe4da; --border-acc:#dcd2c5; --bg:#fff; --bg-elev:#faf8f6; --bg-inv:#2a2724;
+  --peach:#fdf3ee; --blue:#e2e8fb; --blue-deco:#c6d4ff;
+  --font-display:"Urbanist",system-ui,sans-serif;
+  --font-body:"DM Sans",system-ui,sans-serif;
+  --font-alt:"Manrope",system-ui,sans-serif;
+  --gutter:clamp(16px,6vw,112px);
+  --container:1216px;
+  --radius:12px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);color:var(--text);background:var(--bg);line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
+h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;line-height:1.05;letter-spacing:-.01em}
+.container{box-sizing:content-box;width:auto;max-width:var(--container);margin:0 auto;padding-inline:var(--gutter)}
+.wide{max-width:calc(var(--container) + 64px)}
+.accent{color:var(--primary)}
+.eyebrow{font-family:var(--font-display);font-weight:500;font-size:18px;line-height:28px;color:#767066}  /* text-lg/medium · --ui-text-toned (PageSection 246:26107) */
+.h2{font-size:clamp(32px,4.2vw,48px);line-height:1}
+.center{text-align:center}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:999px;font-family:var(--font-display);font-weight:600;white-space:nowrap;transition:transform .15s,background .15s}
+.btn:active{transform:scale(.98)}
+.btn-primary{background:var(--primary);color:#fff;padding:8px 12px;font-size:16px;line-height:24px}
+.btn-primary:hover{background:#e84e25}
+.btn-sm{padding:6px 10px;font-size:14px;line-height:20px}
+.btn-neutral{color:var(--text);padding:6px 10px;font-size:14px;line-height:20px;border-radius:999px}
+.btn-neutral:hover{background:var(--bg-elev)}
+.btn-lg{height:64px;width:341px;max-width:100%;padding:8px 12px}
+
+/* Banner */
+.banner{background:var(--bg-inv);color:#fff;min-height:48px;display:flex;align-items:center;justify-content:center;text-align:center;padding:12px var(--gutter);font-family:var(--font-display);font-weight:500;font-size:14px;line-height:20px}
+
+/* Header */
+.header{position:sticky;top:0;z-index:50;background:var(--bg);border-bottom:1px solid var(--border);height:64px;transition:background .3s,border-color .3s}
+/* Arriba del todo: cabecera transparente sobre el hero, textos en blanco; al hacer scroll vuelve a blanco */
+.header.top{background:transparent;border-color:transparent}
+.header.top .nav a,.header.top .btn-neutral{color:#fff}
+.header.top .nav a:hover,.header.top .nav a.active{color:#fff;opacity:1}
+.header.top .nav a:not(.active){opacity:.8}
+.header.top img[alt="Dogfy Diet"],.header.top .btn-neutral img{filter:brightness(0) invert(1)}
+.header.top .burger span,.header.top .burger span::before,.header.top .burger span::after{background:#fff}
+.hero{margin-top:-64px;padding-top:64px}
+.header .container{height:100%;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.header .container>a:first-child{flex:0 0 auto}.header .container>a:first-child img{width:78px;height:44px;flex-shrink:0}
+.nav{min-width:0}.nav a{white-space:nowrap}
+.nav{display:flex;align-items:center;gap:6px}
+.nav a{padding:6px 10px;border-radius:12px;font-family:var(--font-display);font-weight:500;font-size:14px;line-height:20px;color:var(--text-muted);white-space:nowrap}
+.nav a:hover,.nav a.active{color:var(--text-hi)}
+.header-right{display:flex;align-items:center;gap:6px}
+.burger{display:none;width:44px;height:44px;align-items:center;justify-content:center;border-radius:12px}
+.burger span{display:block;width:22px;height:2px;background:var(--text-hi);position:relative}
+.burger span::before,.burger span::after{content:"";position:absolute;left:0;width:22px;height:2px;background:var(--text-hi)}
+.burger span::before{top:-7px}.burger span::after{top:7px}
+.mobile-menu{display:none;position:fixed;inset:0;top:var(--menu-top,112px);background:var(--bg);z-index:49;padding:24px var(--gutter);flex-direction:column;gap:8px}
+.mobile-menu.open{display:flex}
+.mobile-menu a{padding:14px 4px;border-bottom:1px solid var(--border);font-family:var(--font-display);font-weight:600;font-size:18px;color:var(--text-hi)}
+.mobile-menu .btn{margin-top:16px;align-self:flex-start}
+
+/* Hero */
+.hero{position:relative;min-height:800px;display:flex;align-items:center;color:#fff;overflow:hidden}
+.hero-bg{position:absolute;inset:0;z-index:0}
+.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center}
+.hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.2),rgba(0,0,0,.2)),linear-gradient(180deg,rgba(0,0,0,.55) 0%,rgba(102,102,102,0) 52.5%)}
+.hero-content{position:relative;z-index:1;padding-block:80px;display:flex;flex-direction:column;gap:40px;max-width:800px}
+
+.hero-badge{display:inline-flex;background:#ffea7c;color:#0f172b;font-family:var(--font-display);font-weight:600;font-size:21px;line-height:24px;padding:4px 14px;border-radius:7px}
+.hero h1{color:#fff;font-size:clamp(40px,6vw,60px);line-height:1;margin-top:16px}
+.hero p{color:var(--border);font-size:clamp(17px,1.6vw,20px);line-height:1.6;margin-top:24px}
+.hero-actions{display:flex;flex-direction:column;gap:16px}
+.select{display:flex;align-items:center;justify-content:space-between;background:#fff;border:1px solid var(--border-acc);border-radius:12px;height:64px;width:341px;max-width:100%;padding:8px 12px;color:var(--text-dimmed);font-size:16px;text-align:left;position:relative}
+.select select{position:absolute;inset:0;opacity:0;width:100%;cursor:pointer}
+.select img{width:24px;height:24px}
+
+/* Ribbon */
+.ribbon{overflow:hidden;padding:12px 0;background:#fff}
+.ribbon-track{display:flex;gap:48px;width:max-content;animation:marquee 28s linear infinite;padding-inline:24px}
+.ribbon:hover .ribbon-track{animation-play-state:paused}
+.pill{display:inline-flex;align-items:center;background:rgba(252,200,0,.1);color:#40350a;border-radius:999px;padding:4px 8px;font-family:var(--font-display);font-weight:500;font-size:14px;line-height:20px;white-space:nowrap}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+/* Franja de confianza: titular a la izquierda con palabra destacada, cifras a la derecha sin separadores */
+.stats-m{display:flex;background:#fff;padding:48px var(--gutter);align-items:center;justify-content:center;gap:24px clamp(24px,4vw,64px);flex-wrap:wrap;max-width:1440px;margin:0 auto}  /* contenido centrado; si salta de línea, solo 24px entre título y cifras; gap más contenido para que quepa en una sola línea en escritorios no ultra anchos */
+.stats-m .trust-eyebrow{font-family:var(--font-display);font-weight:500;font-size:clamp(28px,3.2vw,44px);line-height:1.1;letter-spacing:-.02em;color:#2a2724;text-align:left;margin:0}
+.stats-m .trust-eyebrow mark{background:#ffee99;color:inherit;padding:0 .14em;border-radius:6px}
+.stats-row{display:flex;align-items:flex-start;gap:clamp(16px,3vw,40px);flex-wrap:wrap}
+.stats-row .div{display:none}
+.stat{display:flex;flex-direction:column;align-items:center;gap:4px;color:#2a2724}
+.stat b{font-family:var(--font-display);font-weight:700;font-size:clamp(32px,3.4vw,44px);line-height:1;letter-spacing:-.02em}
+.stat span{font-family:var(--font-display);font-weight:500;font-size:14px;line-height:18px;color:#565049;white-space:nowrap}
+@media (max-width:900px){
+  /* Tablet/móvil: todo centrado, titular arriba y cifras en rejilla de dos columnas (la tercera centrada debajo) */
+  .stats-m{flex-direction:column;align-items:center;gap:36px;padding:56px var(--gutter)}
+  .stats-m .trust-eyebrow{text-align:center;font-size:clamp(30px,7.5vw,40px);max-width:22ch}
+  .stats-row{width:100%;max-width:480px;justify-content:center;gap:32px 24px}
+  .stat{align-items:center;flex:0 0 calc(50% - 12px);min-width:0;background:var(--sand);border-radius:18px;padding:14px 10px 12px}
+  .stat b{font-size:32px}
+  .stat span{white-space:normal;text-align:center;font-size:15px;line-height:19px}
+}
+
+/* Section 02/03: el titular vive dentro de .s-cocina (dentro del sticky), no en una sección aparte, para que no desaparezca antes de que el bloque quede fijo */
+.cocina-head{padding-top:32px;margin-bottom:40px}
+.cocina-head h2{margin-top:0}
+.s-cocina{padding:32px var(--gutter) 80px}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;max-width:var(--container);margin:0 auto}
+.split .media{border-radius:20px;overflow:hidden;width:100%;max-width:100%;min-width:0;aspect-ratio:1/1;height:auto;align-self:start}
+.split .media img{width:100%;height:100%;object-fit:cover}
+.features{display:flex;flex-direction:column;gap:32px}
+.feature{display:flex;gap:10px;align-items:flex-start}
+.feature .ico{flex:0 0 auto;padding:2px}
+.feature .ico img{width:20px;height:20px}
+.feature h3{font-family:var(--font-display);font-weight:700;font-size:clamp(24px,2.3vw,32px);line-height:1.15;letter-spacing:-.015em;color:var(--text-hi)}
+.feature p{font-size:16px;line-height:1.5;color:var(--text);margin-top:8px}
+.feature.lead h3{font-family:var(--font-display);font-weight:600;font-size:clamp(32px,3.5vw,44px);line-height:1.05;letter-spacing:-.01em}
+.feature.lead p{font-family:var(--font-alt);font-size:clamp(17px,1.5vw,21px);line-height:1.45;margin-top:8px}
+.right-col{display:flex;flex-direction:column;gap:32px;align-items:flex-start}
+@media (min-width:901px){
+  .s-cocina{height:400vh;position:relative}  /* pista de scroll en escritorio: 4 pasos × 100vh, el bloque (título + imagen + pasos) queda fijo y al agotarla sigue el scroll normal */
+  .s-cocina .cocina-sticky{position:sticky;top:64px;max-height:calc(100vh - 64px);overflow:hidden;display:flex;flex-direction:column;justify-content:center}
+}
+@media (prefers-reduced-motion:reduce){.s-cocina{height:auto}.s-cocina .cocina-sticky{position:static;height:auto;max-height:none;overflow:visible}.s-cocina .right-col{position:static;height:auto;max-height:none;overflow:visible}}
+/* Stepper (Figma 03 · Cocina a tu casa) */
+.stepper{list-style:none;display:flex;flex-direction:column;width:100%}
+.step{display:flex;gap:12px;align-items:flex-start}
+.step .ind{display:flex;flex-direction:column;align-items:center;gap:4px;flex:0 0 40px}
+.step .dot{width:40px;height:40px;border-radius:999px;background:var(--bg-elev);display:flex;align-items:center;justify-content:center}
+/* Pasos 1-3: insignia ilustrada (Figma 449:38269); el 4 mantiene el icono */
+.step .dot.badge-num{background:none!important;overflow:visible;transform:none}
+.step .dot.badge-num img{width:44px;height:48px;max-width:none;filter:none!important;opacity:0;transition:opacity .35s,transform .35s;transform:scale(.9)}
+.step .dot.badge-num img.muted{opacity:1;transform:none}
+.step.active .dot.badge-num img,.step.done .dot.badge-num img{opacity:1;transform:none}
+.step.active .dot.badge-num img.muted,.step.done .dot.badge-num img.muted{opacity:0}
+.step.active .dot.badge-num img{transform:scale(1.08)}
+.step .dot img{width:20px;height:20px;object-fit:contain;filter:none}
+.step .dot{transition:background .35s ease,transform .35s ease}
+.step .dot img{opacity:0;transition:opacity .35s}
+.step .dot img.muted{position:absolute;filter:none;opacity:1}
+.step .dot{position:relative}
+.step.active .dot,.step.done .dot{background:#e2e8fb}  /* mismo azul que el fondo de la sección del bol */
+.step.active .dot:not(.badge-num),.step.done .dot:not(.badge-num){background:#767066}  /* cierre: Stepper_Item 460:39650 */
+.step.active .dot{transform:scale(1.06)}
+.step.active .dot img,.step.done .dot img{opacity:1}
+.step.active .dot img.muted,.step.done .dot img.muted{opacity:0}
+.step .txt{flex:1;min-width:0;padding-bottom:28px;font-size:14px;line-height:20px;opacity:.55;transform:translateY(6px);transition:opacity .4s ease,transform .4s ease}
+.step.active .txt,.step.done .txt{opacity:1;transform:none}
+.step h3{font-family:var(--font-display);font-weight:700;font-size:clamp(24px,2.3vw,32px);line-height:1.15;letter-spacing:-.015em;color:var(--text-hi)}
+.step.active h3{color:var(--text-hi)}
+.step p{font-size:16px;line-height:1.5;color:var(--text);margin-top:0}
+/* Descripción colapsada por defecto: solo se ve el título; al activarse el punto se expande, igual que el acordeón de la caja de prueba */
+/* Descripción colapsada por defecto, igual para todos los pasos: solo se ve el título; al activarse el punto se expande */
+.step-body{display:grid;grid-template-rows:0fr;transition:grid-template-rows .4s ease}
+.step-body p{overflow:hidden;margin-top:8px}
+.step.active .step-body{grid-template-rows:1fr}
+@media (prefers-reduced-motion:reduce){.step .txt,.step .dot,.step-body{transition:none}}
+
+/* Section 04 · Bol con etiquetas */
+.s-porque{background:#e2e8fb}  /* sin overflow:hidden: rompería el sticky del bloque tablet/móvil */
+.bol-block.desk{overflow:hidden}
+.bol-block{position:relative;padding:88px 0 0}
+.bol-block .wave,.bol-sticky .wave{position:absolute;left:50%;top:0;transform:translateX(-50%);width:max(1440px,100%);height:auto;max-width:none;pointer-events:none}
+.bol-block .head{position:relative;z-index:1}
+.bol-block .head h2{margin-top:12px}
+.eyebrow.muted{font-family:var(--font-body);font-weight:400;color:rgba(42,39,36,.9)}
+.bol-stage{position:relative;z-index:1;display:grid;grid-template-columns:403px 1fr 423px;align-items:center;width:1322px;left:50%;margin:34px 0 0;padding:0;transform-origin:top center}  /* Figma 416:36880: tira de 1322; por debajo de 1440 se escala entera (JS); centrado con left:50%+translateX(-50%) (JS) en vez de margin:auto, que en Chrome no reparte el overflow por igual cuando el ancho supera al contenedor */
+.bol-block.desk{padding-bottom:128px}
+.bol-cta{display:flex;justify-content:center;position:relative;z-index:1;padding-top:40px}
+.bol-img{width:min(412px,100%);height:auto;justify-self:center;aspect-ratio:1;object-fit:contain;z-index:1;cursor:pointer}
+.bol-img.spin{animation:bolSpin .9s cubic-bezier(.3,.7,.2,1)}
+@keyframes bolSpin{to{rotate:360deg}}
+@media (prefers-reduced-motion:reduce){.bol-img.spin{animation:none}}
+.hs-col{position:relative;height:454px}
+.hs{position:absolute;z-index:2;display:flex;align-items:center;gap:12px;opacity:0}
+.hs-col.in .hs{animation:hsIn .45s ease forwards}
+.hs-col.in .hs:nth-child(2){animation-delay:.1s}.hs-col.in .hs:nth-child(3){animation-delay:.2s}.hs-col.in .hs:nth-child(4){animation-delay:.3s}
+@keyframes hsIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.hs{opacity:1}.hs-col.in .hs{animation:none}}
+.hs .lbl{background:#fff;border-radius:999px;padding:10px 16px;font-weight:700;font-size:16px;line-height:20px;color:var(--text-hi);white-space:nowrap;box-shadow:0 4px 12px rgba(26,38,89,.1)}
+.hs .thumb{position:relative;flex:0 0 64px;width:64px;height:64px;border-radius:10px;border:1.17px solid #fff;overflow:hidden}
+.hs .thumb img{position:absolute;max-width:none}
+.hs.r{flex-direction:row-reverse}
+/* posiciones de escritorio (Figma 416:36904) */
+.hs-col.left .hs:nth-child(1){left:auto;right:0;top:0}.hs-col.left .hs:nth-child(2){left:auto;right:50px;top:130px}.hs-col.left .hs:nth-child(3){left:auto;right:50px;top:260px}.hs-col.left .hs:nth-child(4){left:auto;right:0;top:390px}  /* Figma 416:36913: zigzag hacia el bol, bordes derechos a 403/353/353/403 */
+.hs-col.right .hs:nth-child(1){left:0;top:0}.hs-col.right .hs:nth-child(2){left:50px;top:130px}.hs-col.right .hs:nth-child(3){left:50px;top:260px}.hs-col.right .hs:nth-child(4){left:0;top:390px}
+.bol-scroll{display:none}
+@media (max-width:1100px){
+  .bol-block.desk{display:none}
+  .bol-scroll{display:block;height:260vh}
+  .bol-sticky{position:sticky;top:64px;height:calc(100vh - 64px);min-height:700px;overflow:hidden;background:#e2e8fb;padding-top:88px}  /* 64px = header fijo */
+  .s-porque{padding-bottom:80px}  /* reserva la franja de la onda de recetas: nunca pisa el bol */
+  .bol-sticky .head{position:absolute;left:0;right:0;top:88px;z-index:2;visibility:hidden}
+  .bol-sticky .head.show{visibility:visible;animation:headIn .3s ease both}
+  @keyframes headIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  .bol-stage{display:block;position:absolute;left:0;right:0;top:263px;bottom:0;max-width:none;margin:0;padding:0}
+  /* Tira Figma tablet (Frame 1410105417): 1468×611 → etiquetas izq. 403 @0/79 · bol 611 @403 · etiquetas der. 423 @1045/85 */
+  .bol-track{position:absolute;top:0;left:0;width:1468px;height:611px;will-change:transform;transform-origin:0 0}
+  .hs-col{position:absolute;height:454px;width:403px;top:79px;left:0;opacity:1}
+  .hs-col.st2{left:1045px;top:85px;width:423px}
+  .bol-img{position:absolute;top:0;left:403px;width:611px;max-width:none;transform:none!important}
+  .hs-col.st1 .hs:nth-child(1){left:auto;right:0;top:0}.hs-col.st1 .hs:nth-child(2){left:auto;right:50px;top:130px}.hs-col.st1 .hs:nth-child(3){left:auto;right:50px;top:260px}.hs-col.st1 .hs:nth-child(4){left:auto;right:0;top:390px}  /* miniaturas alineadas a la derecha, zigzag hacia el bol */
+  .hs-col.st2 .hs:nth-child(1){left:0;top:0}.hs-col.st2 .hs:nth-child(2){left:50px;top:130px}.hs-col.st2 .hs:nth-child(3){left:50px;top:260px}.hs-col.st2 .hs:nth-child(4){left:0;top:390px}
+}
+@media (max-width:600px){
+  /* 03 · Cocina a tu casa (Figma 302:31799): cabecera a 32px, imagen 343×277 con 27px arriba y abajo */
+  .cocina-head{padding-top:0}  /* gana a la regla de 900px; .s-cocina ya baja su padding-top a 27px aquí abajo */
+  .s-cocina{padding-top:27px}
+  .s-cocina .split{gap:27px}
+  .s-cocina .split .media{aspect-ratio:343/277}
+  .bol-sticky{min-height:600px}
+  .s-porque{padding-bottom:48px}
+  .bol-stage{top:141px}
+  /* Tira Figma móvil (Frame 1410105418): 839×499 → etiquetas 307 @0/70 · bol 385 @214/57 · etiquetas 333 @506/70 */
+  .bol-track{width:839px;height:499px}
+  .hs-col{width:307px;height:358px;top:70px;left:0}
+  .hs-col.st2{left:506px;top:70px;width:333px}
+  .bol-img{left:214px;top:57px;width:385px}
+  .hs{gap:9px}
+  .hs .lbl{font-size:13px;line-height:18px;padding:8px 12px}
+  .hs .thumb{flex-basis:50px;width:50px;height:50px;border-radius:8px}
+  .hs .thumb img{transform-origin:0 0;scale:.78}
+  .hs-col.st1 .hs:nth-child(1){left:auto;right:0;top:0}.hs-col.st1 .hs:nth-child(2){left:auto;right:36px;top:102px}.hs-col.st1 .hs:nth-child(3){left:auto;right:36px;top:205px}.hs-col.st1 .hs:nth-child(4){left:auto;right:0;top:307px}
+  .hs-col.st2 .hs:nth-child(1){left:0;top:0}.hs-col.st2 .hs:nth-child(2){left:39px;top:102px}.hs-col.st2 .hs:nth-child(3){left:39px;top:205px}.hs-col.st2 .hs:nth-child(4){left:0;top:307px}
+}
+
+/* Recetas */
+.s-recetas{padding-top:128px;padding-bottom:109px}
+.s-recetas .head{padding-bottom:56px}
+.recetas-grid{box-sizing:content-box;display:grid;grid-template-columns:repeat(4,1fr);gap:24px;max-width:var(--container);margin:0 auto;padding-inline:var(--gutter)}
+.receta{border-radius:16px;padding:8px 8px 16px;display:flex;flex-direction:column;gap:12px}
+.receta .img{position:relative}
+.receta .r-ico{position:absolute;top:12px;right:12px;width:48px;height:48px;border-radius:999px;background:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 6px rgba(0,0,0,.08);z-index:1}
+.receta .img .r-ico img{width:26px;height:26px;object-fit:contain}
+.receta .img{height:216px;border-radius:16px;overflow:hidden}
+.receta h3,.receta p{padding:0 4px}  /* un pelín de aire lateral para el texto ahora que el padding de la card es menor */
+.receta .img img{width:100%;height:100%;object-fit:cover}
+.receta h3{font-size:16px;line-height:24px}
+.receta p{font-size:15px;line-height:24px;color:var(--text-muted);margin-top:4px}
+.receta{background:rgba(255,255,255,.9);transition:box-shadow .3s ease,transform .3s ease}  /* blanco al 90 % sobre el lavanda; el color de cada receta queda en la foto */
+.receta.is-hi{box-shadow:0 0 0 3px #ffee99,0 16px 40px rgba(26,38,89,.12);transform:translateY(-4px)}
+@media (min-width:1075px){.receta[data-clone]{display:none}}
+@media (min-width:768px){.rv-card[data-clone]{display:none}}
+.s-recetas .cta{display:flex;justify-content:center;padding:48px 0 0}
+.dots{display:none}
+/* Pastillas de sabores visibles en todos los anchos, centradas sobre las tarjetas */
+.receta-tabs{display:none;gap:8px;justify-content:center;flex-wrap:nowrap;padding:0 var(--gutter) 32px}  /* solo hacen falta cuando las recetas son un carrusel con scroll (ver @media 1074px): con las 4 a la vista no aportan nada */
+@media (max-width:640px){.s-recetas .receta-tabs{display:flex;flex-wrap:nowrap;gap:4px;max-width:none;margin:0;overflow-x:auto;justify-content:center}.receta-tabs>*{margin:0!important}.receta-tabs .tab{flex:0 0 auto;width:auto;gap:4px;padding:2px 8px 2px 2px;font-size:12px}.receta-tabs .tab img{width:20px;height:20px}}  /* las 4 en una sola línea con texto e icono más pequeños; overflow-x de seguridad por si algún idioma no cabe; .receta-tabs sube la especificidad para ganarle al .tab del @media 1074px, declarado después */
+.tab{flex:0 0 auto;display:flex;align-items:center;gap:8px;padding:4px 16px 4px 4px;border-radius:300px;border:1px solid #e8e8e8;background:rgba(255,255,255,.6);font-family:var(--font-alt);font-size:17px;line-height:1.35;color:#767676;white-space:nowrap}
+.tab img{width:40px;height:40px}
+.tab.active{background:#ffee99;color:#3d3d3d;font-weight:600}
+
+/* Precio */
+.yellow-wrap{position:relative;background:#fff;clip-path:inset(0)}  /* Figma 512:48725: fondo blanco; el amarillo va en la foto de cada tarjeta y en el bloque 07 */  /* clip-path en vez de overflow:hidden: no rompe el sticky de 08 */
+.yellow-wrap .deco-precio{display:none;position:absolute;right:0;top:-280px;width:min(825px,60vw);height:auto;pointer-events:none;will-change:transform;transform:translateY(var(--py,0px)) scaleX(-1)}  /* mancha a la derecha (espejada), con parallax */
+.yellow-wrap>section{position:relative}
+.s-precio{padding:96px var(--gutter)}
+.s-precio .head{position:relative;margin-bottom:32px}
+.s-precio .head h2{line-height:1}
+.precio-grid{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:24px;max-width:1280px;margin:0 auto}
+.pcard{background:#fff;border-radius:16px;padding:8px 8px 16px;box-shadow:0 24px 48px -24px rgba(122,52,25,.18),0 1px 3px rgba(0,0,0,.1),0 1px 2px rgba(0,0,0,.06);position:relative}
+/* Marco arena = solo fondo; fotos en absoluto respecto a la tarjeta, con la geometría de Figma (tarjeta 302px) */
+.pcard{overflow:hidden}
+.pcard .img{position:static;height:320px;border-radius:8px;background:var(--sand)}
+.pcard .img img{position:absolute;left:50%;transform:translateX(-50%);z-index:1;max-width:none}
+.pcard.c-minis img{width:219px;height:307px;bottom:122px}          /* apoyado 10px bajo el borde del marco */
+.pcard.c-peq img{width:100%;height:auto;aspect-ratio:349/265;object-fit:cover;bottom:108px}  /* patas sobre la zona blanca */
+.pcard.c-med img{width:453px;height:344px;top:43px}                 /* desborda por los lados, recorta la tarjeta */
+.pcard.c-gra img{width:425px;height:324px;top:8px;object-fit:cover}  /* 15 % más pequeño que el original */
+.pcard .badge{z-index:2}
+.pcard .body{position:relative;z-index:2}
+.pcard .badge{position:absolute;top:22px;right:22px;background:rgba(255,255,255,.88);border-radius:8px;padding:8px 12px;display:flex;flex-direction:column;gap:2px}
+.pcard .badge b{font-family:var(--font-display);font-weight:700;font-size:18px;line-height:20px;color:var(--primary)}
+.pcard .badge span{font-size:13px;line-height:16px;color:var(--text)}
+.pcard .body{padding-top:24px;display:flex;flex-direction:column;gap:8px}
+.pcard .desde{font-size:18px;line-height:28px;display:flex;gap:4px}
+.pcard .desde s{color:var(--text)}
+.pcard .price{display:flex;align-items:center;gap:8px;color:var(--text-hi)}
+.pcard .price b{font-family:var(--font-display);font-weight:700;font-size:48px;line-height:48px}
+.pcard .price span{font-weight:500;font-size:24px;line-height:32px}
+.precio-foot{position:relative;display:flex;flex-direction:column;align-items:center;gap:24px;margin-top:32px}
+.precio-foot small{font-size:16px;line-height:24px;color:var(--text-toned);text-align:center}
+.btn-xl{background:var(--primary);color:#fff;border-radius:999px;padding:24px;width:338px;max-width:100%;font-family:var(--font-display);font-weight:600;font-size:22px;line-height:1;text-align:center}
+.btn-xl:hover{background:#e84e25}
+
+/* 07 */
+.s-caja{padding:0;background:#fff}
+.s-caja .wrap{position:relative;background:transparent;border-radius:0;padding:80px var(--gutter);max-width:1440px;margin:0 auto}  /* sin overflow:hidden, rompería el sticky */
+@media (prefers-reduced-motion:reduce){[data-parallax]{--py:0px!important}}
+.s-caja .head{max-width:760px;margin:0 auto 32px}
+.s-caja .head .h2{line-height:1.08}  /* a 1 las dos líneas del titular se tocaban; un poco de aire (~4px) entre ellas */
+/* Pista de scroll: en escritorio la sección queda fija (sticky) y cada tramo de 100vh activa un punto y su imagen; al llegar al final se suelta y sigue el scroll normal */
+.s-caja .wrap.acc-scroll{padding:0;height:500vh}  /* 5 estados (intro + 4 puntos) × 100vh */
+.acc-sticky{position:sticky;top:64px;height:calc(100vh - 64px);min-height:620px;overflow:hidden;display:flex;flex-direction:column;justify-content:center;padding:48px var(--gutter) 56px;background:#fffae5}
+@media (prefers-reduced-motion:reduce){.s-caja .wrap.acc-scroll{height:auto;padding:80px var(--gutter)}.acc-sticky{position:static;min-height:0;height:auto;overflow:visible}}
+.s-caja .lead-p.center{display:none}
+/* Acordeón con imagen: lista de titulares a la derecha, el activo se abre y cambia la imagen de la izquierda */
+.acc{display:grid;grid-template-columns:40px minmax(0,1.8fr) minmax(0,1fr);gap:24px 16px;align-items:center;max-width:var(--container);margin:0 auto}
+.acc-dots{display:flex;flex-direction:column;align-items:center;gap:10px}.acc-dots i{width:6px;height:6px;border-radius:999px;background:#c2c2c2;transition:height .3s ease,background .3s ease}.acc-dots i.active{height:28px;background:#2a2724}
+.acc-media{position:relative;aspect-ratio:3/2;max-height:480px;border-radius:24px;overflow:hidden;background:#efe7db}  /* más ancha sin tocar el alto: antes 4/3 dejaba demasiado hueco junto al texto */
+@media (min-width:901px) and (max-width:1300px){.acc-media{aspect-ratio:1/1}}  /* tablet/escritorio estrecho: columna más angosta; cuadrada en vez de alargada, deja menos hueco junto al texto */
+.acc-media img,.acc-media .ph{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.04);transition:opacity .5s ease,transform .8s ease}.acc-media .is-on{opacity:1;transform:none}
+.acc-media .ph{background:#e8e8e8;display:grid;place-items:center}.acc-media .ph span{font-family:var(--font-display);font-size:14px;color:#767676;border:1px dashed #c2c2c2;border-radius:999px;padding:6px 14px}
+.acc-list{display:flex;flex-direction:column;gap:8px;align-items:flex-start}
+.acc-item{all:unset;cursor:pointer;display:block;width:100%;padding:10px 0;text-align:left}
+.acc-title{display:block;font-family:var(--font-display);font-weight:700;font-size:clamp(24px,2.3vw,32px);line-height:1.15;letter-spacing:-.015em;color:#a19c96;transition:color .3s ease}  /* un escalón por debajo del h2 de la sección */
+.acc-item:hover .acc-title{color:#565049}.acc-item.is-open .acc-title{color:#2a2724}
+.acc-body{display:grid;grid-template-rows:0fr;transition:grid-template-rows .4s ease}.acc-body>span{overflow:hidden;display:block;font-size:16px;line-height:1.5;color:#565049;max-width:460px}
+.acc-item.is-open .acc-body{grid-template-rows:1fr}.acc-item.is-open .acc-body>span{padding-top:8px}
+.acc-list .btn{margin-top:16px}
+@media (max-width:900px){
+  /* Tablet/móvil: carrusel de imágenes con puntos y, debajo, todos los apartados abiertos (sin scroll fijo: eso es solo de escritorio) */
+  .s-caja .wrap.acc-scroll{height:auto}
+  .acc-sticky{position:static;height:auto;min-height:0;overflow:visible}
+  .acc{display:flex;flex-direction:column;gap:20px;align-items:stretch}
+  .acc-media{order:1;position:relative;display:flex;gap:0;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;aspect-ratio:auto;max-height:none;border-radius:0;background:transparent;max-width:none;margin:0 calc(-1 * var(--gutter));padding:0}  /* sin padding: con padding, el borde se "cuela" entre diapositivas y asoma la siguiente */
+  .acc-media::-webkit-scrollbar{display:none}
+  .acc-media img,.acc-media .ph{position:static;flex:0 0 100%;max-width:none;aspect-ratio:4/5;height:auto;border-radius:0;opacity:1;transform:none;scroll-snap-align:center;object-fit:cover}  /* una sola imagen a pantalla completa, sin asomo de la siguiente */
+  /* Indicador vertical a la izquierda, como en klarna.com: una raya para el activo y puntos para el resto, superpuestos a la foto */
+  .acc-dots{order:2;position:absolute;left:24px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;z-index:2}
+  .acc-dots i{width:6px;height:6px;background:rgba(255,255,255,.55);filter:drop-shadow(0 1px 2px rgba(0,0,0,.25))}
+  .acc-dots i.active{width:6px;height:28px;background:#fff}
+  .acc-list{order:3;gap:4px;max-width:520px;margin:0 auto}
+  .acc-title{font-size:24px;color:#2a2724}
+  .acc-item .acc-body{grid-template-rows:1fr}.acc-item .acc-body>span{padding-top:6px}
+  .acc-item{padding:12px 0}
+}
+
+/* 08 */
+.s-receta{padding:128px var(--gutter)}
+.s-receta .media{border-radius:24px;aspect-ratio:1/1}
+.s-receta .lead-p{font-size:16px;line-height:24px;color:var(--text-muted);margin-top:24px}
+/* 08 · Escena parallax (Figma 503:2 "Sí, es real."): la foto crece hasta un banner a sangre con el claim y los sellos; después sigue Opiniones.
+   Móvil (<768): foto + texto y banner estático. Se revierte quitando .scene-* y su JS */
+.scene-stage{display:flex;flex-direction:column;gap:32px}
+.scene-title{text-align:center}.scene-title .h2{max-width:760px;margin-inline:auto}
+.scene-panel{position:relative;border-radius:20px;overflow:hidden;aspect-ratio:4/3}
+.scene-img{width:100%;height:100%;object-fit:cover;display:block}
+.scene-img-banner{display:none}
+.scene-banner{display:none}
+.scene-claim{font-family:var(--font-display);font-weight:700;font-size:clamp(40px,4.7vw,67px);line-height:.81;letter-spacing:-.035em;color:#fff;background:#c6d4ff;border-radius:11px;padding:15px;filter:drop-shadow(0 6px 3px rgba(0,0,0,.25));white-space:nowrap}
+.scene-claim em{font-style:normal;color:#ff7752}
+.scene-pills{display:flex;gap:28px;justify-content:center;flex-wrap:wrap}
+.sello{display:flex;align-items:center;gap:12px;width:300px;padding:17px 14px 17px 10px;border-radius:23px;background:rgba(255,255,255,.78);backdrop-filter:blur(6px);box-shadow:0 4px 16px rgba(26,38,89,.08)}
+.sello img{width:auto;height:40px;max-width:104px;object-fit:contain;flex:0 0 auto}  /* logos apaisados (Generalitat) a su ancho natural; el texto parte en dos líneas si hace falta */
+.sello p{font-family:var(--font-display);font-weight:500;font-size:14px;line-height:18px;color:#2a2724}
+/* Banner estático en móvil/tablet pequeño: bloque propio bajo la foto */
+@media (prefers-reduced-motion:reduce) and (max-width:767px){
+  .scene-static-banner{position:relative;margin:48px calc(-1 * var(--gutter)) 0;aspect-ratio:375/420;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:24px 16px}
+  .scene-static-banner>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:blur(2px);transform:scale(1.04)}
+  .scene-static-banner::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.4),rgba(102,102,102,0) 75%)}
+  .scene-static-banner>*{position:relative}
+  .scene-static-banner .scene-claim{font-size:40px}
+  .scene-static-banner .trust-eyebrow{color:#fff}
+  .scene-static-banner .scene-pills{flex-direction:column;gap:10px;width:100%}
+  .scene-static-banner .sello{width:100%;padding:10px 12px;border-radius:16px}.scene-static-banner .sello img{width:32px;height:32px;flex-basis:32px}
+  .s-opiniones .trust{display:none}
+}
+@media (prefers-reduced-motion:no-preference){
+  .s-opiniones .trust{display:none}
+  .s-receta{padding:0}
+  .scene-scroll{height:380vh}
+  .scene-sticky{position:sticky;top:64px;height:calc(100vh - 64px);display:flex;align-items:flex-start;justify-content:center;padding:64px 0 0}
+  .scene-stage{--ph:min(640px,calc(100vh - 64px - 64px));position:relative;display:block;width:100%;height:var(--ph);margin:0}
+  .scene-title{position:absolute;top:0;left:var(--gutter);right:var(--gutter);text-align:center;z-index:3}
+  .scene-title .h2{max-width:760px;margin-inline:auto}
+  .scene-panel{position:absolute;top:0;aspect-ratio:auto;will-change:width,height,transform;border-radius:var(--pr,24px);background:#e8e2d9}
+  .scene-img{position:absolute;inset:0;object-position:50% 45%}
+  .scene-img-banner{display:none}
+  .scene-panel::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.35),rgba(0,0,0,0) 60%);opacity:var(--bo,0);pointer-events:none}
+  .scene-text{position:absolute;top:50%;transform:translateY(calc(-50% + var(--tyd,0px))) translateX(var(--tx,0px));opacity:var(--to,1);will-change:opacity,transform;gap:28px}
+  /* Figma 512:48725: el bloque va en la mitad derecha (x 631 de 1440, 710 de ancho), claim arriba a la izquierda y sellos apilados en columna de 300 */
+  .scene-banner{display:flex;flex-direction:column;align-items:center;gap:18px;position:absolute;left:0;right:0;top:26%;transform:translateY(var(--bs,0px));z-index:2;pointer-events:none}
+  /* Claim y sellos no van ligados al scroll: se disparan por tiempo (after delay) cuando la foto llega a sangre, y se esconden si se vuelve atrás */
+  .scene-banner .scene-claim{opacity:0;transform:translateY(56px);transition:opacity .55s cubic-bezier(.22,.61,.36,1),transform .55s cubic-bezier(.22,.61,.36,1)}
+  .scene-banner .trust-eyebrow,.scene-banner .scene-pills{opacity:0;transform:translateY(48px);transition:opacity .55s cubic-bezier(.22,.61,.36,1),transform .55s cubic-bezier(.22,.61,.36,1)}  /* entrada suave hacia arriba */
+  .scene-banner.show .scene-claim{opacity:1;transform:none}
+  .scene-banner.show .trust-eyebrow,.scene-banner.show .scene-pills{opacity:1;transform:none;transition-delay:.25s}
+  .scene-banner .trust-eyebrow{font-size:14px;color:#fff;text-shadow:0 1px 8px rgba(0,0,0,.3);text-align:center}
+  .scene-banner .scene-pills{flex-direction:row;justify-content:center;gap:28px}
+}
+@media (max-width:1100px) and (prefers-reduced-motion:no-preference){
+  /* Tablet: misma composición que escritorio (foto a la izquierda, texto a la derecha). Solo móvil apila */
+  .scene-stage.narrow .scene-text{top:var(--tt,0px);left:var(--gutter);right:var(--gutter);width:auto!important;transform:translateY(var(--ty2,0px));gap:20px}
+  .scene-stage.narrow .scene-text .lead-p{margin-top:12px}
+  .scene-stage.narrow .features{gap:16px}
+  /* Tablet/móvil: se conserva la foto del señor con el perro (la panorámica recorta solo hierba). Se desenfoca al entrar el banner y el contenido se ancla abajo para dejar ver al protagonista */
+  .scene-img-banner{display:none}
+  .scene-panel .scene-img{filter:blur(calc(var(--bo,0) * 2.4px));transform:scale(calc(1 + var(--bo,0) * .04));object-position:50% 30%}
+  .scene-banner{left:var(--gutter);right:var(--gutter);top:50%;bottom:auto;transform:translateY(calc(-50% + var(--bs,0px)))}  /* móvil/tablet: claim y sellos centrados en la imagen */
+  .scene-panel .scene-img{filter:none;transform:none}
+  .scene-banner .trust-eyebrow{text-align:center}
+  .scene-banner .scene-pills{flex-direction:row;justify-content:center;align-items:center;flex-wrap:wrap}
+  .scene-pills{gap:12px}.sello{width:220px;padding:12px 10px}.sello img{height:32px;max-width:84px}.sello p{font-size:12px;line-height:16px}
+}
+@media (max-width:767px) and (prefers-reduced-motion:no-preference){
+  .scene-stage{--ph:calc(100vh - 64px)}  /* móvil: escena apilada a toda altura */
+  .scene-sticky{padding-top:24px}
+  .scene-stage.narrow .scene-text{gap:14px}
+  .scene-stage.narrow .scene-text .h2{font-size:28px;line-height:32px}
+  .scene-stage.narrow .scene-text .lead-p{font-size:15px;line-height:21px}
+  .scene-stage.narrow .features{gap:12px}
+  .scene-banner{gap:12px}
+  .scene-claim{font-size:40px}
+  .scene-banner .scene-pills{flex-direction:column;align-items:stretch;gap:10px;width:100%;max-width:420px}
+  .sello{width:100%;padding:10px 12px;border-radius:16px}.sello p{font-size:13px;line-height:17px}
+}
+
+/* 09 */
+.s-opiniones{position:relative;padding:0 0 48px;background:#fff}
+.s-opiniones .tramado{position:absolute;left:50%;bottom:0;transform:translateX(-50%);width:max(1448px,100%);height:auto;pointer-events:none;z-index:-1}  /* detrás del contenido (texto/tarjetas no posicionados pintan por encima de z-index negativo); se deja asomar bajo las tarjetas, pero sin salirse de esta sección hacia la del descuento */
+@media (prefers-reduced-motion:no-preference){.page .s-opiniones{position:relative;z-index:3;margin-top:calc(-100vh + 64px);transform:translateY(var(--opy,0px));border-radius:0;background:#fff!important}.s-opiniones .head{padding-top:64px}}
+.s-opiniones .head{padding-top:128px}
+/* Bloque de confianza (Figma 429:37106) */
+.trust{background:#fff3b4;padding:24px var(--gutter);display:flex;flex-direction:column;align-items:center;gap:14px}  /* franja discreta: el contenido ya pesa por sí solo */
+.trust-eyebrow{font-family:var(--font-display);font-weight:500;font-size:14px;line-height:20px;color:#767066;text-align:center}
+.metrics{display:flex;align-items:center;justify-content:center;gap:28px;width:100%;max-width:1216px;flex-wrap:wrap}
+.metric{display:flex;flex-direction:row;align-items:center;gap:12px;background:none;border-radius:0;padding:0}
+.metric img{width:auto!important;height:40px!important;max-width:88px;object-fit:contain}
+.metric p{font-family:var(--font-display);font-weight:500;font-size:14px;line-height:18px;color:#2a2724;text-align:left;max-width:200px}
+.metrics .div{display:block;width:1px;height:28px;background:rgba(42,39,36,.12)}
+@media (min-width:601px) and (max-width:1100px){
+  .metrics{gap:16px}
+  .metric{gap:10px}
+  .metric img{height:34px!important;max-width:72px}
+  .metric p{font-size:13px;line-height:17px;max-width:150px}
+}
+@media (max-width:600px){
+  .trust{padding:24px var(--gutter);gap:14px}
+  .metrics{flex-direction:column;align-items:flex-start;gap:12px;width:auto;margin:0 auto}  /* bloque centrado, filas alineadas a la izquierda */
+  .metrics .div{display:none}
+  .metric{gap:12px;width:auto}
+  .metric img{height:36px!important;width:72px!important;flex:0 0 72px;object-fit:contain;object-position:left center}  /* columna de logos fija para que los textos alineen */
+  .metric p{font-size:14px;line-height:18px;max-width:none}
+}
+.s-opiniones .head{padding:96px var(--gutter) 56px}  /* aire sobre el titular; la lámina entra con esquinas redondeadas */
+/* Opiniones: bloque Trustpilot + carrusel con tarjeta central destacada y puntos con el activo alargado */
+.rv-trust{display:flex;flex-direction:column;align-items:center;gap:10px;margin:-16px 0 40px}
+.rv-tp{display:inline-flex;align-items:center;gap:6px;font-family:var(--font-display);font-weight:700;font-size:26px;color:#191919}.rv-tp svg{width:28px;height:28px}
+.rv-tpstars{display:flex;gap:4px}.rv-tpstars i{width:48px;height:48px;background:#00b67a url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23fff' d='M12 3.5l2.6 5.6 6.1.6-4.6 4.1 1.3 6.1L12 16.8l-5.4 3.1 1.3-6.1-4.6-4.1 6.1-.6z'/%3E%3C/svg%3E") center/70% no-repeat}
+.rv-tpstars i.half{background-color:#dcdce6;background-image:linear-gradient(90deg,#00b67a 50%,transparent 50%),url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23fff' d='M12 3.5l2.6 5.6 6.1.6-4.6 4.1 1.3 6.1L12 16.8l-5.4 3.1 1.3-6.1-4.6-4.1 6.1-.6z'/%3E%3C/svg%3E");background-size:100% 100%,70%;background-position:center,center;background-repeat:no-repeat}
+.rv-score{margin:0;font-family:var(--font-display);font-size:16px;color:#191919}.rv-score span{color:#c2c2c2;margin:0 6px}.rv-score a{color:#191919;text-decoration:underline;text-underline-offset:3px}
+.reviews{display:flex;gap:24px;overflow-x:auto;scroll-snap-type:x mandatory;padding:32px calc(50% - 250px) 40px;scrollbar-width:none;align-items:center}
+.reviews::-webkit-scrollbar{display:none}
+.rv-card{flex:0 0 420px;scroll-snap-align:center;box-sizing:border-box;padding:28px 24px 24px;border:1px solid #e8e8e8;border-radius:20px;background:#fff;display:flex;flex-direction:column;gap:18px;transition:transform .35s ease,background .35s ease,border-color .35s ease,box-shadow .35s ease;transform:scale(.94)}
+.rv-card.is-active{transform:scale(1.04);background:#f7f7f7;border-color:#f0f0f0;box-shadow:0 12px 32px rgba(26,38,89,.08);flex-basis:500px}
+.rv-head{display:flex;align-items:center;gap:16px}.rv-head b{display:block;font-family:var(--font-display);font-weight:700;font-size:18px;color:#191919}
+.rv-avatar{width:48px;height:48px;border-radius:50%;background:#ffee99;color:#2a2724;display:grid;place-items:center;font-family:var(--font-display);font-weight:700;font-size:18px;flex:0 0 48px}
+.rv-stars{display:inline-flex;gap:2px;margin-top:2px}.rv-stars i{width:16px;height:16px;display:block}.rv-stars svg{width:16px;height:16px;fill:#dcdce6}.rv-stars i.on svg{fill:#191919}
+.rv-text{margin:0;font-size:17px;line-height:1.5;color:#2a2724;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}.rv-card.is-active .rv-text{-webkit-line-clamp:unset;font-size:19px}
+.rv-when{margin:0;font-size:15px;color:#767066}
+.rv-dots{display:flex;justify-content:center;align-items:center;gap:8px;margin-top:8px}
+.rv-dots button{width:8px;height:8px;border-radius:999px;background:#c2c2c2;border:0;padding:0;cursor:pointer;transition:width .3s ease,background .3s ease}
+.rv-dots button.active{width:32px;background:#191919}
+@media (max-width:767px){
+  /* Móvil: cinta de opiniones en bucle (tarjetas duplicadas en JS); se pausa al tocar */
+  .s-opiniones{overflow:clip}
+  .reviews{gap:0;width:max-content;overflow:visible;scroll-snap-type:none;padding:24px 0 32px;animation:marquee 44s linear infinite;will-change:transform}
+  .reviews.paused{animation-play-state:paused}
+  .rv-card{flex:0 0 300px;margin-right:16px;transform:none}
+  .rv-card.is-active{flex-basis:300px;transform:none;background:#fff;border-color:#e8e8e8;box-shadow:none}
+  .rv-card.is-active .rv-text{font-size:17px;-webkit-line-clamp:4}
+  .rv-dots{display:none}
+  .rv-tpstars i{width:36px;height:36px}.rv-tp{font-size:22px}
+  @media (prefers-reduced-motion:reduce){.reviews{animation:none;width:auto;overflow-x:auto;padding:24px 16px 32px}.rv-dots{display:flex}}
+}
+
+/* SMS */
+.s-sms{position:relative;overflow:hidden;color:#fff;padding:96px var(--gutter)}
+.s-sms .bg{position:absolute;inset:0;z-index:0}
+.s-sms .bg img{width:100%;height:100%;object-fit:cover}
+.s-sms .bg::after{content:"";position:absolute;inset:0;background:rgba(20,16,14,.45)}
+.s-sms .inner{position:relative;z-index:1;display:flex;flex-direction:column;gap:16px;align-items:center;text-align:center;max-width:var(--container);margin:0 auto}
+.sms-title{display:inline-block;background:var(--blue-deco);padding:10px;border-radius:7px;filter:drop-shadow(0 4px 2px rgba(0,0,0,.25));font-family:var(--font-display);font-weight:700;font-size:clamp(26px,3.5vw,42px);line-height:.85;letter-spacing:-.035em;color:#191919}  /* pastilla amarilla, texto negro y acento primary */
+.sms-title{background:#ffee99}
+.sms-title .accent{color:var(--primary)}
+.s-sms .desc{font-size:16px;line-height:24px;padding:0;max-width:760px;text-align:center}
+/* Guiño de dogfydiet.com: sello crema girando en bucle con el teléfono encima */
+.sms-lead{display:flex;justify-content:center;padding:0 24px 16px}
+.sticker.sticker-m{display:none}
+.sticker{position:relative;flex:0 0 64px;width:64px;height:64px;display:grid;place-items:center;color:#f9f8f7}  /* decorativo: 64px */
+.sticker-shape{position:absolute;inset:0;animation:sticker-spin 8s linear infinite}
+.sticker-emoji{position:relative;font-size:26px;line-height:1}
+@keyframes sticker-spin{to{transform:rotate(1turn)}}
+@media (prefers-reduced-motion:reduce){.sticker-shape{animation:none}}
+@media (max-width:600px){.sticker.sticker-d{display:none}.sticker.sticker-m{display:grid;margin:0 auto 4px}}  /* móvil: el sello sobre el título, como en dogfydiet.com */
+.sms-form{display:flex;flex-direction:column;gap:16px;align-items:center;width:min(760px,100%)}
+.sms-row{display:flex;gap:16px;width:100%;align-items:center}
+.sms-row .btn{padding:8px 24px;flex:0 0 auto}  /* más aire lateral en el botón de SMS */
+.sms-field{display:flex;align-items:center;gap:12px;flex:1;min-width:0}  /* icono + campo agrupados: en tablet/móvil quedan en la misma línea */
+.input{display:flex;align-items:center;gap:8px;background:#fff;border:none;border-radius:12px;height:40px;padding:8px 12px;font-size:16px;flex:1;min-width:0}
+.input:focus-within{outline:none}
+.input select:focus,.input input:focus{outline:none}
+.input span{color:var(--text-muted)}
+/* Prefijo con selector de mercado (ES · FR · IT · DE) */
+.input .prefix{position:relative;display:inline-flex;align-items:center;gap:4px;padding-right:8px;border-right:1px solid var(--border-acc);color:var(--text-hi);flex:0 0 auto}
+.input .prefix select{appearance:none;-webkit-appearance:none;border:0;background:transparent;font:inherit;color:inherit;padding:0 18px 0 0;cursor:pointer;outline:0}
+.input .prefix svg{position:absolute;right:8px;width:14px;height:14px;pointer-events:none;color:var(--text-muted)}
+.input input{border:0;outline:0;flex:1;min-width:0;font:inherit;color:var(--text-hi)}
+.input input::placeholder{color:var(--text-dimmed)}
+.check{display:flex;gap:8px;align-items:flex-start;font-family:var(--font-display);font-weight:500;font-size:14px;line-height:20px;text-align:left;cursor:pointer}
+.check input{appearance:none;width:16px;height:16px;border-radius:5px;background:#fff;border:1px solid var(--bg-elev);margin-top:2px;flex:0 0 16px;position:relative}
+.check input:checked{background:var(--primary);border-color:var(--primary)}
+.check input:checked::after{content:"";position:absolute;left:4.5px;top:1.5px;width:4px;height:8px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg)}
+
+/* FAQ */
+.s-faq{position:relative;z-index:2;background:var(--bg-inv);color:#fff;border-radius:0;padding:128px var(--gutter) 112px;margin-bottom:-324px}
+.s-faq .head{text-align:center;max-width:var(--container);margin:0 auto 48px}
+.s-faq .eyebrow{color:var(--text-dimmed)}  /* gris claro en vez de blanco puro o el muted oscuro: legible sobre el fondo oscuro, sin perder el aire "eyebrow" */
+.s-faq h2{color:#fff;margin-top:12px}
+.s-faq .sub{color:var(--text-dimmed);font-size:16px;line-height:24px;margin-top:24px}
+.faq{max-width:896px;margin:0 auto}
+.faq details{border-bottom:1px solid var(--bg-inv)}
+.faq summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0;cursor:pointer;font-family:var(--font-display);font-weight:500;font-size:16px;line-height:24px;color:#fff}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary img{width:20px;height:20px;transition:transform .2s;flex:0 0 20px}
+.faq details[open] summary img{transform:rotate(180deg)}
+.faq .ans{padding:0 0 14px;color:var(--text-dimmed);font-size:16px;line-height:24px}
+
+/* Footer */
+/* .page lleva fondo blanco en todo su alto salvo la zona de la FAQ (ahí es transparente para que el footer asome por las esquinas). Evita que el footer fijo se cuele por las juntas entre secciones */
+.page{position:relative;z-index:1;background:linear-gradient(var(--bg),var(--bg)) top/100% calc(100% - var(--faqh,0px)) no-repeat}
+.s-cocina{background:var(--bg)}
+.s-recetas{background:#c6d4ff;position:relative;overflow-x:clip}  /* Figma 541:50332: 04 en #e2e8fb, 05 en #c6d4ff con onda de entrada, y onda blanca al pie hacia precios */
+.s-recetas .wave-bottom{position:absolute;left:50%;bottom:-1px;transform:translateX(-50%);width:max(1440px,100%);height:auto;max-width:none;pointer-events:none;z-index:1}  /* Figma 541:50631: "Subtract" blanco dentro de los últimos 49px de la sección; el lavanda asoma en ondas */
+.s-recetas{z-index:2}
+@media (max-width:767px){.s-recetas .wave-top,.s-recetas .wave-bottom{width:200%}.s-recetas .wave-top{top:-38px}}  /* ondas a media escala en móvil */
+.s-recetas .wave-top{position:absolute;left:50%;top:-74px;transform:translateX(-50%);width:max(1440px,100%);height:auto;max-width:none;pointer-events:none;z-index:1}  /* Figma 541:50333: banda #e2e8fb, onda #c6d4ff y espuma clara, sin voltear */
+.s-recetas>*{position:relative;z-index:1}  /* fondos propios: la página es transparente para que el footer asome por las esquinas de FAQ */
+.footer{position:relative;z-index:0;background:#ff6d45;color:#fff;overflow:hidden;padding:calc(104px + 324px) clamp(16px,5.5vw,80px) 40px;display:flex;flex-direction:column;gap:40px}
+/* Footer reveal: con JS activo el footer queda fijo detrás de .page y un espaciador reserva su altura */
+.reveal .footer{position:fixed;top:0;left:0;right:0;will-change:transform}
+.reveal .footer-space{height:var(--fh,1000px)}
+@media (prefers-reduced-motion:reduce){.reveal .footer{position:relative}.reveal .footer-space{display:none}}
+.footer .deco-v{position:absolute;right:0;bottom:0;width:1027px;pointer-events:none}
+.footer .deco-dog{position:absolute;right:-79px;top:calc(324px - 60px);width:min(792px,50vw);height:auto;aspect-ratio:792/1284;transform:scaleX(-1);object-fit:cover;pointer-events:none}
+.footer .cols,.footer .wordmark,.footer .badges,.footer .legal{z-index:2}
+.footer .cols{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:32px;font-size:16px}
+.footer .col{display:flex;flex-direction:column;gap:12px}
+.footer .col b{font-weight:700;line-height:1.4}
+.footer .col a,.footer .col p{line-height:1.45}
+.footer .col a:hover{text-decoration:underline}
+.footer .icons{display:flex;gap:16px}
+.footer .icons img{width:24px;height:24px}
+.footer .pays{display:flex;flex-wrap:wrap;gap:8px}
+.pay{position:relative;width:48px;height:32px;flex:0 0 48px}
+.pay.box{background:#fff;border:1px solid #d6d6d6;border-radius:4px;overflow:hidden}
+.pay img{position:absolute}
+.footer .badges{position:relative;display:flex;flex-wrap:wrap;gap:16px}
+.badge-app{position:relative;height:64px;display:block;flex:0 0 auto;zoom:.8}  /* 20 % más pequeños (51px de alto) */
+.badge-app img{position:absolute}
+.footer .wordmark{position:relative;width:clamp(240px,40vw,600px);height:auto}  /* 733/1440 = 51% del viewport en Figma */
+.footer .legal{position:relative;display:flex;flex-wrap:wrap;gap:12px 32px;font-size:14px}
+
+/* Responsive */
+@media (max-width:1100px){
+  .s-recetas{padding-top:64px}
+  .s-recetas .head{padding-bottom:32px}
+  .recetas-grid,.precio-grid{grid-template-columns:repeat(2,1fr)}
+  .footer .cols{grid-template-columns:repeat(2,1fr)}
+  /* Tablet/intermedio: el perro baja y se encoge para no pisar wordmark, badges ni legal */
+  .footer .deco-dog{left:auto;right:-140px;top:auto;bottom:-80px;width:min(420px,42vw);height:auto}
+  .footer{gap:32px}
+  .footer .wordmark{width:clamp(220px,34vw,460px)}
+  .badge-app{zoom:.75}  /* 48px de alto: por encima del mínimo de 40px que exigen Apple y Google */
+  .footer .badges{gap:12px}
+  .footer .legal{gap:10px 24px;font-size:14px;max-width:70%}
+}
+@media (max-width:1040px){
+  .nav,.header-right .btn-neutral{display:none}
+  .burger{display:flex}
+}
+@media (max-width:900px){
+  .split{grid-template-columns:1fr;gap:32px}
+  .s-cocina .split{height:auto}  /* pista de scroll: 4 pasos × 100vh; el bloque de pasos queda fijo y al agotarla sigue el scroll normal. align-content:start evita que el grid reparta el alto extra entre media y right-col (su comportamiento por defecto es "stretch") */
+  /* Tablet/móvil: imagen + pasos quedan fijos juntos bajo el header (la imagen siempre en pantalla); el título se desplaza */
+  .s-cocina .cocina-sticky{position:static;max-height:none;overflow:visible;display:block}  /* en móvil el contenedor es la pista; el split es lo que se queda fijo */
+  .s-cocina .split{position:sticky;top:64px;gap:16px;align-content:start}
+  .s-cocina .split .media{aspect-ratio:343/176}  /* más apaisada para que imagen + pasos + botón quepan en un iPhone */
+  .s-cocina .right-col{position:static;height:auto;max-height:none;overflow:visible;justify-content:flex-start;gap:20px;padding:0}
+  .s-cocina{padding-bottom:24px}
+  /* Raíl vertical entre insignias: se va rellenando con los pasos completados */
+  .step .ind{align-self:stretch;position:relative}
+  .step:not(:last-child) .ind::after{content:"";flex:1;width:2px;min-height:14px;margin-top:6px;border-radius:2px;background:linear-gradient(#2a2724,#2a2724) no-repeat 0 0/100% var(--fill,0%),#e8e8e8;transition:--fill .4s ease}
+  .step.done:not(:last-child) .ind::after{--fill:100%}
+  .step.active:not(:last-child) .ind::after{--fill:35%}
+  .step .txt{padding-bottom:22px}
+  .step.active h3{transform:translateX(2px)}
+  .step h3{transition:transform .4s ease,color .4s ease}
+  .split .media{aspect-ratio:4/3;order:-1}
+  .s-receta .media{aspect-ratio:4/3}
+  .hero{min-height:640px}
+  .hero-bg img{object-position:63% 25%}  /* imagen panorámica: encuadre sobre la cara del perro */
+  .hero-content{padding-block:48px}
+  .sms-row{display:contents}.sms-form .sms-field{order:1;align-self:center}.sms-form .check{order:2}.sms-form .sms-row .btn{order:3;width:100%}  /* móvil: icono+campo en una línea · consentimiento · botón a todo el ancho */
+  .sms-form{align-items:stretch}
+  .input{max-width:280px}  /* el número solo tiene 9 cifras: no hace falta que el campo ocupe todo el ancho */
+  .sms-form .check{justify-content:center;text-align:center}  /* consentimiento centrado bajo el CTA */
+  .s-faq{border-radius:0;padding-top:80px;padding-bottom:80px}
+  .s-precio,.s-recetas,.s-sms{padding-top:72px}.s-receta{padding-top:0}  /* la escena ya lleva su aire */
+  .right-col .btn,.acc-list .btn,.scene-text .btn,.s-recetas .cta .btn{align-self:center;margin-inline:auto}  /* móvil: botones centrados en su contenedor */
+  .s-opiniones .head{padding-top:72px}
+  .s-precio{padding-bottom:72px}
+  .cocina-head{padding-top:40px}
+  .s-caja .wrap{padding:48px var(--gutter)}
+}
+@media (max-width:1074px){
+  /* 05: pestañas + carrusel de recetas (breakpoint Figma 469:40559 / móvil 272:39756) */
+  /* 05: carrusel de recetas con pestañas y bullets (Figma móvil) */
+  .s-recetas{padding-bottom:64px}
+  .s-recetas .head{padding-bottom:24px}
+  .receta-tabs{display:flex;padding-bottom:24px}
+  .receta-tabs::-webkit-scrollbar{display:none}
+  .tab{flex:0 0 auto;display:flex;align-items:center;gap:8px;padding:4px 16px 4px 4px;border-radius:300px;border:1px solid #e8e8e8;background:rgba(255,255,255,.6);font-family:var(--font-alt);font-size:17px;line-height:1.35;color:#767676;white-space:nowrap}
+  .tab img{width:40px;height:40px}
+  .tab.active{background:#ffee99;color:#3d3d3d;font-weight:600}
+  /* Tablet/móvil: cinta en bucle (las tarjetas se duplican en JS y la pista se desplaza media vuelta); se pausa al tocarla */
+  .recetas-grid{display:flex;gap:0;overflow:visible;width:max-content;padding:0;box-sizing:border-box;max-width:none;animation:marquee 36s linear infinite;will-change:transform}
+  .recetas-grid.paused{animation-play-state:paused}
+  .recetas-grid .receta{margin-right:16px}
+  .s-recetas{overflow:clip}
+  @media (prefers-reduced-motion:reduce){.recetas-grid{animation:none;overflow-x:auto;width:auto;padding:0 22px}}
+  .recetas-grid::-webkit-scrollbar{display:none}
+  .receta{flex:0 0 min(calc(100vw - 44px),332px)}
+  .dots{display:none}  /* puntos del carrusel de opiniones ocultos */
+  .dots i{width:8px;height:8px;border-radius:50%;background:#c2c2c2}
+  .dots i.active{background:#3d3d3d}
+  .s-recetas .cta{padding-top:40px}
+}
+@media (max-width:600px){
+  .precio-grid{grid-template-columns:1fr}
+  /* 06: tarjetas de precio móvil (Figma 272:40193): grid 2×2 de 165px, marco 172px, título 30px */
+  .s-precio .h2{font-size:30px;line-height:36px}
+  .precio-grid{grid-template-columns:repeat(2,165px);gap:12px;justify-content:center}
+  .pcard{width:165px;overflow:hidden;padding:8px 8px 16px;border-radius:16px;margin-top:0!important}
+  .pcard .img{height:172px}
+  .pcard .badge{top:16px;right:14px}
+  .pcard .desde{font-size:18px;line-height:28px}
+  .pcard .price b{font-size:24px}
+  .pcard .img img{left:auto;transform:none;max-height:none;max-width:none}
+  .pcard.c-minis img{width:120px;height:168px;left:22px;top:19px;bottom:auto}
+  .pcard.c-peq img{width:158px;height:120px;left:-1px;top:72px;bottom:auto;object-fit:cover}
+  .pcard.c-med img{width:243px;height:184px;left:-41px;top:25px;bottom:auto}
+  .pcard.c-gra img{width:226px;height:172px;left:8px;top:8px;clip-path:inset(0 calc(100% - 126px) 0 0)}
+  /* 09: carrusel de opiniones con bullets */
+  /* Footer compacto en móvil: 2 columnas, menos solape con FAQ, tipografía y badges menores */
+  .s-faq{margin-bottom:-120px}
+  .footer{padding:calc(56px + 120px) 20px 32px;gap:32px}
+  .footer .cols{grid-template-columns:1fr 1fr;gap:24px 16px;font-size:15px}
+  .footer .col{gap:10px}
+  .footer .pays{gap:6px}
+  .footer .wordmark{width:min(64vw,300px)}
+  .badge-app{zoom:.78}
+  .footer .badges{gap:10px}
+  .footer .legal{font-size:14px;gap:8px 20px}
+  .footer .deco-dog{right:-150px;width:340px;bottom:-60px}
+  .btn-lg,.select{width:100%}
+}
+
+/* ===== Accesibilidad y microinteracciones ===== */
+:focus-visible{outline:3px solid #ffee99;outline-offset:3px;border-radius:12px}
+.btn:focus-visible,.tab:focus-visible{outline-offset:2px}
+.input:focus-within{box-shadow:0 0 0 3px #ffee99;border-color:#2a2724}
+.skip-link{position:absolute;left:16px;top:-60px;z-index:100;background:#2a2724;color:#fff;padding:10px 16px;border-radius:999px;font-family:var(--font-display);font-weight:600;transition:top .2s}
+.skip-link:focus{top:12px}
+*{-webkit-tap-highlight-color:transparent}
+.tab,.acc-item,.faq summary,.rv-dots button{touch-action:manipulation}
+.tab{transition:background .25s ease,transform .2s ease,color .25s ease}.tab:active{transform:scale(.96)}
+.tab.active{animation:tabPop .35s cubic-bezier(.34,1.56,.64,1)}
+@keyframes tabPop{0%{transform:scale(.94)}60%{transform:scale(1.04)}100%{transform:scale(1)}}
+.acc-item:active .acc-title{transform:translateX(4px)}
+.faq summary{transition:color .2s}.faq summary:active{color:var(--primary)}
+.faq details[open] .ans{animation:ansIn .3s ease both}
+@keyframes ansIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+.faq summary img{transition:transform .3s cubic-bezier(.34,1.56,.64,1)}
+.rv-dots button{position:relative}.rv-dots button::before{content:"";position:absolute;inset:-18px -8px}  /* área táctil ≥44px */
+.recetas-grid:focus-within,.reviews:focus-within{animation-play-state:paused}
+.mobile-menu{opacity:0;transform:translateY(-8px);transition:opacity .25s ease,transform .25s ease;display:flex;visibility:hidden}
+.mobile-menu.open{opacity:1;transform:none;visibility:visible}
+.mobile-menu a{opacity:0;transform:translateY(6px);transition:opacity .3s ease,transform .3s ease}
+.mobile-menu.open a{opacity:1;transform:none}
+.mobile-menu.open a:nth-child(1){transition-delay:.05s}.mobile-menu.open a:nth-child(2){transition-delay:.1s}.mobile-menu.open a:nth-child(3){transition-delay:.15s}.mobile-menu.open a:nth-child(4){transition-delay:.2s}.mobile-menu.open a:nth-child(5){transition-delay:.25s}.mobile-menu.open a:nth-child(6){transition-delay:.3s}
+.burger span,.burger span::before,.burger span::after{transition:transform .3s ease,top .3s ease,opacity .2s ease}
+.burger[aria-expanded="true"] span{background:transparent!important}
+.burger[aria-expanded="true"] span::before{top:0;transform:rotate(45deg)}
+.burger[aria-expanded="true"] span::after{top:0;transform:rotate(-45deg)}
+.reveal{opacity:0;transform:translateY(10px);transition:opacity .6s ease,transform .6s ease}
+.reveal.in{opacity:1;transform:none}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.check input:focus-visible{outline:3px solid #ffee99;outline-offset:2px}
+.check input{transition:background .2s,border-color .2s,transform .15s}.check input:active{transform:scale(.9)}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.tab.active{animation:none}.faq details[open] .ans{animation:none}.mobile-menu,.mobile-menu a{transition:none}}
+</style>
+</head>
+<body>
+
+<div class="page">
+<!-- Banner -->
+<a class="skip-link" href="#como">Saltar al contenido</a>
+<div class="banner">🔥 -30 % descuento &nbsp;🔥&nbsp; ENVÍO GRATIS &nbsp;🔥</div>
+
+<!-- Header -->
+<header class="header">
+  <div class="container">
+    <a href="#" aria-label="Dogfy Diet"><img src="assets/logo-dogfy.svg" alt="Dogfy Diet" width="78" height="44"></a>
+    <nav class="nav" aria-label="Principal">
+      <a href="#como">Cómo funciona</a>
+      <a href="#recetas" class="active">Nuestras recetas</a>
+      <a href="#nutricionistas">Nutricionistas</a>
+      <a href="#opiniones">Opiniones</a>
+      <a href="#faq">Ayuda</a>
+    </nav>
+    <div class="header-right">
+      <button class="btn btn-neutral">ES <img src="assets/chevron-down.svg" alt="" width="20" height="20"></button>
+      <a class="btn btn-neutral" href="#">Mi cuenta</a>
+      <a class="btn btn-primary btn-sm" href="#precio">Crea tu menú</a>
+      <button class="burger" id="burger" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobileMenu"><span></span></button>
+    </div>
+  </div>
+</header>
+<nav class="mobile-menu" id="mobileMenu" aria-label="Menú móvil">
+  <a href="#como">Cómo funciona</a>
+  <a href="#recetas">Nuestras recetas</a>
+  <a href="#nutricionistas">Nutricionistas</a>
+  <a href="#opiniones">Opiniones</a>
+  <a href="#faq">Ayuda</a>
+  <a href="#">Mi cuenta</a>
+  <a class="btn btn-primary" href="#precio">Crea tu menú</a>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-bg"><img src="assets/hero.jpg" alt=""></div>
+  <div class="container hero-content">
+    <div>
+      <span class="hero-badge">Full of life</span>
+      <h1>Comida real. Pensada de verdad para perros.</h1>
+      <p>Con trocitos, jugosidad y olor a ingredientes reales. Completa y equilibrada. Para comer con ganas. Y vivir con ganas.</p>
+    </div>
+    <div class="hero-actions">
+      <label class="select">
+        <span id="breedLabel">¿Cuál es la raza de tu perro?</span>
+        <img src="assets/chevron-down-24.svg" alt="">
+        <select id="breed" aria-label="Raza de tu perro">
+          <option value="">¿Cuál es la raza de tu perro?</option>
+          <option>Mestizo</option><option>Labrador Retriever</option><option>Golden Retriever</option><option>Pastor Alemán</option><option>Bulldog Francés</option><option>Border Collie</option><option>Carlino</option><option>Pomerania</option><option>Otra raza</option>
+        </select>
+      </label>
+      <a class="btn btn-primary btn-lg" href="#precio">Descubre su menú</a>
+    </div>
+  </div>
+</section>
+
+<!-- Estadísticas (Figma 437:37824 / 437:37770 / 437:37788): fila en escritorio y tablet, columna en móvil -->
+<div class="stats-m">
+  <p class="trust-eyebrow"><mark>+700.000</mark> perros ya lo notan</p>
+  <div class="stats-row">
+    <div class="stat"><b>87,4%</b><span>Mejores digestiones</span></div>
+    <div class="stat"><b>74%</b><span>Pelaje sano y brillante</span></div>
+    <div class="stat"><b>92,1%</b><span>Mejoran con su nueva dieta</span></div>
+  </div>
+</div>
+
+<!-- 02 · Intro + 03 · Cocina a tu casa (stepper): mismo bloque para que el titular quede dentro del sticky, junto a la imagen y los pasos -->
+<section class="s-cocina" id="como">
+ <div class="cocina-sticky">
+  <div class="container center cocina-head">
+    <p class="eyebrow">¡Darle lo mejor nunca ha sido tan fácil!</p>
+    <h2 class="h2">¿Cómo empieza el cambio?</h2>
+  </div>
+  <div class="split">
+    <div class="media"><img src="assets/como-empieza-caja.png" alt="Un perro recibe su caja de Dogfy Diet en la entrada de casa"></div>
+    <div class="right-col">
+      <ol class="stepper">
+        <li class="step"><div class="ind"><span class="dot badge-num"><img class="muted" src="assets/step-1-default.png" alt=""><img src="assets/step-1-active.png" alt="1"></span></div><div class="txt"><h3>Cuéntanos cómo es tu perro.</h3><div class="step-body"><p>Con su peso, edad y actividad calculamos su ración diaria. Elige una o varias recetas y ve el precio antes de contratar.</p></div></div></li>
+        <li class="step"><div class="ind"><span class="dot badge-num"><img class="muted" src="assets/step-2-default.png" alt=""><img src="assets/step-2-active.png" alt="2"></span></div><div class="txt"><h3>Cocinamos, congelamos y te la enviamos a casa.</h3><div class="step-body"><p>Recetas completas formuladas por veterinarios, cocinadas a baja temperatura y congeladas. Las recibes en bolsitas de una ración.</p></div></div></li>
+        <li class="step"><div class="ind"><span class="dot badge-num"><img class="muted" src="assets/step-3-default.png" alt=""><img src="assets/step-3-active.png" alt="3"></span></div><div class="txt"><h3>Descongelas, abres y sirves.</h3><div class="step-body"><p>Tu primera caja trae 14 días de comida y una guía de transición. Descongela en la nevera y sirve. Nuestro equipo de Nutrición te acompaña.</p></div></div></li>
+        <li class="step"><div class="ind"><span class="dot"><img class="muted" src="assets/step-check-default.svg" alt=""><img src="assets/step-check-active.svg" alt=""></span></div><div class="txt"><h3>Su comida sigue llegando. Tú gestionas los próximos pedidos.</h3><div class="step-body"><p>Tras los primeros 14 días la suscripción continúa. Cambia recetas, aplaza envíos o cancela cuando quieras, sin permanencia.</p></div></div></li>
+      </ol>
+      <a class="btn btn-primary" href="#precio">Calcula su ración</a>
+    </div>
+  </div>
+ </div>
+</section>
+
+<!-- 04 · Por qué (bol con etiquetas) -->
+<section class="s-porque">
+  <!-- Escritorio: un solo bloque, bol centrado y 4 etiquetas a cada lado -->
+  <div class="bol-block desk">
+    <img class="wave" src="assets/onda-superior.svg" alt="" width="1440" height="82">
+    <div class="container head center"><p class="eyebrow muted">¡Tu perro ya está moviendo la cola!</p><h2 class="h2">Conoce más sobre nuestra <span class="accent">comida natural</span></h2></div>
+    <div class="bol-stage">
+      <div class="hs-col left"><div class="hs l"><span class="lbl">65% pollo, pavo, buey y/o salmón</span><span class="thumb" style="background:#fddcdc"><img src="assets/hs-65.png" alt="" style="width:152px;height:152px;left:-47.4px;top:-12px"></span></div><div class="hs l"><span class="lbl">35% de verduras</span><span class="thumb" style="background:#f5f5f5"><img src="assets/hs-verduras.png" alt="" style="width:226px;height:226px;left:-61.5px;top:-56.1px"></span></div><div class="hs l"><span class="lbl">Ingredientes 100% naturales</span><span class="thumb" style="background:#ffdcbb"><img src="assets/hs-ingredientes.png" alt="" style="width:157px;height:157px;left:-12.7px;top:-14.7px"></span></div><div class="hs l"><span class="lbl">Cocinado a baja temperatura</span><span class="thumb" style="background:#ffdcbb"><img src="assets/hs-vitaminas.png" alt="" style="width:193px;height:193px;left:-69.5px;top:-37.4px"></span></div></div>
+      <img class="bol-img" src="assets/bol2-main.png" alt="Bol de comida natural Dogfy Diet">
+      <div class="hs-col right"><div class="hs r"><span class="lbl">más vitalidad</span><span class="thumb" style="background:#ffefea"><img src="assets/hs-vitalidad.png" alt="" style="width:71px;height:71px;left:-3.4px;top:-6.9px"></span></div><div class="hs r"><span class="lbl">Pelaje brillante</span><span class="thumb" style="background:#f5f5f5"><img src="assets/hs-pelaje.png" alt="" style="width:64px;height:64px;left:0;top:0"></span></div><div class="hs r"><span class="lbl">Completo y equilibrado</span><span class="thumb" style="background:#fff7c9"><img src="assets/hs-completo.png" alt="" style="width:184px;height:103px;left:-95.4px;top:-9.9px"></span></div><div class="hs r"><span class="lbl">Heces pequeñas y compactas</span><span class="thumb" style="background:#f7f3fe"><img src="assets/hs-heces.png" alt="" style="width:90px;height:120px;left:-8.5px;top:-30.6px;transform:rotate(-1.58deg)"></span></div></div>
+    </div>
+    <div class="cta bol-cta"><a class="btn btn-primary" href="#precio">Descubre su menú</a></div>
+  </div>
+  <!-- Tablet y móvil: un bloque fijo con dos estados que cambian al hacer scroll (Figma "Animate scroll") -->
+  <div class="bol-scroll" id="bolScroll">
+    <div class="bol-sticky">
+      <img class="wave" src="assets/onda-superior.svg" alt="" width="1440" height="82">
+      <div class="container head center st1 show"><p class="eyebrow">¡Tu perro ya está moviendo la cola!</p><h2 class="h2">¿Qué hay en <span class="accent">su bol</span>?</h2></div>
+      <div class="container head center st2"><p class="eyebrow">¡Tu perro ya está moviendo la cola!</p><h2 class="h2">¿Qué <span class="accent">cambios</span> notarás?</h2></div>
+      <div class="bol-stage">
+       <div class="bol-track" id="bolTrack">
+        <div class="hs-col st1 in"><div class="hs l"><span class="lbl">65% pollo, pavo, buey y/o salmón</span><span class="thumb" style="background:#fddcdc"><img src="assets/hs-65.png" alt="" style="width:152px;height:152px;left:-47.4px;top:-12px"></span></div><div class="hs l"><span class="lbl">35% de verduras</span><span class="thumb" style="background:#f5f5f5"><img src="assets/hs-verduras.png" alt="" style="width:226px;height:226px;left:-61.5px;top:-56.1px"></span></div><div class="hs l"><span class="lbl">Ingredientes 100% naturales</span><span class="thumb" style="background:#ffdcbb"><img src="assets/hs-ingredientes.png" alt="" style="width:157px;height:157px;left:-12.7px;top:-14.7px"></span></div><div class="hs l"><span class="lbl">Cocinado a baja temperatura</span><span class="thumb" style="background:#ffdcbb"><img src="assets/hs-vitaminas.png" alt="" style="width:193px;height:193px;left:-69.5px;top:-37.4px"></span></div></div>
+        <div class="hs-col st2 in"><div class="hs r"><span class="lbl">más vitalidad</span><span class="thumb" style="background:#ffefea"><img src="assets/hs-vitalidad.png" alt="" style="width:71px;height:71px;left:-3.4px;top:-6.9px"></span></div><div class="hs r"><span class="lbl">Pelaje brillante</span><span class="thumb" style="background:#f5f5f5"><img src="assets/hs-pelaje.png" alt="" style="width:64px;height:64px;left:0;top:0"></span></div><div class="hs r"><span class="lbl">Completo y equilibrado</span><span class="thumb" style="background:#fff7c9"><img src="assets/hs-completo.png" alt="" style="width:184px;height:103px;left:-95.4px;top:-9.9px"></span></div><div class="hs r"><span class="lbl">Heces pequeñas y compactas</span><span class="thumb" style="background:#f7f3fe"><img src="assets/hs-heces.png" alt="" style="width:90px;height:120px;left:-8.5px;top:-30.6px;transform:rotate(-1.58deg)"></span></div></div>
+        <img class="bol-img" id="bolSlide" src="assets/bol2-main.png" alt="Bol de comida natural Dogfy Diet">
+       </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 · Recetas -->
+<section class="s-recetas" id="recetas">
+  <img class="wave-top" src="assets/onda-05-top.svg" alt="" width="1440" height="75">
+  <img class="wave-bottom" src="assets/onda-05-bottom.svg" alt="" width="1601" height="49">
+  <div class="container head center">
+    <p class="eyebrow">¡Tu perro ya está moviendo la cola!</p>
+    <h2 class="h2" style="margin-top:12px">Descubre <span class="accent">nuestras</span> recetas naturales</h2>
+  </div>
+  <div class="receta-tabs" role="tablist" aria-label="Recetas">
+    <button class="tab active" data-key="pollo" role="tab" aria-selected="true"><img src="assets/tab-pollo.svg" alt="">Pollo</button>
+    <button class="tab" data-key="pavo" role="tab" aria-selected="false"><img src="assets/tab-pavo.svg" alt="">Pavo</button>
+    <button class="tab" data-key="buey" role="tab" aria-selected="false"><img src="assets/tab-buey.svg" alt="">Buey</button>
+    <button class="tab" data-key="salmon" role="tab" aria-selected="false"><img src="assets/tab-salmon.svg" alt="">Salmón</button>
+  </div>
+  <div class="recetas-grid" id="recetasGrid">
+    <article class="receta pollo" data-key="pollo"><div class="img"><span class="r-ico"><img src="assets/icon-receta-pollo.svg" alt=""></span><img src="assets/receta-pollo.png" alt="Receta de pollo"></div><div><h3>Receta de pollo.</h3><p>Con un 60 % de pollo y un 40 % de zanahoria, calabaza y otras verduras. Mantiene los músculos fuertes y contiene una sola fuente de proteína.</p></div></article>
+    <article class="receta salmon" data-key="salmon"><div class="img"><span class="r-ico"><img src="assets/icon-receta-salmon.svg" alt=""></span><img src="assets/receta-salmon.png" alt="Receta de salmón"></div><div><h3>Receta de salmón.</h3><p>Con un 60 % de salmón y un 40 % de verduras. Favorece un pelaje sano y brillante y minimiza el riesgo de alergias.</p></div></article>
+    <article class="receta buey" data-key="buey"><div class="img"><span class="r-ico"><img src="assets/icon-receta-buey.svg" alt=""></span><img src="assets/receta-buey.png" alt="Receta de buey"></div><div><h3>Receta de buey.</h3><p>Con un 60 % de buey y un 40 % de verduras. Proteína de calidad para perros activos, en una sola fuente.</p></div></article>
+    <article class="receta pavo" data-key="pavo"><div class="img"><span class="r-ico"><img src="assets/icon-receta-pavo.svg" alt=""></span><img src="assets/receta-pavo.png" alt="Receta de pavo"></div><div><h3>Receta de pavo.</h3><p>Con un 60 % de pavo y un 40 % de verduras. Ligera y fácil de digerir, ideal para estómagos sensibles.</p></div></article>
+  </div>
+  <div class="cta"><a class="btn btn-primary" href="#">Ver recetas</a></div>
+</section>
+
+<!-- 06 · Precio · 07 · 08 (bloque crema) -->
+<div class="yellow-wrap">
+<img class="deco-precio" data-parallax="0.12" src="assets/precio-vector.svg" alt="" width="825" height="1291">
+<section class="s-precio" id="precio">
+  <div class="head center">
+    <h2 class="h2">Menús <span class="accent">hechos a su medida</span><br>y el precio hecho a la tuya</h2>
+  </div>
+  <div class="precio-grid">
+    <article class="pcard c-minis"><div class="img"><img src="assets/precio-minis.png" alt="Perro pomerania"></div><div class="badge"><b>0-2 kg.</b><span>Minis</span></div><div class="body"><div class="desde">Desde <s>1,56 €/día</s></div><div class="price"><b>1,09 €</b><span>/día*</span></div></div></article>
+    <article class="pcard c-peq"><div class="img"><img src="assets/precio-pequenos.png" alt="Perro carlino"></div><div class="badge"><b>3-9 kg.</b><span>Pequeños</span></div><div class="body"><div class="desde">Desde <s>1,84 €/día</s></div><div class="price"><b>1,29 €</b><span>/día*</span></div></div></article>
+    <article class="pcard c-med"><div class="img"><img src="assets/precio-medianos.png" alt="Border collie"></div><div class="badge"><b>10-25 kg.</b><span>Medianos</span></div><div class="body"><div class="desde">Desde <s>2,75 €/día</s></div><div class="price"><b>1,92 €</b><span>/día*</span></div></div></article>
+    <article class="pcard c-gra"><div class="img"><img src="assets/precio-grandes.png" alt="Golden retriever"></div><div class="badge"><b>+25 kg</b><span>Grandes</span></div><div class="body"><div class="desde">Desde <s>3,93 €/día</s></div><div class="price"><b>2,75 €</b><span>/día*</span></div></div></article>
+  </div>
+  <div class="precio-foot">
+    <small>*Descuento promocional aplicado.</small>
+    <a class="btn btn-primary" href="#">¡Quiero probar!</a>
+  </div>
+</section>
+
+<!-- 07 · Primeros 14 días -->
+<section class="s-caja">
+  <div class="wrap acc-scroll" id="cajaScroll">
+   <div class="acc-sticky">
+    <div class="head center">
+      <p class="eyebrow">Tu caja de prueba</p>
+      <h2 class="h2" style="margin-top:12px">¿Qué incluye mi <span class="accent">primer pedido</span> de 14 días?</h2>
+      <p class="lead-p center">Dos semanas de comida real, una guía para hacer el cambio sin dramas y algún detalle para los dos.</p>
+    </div>
+    <div class="acc" id="cajaAcc">
+      <div class="acc-dots" aria-hidden="true"><i class="active"></i><i></i><i></i><i></i><i></i></div>
+      <div class="acc-media">
+        <img src="assets/caja-prueba.png" alt="" class="is-on">
+        <img src="assets/caja-bolsitas.jpg" alt="">
+        <div class="ph" aria-hidden="true"><span>Imagen pendiente · Manual</span></div>
+        <img src="assets/caja-regalos.jpg" alt="">
+        <img src="assets/caja-app.png" alt="">
+      </div>
+      <div class="acc-list">
+        <button class="acc-item" type="button" aria-expanded="false"><span class="acc-title">Bolsitas diarias de comida natural</span><span class="acc-body"><span>Una ración por bolsita, cocinada a baja temperatura y lista para descongelar y servir. Catorce días, catorce bolsitas.</span></span></button>
+        <button class="acc-item" type="button" aria-expanded="false"><span class="acc-title">Manual de transición</span><span class="acc-body"><span>Cómo pasar de su comida actual a Dogfy, día a día, sin molestias digestivas.</span></span></button>
+        <button class="acc-item" type="button" aria-expanded="false"><span class="acc-title">Tips y regalos perrunos</span><span class="acc-body"><span>Consejos para empezar con buen pie y un pack de stickers para presumir de perro.</span></span></button>
+        <button class="acc-item" type="button" aria-expanded="false"><span class="acc-title">Acceso a tu nueva app</span><span class="acc-body"><span>Sigue sus pedidos, ajusta sus recetas y gestiona la suscripción desde el móvil.</span></span></button>
+        <a class="btn btn-primary" href="#precio">Pide tu caja de prueba</a>
+      </div>
+    </div>
+   </div>
+  </div>
+</section>
+
+<!-- 08 · Receta formulada -->
+<section class="s-receta" id="nutricionistas">
+ <div class="scene-scroll" id="scene"><div class="scene-sticky"><div class="scene-stage" id="sceneStage">
+  <div class="scene-title" id="sceneTitle">
+    <p class="eyebrow">La ciencia detrás de su receta</p>
+    <h2 class="h2" style="margin-top:12px">Una <span class="accent">receta</span> empieza antes de cocinarla.</h2>
+  </div>
+  <div class="scene-panel" id="scenePanel">
+    <img class="scene-img" src="assets/nutricionistas.jpg" alt="Una persona juega con su perro en la hierba">
+    <img class="scene-img scene-img-banner" src="assets/si-es-real.jpg" alt="">
+    <div class="scene-banner" id="sceneBanner">
+      <p class="scene-claim"><span>Sí, es</span> <em>real.</em></p>
+      <p class="trust-eyebrow">+700.000 perros ya lo notan</p>
+      <div class="scene-pills">
+        <div class="sello"><img src="assets/trust-fediaf.png" alt="FEDIAF"><p>Recetas con estándares de calidad FEDIAF</p></div>
+        <div class="sello"><img src="assets/trust-generalitat.png" alt="Generalitat de Catalunya"><p>Supervisión y calidad certificada</p></div>
+        <div class="sello"><img src="assets/trust-bologna.png" alt="Università di Bologna"><p>Digestibilidad testeada in Vitro</p></div>
+      </div>
+    </div>
+  </div>
+  <div class="scene-text right-col" id="sceneText">
+    <div class="features">
+      <div class="feature"><div class="ico"><img src="assets/icon-stethoscope.svg" alt=""></div><div><h3>Receta elaborada por veterinarios</h3><p>Formulada por un equipo de veterinarios nutricionistas, siguiendo las recomendaciones europeas.</p></div></div>
+      <div class="feature"><div class="ico"><img src="assets/icon-shield-check.svg" alt=""></div><div><h3>Completa y equilibrada</h3><p>Con la suplementación precisa de vitaminas y minerales.</p></div></div>
+      <div class="feature"><div class="ico"><img src="assets/icon-paw.svg" alt=""></div><div><h3>Adaptada a cada etapa</h3><p>De cachorro a sénior, ajustamos su ración.</p></div></div>
+    </div>
+  </div>
+  <div class="scene-static-banner" id="sceneStaticBanner" hidden>
+    <img src="assets/si-es-real.jpg" alt="">
+    <p class="scene-claim"><span>Sí, es</span> <em>real.</em></p>
+    <p class="trust-eyebrow">+700.000 perros ya lo notan</p>
+    <div class="scene-pills">
+      <div class="sello"><img src="assets/trust-fediaf.png" alt="FEDIAF"><p>Recetas con estándares de calidad FEDIAF</p></div>
+      <div class="sello"><img src="assets/trust-generalitat.png" alt="Generalitat de Catalunya"><p>Supervisión y calidad certificada</p></div>
+      <div class="sello"><img src="assets/trust-bologna.png" alt="Università di Bologna"><p>Digestibilidad testeada in Vitro</p></div>
+    </div>
+  </div>
+ </div></div></div>
+</section>
+</div>
+
+<!-- 09 · Opiniones -->
+<section class="s-opiniones" id="opiniones">
+  <div class="trust">
+    <p class="trust-eyebrow">+700.000 perros ya lo notan</p>
+    <div class="metrics">
+      <div class="metric"><img src="assets/trust-fediaf.png" alt="FEDIAF" style="width:174px;height:187px"><p>Recetas con estándares de calidad FEDIAF</p></div>
+      <span class="div"></span>
+      <div class="metric"><img src="assets/trust-generalitat.png" alt="Generalitat de Catalunya" style="width:233px;height:68px"><p>Supervisión y calidad certificada</p></div>
+      <span class="div"></span>
+      <div class="metric"><img src="assets/trust-bologna.png" alt="Alma Mater Studiorum · Università di Bologna" style="width:152px;height:152px"><p>Digestibilidad testeada in Vitro</p></div>
+    </div>
+  </div>
+  <div class="head center">
+    <p class="eyebrow">Opiniones</p>
+    <h2 class="h2" style="margin-top:12px">Quienes ya abren nuestras cajas <span class="accent">te cuentan</span>.</h2>
+  </div>
+  <div class="rv-trust"><span class="rv-tp"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#00b67a" d="M12 2l2.9 6.5 7.1.6-5.4 4.7 1.7 7-6.3-3.8-6.3 3.8 1.7-7L2 9.1l7.1-.6z"/><path fill="#005128" d="M12 16.9l3.3-.9.9 3.7z"/></svg>Trustpilot</span><span class="rv-tpstars" aria-label="4,5 de 5"><i></i><i></i><i></i><i></i><i class="half"></i></span><p class="rv-score"><b>TrustScore 4,5</b> <span>|</span> <a href="#">12.480 opiniones</a></p></div>
+  <div class="reviews" id="reviews">
+    <article class="rv-card"><div class="rv-head"><span class="rv-avatar">M</span><div><b>Marta</b><span class="rv-stars"><i class="on"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.2 6.8.8-5 4.6 1.3 6.7L12 17.5l-6 3.3 1.3-6.7-5-4.6 6.8-.8z"/></svg></i><i class="on"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.2 6.8.8-5 4.6 1.3 6.7L12 17.5l-6 3.3 1.3-6.7-5-4.6 6.8-.8z"/></svg></i><i class="on"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.2 6.8.8-5 4.6 1.3 6.7L12 17.5l-6 3.3 1.3-6.7-5-4.6 6.8-.8z"/></svg></i><i class="on"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.2 6.8.8-5 4.6 1.3 6.7L12 17.5l-6 3.3 1.3-6.7-5-4.6 6.8-.8z"/></svg></i><i class="on"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.2 6.8.8-5 4.6 1.3 6.7L12 17.5l-6 3.3 1.3-6.7-5-4.6 6.8-.8z"/></svg></i></span></div></div><p class="rv-text">“Llevamos un año con Dogfy y Lola come con unas ganas que no había visto nunca. Las digestiones han mejorado muchísimo y el pelo le brilla más.”</p><p class="rv-when">hace 2 meses</p></article>
+    <article class="rv-card"><div class="rv-head"><span class="rv-avatar">J</span><div><b>Jordi</b><span class="rv-stars"><i class="on"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.2 6.8.8-5 4.6 1.3 6.7L12 17.5l-6 3.3 1.3-6.7-5-4.6 6.8-.8z"/></svg></i><i class="on"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.2 6.8.8-5 4.6 1.3 6.7L12 17.5l-6 3.3 1.3-6.7-5-4.6 6.8-.8z"/></svg></i><i class="on"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.2 6.8.8-5 4.6 1.3 6.7L12 17.5l-6 3.3 1.3-6.7-5-4.6 6.8-.8z"/></svg></i><i class="on"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.2 6.8.8-5 4.6 1.3 6.7L12 17.5l-6 3.3 1.3-6.7-5-4.6 6.8-.8z"/></svg></i><i class="on"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.2 6.8.8-5 4.6 1.3 6.7L12 17.5l-6 3.3 1.3-6.7-5-4.6 6.8-.8z"/></svg></i></span></div></div><p class="rv-text">“Me daba pereza el cambio de pienso a comida real, pero la transición fue facilísima con la guía de la caja. Thor no deja ni una bolsita.”</p><p class="rv-when">hace 5 meses</p></article>
+    <article class="rv-card"><div class="rv-head"><span class="rv-avatar">A</span><div><b>Ana</b><span class="rv-stars"><i class="on"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.2 6.8.8-5 4.6 1.3 6.7L12 17.5l-6 3.3 1.3-6.7-5-4.6 6.8-.8z"/></svg></i><i class="on"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.2 6.8.8-5 4.6 1.3 6.7L12 17.5l-6 3.3 1.3-6.7-5-4.6 6.8-.8z"/></svg></i><i class="on"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.2 6.8.8-5 4.6 1.3 6.7L12 17.5l-6 3.3 1.3-6.7-5-4.6 6.8-.8z"/></svg></i><i class="on"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.2 6.8.8-5 4.6 1.3 6.7L12 17.5l-6 3.3 1.3-6.7-5-4.6 6.8-.8z"/></svg></i><i class="on"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.2 6.8.8-5 4.6 1.3 6.7L12 17.5l-6 3.3 1.3-6.7-5-4.6 6.8-.8z"/></svg></i></span></div></div><p class="rv-text">“Las nutricionistas me ajustaron la ración cuando Nala empezó a ganar peso. Se nota que hay personas detrás, no solo una app.”</p><p class="rv-when">hace 3 meses</p></article>
+    <article class="rv-card"><div class="rv-head"><span class="rv-avatar">C</span><div><b>Carlos</b><span class="rv-stars"><i class="on"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.2 6.8.8-5 4.6 1.3 6.7L12 17.5l-6 3.3 1.3-6.7-5-4.6 6.8-.8z"/></svg></i><i class="on"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.2 6.8.8-5 4.6 1.3 6.7L12 17.5l-6 3.3 1.3-6.7-5-4.6 6.8-.8z"/></svg></i><i class="on"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.2 6.8.8-5 4.6 1.3 6.7L12 17.5l-6 3.3 1.3-6.7-5-4.6 6.8-.8z"/></svg></i><i class="on"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.2 6.8.8-5 4.6 1.3 6.7L12 17.5l-6 3.3 1.3-6.7-5-4.6 6.8-.8z"/></svg></i><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.2 6.8.8-5 4.6 1.3 6.7L12 17.5l-6 3.3 1.3-6.7-5-4.6 6.8-.8z"/></svg></i></span></div></div><p class="rv-text">“Buena calidad y entrega puntual. Mi único pero es que ocupa bastante congelador, pero el perro está encantado.”</p><p class="rv-when">hace 7 meses</p></article>
+    <article class="rv-card"><div class="rv-head"><span class="rv-avatar">L</span><div><b>Lucía</b><span class="rv-stars"><i class="on"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.2 6.8.8-5 4.6 1.3 6.7L12 17.5l-6 3.3 1.3-6.7-5-4.6 6.8-.8z"/></svg></i><i class="on"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.2 6.8.8-5 4.6 1.3 6.7L12 17.5l-6 3.3 1.3-6.7-5-4.6 6.8-.8z"/></svg></i><i class="on"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.2 6.8.8-5 4.6 1.3 6.7L12 17.5l-6 3.3 1.3-6.7-5-4.6 6.8-.8z"/></svg></i><i class="on"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.2 6.8.8-5 4.6 1.3 6.7L12 17.5l-6 3.3 1.3-6.7-5-4.6 6.8-.8z"/></svg></i><i class="on"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.2 6.8.8-5 4.6 1.3 6.7L12 17.5l-6 3.3 1.3-6.7-5-4.6 6.8-.8z"/></svg></i></span></div></div><p class="rv-text">“Rocky es un perro sénior con el estómago delicado y la receta de pavo le va genial. Cero problemas desde que la tomamos.”</p><p class="rv-when">hace 1 mes</p></article>
+  </div>
+  <div class="rv-dots" id="rvDots" role="tablist" aria-label="Opiniones"></div>
+  <img class="tramado" src="assets/tramado.svg" alt="" aria-hidden="true">
+</section>
+
+<!-- 11 · Descuento SMS -->
+<section class="s-sms">
+  <div class="bg"><img src="assets/sms-bg.png" alt=""></div>
+  <div class="inner">
+    <span class="sticker sticker-m" aria-hidden="true"><svg class="sticker-shape" viewBox="0 0 64 64" width="64" height="64"><path fill="currentColor" d="M64 32c0 2.364-3.853 4.253-4.344 6.465-.507 2.284 2.151 5.694 1.18 7.754-.986 2.095-5.258 2.087-6.66 3.886-1.404 1.799-.457 6.068-2.223 7.512s-5.601-.458-7.646.553c-2.011.994-2.955 5.26-5.187 5.78-2.16.502-4.811-2.912-7.12-2.912s-4.961 3.414-7.121 2.911c-2.23-.518-3.174-4.785-5.186-5.78-2.046-1.01-5.889.883-7.646-.552s-.813-5.704-2.222-7.512-5.675-1.79-6.662-3.886c-.971-2.059 1.688-5.47 1.18-7.754C3.854 36.253 0 34.364 0 32s3.853-4.253 4.344-6.465c.507-2.284-2.152-5.694-1.181-7.754.987-2.095 5.259-2.087 6.662-3.886s.456-6.068 2.222-7.512 5.6.458 7.646-.553C21.704 4.836 22.648.57 24.88.05 27.039-.451 29.69 2.962 32 2.962s4.96-3.413 7.12-2.91c2.232.518 3.174 4.785 5.187 5.78 2.045 1.01 5.889-.883 7.646.552s.813 5.704 2.222 7.512 5.675 1.79 6.661 3.886c.971 2.059-1.687 5.47-1.18 7.754C60.146 27.747 64 29.636 64 32"/></svg><span class="sticker-emoji">📞</span></span>
+    <div class="sms-title">Un <span class="accent">descuento extra</span> para empezar.</div>
+    <div class="sms-lead"><p class="desc">Déjanos tu móvil y te enviaremos por SMS un código de descuento para tu primer pedido, junto con sus condiciones.</p></div>
+    <form class="sms-form" id="smsForm">
+      <div class="sms-row">
+        <div class="sms-field">
+          <span class="sticker sticker-d" aria-hidden="true"><svg class="sticker-shape" viewBox="0 0 64 64" width="64" height="64"><path fill="currentColor" d="M64 32c0 2.364-3.853 4.253-4.344 6.465-.507 2.284 2.151 5.694 1.18 7.754-.986 2.095-5.258 2.087-6.66 3.886-1.404 1.799-.457 6.068-2.223 7.512s-5.601-.458-7.646.553c-2.011.994-2.955 5.26-5.187 5.78-2.16.502-4.811-2.912-7.12-2.912s-4.961 3.414-7.121 2.911c-2.23-.518-3.174-4.785-5.186-5.78-2.046-1.01-5.889.883-7.646-.552s-.813-5.704-2.222-7.512-5.675-1.79-6.662-3.886c-.971-2.059 1.688-5.47 1.18-7.754C3.854 36.253 0 34.364 0 32s3.853-4.253 4.344-6.465c.507-2.284-2.152-5.694-1.181-7.754.987-2.095 5.259-2.087 6.662-3.886s.456-6.068 2.222-7.512 5.6.458 7.646-.553C21.704 4.836 22.648.57 24.88.05 27.039-.451 29.69 2.962 32 2.962s4.96-3.413 7.12-2.91c2.232.518 3.174 4.785 5.187 5.78 2.045 1.01 5.889-.883 7.646.552s.813 5.704 2.222 7.512 5.675 1.79 6.661 3.886c.971 2.059-1.687 5.47-1.18 7.754C60.146 27.747 64 29.636 64 32"/></svg><span class="sticker-emoji">📞</span></span>
+          <label class="input"><span class="prefix"><select aria-label="País" name="prefix"><option value="+34" selected>🇪🇸 +34</option><option value="+33">🇫🇷 +33</option><option value="+39">🇮🇹 +39</option><option value="+49">🇩🇪 +49</option></select><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span><input type="tel" placeholder="Número de móvil" inputmode="tel" maxlength="9" required></label>
+        </div>
+        <button type="submit" class="btn btn-primary">Recibe tu código por SMS</button><p class="sr-only" id="smsStatus" role="status" aria-live="polite"></p>
+      </div>
+      <label class="check"><input type="checkbox" required> <span>He leído y acepto la Política de privacidad y las Condiciones de uso.</span></label>
+    </form>
+  </div>
+</section>
+
+<!-- 10 · FAQ -->
+<section class="s-faq" id="faq">
+  <div class="head">
+    <p class="eyebrow">Preguntas frecuentes</p>
+    <h2 class="h2"><span class="accent">FAQs</span> sobre comida natural para perros.</h2>
+    <p class="sub">Si te queda alguna duda, nuestro equipo te responde de lunes a viernes.</p>
+  </div>
+  <div class="faq">
+    <details open><summary>¿Qué es Dogfy Diet? <img src="assets/chevron-faq.svg" alt=""></summary><div class="ans">Comida natural cocinada para perros, completa y equilibrada, formulada por veterinarios nutricionistas y enviada a casa congelada en raciones diarias.</div></details>
+    <details><summary>¿Qué cambia respecto al pienso seco? <img src="assets/chevron-faq.svg" alt=""></summary><div class="ans">Ingredientes reales cocinados a baja temperatura, sin harinas ni aditivos. Tu perro nota más vitalidad, mejor digestión y un pelaje más sano.</div></details>
+    <details><summary>¿Cómo creamos el menú de mi perro? <img src="assets/chevron-faq.svg" alt=""></summary><div class="ans">Con su peso, edad y nivel de actividad calculamos la ración diaria exacta y te proponemos las recetas que mejor le encajan.</div></details>
+    <details><summary>¿Cómo hago la transición a su nueva comida? <img src="assets/chevron-faq.svg" alt=""></summary><div class="ans">Con tu primer pedido recibes un manual de transición para pasar de su comida actual a Dogfy, día a día, durante los primeros 14 días.</div></details>
+  </div>
+</section>
+
+</div><!-- /.page -->
+
+<!-- Footer: fijo detrás de .page, se destapa al hacer scroll -->
+<footer class="footer">
+  <img class="deco-v" src="assets/footer-vector.svg" alt="" width="1027" height="748">
+  <img class="deco-dog" src="assets/footer-dog.png" alt="">
+  <div class="cols">
+    <div class="col"><b>Ayuda</b><a href="#">Atención al cliente</a><a href="#faq">Preguntas frecuentes</a><p>Contacta con nosotros<br>Lunes a jueves, de 9:00 a 17:00.<br>Viernes, de 9:00 a 14:00.</p></div>
+    <div class="col"><b>Descubre Dogfy</b><a href="#como">Cómo funciona</a><a href="#recetas">Nuestras recetas</a><a href="#nutricionistas">Equipo veterinario y nutricional</a><a href="#opiniones">Opiniones de clientes</a></div>
+    <div class="col"><b>Comunidad</b><a href="#">Nuestra historia</a><a href="#">Blog</a><a href="#">Podcast</a><a href="#">Invita a tus amigos</a></div>
+    <div class="col" style="gap:12px"><b>Síguenos</b>
+      <div class="icons"><a href="#" aria-label="TikTok"><img src="assets/social-tiktok.svg" alt=""></a><a href="#" aria-label="Instagram"><img src="assets/social-instagram-color.svg" alt="" style="width:21px;height:21px;margin:1.5px"></a><a href="#" aria-label="Facebook"><img src="assets/social-facebook-color.svg" alt=""></a><a href="#" aria-label="X"><img src="assets/social-twitter-color.svg" alt=""></a></div>
+      <b>Métodos de pago seguros</b>
+      <div class="pays">
+        <div class="pay box" title="Visa"><img src="assets/pay-visa.svg" alt="Visa" style="left:8.5px;top:11px;width:31px;height:10px"></div>
+        <div class="pay box" title="Mastercard"><img src="assets/pay-mastercard.svg" alt="Mastercard" style="left:10.5px;top:7.5px;width:26px;height:16px"></div>
+        <div class="pay box" title="American Express"><img src="assets/pay-amex.svg" alt="American Express" style="left:4px;top:11px;width:40px;height:10px"></div>
+        <div class="pay box" title="PayPal"><img src="assets/pay-paypal-2.svg" alt="" style="left:16.2px;top:3px;width:14.1px;height:16.6px"><img src="assets/pay-paypal-1.svg" alt="PayPal" style="left:9.9px;top:21.2px;width:25.2px;height:6.8px"></div>
+        <div class="pay box" title="Apple Pay"><img src="assets/pay-applepay-1.svg" alt="" style="left:5.8px;top:8.3px;width:10.1px;height:12.4px"><img src="assets/pay-applepay-2.svg" alt="Apple Pay" style="left:17.9px;top:9.2px;width:24.2px;height:14.5px"></div>
+        <div class="pay box" title="Google Pay"><img src="assets/pay-googlepay.svg" alt="Google Pay" style="left:4.1px;top:7.5px;width:37.8px;height:15px"></div>
+      </div></div>
+  </div>
+  <img class="wordmark" src="assets/footer-wordmark.svg" alt="Dogfy Diet" width="733" height="413">
+  <div class="badges"><a class="badge-app" href="#" aria-label="Consíguelo en el App Store" style="width:191.46px"><img src="assets/badge-apple-1.svg" alt="" style="inset:0;width:100%;height:100%"><img src="assets/badge-apple-2.svg" alt="" style="left:8.33%;top:21.8%;width:28.35px;height:34.84px"><img src="assets/badge-apple-3.svg" alt="" style="left:28.77%;top:44.68%;width:120.1px;height:25px"><img src="assets/badge-apple-4.svg" alt="" style="left:29.61%;top:20.05%;width:109.18px;height:13.44px"></a>
+    <a class="badge-app" href="#" aria-label="Descargar en Google Play" style="width:215.8px"><img src="assets/badge-gplay-4.svg" alt="" style="inset:0;width:100%;height:100%"><img src="assets/badge-gplay-2.svg" alt="" style="left:30.96%;top:17.21%;width:8.28px;height:9.96px"><img src="assets/badge-gplay-3.svg" alt="" style="left:35.72%;top:17.23%;width:6.05px;height:9.96px"><img src="assets/badge-gplay-5.svg" alt="" style="left:39.11%;top:16.88%;width:6.95px;height:10.42px"><img src="assets/badge-gplay-7.svg" alt="" style="left:42.98%;top:16.89%;width:9.17px;height:10.39px"><img src="assets/badge-gplay-1.svg" alt="" style="left:47.66%;top:17.23%;width:9.27px;height:9.96px"><img src="assets/badge-gplay-6.svg" alt="" style="left:52.67%;top:17.21%;width:7.16px;height:9.96px"><img src="assets/badge-gplay-8.svg" alt="" style="left:56.42%;top:16.9%;width:10.12px;height:10.43px"><img src="assets/badge-gplay-10.svg" alt="" style="left:61.42%;top:17.23%;width:9.27px;height:9.96px"><img src="assets/badge-gplay-9.svg" alt="" style="left:66.43%;top:17.21%;width:7.16px;height:9.96px"><img src="assets/badge-gplay-11.svg" alt="" style="left:71.85%;top:17.23%;width:6.05px;height:9.96px"><img src="assets/badge-gplay-12.svg" alt="" style="left:75.64%;top:17.2%;width:7.85px;height:9.97px"></a></div>
+  <div class="legal"><a href="#">Aviso legal</a><a href="#">Términos y condiciones</a><a href="#">Política de cookies</a><a href="#">Política de privacidad</a><a href="#">Canal de denuncias</a><a href="#">Mapa web</a></div>
+</footer>
+<div class="footer-space" aria-hidden="true"></div>
+
+
+
+<script>
+const burger=document.getElementById('burger'),menu=document.getElementById('mobileMenu');
+burger.addEventListener('click',()=>{menu.style.setProperty('--menu-top',document.querySelector('.header').getBoundingClientRect().bottom+'px');const o=menu.classList.toggle('open');burger.setAttribute('aria-expanded',o);burger.setAttribute('aria-label',o?'Cerrar menú':'Abrir menú');document.body.style.overflow=o?'hidden':'';if(o)setTimeout(()=>menu.querySelector('a')?.focus(),260);});
+addEventListener('keydown',e=>{if(e.key==='Escape'&&menu.classList.contains('open')){menu.classList.remove('open');burger.setAttribute('aria-expanded','false');burger.setAttribute('aria-label','Abrir menú');document.body.style.overflow='';burger.focus();}});
+menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{menu.classList.remove('open');document.body.style.overflow=''}));
+const breed=document.getElementById('breed'),breedLabel=document.getElementById('breedLabel');
+breed.addEventListener('change',()=>{breedLabel.textContent=breed.value||'¿Cuál es la raza de tu perro?';breedLabel.style.color=breed.value?'#2a2724':''});
+// 08 · Escena: p (0→1) → 0-.35 la foto cuadrada crece hasta banner a sangre (ancho viewport, 498px) y el texto se va · .4-.65 aparece el banner "Sí, es real." con los sellos
+(()=>{const wrap=document.getElementById('scene');if(!wrap)return;
+  const stage=document.getElementById('sceneStage'),panel=document.getElementById('scenePanel'),text=document.getElementById('sceneText'),ban=document.getElementById('sceneBanner'),stat=document.getElementById('sceneStaticBanner');
+  const mq=matchMedia('(prefers-reduced-motion:no-preference)');
+  const cl=(v,a,b)=>Math.min(1,Math.max(0,(v-a)/(b-a))),eo=t=>1-Math.pow(1-t,3),ei=t=>t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;
+  let tick=false;const upd=()=>{tick=false;
+    if(!mq.matches){stat.hidden=false;['width','height','left','top'].forEach(k=>panel.style[k]='');['--pr','--bo'].forEach(k=>panel.style.removeProperty(k));['--tx','--to'].forEach(k=>text.style.removeProperty(k));['width','left'].forEach(k=>text.style[k]='');return;}
+    stat.hidden=true;
+    const r=wrap.getBoundingClientRect(),total=r.height-innerHeight;const p=Math.min(1,Math.max(0,-r.top/total));
+    const W=stage.clientWidth,H=stage.clientHeight,gut=Math.min(112,Math.max(16,innerWidth*.06));   // = var(--gutter): clamp(16px,6vw,112px), el mismo margen que el resto de secciones
+    const narrow=innerWidth<768;stage.classList.toggle('narrow',narrow);
+    const title=document.getElementById('sceneTitle'),TH=title?title.offsetHeight+(innerWidth<768?16:32):0,AH=H-TH;                      // franja del título centrado: la imagen vive debajo, también a sangre
+    const g=ei(cl(p,.2,.52));                                                                  // la foto crece solo cuando el texto ya ha salido                                                                   // crecimiento hasta sangre
+    const tf=cl(p,.03,.19);                                                                   // el texto sale primerotext.style.setProperty('--to','1');                                            // sin fundido: el texto se recorta al salir de la franja de la imagen                        // el texto se desliza hacia arriba sobre la foto fija y solo se funde al final
+    if(narrow){                                                                                // apilado: foto arriba (lo que deje el texto), texto debajo
+      text.style.left='';text.style.width='';text.style.top='';text.style.visibility='';
+      const cw=W-2*gut,textH=text.offsetHeight,ph0=Math.max(160,Math.min(cw*0.75,AH-textH-40));
+      const top0=TH,pTop=top0+textH+24;                                                      // texto pegado al título; la foto debajo
+      const ty2=-(top0+textH+40)*eo(tf);
+      const pTopNow=Math.max(TH,pTop+ty2);                          // la foto sube pegada al texto y se detiene bajo el título
+      panel.style.width=(cw+(W-cw)*g).toFixed(1)+'px';panel.style.height=(ph0+(AH-ph0)*g).toFixed(1)+'px';panel.style.left=(gut*(1-g)).toFixed(1)+'px';panel.style.top=(pTopNow+(TH-pTopNow)*g).toFixed(1)+'px';
+      panel.style.setProperty('--pr',(20*(1-g)).toFixed(1)+'px');
+      text.style.setProperty('--tt',top0+'px');text.style.setProperty('--ty2',ty2.toFixed(1)+'px');text.style.removeProperty('--tx');text.style.removeProperty('--tyd');
+      text.style.clipPath='inset('+Math.max(0,TH-(top0+ty2)).toFixed(1)+'px 0 0 0)';
+    } else {
+      const cw=Math.min(1216,W-2*gut),cx=(W-cw)/2,sq=Math.min(AH,cw*576/1216);              // contenedor 1216 como el resto                // layout inicial: contenedor 1232 centrado, foto cuadrada a la izquierda bajo el título
+      panel.style.width=(sq+(W-sq)*g).toFixed(1)+'px';panel.style.height=(sq+(AH-sq)*g).toFixed(1)+'px';panel.style.top=(TH+((AH-sq)/2)*(1-g)).toFixed(1)+'px';panel.style.left=(cx*(1-g)).toFixed(1)+'px';
+      const txH=text.offsetHeight;text.style.top=(Math.max(TH,TH+(AH-txH)/2)+txH/2)+'px';            // centrado en la franja de la imagen, sin pisar el título
+      panel.style.setProperty('--pr',(24*(1-g)).toFixed(1)+'px');
+      const gap=Math.min(80,cw*0.065);text.style.left=(cx+sq+gap)+'px';text.style.width=(cw-sq-gap)+'px';
+      const tyd=-(AH/2+txH/2+40)*eo(tf),tTop=parseFloat(text.style.top)-txH/2+tyd;
+      text.style.setProperty('--tx','0px');text.style.setProperty('--tyd',tyd.toFixed(1)+'px');text.style.removeProperty('--tt');text.style.removeProperty('--ty2');
+      text.style.clipPath='inset('+Math.max(0,TH-tTop).toFixed(1)+'px 0 0 0)';                               // recorte: lo que sube por encima de la imagen desaparece
+      text.style.visibility=(cx*(1-g)+sq+(W-sq)*g>cx+sq+gap-8)?'hidden':'';                                   // nunca se superpone a la foto
+    }
+    const bi=eo(cl(p,.46,.54));panel.style.setProperty('--bo',bi.toFixed(3));                                           // velo superior
+    const armed=g>=.995&&p<.8;if(armed!==ban.classList.contains('show')){clearTimeout(ban._t);if(armed)ban.classList.add('show');else ban.classList.remove('show');}   // 1 · claim tras 0,4 s · 2 · sellos 0,9 s después (CSS)
+    const bs=ei(cl(p,.8,1));ban.style.setProperty('--bs',(-(H*.26+ban.offsetHeight+24)*bs).toFixed(1)+'px');                                              // 3 · todo sube…
+    const op=document.getElementById('opiniones');if(op){op.style.setProperty('--opy',((1-bs)*H).toFixed(1)+'px');op.style.setProperty('--opo',bs>0?'1':'0');}   // …y Opiniones entra desde abajo
+  };
+  addEventListener('scroll',()=>{if(!tick){tick=true;requestAnimationFrame(upd)}},{passive:true});addEventListener('resize',upd);mq.addEventListener('change',upd);upd();
+  // Si el scroll se detiene a medias en la entrada de Opiniones (80-100 %), se completa solo hacia delante
+  let idle,snapping=false;const settle=()=>{if(!mq.matches||snapping)return;const r=wrap.getBoundingClientRect(),total=r.height-innerHeight;const p=-r.top/total;if(p>.8&&p<.995){snapping=true;scrollTo({top:scrollY+(total*(1-p)),behavior:'smooth'});setTimeout(()=>snapping=false,900);}};
+  addEventListener('scroll',()=>{clearTimeout(idle);idle=setTimeout(settle,160);},{passive:true});
+})();
+// Parallax: [data-parallax="velocidad"] se desplaza en Y según la posición del contenedor en el viewport
+(()=>{const els=[...document.querySelectorAll('[data-parallax]')];if(!els.length||matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+let ticking=false;const update=()=>{ticking=false;const vh=innerHeight;els.forEach(el=>{const box=el.parentElement.getBoundingClientRect();if(box.bottom<0||box.top>vh)return;const progress=(box.top+box.height/2-vh/2)/vh;el.style.setProperty('--py',(progress*box.height*parseFloat(el.dataset.parallax)).toFixed(1)+'px');});};
+addEventListener('scroll',()=>{if(!ticking){ticking=true;requestAnimationFrame(update)}},{passive:true});addEventListener('resize',update);update();})();
+// Footer reveal: el contenido (.page) pasa por encima del footer fijo. Si el footer es más alto que la ventana,
+// se desliza hacia arriba durante el destape para que se vea completo.
+(()=>{const footer=document.querySelector('.footer'),space=document.querySelector('.footer-space');
+if(!footer||!space||matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+document.documentElement.classList.add('reveal');
+const faq=document.querySelector('.s-faq');
+const size=()=>{document.documentElement.style.setProperty('--fh',footer.offsetHeight+'px');if(faq)document.querySelector('.page').style.setProperty('--faqh',faq.offsetHeight+'px');};
+let tick=false;const update=()=>{tick=false;const vh=innerHeight,H=footer.offsetHeight,top=space.getBoundingClientRect().top;
+const p=Math.min(1,Math.max(0,(vh-top)/H));footer.style.transform='translateY('+(-Math.max(0,H-vh)*p).toFixed(1)+'px)';};
+const onScroll=()=>{if(!tick){tick=true;requestAnimationFrame(update)}};
+addEventListener('scroll',onScroll,{passive:true});addEventListener('resize',()=>{size();update()});
+size();update();if(document.fonts)document.fonts.ready.then(()=>{size();update()});addEventListener('load',()=>{size();update()});})();
+// Carruseles móviles: pestañas de recetas + bullets (recetas y opiniones)
+(()=>{
+  const grid=document.getElementById('recetasGrid'), tabs=[...document.querySelectorAll('.receta-tabs .tab')], cards=[...grid.children];
+  const dotsFor=(el,count)=>{const box=document.querySelector('.dots[data-for="'+el.id+'"]');if(!box)return null;box.innerHTML='';for(let i=0;i<count;i++)box.appendChild(document.createElement('i'));return box;};
+  const rDots=dotsFor(grid,cards.length);
+  const marquee=()=>innerWidth<=1074;
+  if(marquee()&&!grid.dataset.looped){grid.dataset.looped='1';cards.forEach(c=>{const k=c.cloneNode(true);k.setAttribute('aria-hidden','true');k.dataset.clone='1';grid.appendChild(k);});}
+  ['touchstart','pointerdown'].forEach(ev=>grid.addEventListener(ev,()=>grid.classList.add('paused'),{passive:true}));['touchend','pointerup','pointercancel','mouseleave'].forEach(ev=>grid.addEventListener(ev,()=>setTimeout(()=>grid.classList.remove('paused'),1200),{passive:true}));
+  const setActive=(box,i)=>{if(box)[...box.children].forEach((d,j)=>d.classList.toggle('active',j===i));};
+  const current=()=>{const c=grid.scrollLeft+grid.clientWidth/2;let best=0,bd=1e9;cards.forEach((card,i)=>{const d=Math.abs(card.offsetLeft+card.offsetWidth/2-c);if(d<bd){bd=d;best=i;}});return best;};
+  const sync=()=>{const i=current();setActive(rDots,i);tabs.forEach(t=>{const on=t.dataset.key===cards[i].dataset.key;t.classList.toggle('active',on);t.setAttribute('aria-selected',on);});};
+  grid.addEventListener('scroll',()=>requestAnimationFrame(sync),{passive:true});
+  tabs.forEach(t=>t.addEventListener('click',()=>{const card=cards.find(c=>c.dataset.key===t.dataset.key);if(!card)return;if(marquee()){tabs.forEach(x=>{x.classList.toggle('active',x===t);x.setAttribute('aria-selected',x===t);});[...grid.children].forEach(c=>c.classList.toggle('is-hi',c.dataset.key===t.dataset.key));grid.classList.add('paused');clearTimeout(grid._p);grid._p=setTimeout(()=>grid.classList.remove('paused'),2500);}else{tabs.forEach(x=>{x.classList.toggle('active',x===t);x.setAttribute('aria-selected',x===t);});cards.forEach(c=>c.classList.toggle('is-hi',c===card));card.scrollIntoView({block:'nearest',behavior:'smooth'});}}));
+  const rev=document.getElementById('reviews'),rvCards=[...rev.children],rvDots=document.getElementById('rvDots');
+  const rvLoop=()=>innerWidth<=767;if(rvLoop()&&!rev.dataset.looped){rev.dataset.looped='1';rvCards.forEach(c=>{const k=c.cloneNode(true);k.setAttribute('aria-hidden','true');k.dataset.clone='1';rev.appendChild(k);});}
+  ['touchstart','pointerdown'].forEach(ev=>rev.addEventListener(ev,()=>rev.classList.add('paused'),{passive:true}));['touchend','pointerup','pointercancel','mouseleave'].forEach(ev=>rev.addEventListener(ev,()=>setTimeout(()=>rev.classList.remove('paused'),1200),{passive:true}));
+  const goRev=i=>{const c=rvCards[i];rev.scrollTo({left:c.offsetLeft-(rev.clientWidth-c.offsetWidth)/2,behavior:'smooth'});};
+  rvCards.forEach((c,i)=>{const b=document.createElement('button');b.type='button';b.setAttribute('aria-label','Opinión '+(i+1));b.addEventListener('click',()=>goRev(i));rvDots.appendChild(b);});
+  const syncRev=()=>{if(rvLoop())return;const mid=rev.scrollLeft+rev.clientWidth/2;let best=0,bd=1e9;rvCards.forEach((c,i)=>{const d=Math.abs(c.offsetLeft+c.offsetWidth/2-mid);if(d<bd){bd=d;best=i;}});rvCards.forEach((c,i)=>c.classList.toggle('is-active',i===best));[...rvDots.children].forEach((d,i)=>d.classList.toggle('active',i===best));};
+  rev.addEventListener('scroll',()=>requestAnimationFrame(syncRev),{passive:true});
+  sync();if(!rvLoop()){rvCards[1].classList.add('is-active');requestAnimationFrame(()=>{rev.scrollLeft=rvCards[1].offsetLeft-(rev.clientWidth-rvCards[1].offsetWidth)/2;syncRev();});}
+})();
+// Caja de prueba: tantas imágenes como puntos (intro + apartados). En escritorio la pista mide 100vh por punto y el bloque queda sticky; al agotarla se suelta y sigue el scroll normal
+(()=>{const acc=document.getElementById('cajaAcc'),track=document.getElementById('cajaScroll');if(!acc||!track)return;const items=[...acc.querySelectorAll('.acc-item')],imgs=[...acc.querySelectorAll('.acc-media > *')],dots=[...acc.querySelectorAll('.acc-dots i')];const N=items.length+1;let cur=-2,tick=false;
+const go=k=>{if(k===cur)return;cur=k;const i=k-1;items.forEach((it,j)=>{it.classList.toggle('is-open',j===i);it.setAttribute('aria-expanded',j===i);});imgs.forEach((im,j)=>im.classList.toggle('is-on',j===k));dots.forEach((d,j)=>d.classList.toggle('active',j===k));};
+const media=acc.querySelector('.acc-media');const narrow=()=>innerWidth<=900;
+const introFrac=.4;  // la intro dura menos de un viewport: así el primer cambio llega enseguida al empezar a hacer scroll, no tras un tramo entero sin pasar nada
+const upd=()=>{tick=false;if(narrow()){const mid=media.scrollLeft+media.clientWidth/2;let best=0,bd=1e9;imgs.forEach((im,j)=>{const d=Math.abs(im.offsetLeft+im.offsetWidth/2-mid);if(d<bd){bd=d;best=j;}});dots.forEach((d,j)=>d.classList.toggle('active',j===best));items.forEach(it=>{it.classList.add('is-open');it.setAttribute('aria-expanded','true');});cur=-2;return;}const r=track.getBoundingClientRect(),total=r.height-innerHeight;if(total<=0){go(0);return;}const d=Math.min(total,Math.max(0,-r.top)),introPx=introFrac*innerHeight;const k=d<introPx?0:Math.min(N-1,1+Math.floor((d-introPx)/innerHeight));go(k);};
+media.addEventListener('scroll',()=>{if(!tick){tick=true;requestAnimationFrame(upd)}},{passive:true});
+addEventListener('scroll',()=>{if(!tick){tick=true;requestAnimationFrame(upd)}},{passive:true});addEventListener('resize',upd);
+items.forEach((it,i)=>it.addEventListener('click',()=>{if(narrow()){const im=imgs[i+1];media.scrollTo({left:im.offsetLeft-(media.clientWidth-im.offsetWidth)/2,behavior:'smooth'});return;}const r=track.getBoundingClientRect(),total=r.height-innerHeight,p=(i+1.5)/N;scrollTo({top:scrollY+r.top+p*total,behavior:'smooth'});}));
+upd();})();
+// Stepper: reserva la altura del estado más alto (un paso abierto) para que el botón no baile al colapsar/expandir
+(()=>{const st=document.querySelector('.stepper');if(!st)return;const fit=()=>{const bodies=[...st.querySelectorAll('.step-body p')];const open=Math.max(0,...bodies.map(p=>p.scrollHeight+8));const act=st.querySelector('.step.active .step-body p');st.style.minHeight='';const base=st.getBoundingClientRect().height-(act?act.scrollHeight+8:0);st.style.minHeight=Math.ceil(base+open)+'px';};fit();addEventListener('resize',fit);addEventListener('load',fit);if(document.fonts)document.fonts.ready.then(fit);})();
+// Stepper: el bloque queda fijo (como la caja de prueba) y cada 100vh de scroll activa un paso. En escritorio la pista es la sección entera (imagen + pasos fijos juntos); en tablet/móvil es solo el split (la imagen se desplaza normal y únicamente los pasos quedan fijos)
+(()=>{const steps=[...document.querySelectorAll('.stepper .step')];if(!steps.length)return;
+const split=document.querySelector('.s-cocina .split'),section=document.querySelector('.s-cocina'),N=steps.length,narrow=()=>innerWidth<=900;
+const wrap=document.querySelector('.s-cocina .cocina-sticky');const sizeTrack=()=>{if(!split)return;if(!narrow()){section.style.height='';wrap.style.height='';return;}const head=section.querySelector('.cocina-head');section.style.height='';wrap.style.height=(head.offsetHeight+split.offsetHeight+N*Math.round(innerHeight*.45))+'px';};sizeTrack();addEventListener('resize',sizeTrack);addEventListener('load',sizeTrack);if(document.fonts)document.fonts.ready.then(sizeTrack);
+let tick=false;const update=()=>{tick=false;
+const track=section;
+const r=track.getBoundingClientRect(),total=r.height-innerHeight;
+if(total>0){const p=Math.min(1,Math.max(0,-r.top/total));const cur=Math.min(N-1,Math.floor(p*N));steps.forEach((st,i)=>{st.classList.toggle('active',i===cur);st.classList.toggle('done',i<cur);if(i===cur)st.setAttribute('aria-current','step');else st.removeAttribute('aria-current');});return;}
+// sin pista (p.ej. prefers-reduced-motion, que desactiva el scroll fijo): se activa el paso cuyo icono cruza el centro de la pantalla
+const mid=innerHeight*0.55;let cur=-1;
+steps.forEach((st,i)=>{const dr=st.querySelector('.dot').getBoundingClientRect();if(dr.top<=mid)cur=i;});
+if(cur<0&&steps[0].getBoundingClientRect().top<innerHeight*0.9)cur=0;
+steps.forEach((st,i)=>{st.classList.toggle('active',i===cur);st.classList.toggle('done',i<cur);});};
+addEventListener('scroll',()=>{if(!tick){tick=true;requestAnimationFrame(update)}},{passive:true});addEventListener('resize',update);update();})();
+// Bol con etiquetas: etiquetas entran escalonadas (escritorio); en tablet/móvil el bloque es sticky y el scroll
+// mueve el bol de derecha a izquierda cambiando título y etiquetas (dos estados de Figma "Animate scroll")
+(()=>{
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.1});
+  document.querySelectorAll('.bol-block.desk .hs-col').forEach(c=>io.observe(c));
+  const dstage=document.querySelector('.bol-block.desk .bol-stage');
+  const fitDesk=()=>{if(!dstage)return;const g=Math.min(112,Math.max(16,innerWidth*.06));const k=Math.min(1,(dstage.parentElement.clientWidth-2*g)/1322);dstage.style.transform='translateX(-50%) scale('+k.toFixed(4)+')';dstage.style.marginBottom=(-(1-k)*dstage.offsetHeight).toFixed(1)+'px';};
+  fitDesk();addEventListener('resize',fitDesk);addEventListener('load',fitDesk);
+  const wrap=document.getElementById('bolScroll'),track=document.getElementById('bolTrack');if(!wrap||!track)return;
+  const h1=wrap.querySelector('.head.st1'),h2=wrap.querySelector('.head.st2');
+  const ease=t=>t<.5?2*t*t:1-Math.pow(-2*t+2,2)/2;
+  let tick=false;const upd=()=>{tick=false;if(getComputedStyle(wrap).display==='none')return;
+    const r=wrap.getBoundingClientRect(),vh=innerHeight,total=r.height-vh;const p=Math.min(1,Math.max(0,-r.top/total));
+    const s=ease(Math.min(1,Math.max(0,(p-.3)/.4)));                 // 0 = "¿Qué hay en su bol?", 1 = "¿Qué cambios notarás?"
+    const mobile=wrap.clientWidth<=600,W=wrap.clientWidth;
+    const stage=track.parentElement,avail=stage.clientHeight-48;              // 48px de aire bajo la tira
+    const k=Math.min(1,Math.max(.6,avail/track.offsetHeight));              // escala la tira si no cabe en alto
+    const bw=mobile?385:611,bl=mobile?214:403,vis=(mobile?151:305)*k;    // ancho del bol, su x dentro de la tira y parte visible
+    const x1=mobile?W-vis-bl*k:Math.max(60*k,W-1045*k), x2=mobile?vis-(bl+bw)*k+8*k:Math.min(W-(1468+60)*k,-403*k);   // la columna contraria nunca asoma   // tablet/intermedio (Figma 469:40559 y 768): tira a 60px del borde; estado 2 a 60px del borde derecho · móvil: bol asomando
+    const ty=Math.max(0,(avail-track.offsetHeight*k)/2);                       // reparte el aire sobrante arriba y abajo de la tira
+    track.style.transform=`translate(${(x1+(x2-x1)*s).toFixed(1)}px,${ty.toFixed(1)}px) scale(${k.toFixed(3)})`;
+    const two=s>=.5;if(two!==h2.classList.contains('show')){h1.classList.toggle('show',!two);h2.classList.toggle('show',two);}};
+  addEventListener('scroll',()=>{if(!tick){tick=true;requestAnimationFrame(upd)}},{passive:true});addEventListener('resize',upd);upd();
+  if(matchMedia('(prefers-reduced-motion:reduce)').matches)wrap.style.height='auto';
+})();
+// Clic en el bol: giro completo (la propiedad rotate no interfiere con los transform de desplazamiento)
+document.querySelectorAll('.bol-img').forEach(b=>b.addEventListener('click',()=>{if(b.classList.contains('spin'))return;b.classList.add('spin');b.addEventListener('animationend',()=>b.classList.remove('spin'),{once:true});}));
+// Aparición suave de las cabeceras de sección al entrar en pantalla (sutil; se desactiva con reducir movimiento)
+(()=>{const els=[...document.querySelectorAll('.s-recetas .head, .s-precio .head, .s-caja .head, .s-opiniones .head, .s-sms .inner, .s-faq .head, .cocina-head, .scene-title')];els.forEach(e=>e.classList.add('reveal'));const io=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}}),{threshold:.2,rootMargin:'0px 0px -5% 0px'});els.forEach(e=>io.observe(e));setTimeout(()=>els.forEach(e=>e.classList.add('in')),2500);})();
+// Cabecera transparente en la parte superior; blanca al hacer scroll
+(()=>{const h=document.querySelector('.header');const u=()=>h.classList.toggle('top',scrollY<40&&!document.getElementById('mobileMenu').classList.contains('open'));addEventListener('scroll',u,{passive:true});document.getElementById('burger').addEventListener('click',()=>setTimeout(u,0));u();})();
+document.getElementById('smsForm').addEventListener('submit',e=>{e.preventDefault();const b=e.target.querySelector('button');b.textContent='¡Código enviado! ✓';b.disabled=true;const st=document.getElementById('smsStatus');if(st)st.textContent='Código enviado por SMS a tu móvil.';});
+// Franja de confianza: las cifras cuentan desde 0 al entrar en pantalla (inspirado en klarna.com, "Tu dinero se merece algo mejor")
+(()=>{
+  const targets=[...document.querySelectorAll('.stats-row .stat b')];   // solo las tres cifras; el +700.000 queda estático
+  if(!targets.length)return;
+  if(matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+  const parse=text=>{const m=text.match(/^(\D*)([\d.,]+)(.*)$/);if(!m)return null;const[,prefix,numStr,suffix]=m;const hasComma=numStr.includes(',');const decimals=hasComma?(numStr.split(',')[1]||'').length:0;const value=parseFloat(numStr.replace(/\./g,'').replace(',','.'));return{prefix,suffix,value,decimals,thousands:numStr.includes('.')&&!hasComma};};
+  const format=(n,info)=>{const s=info.decimals>0?n.toFixed(info.decimals).replace('.',','):Math.round(n).toLocaleString(info.thousands?'es-ES':undefined);return info.prefix+s+info.suffix;};
+  const ease=t=>1-Math.pow(1-t,4);  // ease-out suave: los últimos dígitos se asientan despacio
+  const startFrac=.92;  // solo recorre el último 8 % del valor: un leve asentamiento, no una cuenta
+  const run=el=>{const info=parse(el.textContent);if(!info)return;const from=info.value*startFrac,dur=1800,start=performance.now();const step=now=>{const p=Math.min(1,(now-start)/dur);el.textContent=format(from+(info.value-from)*ease(p),info);if(p<1)requestAnimationFrame(step);else el.textContent=format(info.value,info);};requestAnimationFrame(step);};
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){run(e.target);io.unobserve(e.target);}}),{threshold:.6});
+  targets.forEach(t=>io.observe(t));
+})();
+</script>
+</body>
+</html>

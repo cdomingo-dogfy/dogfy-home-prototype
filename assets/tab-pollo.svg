@@ -1,0 +1,6 @@
+<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="40" height="40" rx="20" fill="white"/>
+<circle cx="20" cy="20" r="19.1667" stroke="url(#ring_pollo)" stroke-width="1.66667"/>
+<g transform="translate(9.000 9.000) scale(0.16176)"><path d="M41.3503 89.3566C45.0648 68.9269 46.922 35.4963 66.4232 16.9237C82.2098 1.13709 106.354 0.208463 121.212 15.0665C136.07 29.9245 134.213 54.0688 118.426 69.8555C100.782 86.5708 73.8522 93.0711 55.2797 97.7143L44.1361 110.715C49.7079 121.859 40.4216 133.002 30.2067 130.216C22.7777 128.359 19.9918 123.716 19.9918 117.215C13.4915 119.073 6.99106 115.358 5.13381 108.858C1.4193 97.7143 14.4201 89.3566 23.7063 94.9284L41.3503 89.3566Z" stroke="#353d29" stroke-width="8.95586" stroke-linecap="round" stroke-linejoin="round"/><path d="M41.3494 89.3552L55.2788 97.7129M71.0654 42.9239L85.9235 28.0658M86.8521 61.4964L101.71 46.6384" stroke="#353d29" stroke-width="8.95586" stroke-linecap="round" stroke-linejoin="round"/></g>
+<defs><linearGradient id="ring_pollo" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse"><stop stop-color="#E8E8E8"/><stop offset="1" stop-color="#F9F8F7"/></linearGradient></defs>
+</svg>
