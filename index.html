@@ -422,7 +422,8 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
 
 /* 09 */
 .s-opiniones{position:relative;padding:0 0 48px;background:#fff}
-.s-opiniones .tramado{position:absolute;left:50%;bottom:0;transform:translateX(-50%);width:max(1448px,100%);height:auto;pointer-events:none;z-index:-1}  /* detrás del contenido (texto/tarjetas no posicionados pintan por encima de z-index negativo); se deja asomar bajo las tarjetas, pero sin salirse de esta sección hacia la del descuento */
+.s-opiniones .tramado{position:absolute;left:50%;bottom:0;transform:translateX(-50%);width:max(1448px,100%);height:auto;pointer-events:none;z-index:-1}
+@media (max-width:767px){.s-opiniones .tramado{width:320vw;max-width:none}}  /* móvil: trama 2,2× más grande (img lleva max-width:100% global) */  /* detrás del contenido (texto/tarjetas no posicionados pintan por encima de z-index negativo); se deja asomar bajo las tarjetas, pero sin salirse de esta sección hacia la del descuento */
 @media (prefers-reduced-motion:no-preference){.page .s-opiniones{position:relative;z-index:3;margin-top:calc(-100vh + 64px);transform:translateY(var(--opy,0px));border-radius:0;background:#fff!important}.s-opiniones .head{padding-top:64px}}
 .s-opiniones .head{padding-top:128px}
 /* Bloque de confianza (Figma 429:37106) */
@@ -605,7 +606,7 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
   .hero{min-height:640px}
   .hero-bg img{object-position:63% 25%}  /* imagen panorámica: encuadre sobre la cara del perro */
   .hero-content{padding-block:48px}
-  .sms-row{display:contents}.sms-form .sms-field{order:1;align-self:center}.sms-form .check{order:2}.sms-form .sms-row .btn{order:3;width:100%}  /* móvil: icono+campo en una línea · consentimiento · botón a todo el ancho */
+  .sms-row{display:contents}.sms-form .sms-field{order:1;align-self:stretch;width:100%;padding:0;margin:0}.sms-form .sms-field .input{flex:1 1 100%;width:100%;max-width:none;margin:0}.sms-form .check{order:2}.sms-form .sms-row .btn{order:3;width:100%}  /* móvil: icono+campo en una línea · consentimiento · botón a todo el ancho */
   .sms-form{align-items:stretch}
   .input{max-width:280px}  /* el número solo tiene 9 cifras: no hace falta que el campo ocupe todo el ancho */
   .sms-form .check{justify-content:center;text-align:center}  /* consentimiento centrado bajo el CTA */
