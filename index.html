@@ -202,7 +202,12 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
 @media (max-width:1100px){
   .bol-block.desk{display:none}
   .bol-scroll{display:block;height:260vh}
-  .bol-sticky{position:sticky;top:64px;height:calc(100vh - 64px);min-height:700px;overflow:hidden;background:#e2e8fb;padding-top:88px}  /* 64px = header fijo */
+  .bol-sticky{position:sticky;top:64px;height:calc(100vh - 64px);min-height:700px;overflow:hidden;background:#e2e8fb;padding-top:88px}
+  /* Chevron al pie de la escena fija: avisa de que hay que seguir haciendo scroll; desaparece al acabar la pista */
+  .scroll-hint{position:absolute;left:50%;bottom:20px;transform:translateX(-50%);z-index:3;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.85);color:#2a2724;display:grid;place-items:center;box-shadow:0 2px 8px rgba(26,38,89,.12);animation:hintBounce 1.6s ease-in-out infinite;transition:opacity .3s ease}
+  .bol-sticky.done .scroll-hint{opacity:0}
+  @keyframes hintBounce{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,6px)}}
+  @media (prefers-reduced-motion:reduce){.scroll-hint{animation:none}}  /* 64px = header fijo */
   .s-porque{padding-bottom:80px}  /* reserva la franja de la onda de recetas: nunca pisa el bol */
   .bol-sticky .head{position:absolute;left:0;right:0;top:88px;z-index:2;visibility:hidden}
   .bol-sticky .head.show{visibility:visible;animation:headIn .3s ease both}
@@ -824,6 +829,7 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
   <!-- Tablet y móvil: un bloque fijo con dos estados que cambian al hacer scroll (Figma "Animate scroll") -->
   <div class="bol-scroll" id="bolScroll">
     <div class="bol-sticky">
+      <div class="scroll-hint" aria-hidden="true"><svg viewBox="0 0 24 24" width="28" height="28"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
       <img class="wave" src="assets/onda-superior.svg" alt="" width="1440" height="82">
       <div class="container head center st1 show"><p class="eyebrow">¡Tu perro ya está moviendo la cola!</p><h2 class="h2">¿Qué hay en <span class="accent">su bol</span>?</h2></div>
       <div class="container head center st2"><p class="eyebrow">¡Tu perro ya está moviendo la cola!</p><h2 class="h2">¿Qué <span class="accent">cambios</span> notarás?</h2></div>
@@ -1192,6 +1198,7 @@ addEventListener('scroll',()=>{if(!tick){tick=true;requestAnimationFrame(update)
   const ease=t=>t<.5?2*t*t:1-Math.pow(-2*t+2,2)/2;
   let tick=false;const upd=()=>{tick=false;if(getComputedStyle(wrap).display==='none')return;
     const r=wrap.getBoundingClientRect(),vh=innerHeight,total=r.height-vh;const p=Math.min(1,Math.max(0,-r.top/total));
+    wrap.querySelector('.bol-sticky').classList.toggle('done',p>=.97);
     const s=ease(Math.min(1,Math.max(0,(p-.3)/.4)));                 // 0 = "¿Qué hay en su bol?", 1 = "¿Qué cambios notarás?"
     const mobile=wrap.clientWidth<=600,W=wrap.clientWidth;
     const stage=track.parentElement,avail=stage.clientHeight-48;              // 48px de aire bajo la tira
