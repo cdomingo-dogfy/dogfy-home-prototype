@@ -254,7 +254,7 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
 .receta{background:rgba(255,255,255,.9);transition:box-shadow .3s ease,transform .3s ease}  /* blanco al 90 % sobre el lavanda; el color de cada receta queda en la foto */
 .receta.is-hi{box-shadow:0 0 0 3px #ffee99,0 16px 40px rgba(26,38,89,.12);transform:translateY(-4px)}
 @media (min-width:1075px){.receta[data-clone]{display:none}}
-@media (min-width:768px){.rv-card[data-clone]{display:none}}
+/* opiniones: las copias de la cinta se usan en todos los anchos */
 .s-recetas .cta{display:flex;justify-content:center;padding:48px 0 0}
 .dots{display:none}
 /* Pastillas de sabores visibles en todos los anchos, centradas sobre las tarjetas */
@@ -469,12 +469,14 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
 .rv-dots{display:flex;justify-content:center;align-items:center;gap:8px;margin-top:8px}
 .rv-dots button{width:8px;height:8px;border-radius:999px;background:#c2c2c2;border:0;padding:0;cursor:pointer;transition:width .3s ease,background .3s ease}
 .rv-dots button.active{width:32px;background:#191919}
-@media (max-width:767px){
-  /* Móvil: cinta de opiniones en bucle (tarjetas duplicadas en JS); se pausa al tocar */
+@media (min-width:0px){
+  /* Todos los anchos: cinta de opiniones en bucle (tarjetas duplicadas en JS); se pausa al tocar o pasar el ratón */
   .s-opiniones{overflow:clip}
   .reviews{gap:0;width:max-content;overflow:visible;scroll-snap-type:none;padding:24px 0 32px}
   .rv-card{flex:0 0 300px;margin-right:16px;transform:none}
+  @media (min-width:768px){.rv-card{flex-basis:380px;margin-right:24px}}
   .rv-card.is-active{flex-basis:300px;transform:none;background:#fff;border-color:#e8e8e8;box-shadow:none}
+  @media (min-width:768px){.rv-card.is-active{flex-basis:380px}}
   .rv-card.is-active .rv-text{font-size:17px;-webkit-line-clamp:4}
   .rv-dots{display:none}
   .rv-tpstars i{width:36px;height:36px}.rv-tp{font-size:22px}
@@ -555,7 +557,7 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
 .footer .col{display:flex;flex-direction:column;gap:12px}
 .footer .col b{font-weight:700;line-height:1.4}
 .footer .col a,.footer .col p{line-height:1.45}
-.footer .col a:hover{text-decoration:underline}
+.footer .col a,.footer .legal a{text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}.footer .col a:hover,.footer .legal a:hover{text-decoration-thickness:2px}  /* enlaces del footer siempre subrayados: se distinguen del texto plano */
 .footer .icons{display:flex;gap:16px}
 .footer .icons img{width:24px;height:24px}
 .footer .pays{display:flex;flex-wrap:wrap;gap:8px}
@@ -638,7 +640,7 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
   .recetas-grid{display:flex;gap:0;overflow:visible;width:max-content;padding:0;box-sizing:border-box;max-width:none}
   .recetas-grid.stopped{transition:transform .55s cubic-bezier(.22,.61,.36,1)}
   .recetas-grid .receta{margin-right:16px}
-  .s-recetas{overflow:clip}
+  .s-recetas{overflow-x:clip;overflow-y:visible}  /* solo recorta en horizontal (cinta): con overflow:clip desaparecía la onda superior que entra en la sección del bol */
   @media (prefers-reduced-motion:reduce){.recetas-grid{overflow-x:auto;width:auto;padding:0 22px}}
   .recetas-grid::-webkit-scrollbar{display:none}
   .receta{flex:0 0 min(calc(100vw - 44px),332px)}
@@ -1127,8 +1129,8 @@ size();update();if(document.fonts)document.fonts.ready.then(()=>{size();update()
       // la cinta se detiene y se desplaza hasta centrar la tarjeta elegida
       grid.classList.add('stopped');const host=grid.parentElement.getBoundingClientRect();const x=card.offsetLeft-(host.width-card.offsetWidth)/2;grid.style.transform='translateX('+(-x).toFixed(1)+'px)';}else{tabs.forEach(x=>{x.classList.toggle('active',x===t);x.setAttribute('aria-selected',x===t);});cards.forEach(c=>c.classList.toggle('is-hi',c===card));card.scrollIntoView({block:'nearest',behavior:'smooth'});}}));
   const rev=document.getElementById('reviews'),rvCards=[...rev.children],rvDots=document.getElementById('rvDots');
-  const rvLoop=()=>innerWidth<=767;if(rvLoop()&&!rev.dataset.looped){rev.dataset.looped='1';rvCards.forEach(c=>{const k=c.cloneNode(true);k.setAttribute('aria-hidden','true');k.dataset.clone='1';rev.appendChild(k);});}
-  ['touchstart','pointerdown'].forEach(ev=>rev.addEventListener(ev,()=>rev.classList.add('paused'),{passive:true}));['touchend','pointerup','pointercancel','mouseleave'].forEach(ev=>rev.addEventListener(ev,()=>setTimeout(()=>rev.classList.remove('paused'),1200),{passive:true}));
+  const rvLoop=()=>true;/* cinta en bucle en todos los breakpoints */if(rvLoop()&&!rev.dataset.looped){rev.dataset.looped='1';rvCards.forEach(c=>{const k=c.cloneNode(true);k.setAttribute('aria-hidden','true');k.dataset.clone='1';rev.appendChild(k);});}
+  ['touchstart','pointerdown','mouseenter'].forEach(ev=>rev.addEventListener(ev,()=>rev.classList.add('paused'),{passive:true}));['touchend','pointerup','pointercancel','mouseleave'].forEach(ev=>rev.addEventListener(ev,()=>setTimeout(()=>rev.classList.remove('paused'),1200),{passive:true}));
   const goRev=i=>{const c=rvCards[i];rev.scrollTo({left:c.offsetLeft-(rev.clientWidth-c.offsetWidth)/2,behavior:'smooth'});};
   rvCards.forEach((c,i)=>{const b=document.createElement('button');b.type='button';b.setAttribute('aria-label','Opinión '+(i+1));b.addEventListener('click',()=>goRev(i));rvDots.appendChild(b);});
   const syncRev=()=>{if(rvLoop())return;const mid=rev.scrollLeft+rev.clientWidth/2;let best=0,bd=1e9;rvCards.forEach((c,i)=>{const d=Math.abs(c.offsetLeft+c.offsetWidth/2-mid);if(d<bd){bd=d;best=i;}});rvCards.forEach((c,i)=>c.classList.toggle('is-active',i===best));[...rvDots.children].forEach((d,i)=>d.classList.toggle('active',i===best));};
@@ -1159,7 +1161,7 @@ const step=t=>{raf=null;if(!isOn()){if(el.style.transform){el.style.transform=''
 raf=requestAnimationFrame(step);
 el.addEventListener('transitionend',()=>{const m=/translateX\((-?[\d.]+)px\)/.exec(el.style.transform||'');if(m)x=parseFloat(m[1]);});};
 run(document.getElementById('recetasGrid'),()=>innerWidth<=1074,38);
-run(document.getElementById('reviews'),()=>innerWidth<=767,34);})();
+run(document.getElementById('reviews'),()=>true,34);})();
 // Stepper: reserva la altura del estado más alto (un paso abierto) para que el botón no baile al colapsar/expandir
 (()=>{const st=document.querySelector('.stepper');if(!st)return;const fit=()=>{const bodies=[...st.querySelectorAll('.step-body p')];const open=Math.max(0,...bodies.map(p=>p.scrollHeight+8));const act=st.querySelector('.step.active .step-body p');st.style.minHeight='';const base=st.getBoundingClientRect().height-(act?act.scrollHeight+8:0);st.style.minHeight=Math.ceil(base+open)+'px';};fit();addEventListener('resize',fit);addEventListener('load',fit);if(document.fonts)document.fonts.ready.then(fit);})();
 // Stepper: el bloque queda fijo (como la caja de prueba) y cada 100vh de scroll activa un paso. En escritorio la pista es la sección entera (imagen + pasos fijos juntos); en tablet/móvil es solo el split (la imagen se desplaza normal y únicamente los pasos quedan fijos)
@@ -1182,7 +1184,7 @@ addEventListener('scroll',()=>{if(!tick){tick=true;requestAnimationFrame(update)
   const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.1});
   document.querySelectorAll('.bol-block.desk .hs-col').forEach(c=>io.observe(c));
   const dstage=document.querySelector('.bol-block.desk .bol-stage');
-  const fitDesk=()=>{if(!dstage)return;const g=Math.min(112,Math.max(16,innerWidth*.06));const k=Math.min(1,(dstage.parentElement.clientWidth-2*g)/1322);dstage.style.transform='translateX(-50%) scale('+k.toFixed(4)+')';dstage.style.marginBottom=(-(1-k)*dstage.offsetHeight).toFixed(1)+'px';};
+  const fitDesk=()=>{if(!dstage)return;const g=Math.min(112,Math.max(16,innerWidth*.06));const k=Math.min(1,Math.max(.2,(dstage.parentElement.clientWidth-2*g)/1322));dstage.style.transform='translateX(-50%) scale('+k.toFixed(4)+')';dstage.style.marginBottom=(-(1-k)*dstage.offsetHeight).toFixed(1)+'px';};
   fitDesk();addEventListener('resize',fitDesk);addEventListener('load',fitDesk);
   const wrap=document.getElementById('bolScroll'),track=document.getElementById('bolTrack');if(!wrap||!track)return;
   const h1=wrap.querySelector('.head.st1'),h2=wrap.querySelector('.head.st2');
