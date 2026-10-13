@@ -585,6 +585,12 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
 @media (max-width:1040px){
   .nav,.header-right .btn-neutral{display:none}
   .burger{display:flex}
+  /* Móvil/tablet: hamburguesa a la izquierda junto al logo y el CTA solo a la derecha (como en dogfydiet.com) */
+  .header-right{display:contents}
+  .burger{order:-2;margin-left:-10px}
+  .header .container>a:first-child{order:-1}
+  .header .container{gap:12px}
+  .header-right .btn-primary{order:1;margin-left:auto;font-size:15px;line-height:21px;padding:7px 12px}  /* un 5 % más grande */
 }
 @media (max-width:900px){
   .split{grid-template-columns:1fr;gap:32px}
