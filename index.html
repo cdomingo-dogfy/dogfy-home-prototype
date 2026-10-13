@@ -1103,8 +1103,8 @@ breed.addEventListener('change',()=>{breedLabel.textContent=breed.value||'¿Cuá
     const op=document.getElementById('opiniones');if(op){op.style.setProperty('--opy',((1-bs)*H).toFixed(1)+'px');op.style.setProperty('--opo',bs>0?'1':'0');}   // …y Opiniones entra desde abajo
   };
   addEventListener('scroll',()=>{if(!tick){tick=true;requestAnimationFrame(upd)}},{passive:true});addEventListener('resize',upd);mq.addEventListener('change',upd);upd();
-  // Si el scroll se detiene a medias en la entrada de Opiniones (80-100 %), se completa solo hacia delante
-  let idle,snapping=false;const settle=()=>{if(!mq.matches||snapping)return;const r=wrap.getBoundingClientRect(),total=r.height-innerHeight;const p=-r.top/total;if(p>.8&&p<.995){snapping=true;scrollTo({top:scrollY+(total*(1-p)),behavior:'smooth'});setTimeout(()=>snapping=false,900);}};
+  // Si el scroll se detiene a medias de una transición, se completa sola hacia delante: 3-52 % (el texto sale y la foto crece a sangre) salta al 54 %; 80-100 % (entrada de Opiniones) salta al final
+  let idle,snapping=false;const settle=()=>{if(!mq.matches||snapping)return;const r=wrap.getBoundingClientRect(),total=r.height-innerHeight;if(total<=0)return;const p=-r.top/total;let target=null;if(p>.03&&p<.52)target=.54;else if(p>.8&&p<.995)target=1;if(target==null)return;snapping=true;scrollTo({top:scrollY+total*(target-p),behavior:'smooth'});setTimeout(()=>snapping=false,900);};
   addEventListener('scroll',()=>{clearTimeout(idle);idle=setTimeout(settle,160);},{passive:true});
 })();
 // Parallax: [data-parallax="velocidad"] se desplaza en Y según la posición del contenedor en el viewport
