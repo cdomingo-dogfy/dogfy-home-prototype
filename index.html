@@ -72,7 +72,7 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
 .mobile-menu{display:none;position:fixed;inset:0;top:var(--menu-top,112px);background:var(--bg);z-index:49;padding:24px var(--gutter);flex-direction:column;gap:8px}
 .mobile-menu.open{display:flex}
 .mobile-menu a{padding:14px 4px;border-bottom:1px solid var(--border);font-family:var(--font-display);font-weight:600;font-size:18px;color:var(--text-hi)}
-.mobile-menu .btn{margin-top:16px;align-self:flex-start}
+.mobile-menu .btn.btn-primary{margin-top:16px;align-self:stretch;width:100%;height:64px;padding:8px 12px;border:0;border-radius:999px;font-size:16px;font-weight:600;color:#fff;justify-content:center}  /* CTA del menú: mismo estilo que el resto de botones primarios y a todo el ancho */
 
 /* Hero */
 .hero{position:relative;min-height:800px;display:flex;align-items:center;color:#fff;overflow:hidden}
@@ -556,6 +556,7 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
 @media (prefers-reduced-motion:reduce){.reveal .footer{position:relative}.reveal .footer-space{display:none}}
 .footer .deco-v{position:absolute;right:0;bottom:0;width:1027px;pointer-events:none}
 .footer .deco-dog{position:absolute;right:-79px;top:calc(324px - 60px);width:min(792px,50vw);height:auto;aspect-ratio:792/1284;transform:scaleX(-1);object-fit:cover;pointer-events:none}
+.footer .brand{position:static;display:block}
 .footer .cols,.footer .wordmark,.footer .badges,.footer .legal{z-index:2}
 .footer .cols{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:32px;font-size:16px}
 .footer .col{display:flex;flex-direction:column;gap:12px}
@@ -675,14 +676,19 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
   /* Footer compacto en móvil: 2 columnas, menos solape con FAQ, tipografía y badges menores */
   .s-faq{margin-bottom:-120px}
   .footer{padding:calc(56px + 120px) 20px 32px;gap:32px}
+  /* Footer móvil: enlaces a dos columnas, redes y pagos a todo el ancho, marca con el perro recortado en su propia franja, badges a media anchura y legales en dos columnas. Nada se pisa */
   .footer .cols{grid-template-columns:1fr 1fr;gap:24px 16px;font-size:15px}
   .footer .col{gap:10px}
+  .footer .cols .col:last-child{grid-column:1/-1;display:grid;grid-template-columns:auto 1fr;gap:12px 16px;align-items:center;padding-top:8px;border-top:1px solid rgba(255,255,255,.3)}
+  .footer .cols .col:last-child b{margin:0}
+  .footer .icons{gap:14px}
   .footer .pays{gap:6px}
-  .footer .wordmark{width:min(64vw,300px)}
-  .badge-app{zoom:.78}
-  .footer .badges{gap:10px}
-  .footer .legal{font-size:14px;gap:8px 20px}
-  .footer .deco-dog{right:-150px;width:340px;bottom:-60px}
+  .footer .brand{position:relative;overflow:hidden;margin:0 -20px;padding:8px 20px 0}
+  .footer .wordmark{width:min(58vw,280px);display:block}
+  .footer .deco-dog{position:absolute;right:-12%;top:-6%;bottom:auto;width:48%;height:auto;aspect-ratio:792/900;object-fit:cover;object-position:top}
+  .footer .badges{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .badge-app{zoom:1;width:100%!important;height:auto;aspect-ratio:191.46/64;max-width:220px}
+  .footer .legal{display:grid;grid-template-columns:1fr 1fr;gap:10px 16px;font-size:14px;max-width:none}
   .btn-lg,.select{width:100%}
 }
 
@@ -1025,7 +1031,6 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
 <!-- Footer: fijo detrás de .page, se destapa al hacer scroll -->
 <footer class="footer">
   <img class="deco-v" src="assets/footer-vector.svg" alt="" width="1027" height="748">
-  <img class="deco-dog" src="assets/footer-dog.png" alt="">
   <div class="cols">
     <div class="col"><b>Ayuda</b><a href="#">Atención al cliente</a><a href="#faq">Preguntas frecuentes</a><p>Contacta con nosotros<br>Lunes a jueves, de 9:00 a 17:00.<br>Viernes, de 9:00 a 14:00.</p></div>
     <div class="col"><b>Descubre Dogfy</b><a href="#como">Cómo funciona</a><a href="#recetas">Nuestras recetas</a><a href="#nutricionistas">Equipo veterinario y nutricional</a><a href="#opiniones">Opiniones de clientes</a></div>
@@ -1042,7 +1047,7 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
         <div class="pay box" title="Google Pay"><img src="assets/pay-googlepay.svg" alt="Google Pay" style="left:4.1px;top:7.5px;width:37.8px;height:15px"></div>
       </div></div>
   </div>
-  <img class="wordmark" src="assets/footer-wordmark.svg" alt="Dogfy Diet" width="733" height="413">
+  <div class="brand"><img class="wordmark" src="assets/footer-wordmark.svg" alt="Dogfy Diet" width="733" height="413"><img class="deco-dog" src="assets/footer-dog.png" alt=""></div>
   <div class="badges"><a class="badge-app" href="#" aria-label="Consíguelo en el App Store" style="width:191.46px"><img src="assets/badge-apple-1.svg" alt="" style="inset:0;width:100%;height:100%"><img src="assets/badge-apple-2.svg" alt="" style="left:8.33%;top:21.8%;width:28.35px;height:34.84px"><img src="assets/badge-apple-3.svg" alt="" style="left:28.77%;top:44.68%;width:120.1px;height:25px"><img src="assets/badge-apple-4.svg" alt="" style="left:29.61%;top:20.05%;width:109.18px;height:13.44px"></a>
     <a class="badge-app" href="#" aria-label="Descargar en Google Play" style="width:215.8px"><img src="assets/badge-gplay-4.svg" alt="" style="inset:0;width:100%;height:100%"><img src="assets/badge-gplay-2.svg" alt="" style="left:30.96%;top:17.21%;width:8.28px;height:9.96px"><img src="assets/badge-gplay-3.svg" alt="" style="left:35.72%;top:17.23%;width:6.05px;height:9.96px"><img src="assets/badge-gplay-5.svg" alt="" style="left:39.11%;top:16.88%;width:6.95px;height:10.42px"><img src="assets/badge-gplay-7.svg" alt="" style="left:42.98%;top:16.89%;width:9.17px;height:10.39px"><img src="assets/badge-gplay-1.svg" alt="" style="left:47.66%;top:17.23%;width:9.27px;height:9.96px"><img src="assets/badge-gplay-6.svg" alt="" style="left:52.67%;top:17.21%;width:7.16px;height:9.96px"><img src="assets/badge-gplay-8.svg" alt="" style="left:56.42%;top:16.9%;width:10.12px;height:10.43px"><img src="assets/badge-gplay-10.svg" alt="" style="left:61.42%;top:17.23%;width:9.27px;height:9.96px"><img src="assets/badge-gplay-9.svg" alt="" style="left:66.43%;top:17.21%;width:7.16px;height:9.96px"><img src="assets/badge-gplay-11.svg" alt="" style="left:71.85%;top:17.23%;width:6.05px;height:9.96px"><img src="assets/badge-gplay-12.svg" alt="" style="left:75.64%;top:17.2%;width:7.85px;height:9.97px"></a></div>
   <div class="legal"><a href="#">Aviso legal</a><a href="#">Términos y condiciones</a><a href="#">Política de cookies</a><a href="#">Política de privacidad</a><a href="#">Canal de denuncias</a><a href="#">Mapa web</a></div>
