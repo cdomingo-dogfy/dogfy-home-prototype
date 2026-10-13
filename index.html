@@ -204,10 +204,9 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
   .bol-scroll{display:block;height:260vh}
   .bol-sticky{position:sticky;top:64px;height:calc(100vh - 64px);min-height:700px;overflow:hidden;background:#e2e8fb;padding-top:88px}
   /* Chevron al pie de la escena fija: avisa de que hay que seguir haciendo scroll; desaparece al acabar la pista */
-  .scroll-hint{position:absolute;left:50%;bottom:20px;transform:translateX(-50%);z-index:3;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.85);color:#2a2724;display:grid;place-items:center;box-shadow:0 2px 8px rgba(26,38,89,.12);animation:hintBounce 1.6s ease-in-out infinite;transition:opacity .3s ease}
+  .scroll-hint{position:absolute;left:50%;bottom:20px;transform:translateX(-50%);z-index:3;width:40px;height:40px;color:rgba(42,39,36,.45);display:grid;place-items:center;transition:opacity .3s ease}  /* discreto: sin fondo, sin rebote, negro al 45 % */
   .bol-sticky.done .scroll-hint{opacity:0}
-  @keyframes hintBounce{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,6px)}}
-  @media (prefers-reduced-motion:reduce){.scroll-hint{animation:none}}  /* 64px = header fijo */
+  /* 64px = header fijo */
   .s-porque{padding-bottom:80px}  /* reserva la franja de la onda de recetas: nunca pisa el bol */
   .bol-sticky .head{position:absolute;left:0;right:0;top:88px;z-index:2;visibility:hidden}
   .bol-sticky .head.show{visibility:visible;animation:headIn .3s ease both}
