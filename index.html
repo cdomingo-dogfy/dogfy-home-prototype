@@ -235,7 +235,7 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
   .hs-col.st2{left:506px;top:70px;width:333px}
   .bol-img{left:214px;top:57px;width:385px}
   .hs{gap:9px}
-  .hs .lbl{font-size:13px;line-height:18px;padding:8px 12px}
+  .hs .lbl{font-size:12px;line-height:16px;padding:7px 11px}  /* base 12px: la tira se escala ×1,2-1,4 en móvil, así que en pantalla queda a 14-17px y cabe una escala mayor */
   .hs .thumb{flex-basis:50px;width:50px;height:50px;border-radius:8px}
   .hs .thumb img{transform-origin:0 0;scale:.78}
   .hs-col.st1 .hs:nth-child(1){left:auto;right:0;top:0}.hs-col.st1 .hs:nth-child(2){left:auto;right:36px;top:102px}.hs-col.st1 .hs:nth-child(3){left:auto;right:36px;top:205px}.hs-col.st1 .hs:nth-child(4){left:auto;right:0;top:307px}
@@ -492,7 +492,8 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
 .s-sms .bg::after{content:"";position:absolute;inset:0;background:rgba(20,16,14,.45)}
 .s-sms .inner{position:relative;z-index:1;display:flex;flex-direction:column;gap:16px;align-items:center;text-align:center;max-width:var(--container);margin:0 auto}
 .sms-title{display:inline-block;background:var(--blue-deco);padding:10px;border-radius:7px;filter:drop-shadow(0 4px 2px rgba(0,0,0,.25));font-family:var(--font-display);font-weight:700;font-size:clamp(26px,3.5vw,42px);line-height:.85;letter-spacing:-.035em;color:#191919}  /* pastilla amarilla, texto negro y acento primary */
-.sms-title{background:#ffee99}
+.sms-title{background:#ffee99;display:inline;padding:8px 12px;line-height:1.35;-webkit-box-decoration-break:clone;box-decoration-break:clone}  /* en inline: el amarillo abraza cada línea de texto, no la caja entera */
+.sms-title-wrap{display:block;text-align:center;filter:drop-shadow(0 4px 2px rgba(0,0,0,.25))}.sms-title-wrap .sms-title{filter:none}
 .sms-title .accent{color:var(--primary)}
 .s-sms .desc{font-size:16px;line-height:24px;padding:0;max-width:760px;text-align:center}
 /* Guiño de dogfydiet.com: sello crema girando en bucle con el teléfono encima */
@@ -681,6 +682,7 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
   .footer .cols{grid-template-columns:1fr 1fr;gap:24px 16px;font-size:12px}  /* móvil: todos los textos del footer a 12px */
   .footer .col b,.footer .col a,.footer .col p{font-size:12px;line-height:1.5}
   .footer .col{gap:10px}
+  .footer .cols .col:first-child{grid-column:1/-1}  /* Ayuda a todo el ancho; debajo, Descubre Dogfy y Comunidad lado a lado */
   .footer .cols .col:last-child{grid-column:1/-1;display:grid;grid-template-columns:auto 1fr;gap:12px 16px;align-items:center;padding-top:8px;border-top:1px solid rgba(255,255,255,.3)}
   .footer .cols .col:last-child b:last-of-type,.footer .pays{grid-column:1/-1}  /* métodos de pago: título y los seis logos en una sola línea */
   .footer .pays{flex-wrap:nowrap}
@@ -689,7 +691,8 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
   .footer .pays{gap:6px}
   .footer .brand{position:relative;overflow:hidden;margin:0 -20px;padding:8px 20px 0}
   .footer .wordmark{width:min(41vw,196px);display:block}  /* un 30 % más pequeño */
-  .footer .deco-dog{position:absolute;right:-10%;top:-45%;bottom:auto;width:44%;height:auto;aspect-ratio:792/900;object-fit:cover;object-position:top}  /* la cabeza queda a la altura del logo */
+  .footer .brand{display:flex;align-items:center;min-height:176px}
+  .footer .deco-dog{position:absolute;right:-4%;top:0;bottom:auto;height:100%;width:auto;aspect-ratio:1;object-fit:cover;object-position:50% 73%;transform:scaleX(-1)}  /* la foto tiene un 28 % transparente arriba y la cabeza llega al 88 %: este encuadre la muestra entera, con oreja y hocico */  /* la cabeza entera dentro de la franja, sin cortes */
   .footer .badges{display:flex;flex-wrap:wrap;gap:10px}
   .badge-app{zoom:.7}  /* badges un 30 % más pequeños (45px de alto) */
   .footer .legal{display:grid;grid-template-columns:1fr 1fr;gap:10px 16px;font-size:12px;max-width:none}
@@ -1000,7 +1003,7 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
   <div class="bg"><img src="assets/sms-bg.jpg" alt=""></div>
   <div class="inner">
     <span class="sticker sticker-m" aria-hidden="true"><svg class="sticker-shape" viewBox="0 0 64 64" width="64" height="64"><path fill="currentColor" d="M64 32c0 2.364-3.853 4.253-4.344 6.465-.507 2.284 2.151 5.694 1.18 7.754-.986 2.095-5.258 2.087-6.66 3.886-1.404 1.799-.457 6.068-2.223 7.512s-5.601-.458-7.646.553c-2.011.994-2.955 5.26-5.187 5.78-2.16.502-4.811-2.912-7.12-2.912s-4.961 3.414-7.121 2.911c-2.23-.518-3.174-4.785-5.186-5.78-2.046-1.01-5.889.883-7.646-.552s-.813-5.704-2.222-7.512-5.675-1.79-6.662-3.886c-.971-2.059 1.688-5.47 1.18-7.754C3.854 36.253 0 34.364 0 32s3.853-4.253 4.344-6.465c.507-2.284-2.152-5.694-1.181-7.754.987-2.095 5.259-2.087 6.662-3.886s.456-6.068 2.222-7.512 5.6.458 7.646-.553C21.704 4.836 22.648.57 24.88.05 27.039-.451 29.69 2.962 32 2.962s4.96-3.413 7.12-2.91c2.232.518 3.174 4.785 5.187 5.78 2.045 1.01 5.889-.883 7.646.552s.813 5.704 2.222 7.512 5.675 1.79 6.661 3.886c.971 2.059-1.687 5.47-1.18 7.754C60.146 27.747 64 29.636 64 32"/></svg><span class="sticker-emoji">📞</span></span>
-    <div class="sms-title">Un <span class="accent">descuento extra</span> para empezar.</div>
+    <div class="sms-title-wrap"><span class="sms-title">Un <span class="accent">descuento extra</span> para empezar.</span></div>
     <div class="sms-lead"><p class="desc">Déjanos tu móvil y te enviaremos por SMS un código de descuento para tu primer pedido, junto con sus condiciones.</p></div>
     <form class="sms-form" id="smsForm">
       <div class="sms-row">
@@ -1217,7 +1220,8 @@ addEventListener('scroll',()=>{if(!tick){tick=true;requestAnimationFrame(update)
     // móvil: la tira ocupa el 75 % del alto del viewport (puede ampliarse), pero nunca tanto que una etiqueta se salga por el lado (bol visible 151 + etiqueta más ancha + 24 de aire)
     const maxLbl=Math.max(...[...track.querySelectorAll('.hs')].map(h=>h.offsetWidth));
     const kFit=(W-32)/maxLbl;                                                      // tope: la etiqueta más ancha cabe entre los dos márgenes de 16px (las miniaturas pisan ~75px el bol)
-    const k=mobile?Math.max(.6,Math.min(kFit,Math.min(avail,innerHeight*.75)/track.offsetHeight)):Math.min(1,Math.max(.6,avail/track.offsetHeight));
+    const lvh=(()=>{const d=document.createElement('div');d.style.cssText='position:fixed;top:0;left:0;width:0;height:100lvh;visibility:hidden;pointer-events:none';document.body.appendChild(d);const h=d.offsetHeight||innerHeight;d.remove();return Math.max(h,innerHeight);})();  // iOS Safari: innerHeight descuenta las barras; se usa el viewport grande
+    const k=mobile?Math.max(.6,Math.min(kFit,Math.min(avail,lvh*.75)/track.offsetHeight)):Math.min(1,Math.max(.6,avail/track.offsetHeight));
     const bw=mobile?385:611,bl=mobile?214:403,vis=mobile?Math.min(Math.max(151*k,16+75*k),W-16+75*k-maxLbl*k):305*k;   // móvil: parte visible del bol acotada para que las etiquetas de los dos estados queden a ≥16px de los bordes    // ancho del bol, su x dentro de la tira y parte visible
     const x1=mobile?W-vis-bl*k:Math.max(60*k,W-1045*k), x2=mobile?vis-(bl+bw)*k+8*k:Math.min(W-(1468+60)*k,-403*k);   // la columna contraria nunca asoma   // tablet/intermedio (Figma 469:40559 y 768): tira a 60px del borde; estado 2 a 60px del borde derecho · móvil: bol asomando
     const ty=Math.max(0,(avail-track.offsetHeight*k)/2);                       // reparte el aire sobrante arriba y abajo de la tira
