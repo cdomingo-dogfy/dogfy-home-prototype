@@ -333,7 +333,7 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
   .s-caja .head{margin-bottom:12px}
   .acc{display:flex;flex-direction:column;gap:12px;align-items:stretch}
   .acc-media{order:1;aspect-ratio:4/3;max-height:clamp(160px,calc(100svh - 470px),420px);border-radius:20px;margin:0}
-  .acc-dots{order:2;position:static;transform:none;flex-direction:row;justify-content:center;gap:8px}
+  .acc-dots{display:none}  /* móvil/tablet: sin puntos bajo la foto */
   .acc-dots i{width:6px;height:6px;background:#c2c2c2;filter:none;transition:width .3s ease,background .3s ease}
   .acc-dots i.active{width:28px;height:6px;background:#2a2724}
   .acc-list{order:3;gap:0;width:100%;max-width:520px;margin:0 auto;align-items:stretch}
@@ -560,6 +560,7 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
 .footer .cols{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:32px;font-size:16px}
 .footer .col{display:flex;flex-direction:column;gap:12px}
 .footer .col b{font-weight:700;line-height:1.4}
+.footer .col b,.footer .col p{color:rgba(255,255,255,.72)}  /* lo no clicable, en blanco atenuado: los enlaces destacan */
 .footer .col a,.footer .col p{line-height:1.45}
 .footer .col a,.footer .legal a{text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}.footer .col a:hover,.footer .legal a:hover{text-decoration-thickness:2px}  /* enlaces del footer siempre subrayados: se distinguen del texto plano */
 .footer .icons{display:flex;gap:16px}
@@ -680,14 +681,16 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
   .footer .cols{grid-template-columns:1fr 1fr;gap:24px 16px;font-size:15px}
   .footer .col{gap:10px}
   .footer .cols .col:last-child{grid-column:1/-1;display:grid;grid-template-columns:auto 1fr;gap:12px 16px;align-items:center;padding-top:8px;border-top:1px solid rgba(255,255,255,.3)}
+  .footer .cols .col:last-child b:last-of-type,.footer .pays{grid-column:1/-1}  /* métodos de pago: título y los seis logos en una sola línea */
+  .footer .pays{flex-wrap:nowrap}
   .footer .cols .col:last-child b{margin:0}
   .footer .icons{gap:14px}
   .footer .pays{gap:6px}
   .footer .brand{position:relative;overflow:hidden;margin:0 -20px;padding:8px 20px 0}
-  .footer .wordmark{width:min(58vw,280px);display:block}
-  .footer .deco-dog{position:absolute;right:-12%;top:-6%;bottom:auto;width:48%;height:auto;aspect-ratio:792/900;object-fit:cover;object-position:top}
-  .footer .badges{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-  .badge-app{zoom:1;width:100%!important;height:auto;aspect-ratio:191.46/64;max-width:220px}
+  .footer .wordmark{width:min(41vw,196px);display:block}  /* un 30 % más pequeño */
+  .footer .deco-dog{position:absolute;right:-10%;top:-45%;bottom:auto;width:44%;height:auto;aspect-ratio:792/900;object-fit:cover;object-position:top}  /* la cabeza queda a la altura del logo */
+  .footer .badges{display:flex;flex-wrap:wrap;gap:10px}
+  .badge-app{zoom:.7}  /* badges un 30 % más pequeños (45px de alto) */
   .footer .legal{display:grid;grid-template-columns:1fr 1fr;gap:10px 16px;font-size:14px;max-width:none}
   .btn-lg,.select{width:100%}
 }
@@ -865,10 +868,10 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
     <button class="tab" data-key="salmon" role="tab" aria-selected="false"><img src="assets/tab-salmon.svg" alt="">Salmón</button>
   </div>
   <div class="recetas-grid" id="recetasGrid">
-    <article class="receta pollo" data-key="pollo"><div class="img"><span class="r-ico"><img src="assets/icon-receta-pollo.svg" alt=""></span><img src="assets/receta-pollo.png" alt="Receta de pollo"></div><div><h3>Receta de pollo.</h3><p>Con un 60 % de pollo y un 40 % de zanahoria, calabaza y otras verduras. Mantiene los músculos fuertes y contiene una sola fuente de proteína.</p></div></article>
-    <article class="receta salmon" data-key="salmon"><div class="img"><span class="r-ico"><img src="assets/icon-receta-salmon.svg" alt=""></span><img src="assets/receta-salmon.png" alt="Receta de salmón"></div><div><h3>Receta de salmón.</h3><p>Con un 60 % de salmón y un 40 % de verduras. Favorece un pelaje sano y brillante y minimiza el riesgo de alergias.</p></div></article>
-    <article class="receta buey" data-key="buey"><div class="img"><span class="r-ico"><img src="assets/icon-receta-buey.svg" alt=""></span><img src="assets/receta-buey.png" alt="Receta de buey"></div><div><h3>Receta de buey.</h3><p>Con un 60 % de buey y un 40 % de verduras. Proteína de calidad para perros activos, en una sola fuente.</p></div></article>
-    <article class="receta pavo" data-key="pavo"><div class="img"><span class="r-ico"><img src="assets/icon-receta-pavo.svg" alt=""></span><img src="assets/receta-pavo.png" alt="Receta de pavo"></div><div><h3>Receta de pavo.</h3><p>Con un 60 % de pavo y un 40 % de verduras. Ligera y fácil de digerir, ideal para estómagos sensibles.</p></div></article>
+    <article class="receta pollo" data-key="pollo"><div class="img"><span class="r-ico"><img src="assets/icon-receta-pollo.svg" alt=""></span><img src="assets/receta-pollo.jpg" alt="Receta de pollo"></div><div><h3>Receta de pollo.</h3><p>Con un 60 % de pollo y un 40 % de zanahoria, calabaza y otras verduras. Mantiene los músculos fuertes y contiene una sola fuente de proteína.</p></div></article>
+    <article class="receta salmon" data-key="salmon"><div class="img"><span class="r-ico"><img src="assets/icon-receta-salmon.svg" alt=""></span><img src="assets/receta-salmon.jpg" alt="Receta de salmón"></div><div><h3>Receta de salmón.</h3><p>Con un 60 % de salmón y un 40 % de verduras. Favorece un pelaje sano y brillante y minimiza el riesgo de alergias.</p></div></article>
+    <article class="receta buey" data-key="buey"><div class="img"><span class="r-ico"><img src="assets/icon-receta-buey.svg" alt=""></span><img src="assets/receta-buey.jpg" alt="Receta de buey"></div><div><h3>Receta de buey.</h3><p>Con un 60 % de buey y un 40 % de verduras. Proteína de calidad para perros activos, en una sola fuente.</p></div></article>
+    <article class="receta pavo" data-key="pavo"><div class="img"><span class="r-ico"><img src="assets/icon-receta-pavo.svg" alt=""></span><img src="assets/receta-pavo.jpg" alt="Receta de pavo"></div><div><h3>Receta de pavo.</h3><p>Con un 60 % de pavo y un 40 % de verduras. Ligera y fácil de digerir, ideal para estómagos sensibles.</p></div></article>
   </div>
   <div class="cta"><a class="btn btn-primary" href="#">Explorar recetas</a></div>
 </section>
@@ -904,7 +907,7 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
     <div class="acc" id="cajaAcc">
       <div class="acc-dots" aria-hidden="true"><i class="active"></i><i></i><i></i><i></i><i></i></div>
       <div class="acc-media">
-        <img src="assets/caja-prueba.png" alt="" class="is-on">
+        <img src="assets/caja-prueba.jpg" alt="" class="is-on">
         <img src="assets/caja-bolsitas.jpg" alt="">
         <div class="ph" aria-hidden="true"><span>Imagen pendiente · Manual</span></div>
         <img src="assets/caja-regalos.jpg" alt="">
@@ -993,7 +996,7 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
 
 <!-- 11 · Descuento SMS -->
 <section class="s-sms">
-  <div class="bg"><img src="assets/sms-bg.png" alt=""></div>
+  <div class="bg"><img src="assets/sms-bg.jpg" alt=""></div>
   <div class="inner">
     <span class="sticker sticker-m" aria-hidden="true"><svg class="sticker-shape" viewBox="0 0 64 64" width="64" height="64"><path fill="currentColor" d="M64 32c0 2.364-3.853 4.253-4.344 6.465-.507 2.284 2.151 5.694 1.18 7.754-.986 2.095-5.258 2.087-6.66 3.886-1.404 1.799-.457 6.068-2.223 7.512s-5.601-.458-7.646.553c-2.011.994-2.955 5.26-5.187 5.78-2.16.502-4.811-2.912-7.12-2.912s-4.961 3.414-7.121 2.911c-2.23-.518-3.174-4.785-5.186-5.78-2.046-1.01-5.889.883-7.646-.552s-.813-5.704-2.222-7.512-5.675-1.79-6.662-3.886c-.971-2.059 1.688-5.47 1.18-7.754C3.854 36.253 0 34.364 0 32s3.853-4.253 4.344-6.465c.507-2.284-2.152-5.694-1.181-7.754.987-2.095 5.259-2.087 6.662-3.886s.456-6.068 2.222-7.512 5.6.458 7.646-.553C21.704 4.836 22.648.57 24.88.05 27.039-.451 29.69 2.962 32 2.962s4.96-3.413 7.12-2.91c2.232.518 3.174 4.785 5.187 5.78 2.045 1.01 5.889-.883 7.646.552s.813 5.704 2.222 7.512 5.675 1.79 6.661 3.886c.971 2.059-1.687 5.47-1.18 7.754C60.146 27.747 64 29.636 64 32"/></svg><span class="sticker-emoji">📞</span></span>
     <div class="sms-title">Un <span class="accent">descuento extra</span> para empezar.</div>
