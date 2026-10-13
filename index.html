@@ -325,7 +325,7 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
 @media (max-width:900px){
   /* Tablet/móvil: misma escena fija que en escritorio pero apilada: foto arriba, puntos en horizontal y la lista debajo. El scroll abre un apartado cada vez y cambia la foto; cada tramo mide 55vh */
   .s-caja .wrap.acc-scroll{height:320vh}
-  .acc-sticky{min-height:0;justify-content:flex-start;padding:16px var(--gutter) 24px}
+  .acc-sticky{height:auto;min-height:0;justify-content:flex-start;padding:16px var(--gutter) 24px}  /* alto al contenido: sin hueco amarillo bajo el botón */
   .s-caja .head{margin-bottom:12px}
   .acc{display:flex;flex-direction:column;gap:12px;align-items:stretch}
   .acc-media{order:1;aspect-ratio:4/3;max-height:clamp(160px,calc(100svh - 470px),420px);border-radius:20px;margin:0}
@@ -499,7 +499,8 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
 .sticker-emoji{position:relative;font-size:26px;line-height:1}
 @keyframes sticker-spin{to{transform:rotate(1turn)}}
 @media (prefers-reduced-motion:reduce){.sticker-shape{animation:none}}
-@media (max-width:600px){.sticker.sticker-d{display:none}.sticker.sticker-m{display:grid;margin:0 auto 4px}}  /* móvil: el sello sobre el título, como en dogfydiet.com */
+@media (max-width:600px){.header .container>a:first-child img{width:62px;height:35px}  /* logo un 20 % más pequeño en móvil */
+.sticker.sticker-d{display:none}.sticker.sticker-m{display:grid;margin:0 auto 4px}}  /* móvil: el sello sobre el título, como en dogfydiet.com */
 .sms-form{display:flex;flex-direction:column;gap:16px;align-items:center;width:min(760px,100%)}
 .sms-row{display:flex;gap:16px;width:100%;align-items:center}
 .sms-row .btn{padding:8px 24px;flex:0 0 auto}  /* más aire lateral en el botón de SMS */
