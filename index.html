@@ -1125,7 +1125,13 @@ size();update();if(document.fonts)document.fonts.ready.then(()=>{size();update()
   rvCards.forEach((c,i)=>{const b=document.createElement('button');b.type='button';b.setAttribute('aria-label','Opinión '+(i+1));b.addEventListener('click',()=>goRev(i));rvDots.appendChild(b);});
   const syncRev=()=>{if(rvLoop())return;const mid=rev.scrollLeft+rev.clientWidth/2;let best=0,bd=1e9;rvCards.forEach((c,i)=>{const d=Math.abs(c.offsetLeft+c.offsetWidth/2-mid);if(d<bd){bd=d;best=i;}});rvCards.forEach((c,i)=>c.classList.toggle('is-active',i===best));[...rvDots.children].forEach((d,i)=>d.classList.toggle('active',i===best));};
   rev.addEventListener('scroll',()=>requestAnimationFrame(syncRev),{passive:true});
-  sync();if(!rvLoop()){rvCards[1].classList.add('is-active');requestAnimationFrame(()=>{rev.scrollLeft=rvCards[1].offsetLeft-(rev.clientWidth-rvCards[1].offsetWidth)/2;syncRev();});}
+  sync();if(!rvLoop()){rvCards[1].classList.add('is-active');requestAnimationFrame(()=>{rev.scrollLeft=rvCards[1].offsetLeft-(rev.clientWidth-rvCards[1].offsetWidth)/2;syncRev();});
+    // Escritorio/tablet: el carrusel avanza solo en bucle (una opinión cada 4,5 s); se pausa al pasar el ratón, tocar o enfocar, y tras un clic en los puntos
+    if(!matchMedia('(prefers-reduced-motion:reduce)').matches){let hold=false,timer=null,resume=null;const cur=()=>rvCards.findIndex(c=>c.classList.contains('is-active'));
+    const tickRv=()=>{if(hold||document.hidden)return;goRev((cur()+1)%rvCards.length);};timer=setInterval(tickRv,4500);
+    const pause=()=>{hold=true;clearTimeout(resume);};const unpause=ms=>{clearTimeout(resume);resume=setTimeout(()=>hold=false,ms);};
+    rev.addEventListener('mouseenter',pause);rev.addEventListener('mouseleave',()=>unpause(800));rev.addEventListener('touchstart',pause,{passive:true});rev.addEventListener('touchend',()=>unpause(6000),{passive:true});rev.addEventListener('focusin',pause);rev.addEventListener('focusout',()=>unpause(800));
+    rvDots.addEventListener('click',()=>{pause();unpause(8000);});}}
 })();
 // Caja de prueba: tantas imágenes como puntos (intro + apartados). En escritorio la pista mide 100vh por punto y el bloque queda sticky; al agotarla se suelta y sigue el scroll normal
 (()=>{const acc=document.getElementById('cajaAcc'),track=document.getElementById('cajaScroll');if(!acc||!track)return;const items=[...acc.querySelectorAll('.acc-item')],imgs=[...acc.querySelectorAll('.acc-media > *')],dots=[...acc.querySelectorAll('.acc-dots i')];const N=items.length+1;let cur=-2,tick=false;
