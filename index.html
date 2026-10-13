@@ -590,8 +590,8 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
   .s-cocina .cocina-sticky{position:static;max-height:none;overflow:visible;display:block}  /* en móvil el contenedor es la pista; el split es lo que se queda fijo */
   .s-cocina .split{position:sticky;top:64px;gap:16px;align-content:start}
   .s-cocina .split .media{aspect-ratio:343/176}  /* más apaisada para que imagen + pasos + botón quepan en un iPhone */
-  .s-cocina .right-col{position:static;height:auto;max-height:none;overflow:visible;justify-content:flex-start;gap:20px;padding:0}
-  .s-cocina{padding-bottom:24px}
+  .s-cocina .right-col{position:static;height:auto;max-height:none;overflow:visible;justify-content:flex-start;gap:16px;padding:0}
+  .s-cocina{padding-bottom:0}
   /* Raíl vertical entre insignias: se va rellenando con los pasos completados */
   .step .ind{align-self:stretch;position:relative}
   .step:not(:last-child) .ind::after{content:"";flex:1;width:2px;min-height:14px;margin-top:6px;border-radius:2px;background:linear-gradient(#2a2724,#2a2724) no-repeat 0 0/100% var(--fill,0%),#e8e8e8;transition:--fill .4s ease}
@@ -1139,7 +1139,7 @@ upd();})();
 // Stepper: el bloque queda fijo (como la caja de prueba) y cada 100vh de scroll activa un paso. En escritorio la pista es la sección entera (imagen + pasos fijos juntos); en tablet/móvil es solo el split (la imagen se desplaza normal y únicamente los pasos quedan fijos)
 (()=>{const steps=[...document.querySelectorAll('.stepper .step')];if(!steps.length)return;
 const split=document.querySelector('.s-cocina .split'),section=document.querySelector('.s-cocina'),N=steps.length,narrow=()=>innerWidth<=900;
-const wrap=document.querySelector('.s-cocina .cocina-sticky');const sizeTrack=()=>{if(!split)return;if(!narrow()){section.style.height='';wrap.style.height='';return;}const head=section.querySelector('.cocina-head');section.style.height='';wrap.style.height=(head.offsetHeight+split.offsetHeight+N*Math.round(innerHeight*.45))+'px';};sizeTrack();addEventListener('resize',sizeTrack);addEventListener('load',sizeTrack);if(document.fonts)document.fonts.ready.then(sizeTrack);
+const wrap=document.querySelector('.s-cocina .cocina-sticky');const sizeTrack=()=>{if(!split)return;if(!narrow()){section.style.height='';wrap.style.height='';return;}const head=section.querySelector('.cocina-head');section.style.height='';wrap.style.height=(head.offsetHeight+split.offsetHeight+N*Math.round(innerHeight*.32))+'px';};sizeTrack();addEventListener('resize',sizeTrack);addEventListener('load',sizeTrack);if(document.fonts)document.fonts.ready.then(sizeTrack);
 let tick=false;const update=()=>{tick=false;
 const track=section;
 const r=track.getBoundingClientRect(),total=r.height-innerHeight;
