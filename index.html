@@ -630,6 +630,7 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
   /* Tablet/móvil: cinta en bucle (las tarjetas se duplican en JS y la pista se desplaza media vuelta); se pausa al tocarla */
   .recetas-grid{display:flex;gap:0;overflow:visible;width:max-content;padding:0;box-sizing:border-box;max-width:none;animation:marquee 36s linear infinite;will-change:transform}
   .recetas-grid.paused{animation-play-state:paused}
+  .recetas-grid.stopped{animation:none;transition:transform .55s cubic-bezier(.22,.61,.36,1)}
   .recetas-grid .receta{margin-right:16px}
   .s-recetas{overflow:clip}
   @media (prefers-reduced-motion:reduce){.recetas-grid{animation:none;overflow-x:auto;width:auto;padding:0 22px}}
@@ -1114,7 +1115,9 @@ size();update();if(document.fonts)document.fonts.ready.then(()=>{size();update()
   const current=()=>{const c=grid.scrollLeft+grid.clientWidth/2;let best=0,bd=1e9;cards.forEach((card,i)=>{const d=Math.abs(card.offsetLeft+card.offsetWidth/2-c);if(d<bd){bd=d;best=i;}});return best;};
   const sync=()=>{const i=current();setActive(rDots,i);tabs.forEach(t=>{const on=t.dataset.key===cards[i].dataset.key;t.classList.toggle('active',on);t.setAttribute('aria-selected',on);});};
   grid.addEventListener('scroll',()=>requestAnimationFrame(sync),{passive:true});
-  tabs.forEach(t=>t.addEventListener('click',()=>{const card=cards.find(c=>c.dataset.key===t.dataset.key);if(!card)return;if(marquee()){tabs.forEach(x=>{x.classList.toggle('active',x===t);x.setAttribute('aria-selected',x===t);});[...grid.children].forEach(c=>c.classList.toggle('is-hi',c.dataset.key===t.dataset.key));grid.classList.add('paused');clearTimeout(grid._p);grid._p=setTimeout(()=>grid.classList.remove('paused'),2500);}else{tabs.forEach(x=>{x.classList.toggle('active',x===t);x.setAttribute('aria-selected',x===t);});cards.forEach(c=>c.classList.toggle('is-hi',c===card));card.scrollIntoView({block:'nearest',behavior:'smooth'});}}));
+  tabs.forEach(t=>t.addEventListener('click',()=>{const card=cards.find(c=>c.dataset.key===t.dataset.key);if(!card)return;if(marquee()){tabs.forEach(x=>{x.classList.toggle('active',x===t);x.setAttribute('aria-selected',x===t);});[...grid.children].forEach(c=>c.classList.toggle('is-hi',c.dataset.key===t.dataset.key));t.blur();
+      // la cinta se detiene y se desplaza hasta centrar la tarjeta elegida
+      grid.classList.add('stopped');const host=grid.parentElement.getBoundingClientRect();const x=card.offsetLeft-(host.width-card.offsetWidth)/2;grid.style.transform='translateX('+(-x).toFixed(1)+'px)';}else{tabs.forEach(x=>{x.classList.toggle('active',x===t);x.setAttribute('aria-selected',x===t);});cards.forEach(c=>c.classList.toggle('is-hi',c===card));card.scrollIntoView({block:'nearest',behavior:'smooth'});}}));
   const rev=document.getElementById('reviews'),rvCards=[...rev.children],rvDots=document.getElementById('rvDots');
   const rvLoop=()=>innerWidth<=767;if(rvLoop()&&!rev.dataset.looped){rev.dataset.looped='1';rvCards.forEach(c=>{const k=c.cloneNode(true);k.setAttribute('aria-hidden','true');k.dataset.clone='1';rev.appendChild(k);});}
   ['touchstart','pointerdown'].forEach(ev=>rev.addEventListener(ev,()=>rev.classList.add('paused'),{passive:true}));['touchend','pointerup','pointercancel','mouseleave'].forEach(ev=>rev.addEventListener(ev,()=>setTimeout(()=>rev.classList.remove('paused'),1200),{passive:true}));
