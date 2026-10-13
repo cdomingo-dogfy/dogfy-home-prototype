@@ -329,7 +329,7 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
 @media (max-width:900px){
   /* Tablet/móvil: misma escena fija que en escritorio pero apilada: foto arriba, puntos en horizontal y la lista debajo. El scroll abre un apartado cada vez y cambia la foto; cada tramo mide 55vh */
   .s-caja .wrap.acc-scroll{height:320vh}
-  .acc-sticky{height:auto;min-height:0;justify-content:flex-start;padding:16px var(--gutter) 24px}  /* alto al contenido: sin hueco amarillo bajo el botón */
+  .acc-sticky{height:calc(100vh - 64px);height:calc(100svh - 64px);min-height:0;justify-content:flex-start;padding:16px var(--gutter) 24px}  /* el amarillo llena el viewport mientras la escena está fija: así no asoma el blanco de la siguiente sección cuando cambia la altura del texto; al acabar la pista el bloque sube y se va */
   .s-caja .head{margin-bottom:12px}
   .acc{display:flex;flex-direction:column;gap:12px;align-items:stretch}
   .acc-media{order:1;aspect-ratio:4/3;max-height:clamp(160px,calc(100svh - 470px),420px);border-radius:20px;margin:0}
