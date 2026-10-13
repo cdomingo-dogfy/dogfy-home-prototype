@@ -327,9 +327,9 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
   .s-caja .wrap.acc-scroll{height:auto}
   .acc-sticky{position:static;height:auto;min-height:0;overflow:visible}
   .acc{display:flex;flex-direction:column;gap:20px;align-items:stretch}
-  .acc-media{order:1;position:relative;display:flex;gap:0;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;aspect-ratio:auto;max-height:none;border-radius:0;background:transparent;max-width:none;margin:0 calc(-1 * var(--gutter));padding:0}  /* sin padding: con padding, el borde se "cuela" entre diapositivas y asoma la siguiente */
+  .acc-media{order:1;position:relative;display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;aspect-ratio:auto;max-height:none;border-radius:0;background:transparent;max-width:none;margin:0;padding:0}  /* dentro del gutter, con hueco entre diapositivas: el contenedor recorta y no asoma la siguiente */  /* sin padding: con padding, el borde se "cuela" entre diapositivas y asoma la siguiente */
   .acc-media::-webkit-scrollbar{display:none}
-  .acc-media img,.acc-media .ph{position:static;flex:0 0 100%;max-width:none;aspect-ratio:4/5;height:auto;border-radius:0;opacity:1;transform:none;scroll-snap-align:center;object-fit:cover}
+  .acc-media img,.acc-media .ph{position:static;flex:0 0 100%;max-width:none;aspect-ratio:4/5;height:auto;border-radius:24px;opacity:1;transform:none;scroll-snap-align:center;object-fit:cover}
   .acc-media img,.acc-media .ph{max-height:calc(100svh - 200px)}  /* nunca más alta que el viewport: en tablet (≈760px de ancho) el 4/5 daba 950px y el bloque no cabía en pantalla */
   @media (min-width:601px){.acc-media img,.acc-media .ph{aspect-ratio:4/3}}  /* tablet: formato apaisado, el bloque pesa menos */  /* una sola imagen a pantalla completa, sin asomo de la siguiente */
   /* Indicador vertical a la izquierda, como en klarna.com: una raya para el activo y puntos para el resto, superpuestos a la foto */
@@ -1154,7 +1154,8 @@ upd();})();
 // Cintas en bucle (recetas ≤1074px, opiniones ≤767px): movidas por JS a 38px/s con rAF. Evita la animación CSS sobre una capa de miles de px, que en algunos móviles se acelera o deja de pintarse
 (()=>{if(matchMedia('(prefers-reduced-motion:reduce)').matches)return;
 const run=(el,isOn,speed)=>{if(!el)return;let x=0,last=null,raf=null;const half=()=>el.scrollWidth/2;
-const step=t=>{raf=null;if(!isOn()||el.classList.contains('stopped')||el.classList.contains('paused')){last=null;raf=requestAnimationFrame(step);return;}if(last!=null){x-=speed*Math.min(.05,(t-last)/1000);const h=half();if(h>0&&-x>=h)x+=h;el.style.transform='translateX('+x.toFixed(2)+'px)';}last=t;raf=requestAnimationFrame(step);};
+const step=t=>{raf=null;if(!isOn()){if(el.style.transform){el.style.transform='';x=0;}last=null;raf=requestAnimationFrame(step);return;}  // fuera del modo cinta (p. ej. al girar la tablet) se limpia el desplazamiento: si no, las tarjetas quedan fuera de pantalla
+  if(el.classList.contains('stopped')||el.classList.contains('paused')){last=null;raf=requestAnimationFrame(step);return;}if(last!=null){x-=speed*Math.min(.05,(t-last)/1000);const h=half();if(h>0&&-x>=h)x+=h;el.style.transform='translateX('+x.toFixed(2)+'px)';}last=t;raf=requestAnimationFrame(step);};
 raf=requestAnimationFrame(step);
 el.addEventListener('transitionend',()=>{const m=/translateX\((-?[\d.]+)px\)/.exec(el.style.transform||'');if(m)x=parseFloat(m[1]);});};
 run(document.getElementById('recetasGrid'),()=>innerWidth<=1074,38);
