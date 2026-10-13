@@ -248,8 +248,8 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
 .receta .img{height:216px;border-radius:16px;overflow:hidden}
 .receta h3,.receta p{padding:0 4px}  /* un pelín de aire lateral para el texto ahora que el padding de la card es menor */
 .receta .img img{width:100%;height:100%;object-fit:cover}
-.receta h3{font-size:16px;line-height:24px}
-.receta p{font-size:15px;line-height:24px;color:var(--text-muted);margin-top:4px}
+.receta h3{font-size:20px;line-height:26px}
+.receta p{font-size:16px;line-height:24px;color:var(--text-muted);margin-top:6px}
 .receta{background:rgba(255,255,255,.9);transition:box-shadow .3s ease,transform .3s ease}  /* blanco al 90 % sobre el lavanda; el color de cada receta queda en la foto */
 .receta.is-hi{box-shadow:0 0 0 3px #ffee99,0 16px 40px rgba(26,38,89,.12);transform:translateY(-4px)}
 @media (min-width:1075px){.receta[data-clone]{display:none}}
@@ -258,7 +258,7 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
 .dots{display:none}
 /* Pastillas de sabores visibles en todos los anchos, centradas sobre las tarjetas */
 .receta-tabs{display:none;gap:8px;justify-content:center;flex-wrap:nowrap;padding:0 var(--gutter) 32px}  /* solo hacen falta cuando las recetas son un carrusel con scroll (ver @media 1074px): con las 4 a la vista no aportan nada */
-@media (max-width:640px){.s-recetas .receta-tabs{display:flex;flex-wrap:nowrap;gap:4px;max-width:none;margin:0;overflow-x:auto;justify-content:center}.receta-tabs>*{margin:0!important}.receta-tabs .tab{flex:0 0 auto;width:auto;gap:4px;padding:2px 8px 2px 2px;font-size:12px}.receta-tabs .tab img{width:20px;height:20px}}  /* las 4 en una sola línea con texto e icono más pequeños; overflow-x de seguridad por si algún idioma no cabe; .receta-tabs sube la especificidad para ganarle al .tab del @media 1074px, declarado después */
+@media (max-width:640px){.s-recetas .receta-tabs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;max-width:360px;margin:0 auto;overflow:visible}.receta-tabs>*{margin:0!important}.receta-tabs .tab{flex:0 0 auto;width:100%;justify-content:flex-start;gap:8px;padding:4px 12px 4px 4px;min-height:44px;font-size:14px;line-height:1.3}.receta-tabs .tab img{width:32px;height:32px}}  /* móvil: rejilla 2×2 (nunca 3+1), texto 14px, icono 32px y área táctil de 44px */
 .tab{flex:0 0 auto;display:flex;align-items:center;gap:8px;padding:4px 16px 4px 4px;border-radius:300px;border:1px solid #e8e8e8;background:rgba(255,255,255,.6);font-family:var(--font-alt);font-size:17px;line-height:1.35;color:#767676;white-space:nowrap}
 .tab img{width:40px;height:40px}
 .tab.active{background:#ffee99;color:#3d3d3d;font-weight:600}
