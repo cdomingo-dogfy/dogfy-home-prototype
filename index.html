@@ -383,6 +383,7 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
 .acc-item.is-open .acc-body{grid-template-rows:1fr}.acc-item.is-open .acc-body>span{padding-top:8px}
 .acc-list .btn{margin-top:16px}
 @media (max-width:900px){
+  .receta p{font-size:15px;line-height:23px}  /* tarjetas de recetas: texto algo más pequeño en tablet y móvil */
   /* Tablet/móvil: misma escena fija que en escritorio pero apilada: foto arriba, puntos en horizontal y la lista debajo. El scroll abre un apartado cada vez y cambia la foto; cada tramo mide 55vh */
   .s-caja .wrap.acc-scroll{height:320vh}
   .acc-sticky{height:calc(100vh - 64px);height:calc(100svh - 64px);min-height:0;justify-content:flex-start;padding:16px var(--gutter) 24px}  /* el amarillo llena el viewport mientras la escena está fija: así no asoma el blanco de la siguiente sección cuando cambia la altura del texto; al acabar la pista el bloque sube y se va */
