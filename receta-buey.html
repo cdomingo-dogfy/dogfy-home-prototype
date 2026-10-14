@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Menú de buey · Dogfy Diet</title>
-<meta name="description" content="Menú de buey de Dogfy Diet: ingredientes, componentes analíticos y beneficios.">
+<title>Menú de buey para perros · Dogfy Diet</title>
+<meta name="description" content="Menú de buey de Dogfy Diet: ingredientes, componentes analíticos, modo de preparación y guía de alimentación.">
 <meta name="theme-color" content="#fffae5">
 <meta property="og:title" content="Dogfy Diet · Comida real para perros">
 <meta property="og:description" content="Recetas naturales cocinadas a baja temperatura, formuladas por veterinarios y entregadas en casa.">
@@ -1118,7 +1118,90 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
 .rp-tabs.has-back .tab:not(.active){background:#fff}
 .rp-tabs.has-back .rp-tabs-back{background:var(--sand);box-shadow:none}
 .rp-tabs.has-back .rp-tabs-back:hover{background:#ebe5dc}
+/* ===== Fusión wireframe SEO (Figma 645:21409) ===== */
+.rp-crumbs{max-width:var(--container);margin:0 auto;padding:16px var(--gutter) 0;box-sizing:content-box}
+.rp-crumbs ol{list-style:none;display:flex;flex-wrap:wrap;gap:6px;font-size:14px;line-height:20px;color:var(--text-toned)}
+.rp-crumbs li+li::before{content:"›";margin-right:6px;color:var(--text-dimmed)}
+.rp-crumbs a:hover{color:var(--primary);text-decoration:underline}
+.rp-crumbs [aria-current]{color:var(--text-hi);font-weight:500}
+.rp-hero .rp-crumbs{padding:0}
+body:has(.rp-hero) .rp-crumbs{background:var(--blue-deco);max-width:none;padding:16px var(--gutter) 0}
+.rp-hero{padding-top:56px}
+.rp-hero h1{font-size:clamp(44px,6vw,80px)}
+.rp-tagline{font-family:var(--font-display);font-weight:700;font-size:clamp(22px,2.6vw,32px);line-height:1.15;color:var(--text-hi);margin-top:12px}
+/* Beneficios de la comida natural */
+.rp-bens-wrap{max-width:var(--container);margin:72px auto 0;text-align:center}
+.rp-bens-title{font-size:clamp(26px,2.6vw,34px);line-height:1.1}
+.rp-bens{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:28px;text-align:left}
+.rp-bens li{border-radius:28px;padding:24px 26px}
+.rp-bens h3{font-size:22px;line-height:1.15}
+.rp-bens p{font-size:15px;line-height:22px;margin-top:8px;color:var(--text)}
+.rp-ben-vit{background:#d6ecfd}.rp-ben-hig{background:#ffd9c2}.rp-ben-sal{background:#d4f0c8}
+/* Cómo empezar */
+.rp-steps-sec{padding:112px var(--gutter);background:#fff}
+.rp-steps-sec .head{text-align:center;max-width:780px;margin:0 auto 48px}
+.rp-steps3{max-width:var(--container);margin:0 auto;list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:32px;text-align:center}
+.rp-step-img{position:relative;aspect-ratio:4/3;border-radius:20px;margin-bottom:34px}
+.rp-step-img img{width:100%;height:100%;object-fit:cover;border-radius:20px}
+.rp-step-n{position:absolute;left:50%;bottom:-18px;transform:translateX(-50%);width:36px;height:36px;border-radius:50%;background:var(--text-hi);color:#fff;display:grid;place-items:center;font-family:var(--font-display);font-weight:700;border:3px solid #fff}
+.rp-steps3 h3{font-size:20px;line-height:1.2}
+.rp-steps3 p{font-size:15px;line-height:22px;margin-top:8px}
+/* Ladridos: titular + Trustpilot */
+.bk-head .eyebrow{margin-bottom:8px}
+.rp-tp{display:flex;align-items:center;justify-content:center;gap:8px;margin:28px auto 0;width:max-content;max-width:calc(100% - 2 * var(--gutter));font-size:15px;color:var(--text-hi)}
+.rp-tp:hover{text-decoration:underline}
+.rp-tp-stars{color:#00b67a;letter-spacing:2px}
+/* Ficha: galería, valoración e "ideal para" */
+.rp-gallery{display:flex;flex-direction:column;gap:12px}
+.rp-thumbs{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.rp-thumb{aspect-ratio:4/3;border-radius:14px;overflow:hidden;padding:0;border:2px solid transparent;background:var(--sand);transition:border-color .2s,opacity .2s;opacity:.75}
+.rp-thumb img{width:100%;height:100%;object-fit:cover}
+.rp-thumb.is-on{border-color:var(--primary);opacity:1}
+.rp-thumb:hover{opacity:1}
+.rp-rating{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border-radius:999px;background:var(--sand);font-size:14px;color:var(--text-hi)}
+.rp-rating:hover{background:#ebe5dc}
+.rp-rating-cta{font-weight:600}
+.rp-detail h1{margin-top:16px}
+.rp-ideal-line{font-size:17px;color:var(--text-toned);margin:-6px 0 0}
+.rp-detail .rp-pill{margin-top:16px}
+/* Ficha: acordeones */
+.rp-info{padding:72px var(--gutter)}
+.rp-accs{max-width:var(--container);margin:0 auto;display:flex;flex-direction:column;gap:14px}
+.rp-acc{border-radius:24px;background:var(--bg-elev);border:1px solid var(--border);overflow:hidden}
+.rp-acc summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:22px 28px;cursor:pointer}
+.rp-acc summary::-webkit-details-marker{display:none}
+.rp-acc summary h2{font-size:clamp(22px,2.2vw,28px);line-height:1.1}
+.rp-acc-ico{position:relative;flex:0 0 28px;height:28px}
+.rp-acc-ico::before,.rp-acc-ico::after{content:"";position:absolute;left:4px;right:4px;top:13px;height:2px;border-radius:2px;background:var(--text-hi);transition:transform .25s}
+.rp-acc-ico::after{transform:rotate(90deg)}
+.rp-acc[open] .rp-acc-ico::after{transform:rotate(0)}
+.rp-acc-body{padding:0 28px 28px}
+.rp-desc{display:flex;flex-direction:column;gap:10px;padding-left:20px;font-size:17px;line-height:26px;color:var(--text)}
+.rp-desc b{color:var(--text-hi)}
+.rp-prep-ol{padding-left:20px;display:flex;flex-direction:column;gap:8px;font-size:16px;line-height:24px}
+.rp-guia{width:100%;max-width:560px;border-collapse:collapse;font-size:16px}
+.rp-guia th,.rp-guia td{padding:12px 16px;text-align:left;border-bottom:1px solid var(--border)}
+.rp-guia th{font-family:var(--font-display);color:var(--text-hi);background:#fff}
+.rp-guia td:last-child{font-weight:600;color:var(--text-hi)}
+.rp-guia-note{font-size:13px;color:var(--text-muted);margin-top:12px}
+/* Ficha: opiniones, otras recetas, artículos */
+.rp-rev-sec.slim{padding:80px 0}
+.rp-rev-sec .head{padding:0 var(--gutter)}
+.rc-grid-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.rp-blog{padding:96px var(--gutter);background:#fff}
+.rp-blog .head{text-align:center;max-width:780px;margin:0 auto 40px}
+.rp-blog-list{max-width:900px;margin:0 auto;display:flex;flex-direction:column;gap:28px}
+.rp-blog-list h3{font-size:22px;line-height:1.2}
+.rp-blog-list h3 a{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:4px;text-decoration-color:rgba(250,89,45,.45)}
+.rp-blog-list h3 a:hover{color:var(--primary)}
+.rp-blog-list p{font-size:16px;line-height:25px;margin-top:6px}
+/* FAQ antes del bloque final: sin solaparse con el footer (ya lo hace el bloque final) */
+.s-faq.rp-faq{margin-bottom:0}
+@media (max-width:900px){.rp-bens,.rp-steps3{grid-template-columns:1fr;gap:16px}.rp-steps3{gap:40px}.rc-grid-3{grid-template-columns:repeat(2,minmax(0,1fr))}.rp-acc summary{padding:18px 20px}.rp-acc-body{padding:0 20px 22px}}
+@media (max-width:600px){.rp-steps-sec,.rp-blog{padding:64px var(--gutter)}.rp-bens-wrap{margin-top:48px}.rc-grid-3{display:flex}.rp-rev-sec.slim{padding:56px 0}.s-faq.rp-faq{padding:72px var(--gutter)}}
 </style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://cdomingo-dogfy.github.io/dogfy-home-prototype/index.html"}, {"@type": "ListItem", "position": 2, "name": "Nuestras recetas", "item": "https://cdomingo-dogfy.github.io/dogfy-home-prototype/recetas.html"}, {"@type": "ListItem", "position": 3, "name": "Menú de buey", "item": "https://cdomingo-dogfy.github.io/dogfy-home-prototype/receta-buey.html"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "¿Qué formatos hay?", "acceptedAnswer": {"@type": "Answer", "text": "Cada menú llega en bolsitas individuales con la ración diaria de tu perro, ya calculada según su peso, edad y actividad. Puedes elegir una receta o combinar varias en el mismo pedido."}}, {"@type": "Question", "name": "¿Qué cantidad se le debe dar?", "acceptedAnswer": {"@type": "Answer", "text": "Depende de su peso, edad y nivel de actividad. Al crear su plan calculamos su ración diaria exacta y cada bolsita contiene justo esa cantidad, así que no tienes que pesar nada."}}, {"@type": "Question", "name": "¿Cómo llega el producto?", "acceptedAnswer": {"@type": "Answer", "text": "Te lo enviamos a casa congelado y dividido en bolsitas diarias, con envío gratis. Solo tienes que guardarlo en el congelador al recibirlo."}}]}</script>
 </head>
 <body>
 <div class="page">
@@ -1152,15 +1235,19 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
 </nav>
 
 <nav class="rp-tabs has-back" aria-label="Recetas"><a class="rp-tabs-back" href="recetas.html" aria-label="Volver a todas las recetas"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg><span>Recetas</span></a><div class="rp-tabs-list"><a class="tab" href="receta-pollo.html"><img src="assets/tab-pollo.svg" alt="">Pollo</a><a class="tab" href="receta-pavo.html"><img src="assets/tab-pavo.svg" alt="">Pavo</a><a class="tab" href="receta-salmon.html"><img src="assets/tab-salmon.svg" alt="">Salmón</a><a class="tab active" href="receta-buey.html" aria-current="page"><img src="assets/tab-buey.svg" alt="">Buey</a></div></nav>
-
+<nav class="rp-crumbs" aria-label="Ruta de navegación"><ol><li><a href="index.html">Inicio</a></li><li><a href="recetas.html">Nuestras recetas</a></li><li><span aria-current="page">Menú de buey</span></li></ol></nav>
 <section class="rp-receta rp-detail" style="--tint:#f7d7d4">
   <div class="rp-grid">
-    <div class="rp-media"><img class="photo" src="assets/receta-buey.jpg" alt="Bol del menú de buey de Dogfy Diet" decoding="async"><span class="r-ico"><img src="assets/icon-receta-buey.svg" alt=""></span></div>
+    <div class="rp-gallery">
+      <div class="rp-media"><img class="photo" id="galMain" src="assets/receta-buey.jpg" alt="Bol del menú de buey" decoding="async"><span class="r-ico"><img src="assets/icon-receta-buey.svg" alt=""></span></div>
+      <div class="rp-thumbs"><button type="button" class="rp-thumb is-on" data-src="assets/receta-buey.jpg" data-alt="Bol del menú de buey" aria-label="Ver imagen: Bol del menú de buey"><img src="assets/receta-buey.jpg" alt="" loading="lazy"></button><button type="button" class="rp-thumb" data-src="assets/rc-pack-beef.jpg" data-alt="Envase del menú de buey" aria-label="Ver imagen: Envase del menú de buey"><img src="assets/rc-pack-beef.jpg" alt="" loading="lazy"></button><button type="button" class="rp-thumb" data-src="assets/caja-bolsitas.jpg" data-alt="Bolsitas diarias de Dogfy Diet en su caja" aria-label="Ver imagen: Bolsitas diarias de Dogfy Diet en su caja"><img src="assets/caja-bolsitas.jpg" alt="" loading="lazy"></button></div>
+    </div>
     <div class="rp-txt">
-      <a class="rp-back" href="recetas.html">← Todas las recetas</a>
+      <a class="rp-rating" href="https://es.trustpilot.com/review/dogfydiet.com" target="_blank" rel="noopener"><b>4,5</b><span class="rp-tp-stars" aria-hidden="true">★★★★★</span><span>12.480 opiniones</span><span class="rp-rating-cta">Leer ›</span></a>
       <h1>Menú de buey</h1>
+      <p class="rp-ideal-line">Ideal para perros que necesitan controlar su peso</p>
+      <p class="lead">Con un 60 % de buey y un 40 % de zanahoria, patata y otras verduras. Elaborado según las recomendaciones nutricionales de la FEDIAF y solo con ingredientes naturales.</p>
       <span class="rp-pill">139.972 menús vendidos este mes</span>
-      <p class="lead">Con un 60 % de buey y un 40 % de zanahoria, patata y otras verduras.</p>
       <div class="rp-bar" role="img" aria-label="60,5 % buey"><span class="p" style="width:60.5%"></span><span class="v" style="width:39.5%"></span></div>
       <div class="rp-legend"><span><i style="background:var(--primary)"></i>60,5 % buey</span><span><i style="background:#8fc46a"></i>verduras y otros ingredientes</span></div>
       <ul class="rp-benef"><li>Bajo en calorías</li><li>Ayuda a mantener un peso saludable</li><li>Contiene una sola fuente de proteína</li><li>Minimiza el riesgo de alergias</li></ul>
@@ -1169,23 +1256,66 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
   </div>
 </section>
 
-<section class="rp-rev-sec slim"><div class="rp-reviews"><ul><li><span class="stars">★★★★★</span><p>«Estoy muy feliz con ellos. ¡Ya no volveremos al pienso nunca!»</p></li><li><span class="stars">★★★★★</span><p>«Ninguna comida le gustaba a mi perro hasta que ha probado esta.»</p></li><li><span class="stars">★★★★★</span><p>«La mejor decisión que pude hacer por mi perra.»</p></li><li><span class="stars">★★★★★</span><p>«A mi dogo argentino le encanta la comida, va a comer más contento que nadie.»</p></li><li><span class="stars">★★★★★</span><p>«Es una maravilla verlos disfrutar así de su comida.»</p></li><li><span class="stars">★★★★★</span><p>«Muy contenta con su producto. A mi perro le sienta genial.»</p></li><li><span class="stars">★★★★★</span><p>«A mi perrita Suri le encanta, se lo come en un pispás.»</p></li><li><span class="stars">★★★★★</span><p>«Mi perro y yo estamos muy contentos con la comida.»</p></li></ul><ul aria-hidden="true"><li><span class="stars">★★★★★</span><p>«Estoy muy feliz con ellos. ¡Ya no volveremos al pienso nunca!»</p></li><li><span class="stars">★★★★★</span><p>«Ninguna comida le gustaba a mi perro hasta que ha probado esta.»</p></li><li><span class="stars">★★★★★</span><p>«La mejor decisión que pude hacer por mi perra.»</p></li><li><span class="stars">★★★★★</span><p>«A mi dogo argentino le encanta la comida, va a comer más contento que nadie.»</p></li><li><span class="stars">★★★★★</span><p>«Es una maravilla verlos disfrutar así de su comida.»</p></li><li><span class="stars">★★★★★</span><p>«Muy contenta con su producto. A mi perro le sienta genial.»</p></li><li><span class="stars">★★★★★</span><p>«A mi perrita Suri le encanta, se lo come en un pispás.»</p></li><li><span class="stars">★★★★★</span><p>«Mi perro y yo estamos muy contentos con la comida.»</p></li></ul></div></section>
-
 <section class="rp-info" id="info">
-  <div class="head"><p class="eyebrow">Información nutricional</p><h2 class="h2" style="margin-top:12px">Qué lleva su <span class="accent">menú de buey</span></h2></div>
-  <div class="rp-info-grid">
-    <div><h3 class="rp-h3">Ingredientes principales</h3><ul class="rp-ing"><li><div class="rp-ing-h"><b>Buey</b><span>60,5 %</span></div><p>Proteína de calidad que mejora el crecimiento muscular, el pelaje y aporta energía.</p><p class="rp-note">Asadura 48,6 %, carne 6,9 %, bazo 2,7 % e hígado 2,3 %</p></li><li><div class="rp-ing-h"><b>Zanahoria fresca</b><span>26 %</span></div><p>Rica en fibra y vitamina A, refuerza el sistema inmune, la piel y el pelaje.</p></li><li><div class="rp-ing-h"><b>Patata fresca</b><span>5,5 %</span></div><p>Nutritiva y antioxidante, brinda energía, contiene fibra y mejora la digestión.</p></li><li><div class="rp-ing-h"><b>Boniato fresco</b><span>3,6 %</span></div><p>Rico en nutrientes clave, ayuda a la salud cardiovascular y facilita la digestión.</p></li><li><div class="rp-ing-h"><b>Vitaminas y minerales</b><span>1,9 %</span></div><p>Vitales para asegurar un funcionamiento corporal óptimo y el bienestar general.</p></li><li><div class="rp-ing-h"><b>Aceite (salmón, oliva, girasol, canola)</b><span>1,6 %</span></div><p>Rico en grasas esenciales, aporta energía y mantiene el pelaje sano y brillante.</p></li><li><div class="rp-ing-h"><b>Almidón natural de patata</b><span>0,9 %</span></div><p>Asegura una consistencia perfecta, manteniendo intacto el sabor y la textura en cada bocado.</p></li></ul></div>
-    <div><h3 class="rp-h3">Componentes analíticos</h3><ul class="rp-an"><li><b>72 %</b><span>Humedad</span></li><li><b>12 %</b><span>Proteína bruta</span></li><li><b>10,5 %</b><span>Grasa bruta</span></li><li><b>1,3 %</b><span>Fibra bruta</span></li><li><b>1,2 %</b><span>Ceniza bruta</span></li><li><b>3 %</b><span>Carbohidratos</span></li></ul>
-      <div class="rp-prep"><h3 class="rp-h3">Modo de preparación</h3><ol><li>Descongela la bolsita en la nevera la noche anterior.</li><li>Ábrela y sirve la ración del día en su bol.</li><li>Una vez abierta, guárdala en la nevera y consúmela en un máximo de 4 días.</li></ol></div>
-    </div>
+  <div class="rp-accs">
+    <details class="rp-acc" open><summary><h2>Descripción</h2><span class="rp-acc-ico" aria-hidden="true"></span></summary>
+      <div class="rp-acc-body"><ul class="rp-desc"><li>Con un 60 % de buey y un 40 % de zanahoria, patata y otras verduras.</li><li><b>Una sola fuente de proteína animal:</b> buey fresco cocinado a baja temperatura.</li><li><b>Completo y equilibrado,</b> con vitaminas y minerales según la FEDIAF.</li><li>Sin cereales, sin conservantes y sin aromas artificiales.</li></ul></div></details>
+    <details class="rp-acc"><summary><h2>Ingredientes</h2><span class="rp-acc-ico" aria-hidden="true"></span></summary>
+      <div class="rp-acc-body rp-info-grid"><div><h3 class="rp-h3">Ingredientes principales</h3><ul class="rp-ing"><li><div class="rp-ing-h"><b>Buey</b><span>60,5 %</span></div><p>Proteína de calidad que mejora el crecimiento muscular, el pelaje y aporta energía.</p><p class="rp-note">Asadura 48,6 %, carne 6,9 %, bazo 2,7 % e hígado 2,3 %</p></li><li><div class="rp-ing-h"><b>Zanahoria fresca</b><span>26 %</span></div><p>Rica en fibra y vitamina A, refuerza el sistema inmune, la piel y el pelaje.</p></li><li><div class="rp-ing-h"><b>Patata fresca</b><span>5,5 %</span></div><p>Nutritiva y antioxidante, brinda energía, contiene fibra y mejora la digestión.</p></li><li><div class="rp-ing-h"><b>Boniato fresco</b><span>3,6 %</span></div><p>Rico en nutrientes clave, ayuda a la salud cardiovascular y facilita la digestión.</p></li><li><div class="rp-ing-h"><b>Vitaminas y minerales</b><span>1,9 %</span></div><p>Vitales para asegurar un funcionamiento corporal óptimo y el bienestar general.</p></li><li><div class="rp-ing-h"><b>Aceite (salmón, oliva, girasol, canola)</b><span>1,6 %</span></div><p>Rico en grasas esenciales, aporta energía y mantiene el pelaje sano y brillante.</p></li><li><div class="rp-ing-h"><b>Almidón natural de patata</b><span>0,9 %</span></div><p>Asegura una consistencia perfecta, manteniendo intacto el sabor y la textura en cada bocado.</p></li></ul></div><div><h3 class="rp-h3">Componentes analíticos</h3><ul class="rp-an"><li><b>72 %</b><span>Humedad</span></li><li><b>12 %</b><span>Proteína bruta</span></li><li><b>10,5 %</b><span>Grasa bruta</span></li><li><b>1,3 %</b><span>Fibra bruta</span></li><li><b>1,2 %</b><span>Ceniza bruta</span></li><li><b>3 %</b><span>Carbohidratos</span></li></ul></div></div></details>
+    <details class="rp-acc"><summary><h2>Modo de preparación</h2><span class="rp-acc-ico" aria-hidden="true"></span></summary>
+      <div class="rp-acc-body"><ol class="rp-prep-ol"><li>Descongela la bolsita en la nevera la noche anterior.</li><li>Ábrela y sirve la ración del día en su bol. No hace falta cocinarla.</li><li>Una vez abierta, guárdala en la nevera y consúmela en un máximo de 4 días.</li></ol></div></details>
+    <details class="rp-acc"><summary><h2>Guía de alimentación</h2><span class="rp-acc-ico" aria-hidden="true"></span></summary>
+      <div class="rp-acc-body"><table class="rp-guia"><thead><tr><th>Peso del perro</th><th>Cantidad diaria orientativa</th></tr></thead><tbody><tr><td>5 kg</td><td>190 g</td></tr><tr><td>10 kg</td><td>320 g</td></tr><tr><td>15 kg</td><td>430 g</td></tr><tr><td>20 kg</td><td>540 g</td></tr><tr><td>30 kg</td><td>730 g</td></tr><tr><td>40 kg</td><td>900 g</td></tr></tbody></table><p class="rp-guia-note">Cantidades orientativas para un perro adulto con actividad moderada. Al crear su plan calculamos su ración exacta.</p></div></details>
   </div>
 </section>
 
-<section class="rp-others">
-  <div class="head"><h2 class="h2">Descubre <span class="accent">otras recetas</span></h2></div>
-  <div class="rp-minis"><a class="rp-mini" href="receta-pollo.html" style="--tint:#fff6c7"><img src="assets/receta-pollo.jpg" alt="" loading="lazy"><span>Menú de pollo</span></a><a class="rp-mini" href="receta-pavo.html" style="--tint:#e4d5f3"><img src="assets/receta-pavo.jpg" alt="" loading="lazy"><span>Menú de pavo</span></a><a class="rp-mini" href="receta-salmon.html" style="--tint:#fde0c8"><img src="assets/receta-salmon.jpg" alt="" loading="lazy"><span>Menú de salmón</span></a></div>
+<section class="rp-rev-sec slim">
+  <div class="head"><h2 class="h2">Lo que opinan de nuestro <span class="accent">menú de buey</span></h2></div>
+  <div class="rp-reviews"><ul><li><span class="stars">★★★★★</span><p>«Estoy muy feliz con ellos. ¡Ya no volveremos al pienso nunca!»</p></li><li><span class="stars">★★★★★</span><p>«Ninguna comida le gustaba a mi perro hasta que ha probado esta.»</p></li><li><span class="stars">★★★★★</span><p>«La mejor decisión que pude hacer por mi perra.»</p></li><li><span class="stars">★★★★★</span><p>«A mi dogo argentino le encanta la comida, va a comer más contento que nadie.»</p></li><li><span class="stars">★★★★★</span><p>«Es una maravilla verlos disfrutar así de su comida.»</p></li><li><span class="stars">★★★★★</span><p>«Muy contenta con su producto. A mi perro le sienta genial.»</p></li><li><span class="stars">★★★★★</span><p>«A mi perrita Suri le encanta, se lo come en un pispás.»</p></li><li><span class="stars">★★★★★</span><p>«Mi perro y yo estamos muy contentos con la comida.»</p></li></ul><ul aria-hidden="true"><li><span class="stars">★★★★★</span><p>«Estoy muy feliz con ellos. ¡Ya no volveremos al pienso nunca!»</p></li><li><span class="stars">★★★★★</span><p>«Ninguna comida le gustaba a mi perro hasta que ha probado esta.»</p></li><li><span class="stars">★★★★★</span><p>«La mejor decisión que pude hacer por mi perra.»</p></li><li><span class="stars">★★★★★</span><p>«A mi dogo argentino le encanta la comida, va a comer más contento que nadie.»</p></li><li><span class="stars">★★★★★</span><p>«Es una maravilla verlos disfrutar así de su comida.»</p></li><li><span class="stars">★★★★★</span><p>«Muy contenta con su producto. A mi perro le sienta genial.»</p></li><li><span class="stars">★★★★★</span><p>«A mi perrita Suri le encanta, se lo come en un pispás.»</p></li><li><span class="stars">★★★★★</span><p>«Mi perro y yo estamos muy contentos con la comida.»</p></li></ul></div>
+  <a class="rp-tp" href="https://es.trustpilot.com/review/dogfydiet.com" target="_blank" rel="noopener"><span class="rp-tp-stars" aria-hidden="true">★★★★★</span><b>4,5</b> en Trustpilot · 12.480 opiniones</a>
 </section>
 
+<section class="rp-others">
+  <div class="head"><h2 class="h2">También te puede <span class="accent">interesar</span></h2></div>
+  <div class="rc-grid rc-grid-3">
+    <article class="rc-card" onclick="if(!event.target.closest('a'))location.href='receta-pollo.html'">
+      <div class="rc-media"><div class="rc-img"><img src="assets/receta-pollo.jpg" alt="Bol del menú de pollo de Dogfy Diet" loading="lazy" decoding="async"><img class="rc-pack" src="assets/rc-pack-chicken.jpg" alt="Envase del menú de pollo de Dogfy Diet" loading="lazy" decoding="async"></div></div>
+      <div class="rc-body">
+        <div class="rc-top"><h3>Pollo</h3><span class="rc-sold"><b>139.571</b> vendidos/mes</span></div>
+        <ul class="rc-list"><li><img src="assets/rc-heart.svg" alt="">Mantiene los músculos fuertes.</li><li><img src="assets/rc-sparkles.svg" alt="">Favorece un pelaje sano y brillante.</li><li><img src="assets/rc-ham.svg" alt="">Contiene una sola fuente de proteína.</li></ul>
+        <div class="rc-foot"><a class="rc-toggle" href="receta-pollo.html" aria-label="Ver el menú de pollo"><span>Ver receta</span><svg class="rc-chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></a></div>
+      </div>
+    </article>
+    <article class="rc-card" onclick="if(!event.target.closest('a'))location.href='receta-salmon.html'">
+      <div class="rc-media"><div class="rc-img"><img src="assets/receta-salmon.jpg" alt="Bol del menú de salmón de Dogfy Diet" loading="lazy" decoding="async"><img class="rc-pack" src="assets/rc-pack-salmon.jpg" alt="Envase del menú de salmón de Dogfy Diet" loading="lazy" decoding="async"></div></div>
+      <div class="rc-body">
+        <div class="rc-top"><h3>Salmón</h3><span class="rc-sold"><b>139.312</b> vendidos/mes</span></div>
+        <ul class="rc-list"><li><img src="assets/rc-heart.svg" alt="">Ideal para hocicos refinados.</li><li><img src="assets/rc-sparkles.svg" alt="">Favorece el desarrollo del sistema nervioso.</li><li><img src="assets/rc-ham.svg" alt="">Ayuda a fortalecer la salud ósea.</li></ul>
+        <div class="rc-foot"><a class="rc-toggle" href="receta-salmon.html" aria-label="Ver el menú de salmón"><span>Ver receta</span><svg class="rc-chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></a></div>
+      </div>
+    </article>
+    <article class="rc-card" onclick="if(!event.target.closest('a'))location.href='receta-pavo.html'">
+      <div class="rc-media"><div class="rc-img"><img src="assets/receta-pavo.jpg" alt="Bol del menú de pavo de Dogfy Diet" loading="lazy" decoding="async"><img class="rc-pack" src="assets/rc-pack-turkey.jpg" alt="Envase del menú de pavo de Dogfy Diet" loading="lazy" decoding="async"></div></div>
+      <div class="rc-body">
+        <div class="rc-top"><h3>Pavo</h3><span class="rc-sold"><b>140.611</b> vendidos/mes</span></div>
+        <ul class="rc-list"><li><img src="assets/rc-heart.svg" alt="">Ideal para estómagos sensibles.</li><li><img src="assets/rc-sparkles.svg" alt="">Refuerza la salud intestinal.</li><li><img src="assets/rc-ham.svg" alt="">Contiene una sola fuente de proteína.</li></ul>
+        <div class="rc-foot"><a class="rc-toggle" href="receta-pavo.html" aria-label="Ver el menú de pavo"><span>Ver receta</span><svg class="rc-chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></a></div>
+      </div>
+    </article></div>
+</section>
+
+<section class="rp-blog">
+  <div class="head"><h2 class="h2">No te pierdas <span class="accent">nada</span> sobre su alimentación</h2></div>
+  <div class="rp-blog-list"><article><h3><a href="#">Una alimentación inadecuada puede afectar a tu perro</a></h3><p>Los perros, al igual que los humanos, necesitan un equilibrio adecuado de nutrientes para mantener su salud. Su dieta debe incluir una combinación adecuada de proteínas, grasas, vitaminas y minerales.</p></article><article><h3><a href="#">Cómo pasar del pienso a la comida natural</a></h3><p>Hacer el cambio poco a poco ayuda a que su estómago se adapte. Con el primer pedido recibes una guía de transición para los primeros días.</p></article><article><h3><a href="#">¿Cuánta comida necesita tu perro al día?</a></h3><p>La ración depende de su peso, su edad y su actividad. Te explicamos cómo calcularla y por qué cada perro necesita una cantidad distinta.</p></article></div>
+</section>
+
+<section class="s-faq rp-faq" id="faq">
+  <div class="head">
+    <p class="eyebrow">FAQs</p>
+    <h2 class="h2">Preguntas frecuentes sobre el <span class="accent">menú de buey</span></h2>
+  </div>
+  <div class="faq"><details open><summary>¿Qué formatos hay? <img src="assets/chevron-faq.svg" alt=""></summary><div class="ans">Cada menú llega en bolsitas individuales con la ración diaria de tu perro, ya calculada según su peso, edad y actividad. Puedes elegir una receta o combinar varias en el mismo pedido.</div></details><details><summary>¿Qué cantidad se le debe dar? <img src="assets/chevron-faq.svg" alt=""></summary><div class="ans">Depende de su peso, edad y nivel de actividad. Al crear su plan calculamos su ración diaria exacta y cada bolsita contiene justo esa cantidad, así que no tienes que pesar nada.</div></details><details><summary>¿Cómo llega el producto? <img src="assets/chevron-faq.svg" alt=""></summary><div class="ans">Te lo enviamos a casa congelado y dividido en bolsitas diarias, con envío gratis. Solo tienes que guardarlo en el congelador al recibirlo.</div></details></div>
+</section>
 <section class="rp-start" aria-label="Empieza su prueba">
   <div class="st-card">
     <div class="st-photo"><img src="assets/start-perro.jpg" alt="Un perro tumbado en el suelo enseñando los dientes mientras juega" loading="lazy" decoding="async"></div>
@@ -1264,6 +1394,9 @@ const probe=document.createElement('span');probe.className='st-probe';document.b
 const fit=el=>{const cs=getComputedStyle(el);probe.style.font=cs.font;probe.style.letterSpacing=cs.letterSpacing;probe.textContent=el.tagName==='SELECT'?el.options[el.selectedIndex].text:(el.value||el.placeholder);el.style.width=(probe.offsetWidth+2)+'px';};
 const all=[...document.querySelectorAll('.st-mad input,.st-mad select')];all.forEach(el=>{fit(el);el.addEventListener(el.tagName==='SELECT'?'change':'input',()=>fit(el));});
 addEventListener('resize',()=>all.forEach(fit));if(document.fonts)document.fonts.ready.then(()=>all.forEach(fit));})();
+
+// Ficha: galería (miniaturas que cambian la imagen principal)
+(()=>{const main=document.getElementById('galMain');if(!main)return;document.querySelectorAll('.rp-thumb').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.rp-thumb').forEach(x=>x.classList.toggle('is-on',x===b));main.src=b.dataset.src;main.alt=b.dataset.alt;}));})();
 
 (()=>{const l=document.querySelector('.rp-tabs-list'),a=l&&l.querySelector('.active');if(a&&l.scrollWidth>l.clientWidth)l.scrollLeft=a.offsetLeft-l.offsetLeft-(l.clientWidth-a.offsetWidth)/2;})();
 </script>
