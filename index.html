@@ -594,7 +594,8 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
   .mobile-menu.open~.cta-bar,body.menu-open .cta-bar{display:none}
 }
 @media (max-width:600px){.header .container>a:first-child img{width:62px;height:35px}
-  /* Stepper móvil: insignias, iconos, títulos y pie de la foto más pequeños */
+  /* Stepper móvil: sin insignias numeradas (el pie de la foto ya marca el paso); títulos y pie más pequeños */
+  .step .ind{display:none}
   .step{gap:10px}
   .step .ind{flex:0 0 32px}
   .step .dot{width:32px;height:32px}
