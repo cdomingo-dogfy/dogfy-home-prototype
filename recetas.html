@@ -1061,6 +1061,43 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
   .rc-img{border-radius:18px}
   .rc-list{font-size:12px;line-height:18px}
 }
+/* Barra de pestañas de la ficha: botón para volver al listado */
+.rp-tabs.has-back{position:sticky;align-items:center}
+.rp-tabs-list{display:flex;gap:8px;justify-content:center}
+.rp-tabs-back{position:absolute;left:var(--gutter);top:50%;transform:translateY(-50%);display:inline-flex;align-items:center;gap:4px;height:44px;padding:0 16px 0 10px;border-radius:999px;background:#fff;color:var(--text-hi);font-family:var(--font-display);font-weight:600;font-size:15px;box-shadow:0 1px 3px rgba(0,0,0,.08);transition:background .2s}
+.rp-tabs-back:hover{background:var(--sand)}
+.rp-tabs-back svg{transition:transform .25s cubic-bezier(.2,.8,.2,1)}
+.rp-tabs-back:hover svg{transform:translateX(-3px)}
+@media (max-width:1000px){.rp-tabs.has-back{justify-content:flex-start;gap:8px}.rp-tabs-back{position:static;transform:none;flex:0 0 auto;padding:0 12px 0 8px}}
+@media (max-width:600px){.rp-tabs-back{width:44px;padding:0;justify-content:center}.rp-tabs-back span{display:none}.rp-tabs.has-back{overflow:visible}.rp-tabs-list{overflow-x:auto;scrollbar-width:none;justify-content:flex-start}.rp-tabs-list::-webkit-scrollbar{display:none}}
+/* Ladridos de felicidad (copiada de dogfydiet.com/nuestras-recetas) */
+.bk-sec{position:relative;padding:40px 0 64px;background:#fff;overflow:hidden}
+.bk-sec{background-image:url("assets/bark-pattern.webp")}
+.bk-head{position:relative;max-width:var(--container);margin:0 auto;padding:0 var(--gutter);text-align:center}
+.bk-head h2{font-family:var(--font-display);font-weight:500;font-size:clamp(30px,3.6vw,48px);line-height:1.2;color:var(--text-hi);letter-spacing:-.01em}
+.bk-badge{position:absolute;right:max(var(--gutter),calc(50% - 600px));top:-24px;transform:rotate(7deg);display:flex;flex-direction:column;align-items:center;gap:2px;padding:12px 30px;border-radius:52px;background:#f9f8f7;border:2px solid #ddcab1;box-shadow:0 0 0 6px #f9f8f7,0 4px 14px rgba(0,0,0,.08);font-family:var(--font-display);text-transform:uppercase;color:var(--text-hi)}
+.bk-badge b{font-size:15px;letter-spacing:.08em;line-height:1.1}
+.bk-badge span{color:#ed6948;font-size:22px;letter-spacing:2px;line-height:1}
+.bk-wrap{position:relative;max-width:1180px;margin:44px auto 0;padding:0 var(--gutter)}
+.bk-track{display:flex;gap:38px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding:4px 2px}
+.bk-track::-webkit-scrollbar{display:none}
+.bk-card{position:relative;flex:0 0 345px;aspect-ratio:345/460;border-radius:12px;overflow:hidden;scroll-snap-align:start;background:#ddd;padding:0;text-align:left;color:#fff;cursor:pointer}
+.bk-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.bk-card:hover img{transform:scale(1.03)}
+.bk-card::after{content:"";position:absolute;inset:auto 0 0 0;height:45%;background:linear-gradient(transparent,rgba(0,0,0,.6));pointer-events:none}
+.bk-play{position:absolute;top:16px;right:16px;z-index:2;width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.3);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);display:grid;place-items:center}
+.bk-info{position:absolute;left:24px;bottom:24px;z-index:2;display:flex;flex-direction:column;gap:2px;font-family:var(--font-body)}
+.bk-stars{font-size:16px;letter-spacing:3px;margin-bottom:6px}
+.bk-info b{font-family:var(--font-display);font-size:22px;line-height:1.2}
+.bk-info span:last-child{font-size:15px;opacity:.9}
+.bk-card video{position:absolute;inset:0;z-index:3;width:100%;height:100%;object-fit:cover;background:#000}
+.bk-card.playing{cursor:default}
+.bk-arrow{position:absolute;top:50%;z-index:4;transform:translateY(-50%);width:48px;height:48px;border-radius:50%;background:#fff;color:var(--text-toned);display:grid;place-items:center;box-shadow:0 2px 10px rgba(0,0,0,.12);transition:opacity .2s}
+.bk-arrow.prev{left:calc(var(--gutter) + 24px)}.bk-arrow.next{right:calc(var(--gutter) + 24px)}
+.bk-arrow:disabled{opacity:0;pointer-events:none}
+.bk-yummy{position:absolute;left:calc(var(--gutter) - 70px);bottom:-10px;z-index:5;width:139px;transform:rotate(-12deg);pointer-events:none}
+@media (max-width:900px){.bk-badge{display:none}.bk-yummy{width:100px;left:-14px}}
+@media (max-width:600px){.bk-track{gap:16px}.bk-card{flex-basis:78vw}.bk-arrow{display:none}.bk-yummy{display:none}.bk-sec{padding:32px 0 48px}}
 </style>
 </head>
 <body>
@@ -1144,9 +1181,17 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
 </section>
 <div class="rp-marquee alt" aria-label="Alimentación completa y equilibrada · Plan personalizado a las necesidades de tu peludo · Ingredientes frescos y de alta calidad · Cocinado a baja temperatura · Directo a tu casa cuando quieras"><ul><li>Alimentación completa y equilibrada</li><li>Plan personalizado a las necesidades de tu peludo</li><li>Ingredientes frescos y de alta calidad</li><li>Cocinado a baja temperatura</li><li>Directo a tu casa cuando quieras</li></ul><ul aria-hidden="true"><li>Alimentación completa y equilibrada</li><li>Plan personalizado a las necesidades de tu peludo</li><li>Ingredientes frescos y de alta calidad</li><li>Cocinado a baja temperatura</li><li>Directo a tu casa cuando quieras</li></ul></div>
 
-<section class="rp-rev-sec">
-  <div class="head"><h2 class="h2">Algunos <span class="accent">ladridos</span> de felicidad</h2></div>
-  <div class="rp-reviews"><ul><li><span class="stars">★★★★★</span><p>«Estoy muy feliz con ellos. ¡Ya no volveremos al pienso nunca!»</p></li><li><span class="stars">★★★★★</span><p>«Ninguna comida le gustaba a mi perro hasta que ha probado esta.»</p></li><li><span class="stars">★★★★★</span><p>«La mejor decisión que pude hacer por mi perra.»</p></li><li><span class="stars">★★★★★</span><p>«A mi dogo argentino le encanta la comida, va a comer más contento que nadie.»</p></li><li><span class="stars">★★★★★</span><p>«Es una maravilla verlos disfrutar así de su comida.»</p></li><li><span class="stars">★★★★★</span><p>«Muy contenta con su producto. A mi perro le sienta genial.»</p></li><li><span class="stars">★★★★★</span><p>«A mi perrita Suri le encanta, se lo come en un pispás.»</p></li><li><span class="stars">★★★★★</span><p>«Mi perro y yo estamos muy contentos con la comida.»</p></li></ul><ul aria-hidden="true"><li><span class="stars">★★★★★</span><p>«Estoy muy feliz con ellos. ¡Ya no volveremos al pienso nunca!»</p></li><li><span class="stars">★★★★★</span><p>«Ninguna comida le gustaba a mi perro hasta que ha probado esta.»</p></li><li><span class="stars">★★★★★</span><p>«La mejor decisión que pude hacer por mi perra.»</p></li><li><span class="stars">★★★★★</span><p>«A mi dogo argentino le encanta la comida, va a comer más contento que nadie.»</p></li><li><span class="stars">★★★★★</span><p>«Es una maravilla verlos disfrutar así de su comida.»</p></li><li><span class="stars">★★★★★</span><p>«Muy contenta con su producto. A mi perro le sienta genial.»</p></li><li><span class="stars">★★★★★</span><p>«A mi perrita Suri le encanta, se lo come en un pispás.»</p></li><li><span class="stars">★★★★★</span><p>«Mi perro y yo estamos muy contentos con la comida.»</p></li></ul></div>
+<section class="bk-sec" aria-labelledby="bkTitle">
+  <div class="bk-head">
+    <h2 id="bkTitle">Algunos ladridos de felicidad</h2>
+    <div class="bk-badge" aria-hidden="true"><b>Ladridos</b><span>★★★★★</span><b>de felicidad</b></div>
+  </div>
+  <div class="bk-wrap">
+    <img class="bk-yummy" src="assets/bark-sticker-yummy.svg" alt="" aria-hidden="true">
+    <button class="bk-arrow prev" type="button" aria-label="Anterior"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></button>
+    <div class="bk-track" id="bkTrack"><button class="bk-card" type="button" data-video="https://stream.mux.com/5WmqpYq14lxEo7kdvuGmAM6Pw34BUlisKVZlxPNXG3o/medium.mp4" aria-label="Ver el vídeo de Lore"><img src="assets/bark-lore.webp" alt="" loading="lazy" decoding="async"><span class="bk-play" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></span><span class="bk-info"><span class="bk-stars" aria-label="5 estrellas">★★★★★</span><b>Lore</b><span>Dogfyer</span></span></button><button class="bk-card" type="button" data-video="https://stream.mux.com/UmXzlzedLbM7KL6GlwLINORLGWv1e29OSVrWSbghbEY/medium.mp4" aria-label="Ver el vídeo de Pol"><img src="assets/bark-pol.webp" alt="" loading="lazy" decoding="async"><span class="bk-play" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></span><span class="bk-info"><span class="bk-stars" aria-label="5 estrellas">★★★★★</span><b>Pol</b><span>Dogfyer</span></span></button><button class="bk-card" type="button" data-video="https://stream.mux.com/WekBB02R1DvWObRLSdzRb02X00xk1znidHmFh1KilnzgcY/medium.mp4" aria-label="Ver el vídeo de Pamela"><img src="assets/bark-pamela.webp" alt="" loading="lazy" decoding="async"><span class="bk-play" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></span><span class="bk-info"><span class="bk-stars" aria-label="5 estrellas">★★★★★</span><b>Pamela</b><span>Dogfyer</span></span></button><button class="bk-card" type="button" data-video="https://stream.mux.com/R6vYBsMGxb00D4xc6t3AKBJiavtyl02W6xn0201NwVSzzQI/medium.mp4" aria-label="Ver el vídeo de Eloy"><img src="assets/bark-eloy.webp" alt="" loading="lazy" decoding="async"><span class="bk-play" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></span><span class="bk-info"><span class="bk-stars" aria-label="5 estrellas">★★★★★</span><b>Eloy</b><span>Dogfyer desde hace 1 año</span></span></button><button class="bk-card" type="button" data-video="https://stream.mux.com/elTKCgJUL7mQG01017TiddqAZ100VD9Hv8NIvO38X3PZww/medium.mp4" aria-label="Ver el vídeo de Eva"><img src="assets/bark-eva.webp" alt="" loading="lazy" decoding="async"><span class="bk-play" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></span><span class="bk-info"><span class="bk-stars" aria-label="5 estrellas">★★★★★</span><b>Eva</b><span>Mami perruna</span></span></button><button class="bk-card" type="button" data-video="https://stream.mux.com/tsmtKtV6vNSKdZlHBT6fsJxTfbfXWfL19CfUDYxDia00/medium.mp4" aria-label="Ver el vídeo de Cristina"><img src="assets/bark-cristina.webp" alt="" loading="lazy" decoding="async"><span class="bk-play" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></span><span class="bk-info"><span class="bk-stars" aria-label="5 estrellas">★★★★★</span><b>Cristina</b><span>Mamá de Narco</span></span></button></div>
+    <button class="bk-arrow next" type="button" aria-label="Siguiente"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+  </div>
 </section>
 
 <section class="rp-snacks">
@@ -1202,6 +1247,16 @@ const burger=document.getElementById('burger'),menu=document.getElementById('mob
 burger.addEventListener('click',()=>{menu.style.setProperty('--menu-top',document.querySelector('.header').getBoundingClientRect().bottom+'px');const o=menu.classList.toggle('open');burger.setAttribute('aria-expanded',o);burger.setAttribute('aria-label',o?'Cerrar menú':'Abrir menú');document.body.style.overflow=o?'hidden':'';document.body.classList.toggle('menu-open',o);if(o)setTimeout(()=>menu.querySelector('a')?.focus(),260);});
 addEventListener('keydown',e=>{if(e.key==='Escape'&&menu.classList.contains('open')){menu.classList.remove('open');burger.setAttribute('aria-expanded','false');burger.setAttribute('aria-label','Abrir menú');document.body.style.overflow='';burger.focus();}});
 menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{menu.classList.remove('open');document.body.style.overflow='';document.body.classList.remove('menu-open')}));
+// Ladridos de felicidad: flechas del carrusel y vídeo al pulsar la tarjeta
+(()=>{const t=document.getElementById('bkTrack');if(!t)return;const step=()=>{const c=t.querySelector('.bk-card');return c?c.offsetWidth+parseFloat(getComputedStyle(t).columnGap||0):300};
+const prev=document.querySelector('.bk-arrow.prev'),next=document.querySelector('.bk-arrow.next');
+const upd=()=>{prev.disabled=t.scrollLeft<4;next.disabled=t.scrollLeft+t.clientWidth>=t.scrollWidth-4;};
+prev.addEventListener('click',()=>t.scrollBy({left:-step(),behavior:'smooth'}));next.addEventListener('click',()=>t.scrollBy({left:step(),behavior:'smooth'}));
+t.addEventListener('scroll',upd,{passive:true});addEventListener('resize',upd);upd();
+const stopAll=()=>t.querySelectorAll('.bk-card.playing').forEach(c=>{c.querySelector('video')?.remove();c.classList.remove('playing');});
+t.querySelectorAll('.bk-card').forEach(c=>c.addEventListener('click',()=>{if(c.classList.contains('playing'))return;stopAll();const v=document.createElement('video');v.src=c.dataset.video;v.controls=true;v.autoplay=true;v.playsInline=true;v.addEventListener('ended',stopAll);c.appendChild(v);c.classList.add('playing');}));})();
+
+(()=>{const l=document.querySelector('.rp-tabs-list'),a=l&&l.querySelector('.active');if(a&&l.scrollWidth>l.clientWidth)l.scrollLeft=a.offsetLeft-l.offsetLeft-(l.clientWidth-a.offsetWidth)/2;})();
 </script>
 </body>
 </html>

@@ -1070,6 +1070,34 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
 .rp-tabs-back:hover svg{transform:translateX(-3px)}
 @media (max-width:1000px){.rp-tabs.has-back{justify-content:flex-start;gap:8px}.rp-tabs-back{position:static;transform:none;flex:0 0 auto;padding:0 12px 0 8px}}
 @media (max-width:600px){.rp-tabs-back{width:44px;padding:0;justify-content:center}.rp-tabs-back span{display:none}.rp-tabs.has-back{overflow:visible}.rp-tabs-list{overflow-x:auto;scrollbar-width:none;justify-content:flex-start}.rp-tabs-list::-webkit-scrollbar{display:none}}
+/* Ladridos de felicidad (copiada de dogfydiet.com/nuestras-recetas) */
+.bk-sec{position:relative;padding:40px 0 64px;background:#fff;overflow:hidden}
+.bk-sec{background-image:url("assets/bark-pattern.webp")}
+.bk-head{position:relative;max-width:var(--container);margin:0 auto;padding:0 var(--gutter);text-align:center}
+.bk-head h2{font-family:var(--font-display);font-weight:500;font-size:clamp(30px,3.6vw,48px);line-height:1.2;color:var(--text-hi);letter-spacing:-.01em}
+.bk-badge{position:absolute;right:max(var(--gutter),calc(50% - 600px));top:-24px;transform:rotate(7deg);display:flex;flex-direction:column;align-items:center;gap:2px;padding:12px 30px;border-radius:52px;background:#f9f8f7;border:2px solid #ddcab1;box-shadow:0 0 0 6px #f9f8f7,0 4px 14px rgba(0,0,0,.08);font-family:var(--font-display);text-transform:uppercase;color:var(--text-hi)}
+.bk-badge b{font-size:15px;letter-spacing:.08em;line-height:1.1}
+.bk-badge span{color:#ed6948;font-size:22px;letter-spacing:2px;line-height:1}
+.bk-wrap{position:relative;max-width:1180px;margin:44px auto 0;padding:0 var(--gutter)}
+.bk-track{display:flex;gap:38px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding:4px 2px}
+.bk-track::-webkit-scrollbar{display:none}
+.bk-card{position:relative;flex:0 0 345px;aspect-ratio:345/460;border-radius:12px;overflow:hidden;scroll-snap-align:start;background:#ddd;padding:0;text-align:left;color:#fff;cursor:pointer}
+.bk-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.bk-card:hover img{transform:scale(1.03)}
+.bk-card::after{content:"";position:absolute;inset:auto 0 0 0;height:45%;background:linear-gradient(transparent,rgba(0,0,0,.6));pointer-events:none}
+.bk-play{position:absolute;top:16px;right:16px;z-index:2;width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.3);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);display:grid;place-items:center}
+.bk-info{position:absolute;left:24px;bottom:24px;z-index:2;display:flex;flex-direction:column;gap:2px;font-family:var(--font-body)}
+.bk-stars{font-size:16px;letter-spacing:3px;margin-bottom:6px}
+.bk-info b{font-family:var(--font-display);font-size:22px;line-height:1.2}
+.bk-info span:last-child{font-size:15px;opacity:.9}
+.bk-card video{position:absolute;inset:0;z-index:3;width:100%;height:100%;object-fit:cover;background:#000}
+.bk-card.playing{cursor:default}
+.bk-arrow{position:absolute;top:50%;z-index:4;transform:translateY(-50%);width:48px;height:48px;border-radius:50%;background:#fff;color:var(--text-toned);display:grid;place-items:center;box-shadow:0 2px 10px rgba(0,0,0,.12);transition:opacity .2s}
+.bk-arrow.prev{left:calc(var(--gutter) + 24px)}.bk-arrow.next{right:calc(var(--gutter) + 24px)}
+.bk-arrow:disabled{opacity:0;pointer-events:none}
+.bk-yummy{position:absolute;left:calc(var(--gutter) - 70px);bottom:-10px;z-index:5;width:139px;transform:rotate(-12deg);pointer-events:none}
+@media (max-width:900px){.bk-badge{display:none}.bk-yummy{width:100px;left:-14px}}
+@media (max-width:600px){.bk-track{gap:16px}.bk-card{flex-basis:78vw}.bk-arrow{display:none}.bk-yummy{display:none}.bk-sec{padding:32px 0 48px}}
 </style>
 </head>
 <body>
@@ -1179,6 +1207,15 @@ const burger=document.getElementById('burger'),menu=document.getElementById('mob
 burger.addEventListener('click',()=>{menu.style.setProperty('--menu-top',document.querySelector('.header').getBoundingClientRect().bottom+'px');const o=menu.classList.toggle('open');burger.setAttribute('aria-expanded',o);burger.setAttribute('aria-label',o?'Cerrar menú':'Abrir menú');document.body.style.overflow=o?'hidden':'';document.body.classList.toggle('menu-open',o);if(o)setTimeout(()=>menu.querySelector('a')?.focus(),260);});
 addEventListener('keydown',e=>{if(e.key==='Escape'&&menu.classList.contains('open')){menu.classList.remove('open');burger.setAttribute('aria-expanded','false');burger.setAttribute('aria-label','Abrir menú');document.body.style.overflow='';burger.focus();}});
 menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{menu.classList.remove('open');document.body.style.overflow='';document.body.classList.remove('menu-open')}));
+// Ladridos de felicidad: flechas del carrusel y vídeo al pulsar la tarjeta
+(()=>{const t=document.getElementById('bkTrack');if(!t)return;const step=()=>{const c=t.querySelector('.bk-card');return c?c.offsetWidth+parseFloat(getComputedStyle(t).columnGap||0):300};
+const prev=document.querySelector('.bk-arrow.prev'),next=document.querySelector('.bk-arrow.next');
+const upd=()=>{prev.disabled=t.scrollLeft<4;next.disabled=t.scrollLeft+t.clientWidth>=t.scrollWidth-4;};
+prev.addEventListener('click',()=>t.scrollBy({left:-step(),behavior:'smooth'}));next.addEventListener('click',()=>t.scrollBy({left:step(),behavior:'smooth'}));
+t.addEventListener('scroll',upd,{passive:true});addEventListener('resize',upd);upd();
+const stopAll=()=>t.querySelectorAll('.bk-card.playing').forEach(c=>{c.querySelector('video')?.remove();c.classList.remove('playing');});
+t.querySelectorAll('.bk-card').forEach(c=>c.addEventListener('click',()=>{if(c.classList.contains('playing'))return;stopAll();const v=document.createElement('video');v.src=c.dataset.video;v.controls=true;v.autoplay=true;v.playsInline=true;v.addEventListener('ended',stopAll);c.appendChild(v);c.classList.add('playing');}));})();
+
 (()=>{const l=document.querySelector('.rp-tabs-list'),a=l&&l.querySelector('.active');if(a&&l.scrollWidth>l.clientWidth)l.scrollLeft=a.offsetLeft-l.offsetLeft-(l.clientWidth-a.offsetWidth)/2;})();
 </script>
 </body>
