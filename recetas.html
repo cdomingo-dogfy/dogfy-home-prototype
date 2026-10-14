@@ -1259,6 +1259,29 @@ body:has(.rp-hero) .rp-crumbs{background:var(--blue-deco);max-width:none;padding
 /* Beneficios sin miniaturas: pill + descripción alineada */
 .rp-ben p{margin:10px 0 0 4px}
 .rp-bens{gap:22px}
+/* Blog: tarjetas de artículo */
+.rp-blog{background:var(--bg-elev)}
+.bl-head{max-width:var(--container);margin:0 auto 40px;display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.bl-head .h2{margin-top:8px;max-width:640px}
+.bl-all{display:inline-flex;align-items:center;gap:6px;height:44px;padding:0 18px;border-radius:999px;background:#fff;border:1px solid var(--border);font-family:var(--font-display);font-weight:600;font-size:15px;color:var(--text-hi);transition:background .2s}
+.bl-all:hover{background:var(--sand)}
+.bl-grid{max-width:var(--container);margin:0 auto;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.bl-card{position:relative;display:flex;flex-direction:column;background:#fff;border-radius:24px;overflow:hidden;box-shadow:0 1px 2px rgba(41,38,36,.06),0 16px 32px -18px rgba(41,38,36,.22);transition:transform .3s,box-shadow .3s}
+.bl-card:hover{transform:translateY(-4px);box-shadow:0 14px 36px rgba(41,38,36,.14),0 3px 8px rgba(41,38,36,.06)}
+.bl-img{display:block;aspect-ratio:16/10;overflow:hidden}
+.bl-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.bl-card:hover .bl-img img{transform:scale(1.04)}
+.bl-body{display:flex;flex-direction:column;gap:10px;padding:20px 22px 22px;flex:1}
+.bl-meta{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--text-toned)}
+.bl-tag{padding:3px 10px;border-radius:999px;background:var(--blue);color:#3c55a8;font-weight:600}
+.bl-card h3{font-size:20px;line-height:1.2}
+.bl-card h3 a::after{content:"";position:absolute;inset:0}
+.bl-card p{font-size:15px;line-height:22px;color:var(--text)}
+.bl-more{margin-top:auto;padding-top:6px;display:inline-flex;align-items:center;gap:6px;font-family:var(--font-display);font-weight:600;font-size:15px;color:var(--text-hi)}
+.bl-more svg{transition:transform .25s cubic-bezier(.2,.8,.2,1)}
+.bl-card:hover .bl-more svg{transform:translateX(4px)}
+@media (max-width:900px){.bl-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:600px){.bl-grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:16px;margin-inline:calc(-1 * var(--gutter));padding:4px var(--gutter) 20px;scrollbar-width:none}.bl-grid::-webkit-scrollbar{display:none}.bl-card{flex:0 0 82%;scroll-snap-align:center}.bl-head{margin-bottom:24px}}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://cdomingo-dogfy.github.io/dogfy-home-prototype/index.html"}, {"@type": "ListItem", "position": 2, "name": "Nuestras recetas", "item": "https://cdomingo-dogfy.github.io/dogfy-home-prototype/recetas.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "¿Qué formatos hay?", "acceptedAnswer": {"@type": "Answer", "text": "Cada menú llega en bolsitas individuales con la ración diaria de tu perro, ya calculada según su peso, edad y actividad. Puedes elegir una receta o combinar varias en el mismo pedido."}}, {"@type": "Question", "name": "¿Qué cantidad se le debe dar?", "acceptedAnswer": {"@type": "Answer", "text": "Depende de su peso, edad y nivel de actividad. Al crear su plan calculamos su ración diaria exacta y cada bolsita contiene justo esa cantidad, así que no tienes que pesar nada."}}, {"@type": "Question", "name": "¿Cómo llega el producto?", "acceptedAnswer": {"@type": "Answer", "text": "Te lo enviamos a casa congelado y dividido en bolsitas diarias, con envío gratis. Solo tienes que guardarlo en el congelador al recibirlo."}}, {"@type": "Question", "name": "¿Cómo se prepara, debo cocinar el alimento al perro?", "acceptedAnswer": {"@type": "Answer", "text": "No hace falta cocinar nada. Nuestras recetas ya vienen cocinadas a baja temperatura: descongela la bolsita en la nevera, ábrela y sirve."}}, {"@type": "Question", "name": "¿Cada cuánto llegan los menús?", "acceptedAnswer": {"@type": "Answer", "text": "Tu primera caja trae 14 días de comida. Después la suscripción continúa y puedes cambiar recetas, aplazar envíos o cancelar cuando quieras, sin permanencia."}}]}</script>
