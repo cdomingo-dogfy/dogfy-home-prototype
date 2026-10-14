@@ -566,7 +566,10 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
 /* PRUEBA · móvil: un único CTA fijo al pie sobre un velo blanco degradado; los CTAs de las secciones se ocultan */
 .cta-bar{display:none}
 @media (max-width:600px){
-  .cta-bar{display:block;position:fixed;left:0;right:0;bottom:0;z-index:40;padding:28px var(--gutter) calc(12px + env(safe-area-inset-bottom));background:linear-gradient(to top,rgba(255,255,255,.96) 55%,rgba(255,255,255,0));pointer-events:none}
+  .cta-bar{display:block;position:fixed;left:0;right:0;bottom:0;z-index:40;padding:28px var(--gutter) calc(12px + env(safe-area-inset-bottom));pointer-events:none;transition:opacity .3s ease,transform .3s ease}
+  /* el velo "copia" lo que hay debajo: desenfoque del fondo con un ligero blanco, desvanecido hacia arriba con una máscara */
+  .cta-bar::before{content:"";position:absolute;inset:0;z-index:-1;background:rgba(255,255,255,.28);-webkit-backdrop-filter:blur(18px) saturate(1.1);backdrop-filter:blur(18px) saturate(1.1);-webkit-mask-image:linear-gradient(to top,#000 50%,transparent);mask-image:linear-gradient(to top,#000 50%,transparent)}
+  .cta-bar.is-hidden{opacity:0;transform:translateY(16px);pointer-events:none}.cta-bar.is-hidden .btn{pointer-events:none}
   .cta-bar .btn{pointer-events:auto;width:100%;height:56px;font-size:17px;box-shadow:0 8px 24px rgba(250,89,45,.28)}
   .hero-actions .btn-lg,.s-cocina .media-wrap .btn,.bol-cta,.s-recetas .cta,.precio-foot .btn,.acc-list .btn{display:none!important}
   .mobile-menu.open~.cta-bar,body.menu-open .cta-bar{display:none}
@@ -1152,6 +1155,7 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
 </footer>
 <div class="footer-space" aria-hidden="true"></div>
 <div class="cta-bar" id="ctaBar"><a class="btn btn-primary" href="#precio">¡Quiero probar!</a></div>
+<script>(()=>{const bar=document.getElementById('ctaBar'),sms=document.querySelector('.s-sms');if(!bar||!sms||!('IntersectionObserver' in window))return;new IntersectionObserver(es=>{bar.classList.toggle('is-hidden',es[0].isIntersecting);},{threshold:.25}).observe(sms);})();</script>
 
 
 
