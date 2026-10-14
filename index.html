@@ -225,7 +225,7 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
 .bol-block .head{position:relative;z-index:1}
 .bol-block .head h2{margin-top:12px}
 .eyebrow.muted{font-family:var(--font-body);font-weight:400;color:rgba(42,39,36,.9)}
-.bol-stage{position:relative;z-index:1;display:grid;grid-template-columns:403px 1fr 423px;align-items:center;width:1322px;left:50%;margin:34px 0 0;padding:0;transform-origin:top center}  /* Figma 416:36880: tira de 1322; por debajo de 1440 se escala entera (JS); centrado con left:50%+translateX(-50%) (JS) en vez de margin:auto, que en Chrome no reparte el overflow por igual cuando el ancho supera al contenedor */
+.bol-stage{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1fr) 496px minmax(0,1fr);align-items:center;width:1322px;left:50%;margin:34px 0 0;padding:0;transform-origin:top center}  /* Figma 416:36880: tira de 1322; por debajo de 1440 se escala entera (JS); centrado con left:50%+translateX(-50%) (JS) en vez de margin:auto, que en Chrome no reparte el overflow por igual cuando el ancho supera al contenedor */
 .bol-block.desk{padding-bottom:128px}
 .bol-cta{display:flex;justify-content:center;position:relative;z-index:1;padding-top:40px}
 .bol-img{width:min(412px,100%);height:auto;justify-self:center;aspect-ratio:1;object-fit:contain;z-index:1;cursor:pointer}
