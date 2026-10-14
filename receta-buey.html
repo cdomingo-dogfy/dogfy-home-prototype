@@ -1211,6 +1211,9 @@ body:has(.rp-hero) .rp-crumbs{background:var(--blue-deco);max-width:none;padding
 @media (max-width:1100px){.ing-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
 @media (max-width:900px){.ing-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media (max-width:600px){.ing-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 14px}.ing-card p{font-size:13px;line-height:19px}}
+/* Color del menú en la barra y checks azules con contorno (el naranja queda para los CTA) */
+.rp-bar .p{background:var(--menu,#f2c94c)}
+.rp-benef li::before,.rp-checks li::before{content:"";flex:0 0 22px;height:22px;margin-top:0;border-radius:50%;background:transparent url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 22 22'%3E%3Ccircle cx='11' cy='11' r='10' fill='none' stroke='%235b78d6' stroke-width='1.6'/%3E%3Cpath d='M6.8 11.3l2.7 2.7 5.7-5.8' fill='none' stroke='%235b78d6' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/22px no-repeat;color:transparent}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://cdomingo-dogfy.github.io/dogfy-home-prototype/index.html"}, {"@type": "ListItem", "position": 2, "name": "Nuestras recetas", "item": "https://cdomingo-dogfy.github.io/dogfy-home-prototype/recetas.html"}, {"@type": "ListItem", "position": 3, "name": "Menú de buey", "item": "https://cdomingo-dogfy.github.io/dogfy-home-prototype/receta-buey.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "¿Qué formatos hay?", "acceptedAnswer": {"@type": "Answer", "text": "Cada menú llega en bolsitas individuales con la ración diaria de tu perro, ya calculada según su peso, edad y actividad. Puedes elegir una receta o combinar varias en el mismo pedido."}}, {"@type": "Question", "name": "¿Qué cantidad se le debe dar?", "acceptedAnswer": {"@type": "Answer", "text": "Depende de su peso, edad y nivel de actividad. Al crear su plan calculamos su ración diaria exacta y cada bolsita contiene justo esa cantidad, así que no tienes que pesar nada."}}, {"@type": "Question", "name": "¿Cómo llega el producto?", "acceptedAnswer": {"@type": "Answer", "text": "Te lo enviamos a casa congelado y dividido en bolsitas diarias, con envío gratis. Solo tienes que guardarlo en el congelador al recibirlo."}}]}</script>
@@ -1248,7 +1251,7 @@ body:has(.rp-hero) .rp-crumbs{background:var(--blue-deco);max-width:none;padding
 
 <nav class="rp-tabs has-back" aria-label="Recetas"><a class="rp-tabs-back" href="recetas.html" aria-label="Volver a todas las recetas"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg><span>Recetas</span></a><div class="rp-tabs-list"><a class="tab" href="receta-pollo.html"><img src="assets/tab-pollo.svg" alt="">Pollo</a><a class="tab" href="receta-pavo.html"><img src="assets/tab-pavo.svg" alt="">Pavo</a><a class="tab" href="receta-salmon.html"><img src="assets/tab-salmon.svg" alt="">Salmón</a><a class="tab active" href="receta-buey.html" aria-current="page"><img src="assets/tab-buey.svg" alt="">Buey</a></div></nav>
 <nav class="rp-crumbs" aria-label="Ruta de navegación"><ol><li><a href="index.html">Inicio</a></li><li><a href="recetas.html">Nuestras recetas</a></li><li><span aria-current="page">Menú de buey</span></li></ol></nav>
-<section class="rp-receta rp-detail" style="--tint:#f7d7d4">
+<section class="rp-receta rp-detail" style="--tint:#f7d7d4;--menu:#e9a0a6">
   <div class="rp-grid">
     <div class="rp-gallery">
       <div class="rp-media"><img class="photo" id="galMain" src="assets/receta-buey.jpg" alt="Bol del menú de buey" decoding="async"><span class="r-ico"><img src="assets/icon-receta-buey.svg" alt=""></span></div>
@@ -1261,7 +1264,7 @@ body:has(.rp-hero) .rp-crumbs{background:var(--blue-deco);max-width:none;padding
       <p class="lead">Con un 60 % de buey y un 40 % de zanahoria, patata y otras verduras. Elaborado según las recomendaciones nutricionales de la FEDIAF y solo con ingredientes naturales.</p>
       <span class="rp-pill">139.972 menús vendidos este mes</span>
       <div class="rp-bar" role="img" aria-label="60,5 % buey"><span class="p" style="width:60.5%"></span><span class="v" style="width:39.5%"></span></div>
-      <div class="rp-legend"><span><i style="background:var(--primary)"></i>60,5 % buey</span><span><i style="background:#8fc46a"></i>verduras y otros ingredientes</span></div>
+      <div class="rp-legend"><span><i style="background:var(--menu)"></i>60,5 % buey</span><span><i style="background:#8fc46a"></i>verduras y otros ingredientes</span></div>
       <ul class="rp-benef"><li>Bajo en calorías</li><li>Ayuda a mantener un peso saludable</li><li>Contiene una sola fuente de proteína</li><li>Minimiza el riesgo de alergias</li></ul>
       <a class="btn btn-primary rp-cta" href="index.html#precio">¡Quiero probar!</a>
     </div>
