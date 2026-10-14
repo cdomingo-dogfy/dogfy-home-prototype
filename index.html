@@ -339,8 +339,9 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
   .s-caja .wrap.acc-scroll{height:320vh}
   .acc-sticky{height:calc(100vh - 64px);height:calc(100svh - 64px);min-height:0;justify-content:flex-start;padding:16px var(--gutter) 24px}  /* el amarillo llena el viewport mientras la escena está fija: así no asoma el blanco de la siguiente sección cuando cambia la altura del texto; al acabar la pista el bloque sube y se va */
   .s-caja .head{margin-bottom:12px}
-  .acc{display:flex;flex-direction:column;gap:12px;align-items:stretch}
-  .acc-media{order:1;aspect-ratio:4/3;max-height:clamp(160px,calc(100svh - 470px),420px);border-radius:20px;margin:0}
+  .acc{display:flex;flex-direction:column;gap:12px;align-items:stretch;flex:1 1 auto;min-height:0}
+  .acc-media{order:1;flex:1 1 auto;min-height:140px;aspect-ratio:auto;max-height:420px;border-radius:20px;margin:0}  /* la foto absorbe el alto sobrante: lista y botón siempre dentro del bloque fijo */
+  .acc-list{flex:0 0 auto}
   .acc-dots{display:none}  /* móvil/tablet: sin puntos bajo la foto */
   .acc-dots i{width:6px;height:6px;background:#c2c2c2;filter:none;transition:width .3s ease,background .3s ease}
   .acc-dots i.active{width:28px;height:6px;background:#2a2724}
@@ -1226,7 +1227,7 @@ addEventListener('scroll',()=>{if(!tick){tick=true;requestAnimationFrame(update)
     wrap.querySelector('.bol-sticky').classList.toggle('done',p>=.97);
     const s=ease(Math.min(1,Math.max(0,(p-.3)/.4)));                 // 0 = "¿Qué hay en su bol?", 1 = "¿Qué cambios notarás?"
     const mobile=wrap.clientWidth<=600,W=wrap.clientWidth;
-    const stage=track.parentElement,avail=stage.clientHeight-48;              // 48px de aire bajo la tira
+    const stage=track.parentElement,avail=stage.clientHeight-(W<=900&&!mobile?6:48);   // 48px de aire bajo la tira; en tablet casi nada: la tira sale ~10 % mayor
     // móvil: la tira ocupa el 75 % del alto del viewport (puede ampliarse), pero nunca tanto que una etiqueta se salga por el lado (bol visible 151 + etiqueta más ancha + 24 de aire)
     const maxLbl=Math.max(...[...track.querySelectorAll('.hs')].map(h=>h.offsetWidth));
     const kFit=(W-32)/maxLbl;                                                      // tope: la etiqueta más ancha cabe entre los dos márgenes de 16px (las miniaturas pisan ~75px el bol)
