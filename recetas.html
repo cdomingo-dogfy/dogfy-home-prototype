@@ -1228,6 +1228,30 @@ body:has(.rp-hero) .rp-crumbs{background:var(--blue-deco);max-width:none;padding
 .rp-marquee.alt{background:#fff;padding:8px 0 40px}
 .rp-marquee.alt li{background:var(--sand);box-shadow:none}
 @media (max-width:600px){.rp-marquee{font-size:14px;padding-bottom:24px}.rp-marquee li{padding:8px 14px 8px 10px}}
+/* Beneficios con el lenguaje del bol de la home: panel azul, bol asomando, miniatura + pill */
+.rp-bens-wrap{position:relative;max-width:var(--container);margin:80px auto 0;min-height:520px;border-radius:32px;background:var(--blue);overflow:hidden;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);align-items:center;text-align:left}
+.rp-bens-bol{position:absolute;left:-210px;top:50%;width:520px;height:auto;transform:translateY(-50%);pointer-events:none}
+.rp-bens-txt{grid-column:2;padding:56px 56px 56px 0}
+.rp-bens-title{font-size:clamp(28px,3vw,40px);line-height:1.05;margin-top:8px}
+.rp-bens{list-style:none;display:flex;flex-direction:column;gap:26px;margin-top:32px;grid-template-columns:none}
+.rp-ben{padding:0;border-radius:0;background:none}
+.rp-ben-row{display:flex;align-items:center;gap:12px}
+.rp-ben .thumb{position:relative;flex:0 0 64px;width:64px;height:64px;border-radius:10px;border:1.17px solid #fff;overflow:hidden}
+.rp-ben .thumb img{position:absolute;max-width:none}
+.rp-ben .lbl{background:#fff;border-radius:999px;padding:10px 16px;font-family:var(--font-body);font-weight:700;font-size:16px;line-height:20px;color:var(--text-hi);white-space:nowrap;box-shadow:0 4px 12px rgba(26,38,89,.1)}
+.rp-ben p{margin:8px 0 0 76px;font-size:15px;line-height:22px;color:var(--text);max-width:420px}
+@media (max-width:900px){
+  .rp-bens-wrap{grid-template-columns:1fr;min-height:0;padding-top:200px}
+  .rp-bens-bol{left:50%;top:-250px;width:420px;transform:translateX(-50%)}
+  .rp-bens-txt{grid-column:1;padding:24px 28px 40px}
+}
+@media (max-width:600px){.rp-bens-wrap{border-radius:24px;padding-top:150px;margin-top:56px}.rp-bens-bol{width:340px;top:-200px}.rp-ben .lbl{white-space:normal;font-size:15px}.rp-ben p{margin-left:0;margin-top:10px}}
+.rp-bens .rp-ben{padding:0;border-radius:0;background:none}
+.rp-bens-wrap{grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);min-height:560px}
+.rp-bens-bol{width:600px;left:-250px}
+@media (max-width:900px){.rp-bens-bol{width:420px;left:50%}}
+@media (max-width:600px){.rp-bens-bol{width:340px}}
+@media (max-width:900px){.rp-bens-wrap{grid-template-columns:1fr;min-height:0}}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://cdomingo-dogfy.github.io/dogfy-home-prototype/index.html"}, {"@type": "ListItem", "position": 2, "name": "Nuestras recetas", "item": "https://cdomingo-dogfy.github.io/dogfy-home-prototype/recetas.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "¿Qué formatos hay?", "acceptedAnswer": {"@type": "Answer", "text": "Cada menú llega en bolsitas individuales con la ración diaria de tu perro, ya calculada según su peso, edad y actividad. Puedes elegir una receta o combinar varias en el mismo pedido."}}, {"@type": "Question", "name": "¿Qué cantidad se le debe dar?", "acceptedAnswer": {"@type": "Answer", "text": "Depende de su peso, edad y nivel de actividad. Al crear su plan calculamos su ración diaria exacta y cada bolsita contiene justo esa cantidad, así que no tienes que pesar nada."}}, {"@type": "Question", "name": "¿Cómo llega el producto?", "acceptedAnswer": {"@type": "Answer", "text": "Te lo enviamos a casa congelado y dividido en bolsitas diarias, con envío gratis. Solo tienes que guardarlo en el congelador al recibirlo."}}, {"@type": "Question", "name": "¿Cómo se prepara, debo cocinar el alimento al perro?", "acceptedAnswer": {"@type": "Answer", "text": "No hace falta cocinar nada. Nuestras recetas ya vienen cocinadas a baja temperatura: descongela la bolsita en la nevera, ábrela y sirve."}}, {"@type": "Question", "name": "¿Cada cuánto llegan los menús?", "acceptedAnswer": {"@type": "Answer", "text": "Tu primera caja trae 14 días de comida. Después la suscripción continúa y puedes cambiar recetas, aplazar envíos o cancelar cuando quieras, sin permanencia."}}]}</script>
@@ -1312,8 +1336,12 @@ body:has(.rp-hero) .rp-crumbs{background:var(--blue-deco);max-width:none;padding
     </article>
   </div>
   <div class="rp-bens-wrap">
-    <h2 class="rp-bens-title">Por qué darle <span class="accent">comida natural</span></h2>
-    <ul class="rp-bens"><li class="rp-ben-vit"><h3>Más vitalidad</h3><p>Ingredientes reales y una ración ajustada a lo que necesita: más energía para jugar, pasear y disfrutar.</p></li><li class="rp-ben-hig"><h3>Mejor higiene</h3><p>Mejores digestiones y heces más pequeñas y compactas, más fáciles de recoger.</p></li><li class="rp-ben-sal"><h3>Menos problemas de salud</h3><p>Una dieta completa y equilibrada ayuda a cuidar su sistema inmune, su piel y su peso.</p></li></ul>
+    <img class="rp-bens-bol" src="assets/bol2-main.png" alt="Bol de comida natural Dogfy Diet" width="898" height="900" loading="lazy" decoding="async">
+    <div class="rp-bens-txt">
+      <p class="eyebrow">¡Tu perro ya está moviendo la cola!</p>
+      <h2 class="rp-bens-title">Por qué darle <span class="accent">comida natural</span></h2>
+      <ul class="rp-bens"><li class="rp-ben"><div class="rp-ben-row"><span class="thumb" style="background:#ffefea"><img src="assets/hs-vitalidad.png" alt="" style="width:71px;height:71px;left:-3.4px;top:-6.9px"></span><h3 class="lbl">Más vitalidad</h3></div><p>Ingredientes reales y una ración ajustada a lo que necesita: más energía para jugar, pasear y disfrutar.</p></li><li class="rp-ben"><div class="rp-ben-row"><span class="thumb" style="background:#f7f3fe"><img src="assets/hs-heces.png" alt="" style="width:90px;height:120px;left:-8.5px;top:-30.6px;transform:rotate(-1.58deg)"></span><h3 class="lbl">Mejor higiene</h3></div><p>Mejores digestiones y heces más pequeñas y compactas, más fáciles de recoger.</p></li><li class="rp-ben"><div class="rp-ben-row"><span class="thumb" style="background:#fff7c9"><img src="assets/hs-completo.png" alt="" style="width:184px;height:103px;left:-95.4px;top:-9.9px"></span><h3 class="lbl">Menos problemas de salud</h3></div><p>Una dieta completa y equilibrada ayuda a cuidar su sistema inmune, su piel y su peso.</p></li></ul>
+    </div>
   </div>
 </section>
 <div class="rp-marquee alt" aria-label="Alimentación completa y equilibrada · Plan personalizado a las necesidades de tu peludo · Ingredientes frescos y de alta calidad · Cocinado a baja temperatura · Directo a tu casa cuando quieras"><ul><li>Alimentación completa y equilibrada</li><li>Plan personalizado a las necesidades de tu peludo</li><li>Ingredientes frescos y de alta calidad</li><li>Cocinado a baja temperatura</li><li>Directo a tu casa cuando quieras</li></ul><ul aria-hidden="true"><li>Alimentación completa y equilibrada</li><li>Plan personalizado a las necesidades de tu peludo</li><li>Ingredientes frescos y de alta calidad</li><li>Cocinado a baja temperatura</li><li>Directo a tu casa cuando quieras</li></ul></div>
