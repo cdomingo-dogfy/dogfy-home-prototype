@@ -193,10 +193,12 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
   .cocina-head{margin-bottom:40px}
   .s-cocina .split{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(64px,8vw,120px);align-items:start}
   .s-cocina .media-wrap{order:1;position:sticky;top:calc(64px + 8vh);justify-self:start;align-self:start;display:flex;flex-direction:column;align-items:center;gap:20px;width:min(100%,calc(84vh - 64px - 60px),520px)}  /* foto + botón debajo, fijos juntos */
-  .s-cocina .split .media{position:static;aspect-ratio:1/1;width:100%;max-height:none}  /* cuadrada, nunca más alta que lo que queda de viewport bajo la cabecera */
+  .s-cocina .split .media{position:relative;aspect-ratio:1/1;width:100%;max-height:none;border-radius:20px;overflow:hidden}  /* relative: las fotos absolutas se ciñen a la caja y respetan las esquinas */  /* cuadrada, nunca más alta que lo que queda de viewport bajo la cabecera */
   .s-cocina .right-col{order:2;gap:0}
   .stepper{min-height:0!important}
   .step{min-height:72vh;align-items:center;gap:20px}
+  /* La insignia se alinea con la primera línea del título: texto e insignia van centrados en el li y la insignia se desplaza media altura del texto menos media línea del título (--off, calculado en JS) */
+  .step .ind{transform:translateY(var(--off,0px))}
   .step:first-child{min-height:calc(72vh - 40px)}
   .step .txt{padding-bottom:0;font-size:18px;line-height:28px;opacity:.35;transform:none}
   .step.active .txt{opacity:1}
@@ -1256,6 +1258,7 @@ const split=document.querySelector('.s-cocina .split'),section=document.querySel
 const wrap=document.querySelector('.s-cocina .cocina-sticky');const sizeTrack=()=>{if(!split)return;if(!narrow()){section.style.height='';wrap.style.height='';return;}const head=section.querySelector('.cocina-head');section.style.height='';wrap.style.height=(head.offsetHeight+split.offsetHeight+N*Math.round(innerHeight*.32))+'px';};sizeTrack();addEventListener('resize',sizeTrack);addEventListener('load',sizeTrack);if(document.fonts)document.fonts.ready.then(sizeTrack);
 // Foto y pie por paso: cambian con el paso activo
 const mImgs=[...document.querySelectorAll('.media-steps img')],cap=document.querySelector('.media-cap'),capTitles=['Su perfil','Cocinamos y enviamos','Descongela y sirve','Tú gestionas'];let shown=-1;
+const alignBadges=()=>{if(innerWidth<=900){steps.forEach(st=>st.querySelector('.ind').style.removeProperty('--off'));return;}steps.forEach(st=>{const txt=st.querySelector('.txt'),h3=st.querySelector('h3');const lh=parseFloat(getComputedStyle(h3).lineHeight)||h3.offsetHeight;st.querySelector('.ind').style.setProperty('--off',(-(txt.offsetHeight-lh)/2).toFixed(1)+'px');});};alignBadges();addEventListener('resize',alignBadges);addEventListener('load',alignBadges);if(document.fonts)document.fonts.ready.then(alignBadges);
 const showStep=i=>{if(i===shown)return;shown=i;mImgs.forEach((im,j)=>im.classList.toggle('is-on',j===i));if(cap){cap.querySelector('b').textContent=i<3?String(i+1):'✓';cap.querySelector('span').textContent=capTitles[i]||'';cap.classList.remove('in');void cap.offsetWidth;cap.classList.add('in');}};
 let tick=false;const update=()=>{tick=false;
 const track=section;
