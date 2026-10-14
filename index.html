@@ -563,6 +563,14 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
   .step-body p{margin-top:8px;max-width:48ch}
   .s-cocina .right-col{gap:20px}
 }
+/* PRUEBA · móvil: un único CTA fijo al pie sobre un velo blanco degradado; los CTAs de las secciones se ocultan */
+.cta-bar{display:none}
+@media (max-width:600px){
+  .cta-bar{display:block;position:fixed;left:0;right:0;bottom:0;z-index:40;padding:28px var(--gutter) calc(12px + env(safe-area-inset-bottom));background:linear-gradient(to top,rgba(255,255,255,.96) 55%,rgba(255,255,255,0));pointer-events:none}
+  .cta-bar .btn{pointer-events:auto;width:100%;height:56px;font-size:17px;box-shadow:0 8px 24px rgba(250,89,45,.28)}
+  .hero-actions .btn-lg,.s-cocina .media-wrap .btn,.bol-cta,.s-recetas .cta,.precio-foot .btn,.acc-list .btn{display:none!important}
+  .mobile-menu.open~.cta-bar,body.menu-open .cta-bar{display:none}
+}
 @media (max-width:600px){.header .container>a:first-child img{width:62px;height:35px}
   /* Stepper móvil: insignias, iconos, títulos y pie de la foto más pequeños */
   .step{gap:10px}
@@ -750,7 +758,7 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
   /* 09: carrusel de opiniones con bullets */
   /* Footer compacto en móvil: 2 columnas, menos solape con FAQ, tipografía y badges menores */
   .s-faq{margin-bottom:-120px}
-  .footer{padding:calc(56px + 120px) 20px 24px;gap:20px}  /* móvil: bloques más juntos */
+  .footer{padding:calc(56px + 120px) 20px calc(100px + env(safe-area-inset-bottom));gap:20px}  /* móvil: bloques más juntos; abajo, sitio para la barra de CTA fija */
   /* Footer móvil (estructura de referencia): Ayuda | Descubre Dogfy · Comunidad | Síguenos · Métodos de pago a todo el ancho · marca grande con el perro asomando · badges · legales en línea con separadores. Tipografía propia (12px) */
   .footer .cols{grid-template-columns:1fr 1fr;gap:24px 16px;font-size:12px}
   .footer .col b,.footer .col a,.footer .col p{font-size:12px;line-height:1.5}
@@ -1143,14 +1151,15 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
   <div class="legal"><a href="#">Aviso legal</a><a href="#">Términos y condiciones</a><a href="#">Política de cookies</a><a href="#">Política de privacidad</a><a href="#">Canal de denuncias</a><a href="#">Mapa web</a></div>
 </footer>
 <div class="footer-space" aria-hidden="true"></div>
+<div class="cta-bar" id="ctaBar"><a class="btn btn-primary" href="#precio">¡Quiero probar!</a></div>
 
 
 
 <script>
 const burger=document.getElementById('burger'),menu=document.getElementById('mobileMenu');
-burger.addEventListener('click',()=>{menu.style.setProperty('--menu-top',document.querySelector('.header').getBoundingClientRect().bottom+'px');const o=menu.classList.toggle('open');burger.setAttribute('aria-expanded',o);burger.setAttribute('aria-label',o?'Cerrar menú':'Abrir menú');document.body.style.overflow=o?'hidden':'';if(o)setTimeout(()=>menu.querySelector('a')?.focus(),260);});
+burger.addEventListener('click',()=>{menu.style.setProperty('--menu-top',document.querySelector('.header').getBoundingClientRect().bottom+'px');const o=menu.classList.toggle('open');burger.setAttribute('aria-expanded',o);burger.setAttribute('aria-label',o?'Cerrar menú':'Abrir menú');document.body.style.overflow=o?'hidden':'';document.body.classList.toggle('menu-open',o);if(o)setTimeout(()=>menu.querySelector('a')?.focus(),260);});
 addEventListener('keydown',e=>{if(e.key==='Escape'&&menu.classList.contains('open')){menu.classList.remove('open');burger.setAttribute('aria-expanded','false');burger.setAttribute('aria-label','Abrir menú');document.body.style.overflow='';burger.focus();}});
-menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{menu.classList.remove('open');document.body.style.overflow=''}));
+menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{menu.classList.remove('open');document.body.style.overflow='';document.body.classList.remove('menu-open')}));
 const breed=document.getElementById('breed'),breedLabel=document.getElementById('breedLabel');
 breed.addEventListener('change',()=>{breedLabel.textContent=breed.value||'¿Cuál es la raza de tu perro?';breedLabel.style.color=breed.value?'#2a2724':''});
 // 08 · Escena: p (0→1) → 0-.35 la foto cuadrada crece hasta banner a sangre (ancho viewport, 498px) y el texto se va · .4-.65 aparece el banner "Sí, es real." con los sellos
