@@ -581,10 +581,11 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
   /* Hero a pantalla completa: texto arriba y el selector de raza pegado justo encima del CTA fijo */
   .hero{min-height:calc(100vh - 48px);min-height:calc(100svh - 48px);align-items:stretch}  /* 48px = banner promocional, que va encima */
   /* Foto: franja central con el perro y el bol, fundida a negro por arriba y por abajo; así cabe el texto arriba y el selector abajo */
-  .hero{background:#141210}
-  .hero-bg img{top:24%;height:60%;transform:none;object-position:66% 55%}  /* franja del 24 % al 84 % del alto */
-  .hero-bg::after{background:linear-gradient(180deg,#141210 0%,#141210 24%,rgba(20,18,16,.55) 34%,rgba(20,18,16,0) 46%,rgba(20,18,16,0) 64%,rgba(20,18,16,.6) 76%,#141210 85%,#141210 100%)}  /* fundidos a negro que empiezan justo en los bordes de la foto */
-  .hero-content>div:first-child{margin-top:4px;margin-bottom:auto}  /* el texto arriba, sobre el negro y el fundido; el perro y el bol quedan libres */
+  .hero{background:#3a332e}  /* gris cálido oscuro, no negro */
+  .hero-bg img{top:16%;height:70%;transform:none;object-position:66% 55%}  /* franja del 16 % al 86 % del alto: la foto manda */
+  .hero-bg::after{background:linear-gradient(180deg,#3a332e 0%,#3a332e 16%,rgba(58,51,46,.5) 26%,rgba(58,51,46,0) 38%,rgba(58,51,46,0) 68%,rgba(58,51,46,.5) 78%,#3a332e 87%,#3a332e 100%)}  /* fundidos cortos y suaves en los bordes de la foto */
+  .hero-content>div:first-child{margin-top:4px;margin-bottom:auto}
+  .hero h1{margin-top:.35em}  /* el sello Full of life, pegado al título */  /* el texto arriba, sobre el negro y el fundido; el perro y el bol quedan libres */
   .hero .hero-content{min-height:calc(100svh - 48px - 64px);justify-content:space-between;padding-block:24px calc(108px + env(safe-area-inset-bottom));box-sizing:border-box}  /* más específica que la regla de tablet, que viene después */
   .hero-actions{margin-top:0}
   .mobile-menu.open~.cta-bar,body.menu-open .cta-bar{display:none}
