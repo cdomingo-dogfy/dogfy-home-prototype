@@ -1098,9 +1098,8 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
 .st-card{max-width:1268px;margin:0 auto;display:grid;grid-template-columns:425fr 843fr;background:#fff7c9;border-radius:18px;overflow:hidden;min-height:362px}
 .st-photo{position:relative;border-radius:10px;overflow:hidden}
 .st-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:28% 50%}
-.st-body{padding:18px 48px 26px 51px;display:flex;flex-direction:column;align-items:flex-start}
-.st-badge{display:inline-flex;padding:4px 14px;border-radius:7px;background:var(--blue);font-family:var(--font-display);font-weight:500;font-size:15px;line-height:1.14;color:#000}
-.st-mad{margin-top:14px;font-family:var(--font-body);font-size:clamp(26px,2.85vw,41px);line-height:1.34;letter-spacing:-.06em;color:rgba(0,0,0,.8)}
+.st-body{padding:32px 48px 32px 51px;display:flex;flex-direction:column;align-items:flex-start;justify-content:center}
+.st-mad{margin-top:0;font-family:var(--font-body);font-size:clamp(26px,2.85vw,41px);line-height:1.34;letter-spacing:-.06em;color:rgba(0,0,0,.8)}
 .st-f{position:relative;display:inline-block;margin-right:.25em;padding-bottom:4px;background:repeating-linear-gradient(90deg,rgba(255,109,69,.7) 0 19.2px,transparent 19.2px 21.9px) left bottom/100% 3px no-repeat}
 .st-f input,.st-f select{font-family:var(--font-display);font-weight:700;font-size:1em;letter-spacing:-.06em;line-height:1;color:#f96237;background:transparent;border:0;padding:0;margin:0;outline:none;min-width:1.5em;-webkit-appearance:none;appearance:none;cursor:pointer}
 .st-f input{cursor:text}
@@ -1182,11 +1181,10 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
   <div class="rp-minis"><a class="rp-mini" href="receta-pavo.html" style="--tint:#e4d5f3"><img src="assets/receta-pavo.jpg" alt="" loading="lazy"><span>Menú de pavo</span></a><a class="rp-mini" href="receta-salmon.html" style="--tint:#fde0c8"><img src="assets/receta-salmon.jpg" alt="" loading="lazy"><span>Menú de salmón</span></a><a class="rp-mini" href="receta-buey.html" style="--tint:#f7d7d4"><img src="assets/receta-buey.jpg" alt="" loading="lazy"><span>Menú de buey</span></a></div>
 </section>
 
-<section class="rp-start" aria-labelledby="startTitle">
+<section class="rp-start" aria-label="Empieza su prueba">
   <div class="st-card">
     <div class="st-photo"><img src="assets/start-perro.jpg" alt="Un perro tumbado en el suelo enseñando los dientes mientras juega" loading="lazy" decoding="async"></div>
     <form class="st-body" onsubmit="event.preventDefault();location.href='index.html#precio'">
-      <span class="st-badge" id="startTitle">Empieza su prueba</span>
       <p class="st-mad">
         <span class="st-f"><input class="st-in" id="stName" aria-label="Nombre de tu perro" placeholder="Zeus" autocomplete="off"></span>
         nació en
