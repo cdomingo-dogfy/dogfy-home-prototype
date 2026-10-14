@@ -612,7 +612,7 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
   .hero p{color:#fff;opacity:.95;font-size:16px;line-height:1.4;text-shadow:0 1px 2px rgba(0,0,0,.45),0 4px 18px rgba(0,0,0,.45)}  /* entradilla a 16px, interlineado más corto, clara y con sombra */
   .hero h1{text-shadow:0 2px 14px rgba(0,0,0,.4)}
   .hero h1{margin-top:.35em}  /* el sello Full of life, pegado al título */  /* el texto arriba, sobre el negro y el fundido; el perro y el bol quedan libres */
-  .hero .hero-content{min-height:calc(100svh - 48px - 64px);justify-content:space-between;padding-block:12px calc(100px + env(safe-area-inset-bottom));box-sizing:border-box}  /* texto arriba; el selector queda justo encima del CTA fijo al cargar y sube con el scroll como el resto del hero */
+  .hero .hero-content{min-height:calc(100svh - 48px - 64px);justify-content:space-between;padding-block:12px calc(var(--hero-pb,100px) + env(safe-area-inset-bottom));box-sizing:border-box}  /* al cargar, el selector queda encima del CTA fijo; al hacer scroll el hueco se va cerrando (JS) hasta que el hero acaba justo bajo el selector */
   .hero-actions{margin-top:0}
   .mobile-menu.open~.cta-bar,body.menu-open .cta-bar{display:none}
 }
@@ -1239,6 +1239,8 @@ const settle=()=>{if(!mq.matches||touching||snapping)return;const vh=innerHeight
 addEventListener('scroll',()=>{clearTimeout(idle);idle=setTimeout(settle,160);},{passive:true});
 if('onscrollend' in window)addEventListener('scrollend',()=>{clearTimeout(idle);idle=setTimeout(settle,60);});
 addEventListener('touchstart',()=>{touching=true;clearTimeout(idle);},{passive:true});addEventListener('touchend',()=>{touching=false;clearTimeout(idle);idle=setTimeout(settle,220);},{passive:true});addEventListener('touchcancel',()=>{touching=false;},{passive:true});})();
+// Móvil: el hueco bajo el selector del hero se acorta con el scroll (de 100px a 24px)
+(()=>{const hero=document.querySelector('.hero');if(!hero)return;let t=false;const upd=()=>{t=false;hero.style.setProperty('--hero-pb',Math.max(24,100-scrollY)+'px');};addEventListener('scroll',()=>{if(!t){t=true;requestAnimationFrame(upd)}},{passive:true});upd();})();
 (()=>{const bar=document.getElementById('ctaBar');if(!bar||!('IntersectionObserver' in window))return;const zones=[...document.querySelectorAll('.s-sms,.s-faq,.footer-space')];const on=new Set();const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)on.add(e.target);else on.delete(e.target);});bar.classList.toggle('is-hidden',on.size>0);},{threshold:.15});zones.forEach(z=>io.observe(z));})();  // la barra se esconde en el SMS, las FAQ y el footer</script>
 
 
