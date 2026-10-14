@@ -135,6 +135,9 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
 .media-steps{position:relative}
 .media-steps>img{position:absolute;inset:0;opacity:0;transform:scale(1.04);transition:opacity .5s ease,transform .8s ease}
 .media-steps>img.is-on{opacity:1;transform:none}  /* solo las fotos: la insignia del pie es otra img */
+.media-caps{position:absolute;left:16px;bottom:16px;display:flex;flex-direction:column-reverse;align-items:flex-start}  /* las cuatro, apiladas; la primera abajo */
+.media-caps .media-cap{position:relative;left:auto;bottom:auto;margin-top:-10px;opacity:.9;background:rgba(255,255,255,.72);transform:scale(.94);transform-origin:left center;transition:opacity .4s ease,transform .4s ease,background .4s ease}
+.media-caps .media-cap.is-on{opacity:1;transform:none;z-index:2;background:#fff;box-shadow:0 6px 20px rgba(26,38,89,.18)}  /* la activa delante, las demás legibles en semitransparente */
 .media-cap{position:absolute;left:16px;bottom:16px;display:inline-flex;align-items:center;gap:10px;padding:8px 14px 8px 8px;border-radius:999px;background:rgba(255,255,255,.92);color:#2a2724;font-family:var(--font-display);font-weight:700;font-size:15px;line-height:20px;box-shadow:0 4px 16px rgba(26,38,89,.12);backdrop-filter:blur(6px)}
 .media-cap b{display:grid;place-items:center;width:28px;height:30px;background:none}  /* insignia de marca, la misma que en el stepper */
 .media-cap b img{width:28px;height:30px;object-fit:contain}
@@ -947,7 +950,12 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
       <img src="assets/caja-bolsitas.jpg" alt="Bolsitas de comida Dogfy Diet listas para congelar" loading="lazy" decoding="async">
       <img src="assets/paso-sirve.jpg" alt="Un perro se relame ante su bol de comida natural" loading="lazy" decoding="async">
       <img src="assets/como-empieza-caja.png" alt="Un perro recibe su caja de Dogfy Diet en la entrada de casa" loading="lazy" decoding="async">
-      <span class="media-cap" aria-hidden="true"><b><img src="assets/step-1-active.png" alt=""></b><span>Su perfil</span></span>
+      <div class="media-caps" aria-hidden="true">
+        <span class="media-cap is-on"><b><img src="assets/step-1-active.png" alt=""></b><span>Su perfil</span></span>
+        <span class="media-cap"><b><img src="assets/step-2-active.png" alt=""></b><span>Cocinamos y enviamos</span></span>
+        <span class="media-cap"><b><img src="assets/step-3-active.png" alt=""></b><span>Descongela y sirve</span></span>
+        <span class="media-cap"><b class="check"><img src="assets/step-check-active.svg" alt=""></b><span>Tú gestionas</span></span>
+      </div>
     </div>
     <a class="btn btn-primary" href="#precio">Calcula su ración</a>
     </div>
@@ -1361,9 +1369,9 @@ run(document.getElementById('reviews'),()=>true,34);})();
 const split=document.querySelector('.s-cocina .split'),section=document.querySelector('.s-cocina'),N=steps.length,narrow=()=>innerWidth<=900;
 const wrap=document.querySelector('.s-cocina .cocina-sticky');const sizeTrack=()=>{if(!split)return;if(!narrow()){section.style.height='';wrap.style.height='';return;}const head=section.querySelector('.cocina-head');section.style.height='';wrap.style.height=(head.offsetHeight+split.offsetHeight+N*Math.round(innerHeight*.32))+'px';};sizeTrack();addEventListener('resize',sizeTrack);addEventListener('load',sizeTrack);if(document.fonts)document.fonts.ready.then(sizeTrack);
 // Foto y pie por paso: cambian con el paso activo
-const mImgs=[...document.querySelectorAll('.media-steps img')],cap=document.querySelector('.media-cap'),capTitles=['Su perfil','Cocinamos y enviamos','Descongela y sirve','Tú gestionas'];let shown=-1;
+const mImgs=[...document.querySelectorAll('.media-steps > img')],caps=[...document.querySelectorAll('.media-caps .media-cap')],cap=null,capTitles=['Su perfil','Cocinamos y enviamos','Descongela y sirve','Tú gestionas'];let shown=-1;
 const alignBadges=()=>{if(innerWidth<=900){steps.forEach(st=>st.querySelector('.ind').style.removeProperty('--off'));return;}steps.forEach(st=>{const txt=st.querySelector('.txt'),h3=st.querySelector('h3');const lh=parseFloat(getComputedStyle(h3).lineHeight)||h3.offsetHeight;st.querySelector('.ind').style.setProperty('--off',(-(txt.offsetHeight-lh)/2).toFixed(1)+'px');});};alignBadges();addEventListener('resize',alignBadges);addEventListener('load',alignBadges);if(document.fonts)document.fonts.ready.then(alignBadges);
-const showStep=i=>{if(i===shown)return;shown=i;mImgs.forEach((im,j)=>im.classList.toggle('is-on',j===i));if(cap){const b=cap.querySelector('b');b.classList.toggle('check',i>=3);b.querySelector('img').src=i<3?'assets/step-'+(i+1)+'-active.png':'assets/step-check-active.svg';cap.querySelector('span').textContent=capTitles[i]||'';cap.classList.remove('in');void cap.offsetWidth;cap.classList.add('in');}};
+const showStep=i=>{if(i===shown)return;shown=i;mImgs.forEach((im,j)=>im.classList.toggle('is-on',j===i));caps.forEach((c,j)=>c.classList.toggle('is-on',j===i));};
 let tick=false;const update=()=>{tick=false;
 const track=section;
 const r=track.getBoundingClientRect(),total=r.height-innerHeight;
