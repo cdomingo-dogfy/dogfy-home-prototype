@@ -716,7 +716,8 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
   .tab.active{background:#ffee99;color:#3d3d3d;font-weight:600}
   /* Tablet/móvil: cinta en bucle (las tarjetas se duplican en JS y la pista se desplaza media vuelta); se pausa al tocarla */
   .recetas-grid{display:flex;gap:0;overflow:visible;width:max-content;padding:0;box-sizing:border-box;max-width:none}
-  .recetas-grid.stopped{transition:transform .55s cubic-bezier(.22,.61,.36,1)}
+  .recetas-grid.stopped,.recetas-grid.sliding{transition:transform .8s cubic-bezier(.22,.61,.36,1)}  /* paso de tarjeta en tarjeta, suave */
+  @media (prefers-reduced-motion:reduce){.recetas-grid.sliding{transition:none}}
   .reviews.stopped{transition:transform .55s cubic-bezier(.22,.61,.36,1)}
   .recetas-grid .receta{margin-right:16px}
   .s-recetas{overflow-x:clip;overflow-y:visible}  /* solo recorta en horizontal (cinta): con overflow:clip desaparecía la onda superior que entra en la sección del bol */
@@ -1220,8 +1221,6 @@ size();update();if(document.fonts)document.fonts.ready.then(()=>{size();update()
   const rDots=dotsFor(grid,cards.length);
   const marquee=()=>innerWidth<=1074;
   const ensureClones=()=>{if(marquee()&&!grid.dataset.looped){grid.dataset.looped='1';cards.forEach(c=>{const k=c.cloneNode(true);k.setAttribute('aria-hidden','true');k.dataset.clone='1';grid.appendChild(k);});}};ensureClones();addEventListener('resize',ensureClones);  // también si se entra en modo cinta al girar la tablet
-  if(matchMedia('(hover:hover)').matches)['pointerdown'].forEach(ev=>grid.addEventListener(ev,()=>grid.classList.add('paused'),{passive:true}));  // solo con ratón: en táctil la cinta no se para nunca
-  ['touchend','pointerup','pointercancel','mouseleave'].forEach(ev=>grid.addEventListener(ev,()=>setTimeout(()=>grid.classList.remove('paused'),1200),{passive:true}));
   const setActive=(box,i)=>{if(box)[...box.children].forEach((d,j)=>d.classList.toggle('active',j===i));};
   const current=()=>{const c=grid.scrollLeft+grid.clientWidth/2;let best=0,bd=1e9;cards.forEach((card,i)=>{const d=Math.abs(card.offsetLeft+card.offsetWidth/2-c);if(d<bd){bd=d;best=i;}});return best;};
   const sync=()=>{const i=current();setActive(rDots,i);if(!grid.dataset.userTab)return;tabs.forEach(t=>{const on=t.dataset.key===cards[i].dataset.key;t.classList.toggle('active',on);t.setAttribute('aria-selected',on);});};   // sin pestaña activa por defecto: solo se marca tras elegir una
@@ -1265,7 +1264,17 @@ const step=t=>{raf=null;if(!isOn()){if(el.style.transform){el.style.transform=''
   if(el.classList.contains('stopped')||el.classList.contains('paused')){last=null;raf=requestAnimationFrame(step);return;}if(last!=null){x-=speed*Math.min(.05,(t-last)/1000);const h=half();if(h>0&&-x>=h)x+=h;el.style.transform='translateX('+x.toFixed(2)+'px)';el.dispatchEvent(new CustomEvent('ribbonmove',{detail:x}));}last=t;raf=requestAnimationFrame(step);};
 raf=requestAnimationFrame(step);
 el.addEventListener('transitionend',()=>{const m=/translateX\((-?[\d.]+)px\)/.exec(el.style.transform||'');if(m)x=parseFloat(m[1]);});};
-run(document.getElementById('recetasGrid'),()=>innerWidth<=1074,38);
+// Recetas: en vez de cinta continua, pasa de tarjeta en tarjeta (una cada 4,5 s) con un deslizamiento suave; nunca se para (salvo ratón encima o pestaña elegida) y da tiempo a leer
+(()=>{const el=document.getElementById('recetasGrid');if(!el)return;const isOn=()=>innerWidth<=1074;let idx=0,timer=null;
+const cards=()=>[...el.children],real=()=>cards().filter(c=>!c.dataset.clone).length;
+const xFor=i=>{const c=cards()[i];if(!c)return 0;const host=el.parentElement.getBoundingClientRect();return -(c.offsetLeft-(host.width-c.offsetWidth)/2);};
+const place=(i,animate)=>{el.classList.toggle('sliding',animate);el.style.transform='translateX('+xFor(i).toFixed(1)+'px)';};
+const next=()=>{if(!isOn()||el.classList.contains('stopped')||el.classList.contains('paused')||document.hidden)return;idx+=1;place(idx,true);
+  if(idx>=real()){const onEnd=()=>{el.removeEventListener('transitionend',onEnd);idx-=real();place(idx,false);};el.addEventListener('transitionend',onEnd);}};
+const start=()=>{clearInterval(timer);timer=setInterval(next,4500);};
+el.addEventListener('transitionend',()=>{if(!el.classList.contains('stopped'))return;const m=/translateX\((-?[\d.]+)px\)/.exec(el.style.transform||'');if(!m)return;const x=parseFloat(m[1]);let best=0,bd=1e9;cards().forEach((c,i)=>{const d=Math.abs(xFor(i)-x);if(d<bd){bd=d;best=i;}});idx=best;});  // tras elegir una pestaña, seguimos desde esa tarjeta
+if(matchMedia('(hover:hover)').matches){el.addEventListener('mouseenter',()=>el.classList.add('paused'));el.addEventListener('mouseleave',()=>el.classList.remove('paused'));}
+const init=()=>{if(isOn()){idx=0;place(0,false);}else{el.style.transform='';el.classList.remove('sliding');}};init();addEventListener('resize',init);addEventListener('load',init);start();})();
 run(document.getElementById('reviews'),()=>true,34);})();
 // Stepper: reserva la altura del estado más alto (un paso abierto) para que el botón no baile al colapsar/expandir
 (()=>{const st=document.querySelector('.stepper');if(!st)return;const fit=()=>{const bodies=[...st.querySelectorAll('.step-body p')];const open=Math.max(0,...bodies.map(p=>p.scrollHeight+8));const act=st.querySelector('.step.active .step-body p');st.style.minHeight='';const base=st.getBoundingClientRect().height-(act?act.scrollHeight+8:0);st.style.minHeight=Math.ceil(base+open)+'px';};fit();addEventListener('resize',fit);addEventListener('load',fit);if(document.fonts)document.fonts.ready.then(fit);})();
