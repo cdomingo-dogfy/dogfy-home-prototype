@@ -1173,7 +1173,8 @@ document.documentElement.classList.add('reveal');
 const faq=document.querySelector('.s-faq');
 const size=()=>{document.documentElement.style.setProperty('--fh',footer.offsetHeight+'px');if(faq)document.querySelector('.page').style.setProperty('--faqh',faq.offsetHeight+'px');};
 let tick=false;const update=()=>{tick=false;const vh=innerHeight,H=footer.offsetHeight,top=space.getBoundingClientRect().top;
-const p=Math.min(1,Math.max(0,(vh-top)/H));footer.style.transform='translateY('+(-Math.max(0,H-vh)*p).toFixed(1)+'px)';};
+// Destape alineado arriba: el footer queda quieto (top:0) mientras la página lo va descubriendo; solo cuando la página ya ha salido del todo y aún queda footer por ver, sube lo que falta a ritmo de scroll normal
+const scrolled=Math.max(0,vh-top);footer.style.transform='translateY('+(-Math.min(Math.max(0,scrolled-vh),Math.max(0,H-vh))).toFixed(1)+'px)';};
 const onScroll=()=>{if(!tick){tick=true;requestAnimationFrame(update)}};
 addEventListener('scroll',onScroll,{passive:true});addEventListener('resize',()=>{size();update()});
 size();update();if(document.fonts)document.fonts.ready.then(()=>{size();update()});addEventListener('load',()=>{size();update()});})();
