@@ -1028,6 +1028,39 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
   .rp-start{padding:64px var(--gutter);margin-bottom:-120px}
   .rp-detail .rp-cta{display:none}
 }
+/* Tarjetas de receta (copiadas de jgarcia-dogfy/dogfy-home v3) */
+.rc-grid{max-width:var(--container);margin:0 auto;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;padding-top:12px}
+.rc-card{position:relative;display:flex;flex-direction:column;background:#fff;border-radius:28px;overflow:clip;cursor:pointer;box-shadow:0 1px 2px rgba(41,38,36,.06),0 16px 32px -16px rgba(41,38,36,.22);transition:box-shadow .3s,transform .3s}
+.rc-card:hover{box-shadow:0 14px 36px rgba(41,38,36,.14),0 3px 8px rgba(41,38,36,.06);transform:translateY(-4px)}
+.rc-card:has(:focus-visible){box-shadow:0 0 0 2px #fff,0 0 0 5px var(--primary),0 14px 36px rgba(41,38,36,.14);transform:translateY(-4px)}
+.rc-media{padding:8px 8px 0}
+.rc-img{position:relative;aspect-ratio:4/3;border-radius:22px;overflow:hidden}
+.rc-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none}
+.rc-pack{opacity:0;transition:opacity .35s}
+.rc-card:hover .rc-pack,.rc-card:has(:focus-visible) .rc-pack{opacity:1}
+.rc-body{display:flex;flex-direction:column;gap:10px;padding:16px 18px 18px;flex:1}
+.rc-top{display:flex;align-items:baseline;justify-content:space-between;gap:8px}
+.rc-top h3{font-size:20px;line-height:24px}
+.rc-sold{font-size:13px;line-height:18px;color:var(--text-toned);white-space:nowrap}
+.rc-sold b{color:var(--text-hi)}
+.rc-list{list-style:none;display:flex;flex-direction:column;gap:2px;font-size:14px;line-height:20px;color:var(--text-toned)}
+.rc-list li{display:flex;align-items:center;gap:8px}
+.rc-list img{width:16px;height:16px;flex:0 0 16px;opacity:.7}
+.rc-foot{display:flex;justify-content:flex-end;padding-top:4px;margin-top:auto}
+.rc-toggle{display:inline-flex;align-items:center;gap:4px;height:36px;padding:0 12px 0 16px;border-radius:999px;background:var(--sand);color:var(--text-hi);font-family:var(--font-display);font-weight:600;font-size:14px;transition:background .2s}
+.rc-toggle:hover{background:#ebe5dc}
+.rc-toggle:focus-visible{outline:none}
+.rc-chev{transition:transform .25s cubic-bezier(.2,.8,.2,1)}
+.rc-card:hover .rc-chev,.rc-card:has(:focus-visible) .rc-chev{transform:translateX(4px)}
+@media (prefers-reduced-motion:reduce){.rc-card,.rc-pack,.rc-chev{transition:none}.rc-card:hover{transform:none}}
+@media (max-width:1100px){.rc-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}}
+@media (max-width:600px){
+  .rc-grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:16px;margin-inline:calc(-1 * var(--gutter));padding:12px var(--gutter) 24px;scrollbar-width:none}
+  .rc-grid::-webkit-scrollbar{display:none}
+  .rc-card{flex:0 0 max(262px,calc((100vw - 34px)/1.3));scroll-snap-align:center;border-radius:24px}
+  .rc-img{border-radius:18px}
+  .rc-list{font-size:12px;line-height:18px}
+}
 </style>
 </head>
 <body>
@@ -1074,37 +1107,37 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
     <h2 class="h2" style="margin-top:12px">Recetas diseñadas por <span class="accent">nuestros veterinarios</span></h2>
     <p class="sub">Nuestras recetas han sido elaboradas por veterinarios expertos en nutrición canina natural. Menús equilibrados y completos para cubrir las necesidades de tu perro a lo largo de todas las etapas de su vida.</p>
   </div>
-  <div class="rp-cards">
-    <article class="rp-card" style="--tint:#fff6c7">
-      <a class="rp-card-img" href="receta-pollo.html"><img src="assets/receta-pollo.jpg" alt="Menú de pollo de Dogfy Diet" loading="lazy" decoding="async"><span class="r-ico"><img src="assets/icon-receta-pollo.svg" alt=""></span></a>
-      <div class="rp-card-body">
-        <h3>Menú de pollo</h3>
-        <p>El que les gusta a todos los peludines. ¿Quieres triunfar? El menú de pollo te garantiza el éxito. El sabor clásico que nunca falla.</p>
-        <div class="rp-card-actions"><a class="btn btn-primary" href="index.html#precio">Añadir a mi plan</a><a class="btn btn-ghost" href="receta-pollo.html">Ver detalles</a></div>
+  <div class="rc-grid">
+    <article class="rc-card" onclick="if(!event.target.closest('a'))location.href='receta-pollo.html'">
+      <div class="rc-media"><div class="rc-img"><img src="assets/receta-pollo.jpg" alt="Receta de Pollo Dogfy" loading="lazy" decoding="async"><img class="rc-pack" src="assets/rc-pack-chicken.jpg" alt="Envase Dogfy Diet Pollo" loading="lazy" decoding="async"></div></div>
+      <div class="rc-body">
+        <div class="rc-top"><h3>Pollo</h3><span class="rc-sold"><b>139.571</b> vendidos/mes</span></div>
+        <ul class="rc-list"><li><img src="assets/rc-heart.svg" alt="">Mantiene los músculos fuertes.</li><li><img src="assets/rc-sparkles.svg" alt="">Favorece un pelaje sano y brillante.</li><li><img src="assets/rc-ham.svg" alt="">Contiene una sola fuente de proteína.</li></ul>
+        <div class="rc-foot"><a class="rc-toggle" href="receta-pollo.html" aria-label="Ver la receta de Pollo"><span>Ver receta</span><svg class="rc-chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></a></div>
       </div>
     </article>
-    <article class="rp-card" style="--tint:#e4d5f3">
-      <a class="rp-card-img" href="receta-pavo.html"><img src="assets/receta-pavo.jpg" alt="Menú de pavo de Dogfy Diet" loading="lazy" decoding="async"><span class="r-ico"><img src="assets/icon-receta-pavo.svg" alt=""></span></a>
-      <div class="rp-card-body">
-        <h3>Menú de pavo</h3>
-        <p>Al estómago sensible de tu peludo le caerá genial. Deliciosa carne de máxima calidad, suave y ligera para la barriguita de tu perro.</p>
-        <div class="rp-card-actions"><a class="btn btn-primary" href="index.html#precio">Añadir a mi plan</a><a class="btn btn-ghost" href="receta-pavo.html">Ver detalles</a></div>
+    <article class="rc-card" onclick="if(!event.target.closest('a'))location.href='receta-salmon.html'">
+      <div class="rc-media"><div class="rc-img"><img src="assets/receta-salmon.jpg" alt="Receta de Salmón Dogfy" loading="lazy" decoding="async"><img class="rc-pack" src="assets/rc-pack-salmon.jpg" alt="Envase Dogfy Diet Salmón" loading="lazy" decoding="async"></div></div>
+      <div class="rc-body">
+        <div class="rc-top"><h3>Salmón</h3><span class="rc-sold"><b>139.312</b> vendidos/mes</span></div>
+        <ul class="rc-list"><li><img src="assets/rc-heart.svg" alt="">Ideal para hocicos refinados.</li><li><img src="assets/rc-sparkles.svg" alt="">Favorece el desarrollo del sistema nervioso.</li><li><img src="assets/rc-ham.svg" alt="">Ayuda a fortalecer la salud ósea.</li></ul>
+        <div class="rc-foot"><a class="rc-toggle" href="receta-salmon.html" aria-label="Ver la receta de Salmón"><span>Ver receta</span><svg class="rc-chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></a></div>
       </div>
     </article>
-    <article class="rp-card" style="--tint:#fde0c8">
-      <a class="rp-card-img" href="receta-salmon.html"><img src="assets/receta-salmon.jpg" alt="Menú de salmón de Dogfy Diet" loading="lazy" decoding="async"><span class="r-ico"><img src="assets/icon-receta-salmon.svg" alt=""></span></a>
-      <div class="rp-card-body">
-        <h3>Menú de salmón</h3>
-        <p>Deliciosa receta repleta de ácidos grasos Omega-3. Pregúntale a tu perro si le gusta o le encanta.</p>
-        <div class="rp-card-actions"><a class="btn btn-primary" href="index.html#precio">Añadir a mi plan</a><a class="btn btn-ghost" href="receta-salmon.html">Ver detalles</a></div>
+    <article class="rc-card" onclick="if(!event.target.closest('a'))location.href='receta-buey.html'">
+      <div class="rc-media"><div class="rc-img"><img src="assets/receta-buey.jpg" alt="Receta de Buey Dogfy" loading="lazy" decoding="async"><img class="rc-pack" src="assets/rc-pack-beef.jpg" alt="Envase Dogfy Diet Buey" loading="lazy" decoding="async"></div></div>
+      <div class="rc-body">
+        <div class="rc-top"><h3>Buey</h3><span class="rc-sold"><b>139.972</b> vendidos/mes</span></div>
+        <ul class="rc-list"><li><img src="assets/rc-heart.svg" alt="">Bajo en calorías.</li><li><img src="assets/rc-sparkles.svg" alt="">Ayuda a mantener un peso saludable.</li><li><img src="assets/rc-ham.svg" alt="">Contiene una sola fuente de proteína.</li></ul>
+        <div class="rc-foot"><a class="rc-toggle" href="receta-buey.html" aria-label="Ver la receta de Buey"><span>Ver receta</span><svg class="rc-chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></a></div>
       </div>
     </article>
-    <article class="rp-card" style="--tint:#f7d7d4">
-      <a class="rp-card-img" href="receta-buey.html"><img src="assets/receta-buey.jpg" alt="Menú de buey de Dogfy Diet" loading="lazy" decoding="async"><span class="r-ico"><img src="assets/icon-receta-buey.svg" alt=""></span></a>
-      <div class="rp-card-body">
-        <h3>Menú de buey</h3>
-        <p>¿Necesitas empezar a controlar el peso de tu perro? No se ladre más. Bajo en calorías, pero alto en nutrientes y lleno de sabor.</p>
-        <div class="rp-card-actions"><a class="btn btn-primary" href="index.html#precio">Añadir a mi plan</a><a class="btn btn-ghost" href="receta-buey.html">Ver detalles</a></div>
+    <article class="rc-card" onclick="if(!event.target.closest('a'))location.href='receta-pavo.html'">
+      <div class="rc-media"><div class="rc-img"><img src="assets/receta-pavo.jpg" alt="Receta de Pavo Dogfy" loading="lazy" decoding="async"><img class="rc-pack" src="assets/rc-pack-turkey.jpg" alt="Envase Dogfy Diet Pavo" loading="lazy" decoding="async"></div></div>
+      <div class="rc-body">
+        <div class="rc-top"><h3>Pavo</h3><span class="rc-sold"><b>140.611</b> vendidos/mes</span></div>
+        <ul class="rc-list"><li><img src="assets/rc-heart.svg" alt="">Ideal para estómagos sensibles.</li><li><img src="assets/rc-sparkles.svg" alt="">Refuerza la salud intestinal.</li><li><img src="assets/rc-ham.svg" alt="">Contiene una sola fuente de proteína.</li></ul>
+        <div class="rc-foot"><a class="rc-toggle" href="receta-pavo.html" aria-label="Ver la receta de Pavo"><span>Ver receta</span><svg class="rc-chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></a></div>
       </div>
     </article>
   </div>
