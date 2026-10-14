@@ -273,17 +273,18 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
   .bol-sticky{min-height:600px}
   .s-porque{padding-bottom:48px}
   .bol-stage{top:141px}
-  /* Tira Figma móvil (Frame 1410105418): 839×499 → etiquetas 307 @0/70 · bol 385 @214/57 · etiquetas 333 @506/70 */
-  .bol-track{width:839px;height:499px}
-  .hs-col{width:307px;height:358px;top:70px;left:0}
-  .hs-col.st2{left:506px;top:70px;width:333px}
-  .bol-img{left:214px;top:57px;width:385px}
-  .hs{gap:9px}
-  .hs .lbl{font-size:15px;line-height:19px;padding:8px 12px;white-space:nowrap;max-width:none}  /* móvil: siempre una línea; la escala la fija la etiqueta más larga, que puede pisar el bol */  /* base 12px: la tira se escala ×1,2-1,4 en móvil, así que en pantalla queda a 14-17px y cabe una escala mayor */
-  .hs .thumb{flex-basis:56px;width:56px;height:56px;border-radius:8px}
-  .hs .thumb img{transform-origin:0 0;scale:.78}
-  .hs-col.st1 .hs:nth-child(1){left:auto;right:0;top:0}.hs-col.st1 .hs:nth-child(2){left:auto;right:16px;top:102px}.hs-col.st1 .hs:nth-child(3){left:auto;right:16px;top:205px}.hs-col.st1 .hs:nth-child(4){left:auto;right:0;top:307px}
-  .hs-col.st2 .hs:nth-child(1){left:0;top:0}.hs-col.st2 .hs:nth-child(2){left:16px;top:102px}.hs-col.st2 .hs:nth-child(3){left:16px;top:205px}.hs-col.st2 .hs:nth-child(4){left:0;top:307px}
+  /* Tira móvil según Figma 416:36243 (375 de base): etiquetas 354×412 · bol 443 · etiquetas 384×412. El bol se solapa 107px con cada columna */
+  .bol-track{width:967px;height:443px}
+  .hs-col{width:354px;height:412px;top:15.5px;left:0}
+  .hs-col.st2{left:583px;top:15.5px;width:384px}
+  .bol-img{left:247px;top:0;width:443px}
+  .hs{gap:11px}
+  .hs .lbl{font-size:14.5px;line-height:18px;padding:9px 14.5px;white-space:nowrap;max-width:none;box-shadow:0 3.6px 10.9px rgba(26,38,89,.1)}
+  .hs .thumb{flex-basis:58px;width:58px;height:58px;border-radius:9px;border:1px solid #fff}
+  .hs .thumb img{transform-origin:0 0;scale:.906}
+  .hs-col.st1 .hs:nth-child(1){left:33.4px;right:auto;top:0}.hs-col.st1 .hs:nth-child(2){left:97.8px;right:auto;top:117.9px}.hs-col.st1 .hs:nth-child(3){left:19.6px;right:auto;top:235.9px}.hs-col.st1 .hs:nth-child(4){left:62px;right:auto;top:353.8px}
+  .hs-col.st2 .hs:nth-child(1){left:0;top:0}.hs-col.st2 .hs:nth-child(2){left:44.9px;top:117.4px}.hs-col.st2 .hs:nth-child(3){left:45.4px;top:235.9px}.hs-col.st2 .hs:nth-child(4){left:0;top:353.4px}
+  .bol-sticky .head .eyebrow{color:var(--primary);font-weight:700}  /* como en Figma: antetítulo en primary */
 }
 
 /* Recetas */
@@ -1386,11 +1387,11 @@ addEventListener('scroll',()=>{if(!tick){tick=true;requestAnimationFrame(update)
     const stage=track.parentElement,avail=stage.clientHeight-(W<=900&&!mobile?6:48);   // 48px de aire bajo la tira; en tablet casi nada: la tira sale ~10 % mayor
     // móvil: la tira ocupa el 75 % del alto del viewport (puede ampliarse), pero nunca tanto que una etiqueta se salga por el lado (bol visible 151 + etiqueta más ancha + 24 de aire)
     const maxLbl=Math.max(...[...track.querySelectorAll('.hs')].map(h=>h.offsetWidth));
-    const kFit=(W-42)/maxLbl;                                                      // tope: la etiqueta más ancha cabe entre los dos márgenes de 16px (con 10px de holgura para el zigzag)
+    const kFit=mobile?(W-16)/358:(W-42)/maxLbl;                                   // móvil: geometría Figma; a 375px la tira va a escala 1 y todas las etiquetas quedan a ≥16px del borde
     const lvh=(()=>{const d=document.createElement('div');d.style.cssText='position:fixed;top:0;left:0;width:0;height:100lvh;visibility:hidden;pointer-events:none';document.body.appendChild(d);const h=d.offsetHeight||innerHeight;d.remove();return Math.max(h,innerHeight);})();  // iOS Safari: innerHeight descuenta las barras; se usa el viewport grande
     const k=mobile?Math.max(.6,Math.min(kFit,Math.min(avail,lvh*.85)/track.offsetHeight)):Math.min(1.25,(W-32)/maxLbl,Math.max(.6,avail/track.offsetHeight));  // móvil: hasta el 85 % del alto; tablet: hasta 1,25× (la columna de etiquetas, 423px, siempre cabe)
-    const bw=mobile?385:611,bl=mobile?214:403,vis=mobile?Math.max(16+93*k,Math.min(151*k,W-16+85*k-maxLbl*k)):305*k;   // móvil: el bol cede parte visible para que la etiqueta más larga (una línea) quede a ≥16px del borde en los dos estados (85 = solape miniatura/bol en la tira)    // ancho del bol, su x dentro de la tira y parte visible
-    const x1=mobile?W-vis-bl*k:Math.max(60*k,W-1045*k), x2=mobile?vis-(bl+bw)*k+8*k:Math.min(W-(1468+60)*k,-403*k);   // la columna contraria nunca asoma   // tablet/intermedio (Figma 469:40559 y 768): tira a 60px del borde; estado 2 a 60px del borde derecho · móvil: bol asomando
+    const bw=mobile?443:611,bl=mobile?247:403,vis=mobile?130*k:305*k;   // móvil (Figma): se ven 130px del bol en el estado 1 y 150px en el 2   // móvil: el bol cede parte visible para que la etiqueta más larga (una línea) quede a ≥16px del borde en los dos estados (85 = solape miniatura/bol en la tira)    // ancho del bol, su x dentro de la tira y parte visible
+    const x1=mobile?W-vis-bl*k:Math.max(60*k,W-1045*k), x2=mobile?150*k-(bl+bw)*k:Math.min(W-(1468+60)*k,-403*k);   // la columna contraria nunca asoma   // tablet/intermedio (Figma 469:40559 y 768): tira a 60px del borde; estado 2 a 60px del borde derecho · móvil: bol asomando
     const ty=Math.max(0,(avail-track.offsetHeight*k)/2);                       // reparte el aire sobrante arriba y abajo de la tira
     track.style.transform=`translate(${(x1+(x2-x1)*s).toFixed(1)}px,${ty.toFixed(1)}px) scale(${k.toFixed(3)})`;
     const two=s>=.5;if(two!==h2.classList.contains('show')){h1.classList.toggle('show',!two);h2.classList.toggle('show',two);}};
