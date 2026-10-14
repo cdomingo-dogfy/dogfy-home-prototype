@@ -677,13 +677,13 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
   /* 09: carrusel de opiniones con bullets */
   /* Footer compacto en móvil: 2 columnas, menos solape con FAQ, tipografía y badges menores */
   .s-faq{margin-bottom:-120px}
-  .footer{padding:calc(56px + 120px) 20px 32px;gap:32px}
+  .footer{padding:calc(56px + 120px) 20px 24px;gap:20px}  /* móvil: bloques más juntos */
   /* Footer móvil: enlaces a dos columnas, redes y pagos a todo el ancho, marca con el perro recortado en su propia franja, badges a media anchura y legales en dos columnas. Nada se pisa */
-  .footer .cols{grid-template-columns:1fr 1fr;gap:24px 16px;font-size:12px}  /* móvil: todos los textos del footer a 12px */
+  .footer .cols{grid-template-columns:1fr 1fr;gap:20px 16px;font-size:12px}  /* móvil: todos los textos del footer a 12px */
   .footer .col b,.footer .col a,.footer .col p{font-size:12px;line-height:1.5}
-  .footer .col{gap:10px}
+  .footer .col{gap:8px}
   .footer .cols .col:first-child{grid-column:1/-1}  /* Ayuda a todo el ancho; debajo, Descubre Dogfy y Comunidad lado a lado */
-  .footer .cols .col:last-child{grid-column:1/-1;display:grid;grid-template-columns:auto 1fr;gap:12px 16px;align-items:center;padding-top:8px;border-top:1px solid rgba(255,255,255,.3)}
+  .footer .cols .col:last-child{grid-column:1/-1;display:grid;grid-template-columns:auto 1fr;gap:10px 16px;align-items:center;padding-top:12px;border-top:1px solid rgba(255,255,255,.3)}
   .footer .cols .col:last-child b:last-of-type,.footer .pays{grid-column:1/-1}  /* métodos de pago: título y los seis logos en una sola línea */
   .footer .pays{flex-wrap:nowrap}
   .footer .cols .col:last-child b{margin:0}
@@ -691,11 +691,11 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
   .footer .pays{gap:6px}
   .footer .brand{position:relative;overflow:hidden;margin:0 -20px;padding:8px 20px 0}
   .footer .wordmark{width:min(41vw,196px);display:block}  /* un 30 % más pequeño */
-  .footer .brand{display:flex;align-items:center;min-height:176px}
+  .footer .brand{display:flex;align-items:center;min-height:150px;padding-top:0}
   .footer .deco-dog{position:absolute;right:-4%;top:0;bottom:auto;height:100%;width:auto;aspect-ratio:1;object-fit:cover;object-position:50% 73%;transform:scaleX(-1)}  /* la foto tiene un 28 % transparente arriba y la cabeza llega al 88 %: este encuadre la muestra entera, con oreja y hocico */  /* la cabeza entera dentro de la franja, sin cortes */
   .footer .badges{display:flex;flex-wrap:wrap;gap:10px}
   .badge-app{zoom:.7}  /* badges un 30 % más pequeños (45px de alto) */
-  .footer .legal{display:grid;grid-template-columns:1fr 1fr;gap:10px 16px;font-size:12px;max-width:none}
+  .footer .legal{display:grid;grid-template-columns:1fr 1fr;gap:8px 16px;font-size:12px;max-width:none}
   .btn-lg,.select{width:100%}
 }
 
