@@ -1028,6 +1028,48 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
   .rp-start{padding:64px var(--gutter);margin-bottom:-120px}
   .rp-detail .rp-cta{display:none}
 }
+/* Tarjetas de receta (copiadas de jgarcia-dogfy/dogfy-home v3) */
+.rc-grid{max-width:var(--container);margin:0 auto;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;padding-top:12px}
+.rc-card{position:relative;display:flex;flex-direction:column;background:#fff;border-radius:28px;overflow:clip;cursor:pointer;box-shadow:0 1px 2px rgba(41,38,36,.06),0 16px 32px -16px rgba(41,38,36,.22);transition:box-shadow .3s,transform .3s}
+.rc-card:hover{box-shadow:0 14px 36px rgba(41,38,36,.14),0 3px 8px rgba(41,38,36,.06);transform:translateY(-4px)}
+.rc-card:has(:focus-visible){box-shadow:0 0 0 2px #fff,0 0 0 5px var(--primary),0 14px 36px rgba(41,38,36,.14);transform:translateY(-4px)}
+.rc-media{padding:8px 8px 0}
+.rc-img{position:relative;aspect-ratio:4/3;border-radius:22px;overflow:hidden}
+.rc-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none}
+.rc-pack{opacity:0;transition:opacity .35s}
+.rc-card:hover .rc-pack,.rc-card:has(:focus-visible) .rc-pack{opacity:1}
+.rc-body{display:flex;flex-direction:column;gap:10px;padding:16px 18px 18px;flex:1}
+.rc-top{display:flex;align-items:baseline;justify-content:space-between;gap:8px}
+.rc-top h3{font-size:20px;line-height:24px}
+.rc-sold{font-size:13px;line-height:18px;color:var(--text-toned);white-space:nowrap}
+.rc-sold b{color:var(--text-hi)}
+.rc-list{list-style:none;display:flex;flex-direction:column;gap:2px;font-size:14px;line-height:20px;color:var(--text-toned)}
+.rc-list li{display:flex;align-items:center;gap:8px}
+.rc-list img{width:16px;height:16px;flex:0 0 16px;opacity:.7}
+.rc-foot{display:flex;justify-content:flex-end;padding-top:4px;margin-top:auto}
+.rc-toggle{display:inline-flex;align-items:center;gap:4px;height:36px;padding:0 12px 0 16px;border-radius:999px;background:var(--sand);color:var(--text-hi);font-family:var(--font-display);font-weight:600;font-size:14px;transition:background .2s}
+.rc-toggle:hover{background:#ebe5dc}
+.rc-toggle:focus-visible{outline:none}
+.rc-chev{transition:transform .25s cubic-bezier(.2,.8,.2,1)}
+.rc-card:hover .rc-chev,.rc-card:has(:focus-visible) .rc-chev{transform:translateX(4px)}
+@media (prefers-reduced-motion:reduce){.rc-card,.rc-pack,.rc-chev{transition:none}.rc-card:hover{transform:none}}
+@media (max-width:1100px){.rc-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}}
+@media (max-width:600px){
+  .rc-grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:16px;margin-inline:calc(-1 * var(--gutter));padding:12px var(--gutter) 24px;scrollbar-width:none}
+  .rc-grid::-webkit-scrollbar{display:none}
+  .rc-card{flex:0 0 max(262px,calc((100vw - 34px)/1.3));scroll-snap-align:center;border-radius:24px}
+  .rc-img{border-radius:18px}
+  .rc-list{font-size:12px;line-height:18px}
+}
+/* Barra de pestañas de la ficha: botón para volver al listado */
+.rp-tabs.has-back{position:sticky;align-items:center}
+.rp-tabs-list{display:flex;gap:8px;justify-content:center}
+.rp-tabs-back{position:absolute;left:var(--gutter);top:50%;transform:translateY(-50%);display:inline-flex;align-items:center;gap:4px;height:44px;padding:0 16px 0 10px;border-radius:999px;background:#fff;color:var(--text-hi);font-family:var(--font-display);font-weight:600;font-size:15px;box-shadow:0 1px 3px rgba(0,0,0,.08);transition:background .2s}
+.rp-tabs-back:hover{background:var(--sand)}
+.rp-tabs-back svg{transition:transform .25s cubic-bezier(.2,.8,.2,1)}
+.rp-tabs-back:hover svg{transform:translateX(-3px)}
+@media (max-width:1000px){.rp-tabs.has-back{justify-content:flex-start;gap:8px}.rp-tabs-back{position:static;transform:none;flex:0 0 auto;padding:0 12px 0 8px}}
+@media (max-width:600px){.rp-tabs-back{width:44px;padding:0;justify-content:center}.rp-tabs-back span{display:none}.rp-tabs.has-back{overflow:visible}.rp-tabs-list{overflow-x:auto;scrollbar-width:none;justify-content:flex-start}.rp-tabs-list::-webkit-scrollbar{display:none}}
 </style>
 </head>
 <body>
@@ -1061,7 +1103,7 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
   <a class="btn btn-primary" href="index.html#precio">Crea tu menú</a>
 </nav>
 
-<nav class="rp-tabs" aria-label="Recetas"><a class="tab active" href="receta-pollo.html" aria-current="page"><img src="assets/tab-pollo.svg" alt="">Pollo</a><a class="tab" href="receta-pavo.html"><img src="assets/tab-pavo.svg" alt="">Pavo</a><a class="tab" href="receta-salmon.html"><img src="assets/tab-salmon.svg" alt="">Salmón</a><a class="tab" href="receta-buey.html"><img src="assets/tab-buey.svg" alt="">Buey</a></nav>
+<nav class="rp-tabs has-back" aria-label="Recetas"><a class="rp-tabs-back" href="recetas.html" aria-label="Volver a todas las recetas"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg><span>Recetas</span></a><div class="rp-tabs-list"><a class="tab active" href="receta-pollo.html" aria-current="page"><img src="assets/tab-pollo.svg" alt="">Pollo</a><a class="tab" href="receta-pavo.html"><img src="assets/tab-pavo.svg" alt="">Pavo</a><a class="tab" href="receta-salmon.html"><img src="assets/tab-salmon.svg" alt="">Salmón</a><a class="tab" href="receta-buey.html"><img src="assets/tab-buey.svg" alt="">Buey</a></div></nav>
 
 <section class="rp-receta rp-detail" style="--tint:#fff6c7">
   <div class="rp-grid">
@@ -1137,6 +1179,7 @@ const burger=document.getElementById('burger'),menu=document.getElementById('mob
 burger.addEventListener('click',()=>{menu.style.setProperty('--menu-top',document.querySelector('.header').getBoundingClientRect().bottom+'px');const o=menu.classList.toggle('open');burger.setAttribute('aria-expanded',o);burger.setAttribute('aria-label',o?'Cerrar menú':'Abrir menú');document.body.style.overflow=o?'hidden':'';document.body.classList.toggle('menu-open',o);if(o)setTimeout(()=>menu.querySelector('a')?.focus(),260);});
 addEventListener('keydown',e=>{if(e.key==='Escape'&&menu.classList.contains('open')){menu.classList.remove('open');burger.setAttribute('aria-expanded','false');burger.setAttribute('aria-label','Abrir menú');document.body.style.overflow='';burger.focus();}});
 menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{menu.classList.remove('open');document.body.style.overflow='';document.body.classList.remove('menu-open')}));
+(()=>{const l=document.querySelector('.rp-tabs-list'),a=l&&l.querySelector('.active');if(a&&l.scrollWidth>l.clientWidth)l.scrollLeft=a.offsetLeft-l.offsetLeft-(l.clientWidth-a.offsetWidth)/2;})();
 </script>
 </body>
 </html>
