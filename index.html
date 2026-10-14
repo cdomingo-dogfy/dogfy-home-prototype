@@ -186,6 +186,26 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
 .step-body p{overflow:hidden;margin-top:8px}
 .step.active .step-body{grid-template-rows:1fr}
 @media (prefers-reduced-motion:reduce){.step .txt,.step .dot,.step-body{transition:none}}
+/* Escritorio (como beside.com/industries/insurance): los pasos se leen uno a uno haciendo scroll normal, cada uno ocupa ~70vh con su texto siempre visible, y la foto queda fija a la derecha cambiando con el paso activo */
+@media (min-width:901px){
+  .s-cocina{height:auto;padding-bottom:40px}
+  .s-cocina .cocina-sticky{position:static;max-height:none;overflow:visible;display:block}
+  .cocina-head{margin-bottom:0}
+  .s-cocina .split{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(40px,6vw,96px);align-items:start}
+  .s-cocina .split .media{order:2;position:sticky;top:calc(64px + 8vh);aspect-ratio:1/1;width:min(100%,calc(84vh - 64px));max-height:none;justify-self:end;align-self:start}  /* cuadrada, nunca más alta que lo que queda de viewport bajo la cabecera */
+  .s-cocina .right-col{order:1;gap:0}
+  .stepper{min-height:0!important}
+  .step{min-height:72vh;align-items:center;gap:20px}
+  .step:first-child{min-height:calc(72vh - 40px)}
+  .step .txt{padding-bottom:0;font-size:18px;line-height:28px;opacity:.35;transform:none}
+  .step.active .txt{opacity:1}
+  .step.done .txt{opacity:.35}
+  .step h3{font-size:clamp(26px,2.6vw,36px);line-height:1.15}
+  .step-body{grid-template-rows:1fr}
+  .step-body p{margin-top:12px;max-width:46ch}
+  .step .ind{flex:0 0 48px}
+  .s-cocina .right-col .btn{margin-top:8px;margin-bottom:10vh}
+}
 
 /* Section 04 · Bol con etiquetas */
 .s-porque{background:#e2e8fb}  /* sin overflow:hidden: rompería el sticky del bloque tablet/móvil */
@@ -1222,9 +1242,9 @@ const showStep=i=>{if(i===shown)return;shown=i;mImgs.forEach((im,j)=>im.classLis
 let tick=false;const update=()=>{tick=false;
 const track=section;
 const r=track.getBoundingClientRect(),total=r.height-innerHeight;
-if(total>0){const p=Math.min(1,Math.max(0,-r.top/total));const cur=Math.min(N-1,Math.floor(p*N));steps.forEach((st,i)=>{st.classList.toggle('active',i===cur);st.classList.toggle('done',i<cur);if(i===cur)st.setAttribute('aria-current','step');else st.removeAttribute('aria-current');});showStep(cur);return;}
+if(total>0&&narrow()){const p=Math.min(1,Math.max(0,-r.top/total));const cur=Math.min(N-1,Math.floor(p*N));steps.forEach((st,i)=>{st.classList.toggle('active',i===cur);st.classList.toggle('done',i<cur);if(i===cur)st.setAttribute('aria-current','step');else st.removeAttribute('aria-current');});showStep(cur);return;}
 // sin pista (p.ej. prefers-reduced-motion, que desactiva el scroll fijo): se activa el paso cuyo icono cruza el centro de la pantalla
-const mid=innerHeight*0.55;let cur=-1;
+const mid=innerHeight*0.6;let cur=-1;
 steps.forEach((st,i)=>{const dr=st.querySelector('.dot').getBoundingClientRect();if(dr.top<=mid)cur=i;});
 if(cur<0&&steps[0].getBoundingClientRect().top<innerHeight*0.9)cur=0;
 steps.forEach((st,i)=>{st.classList.toggle('active',i===cur);st.classList.toggle('done',i<cur);});showStep(Math.max(0,cur));};
