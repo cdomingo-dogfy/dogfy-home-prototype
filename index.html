@@ -149,8 +149,8 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
 .feature{display:flex;gap:10px;align-items:flex-start}
 .feature .ico{flex:0 0 auto;padding:2px}
 .feature .ico img{width:20px;height:20px}
-.feature h3{font-family:var(--font-display);font-weight:700;font-size:clamp(24px,2.3vw,32px);line-height:1.15;letter-spacing:-.015em;color:var(--text-hi)}
-.feature p{font-size:16px;line-height:1.5;color:var(--text);margin-top:8px}
+.feature h3{font-family:var(--font-display);font-weight:700;font-size:clamp(18px,1.6vw,22px);line-height:1.2;letter-spacing:-.01em;color:var(--text-hi)}
+.feature p{font-size:15px;line-height:1.5;color:var(--text);margin-top:6px}
 .feature.lead h3{font-family:var(--font-display);font-weight:600;font-size:clamp(32px,3.5vw,44px);line-height:1.05;letter-spacing:-.01em}
 .feature.lead p{font-family:var(--font-alt);font-size:clamp(17px,1.5vw,21px);line-height:1.45;margin-top:8px}
 .right-col{display:flex;flex-direction:column;gap:32px;align-items:flex-start}
@@ -369,7 +369,7 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
 .s-caja .head{max-width:760px;margin:0 auto 32px}
 .s-caja .head .h2{line-height:1.08}  /* a 1 las dos líneas del titular se tocaban; un poco de aire (~4px) entre ellas */
 /* Pista de scroll: en escritorio la sección queda fija (sticky) y cada tramo de 100vh activa un punto y su imagen; al llegar al final se suelta y sigue el scroll normal */
-.s-caja .wrap.acc-scroll{padding:0;height:500vh}  /* 5 estados (intro + 4 puntos) × 100vh */
+.s-caja .wrap.acc-scroll{padding:0;height:400vh}  /* 4 estados × 100vh */
 .acc-sticky{position:sticky;top:64px;height:calc(100vh - 64px);min-height:620px;overflow:hidden;display:flex;flex-direction:column;justify-content:center;padding:48px var(--gutter) 56px;background:#fffae5}
 @media (prefers-reduced-motion:reduce){.s-caja .wrap.acc-scroll{height:auto;padding:80px var(--gutter)}.acc-sticky{position:static;min-height:0;height:auto;overflow:visible}}
 .s-caja .lead-p.center{display:none}
@@ -391,7 +391,7 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
 @media (max-width:900px){
   .receta p{font-size:15px;line-height:23px}  /* tarjetas de recetas: texto algo más pequeño en tablet y móvil */
   /* Tablet/móvil: misma escena fija que en escritorio pero apilada: foto arriba, puntos en horizontal y la lista debajo. El scroll abre un apartado cada vez y cambia la foto; cada tramo mide 55vh */
-  .s-caja .wrap.acc-scroll{height:320vh}
+  .s-caja .wrap.acc-scroll{height:260vh}
   .acc-sticky{height:calc(100vh - 64px);height:calc(100svh - 64px);min-height:0;justify-content:flex-start;padding:16px var(--gutter) 24px}  /* el amarillo llena el viewport mientras la escena está fija: así no asoma el blanco de la siguiente sección cuando cambia la altura del texto; al acabar la pista el bloque sube y se va */
   .s-caja .head{margin-bottom:12px}
   .acc{display:flex;flex-direction:column;gap:12px;align-items:stretch;flex:1 1 auto;min-height:0;width:100%;max-width:none;margin:0}  /* de gutter a gutter, como el resto de secciones */
@@ -1061,16 +1061,15 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
       <p class="lead-p center">Dos semanas de comida real, una guía para hacer el cambio sin dramas y algún detalle para los dos.</p>
     </div>
     <div class="acc" id="cajaAcc">
-      <div class="acc-dots" aria-hidden="true"><i class="active"></i><i></i><i></i><i></i><i></i></div>
+      <div class="acc-dots" aria-hidden="true"><i class="active"></i><i></i><i></i><i></i></div>
       <div class="acc-media">
-        <img src="assets/caja-prueba.jpg" alt="" class="is-on" loading="lazy" decoding="async">
-        <img src="assets/caja-bolsitas.jpg" alt="" loading="lazy" decoding="async">
+        <img src="assets/caja-bolsitas.jpg" alt="" class="is-on" loading="lazy" decoding="async">
         <div class="ph" aria-hidden="true"><span>Imagen pendiente · Manual</span></div>
         <img src="assets/caja-regalos.jpg" alt="" loading="lazy" decoding="async">
         <img src="assets/caja-app.jpg" alt="" loading="lazy" decoding="async">
       </div>
       <div class="acc-list">
-        <button class="acc-item" type="button" aria-expanded="false"><span class="acc-title">Bolsitas diarias de comida natural</span><span class="acc-body"><span>Una ración por bolsita, cocinada a baja temperatura y lista para descongelar y servir. Catorce días, catorce bolsitas.</span></span></button>
+        <button class="acc-item is-open" type="button" aria-expanded="true"><span class="acc-title">Bolsitas diarias de comida natural</span><span class="acc-body"><span>Una ración por bolsita, cocinada a baja temperatura y lista para descongelar y servir. Catorce días, catorce bolsitas.</span></span></button>
         <button class="acc-item" type="button" aria-expanded="false"><span class="acc-title">Manual de transición</span><span class="acc-body"><span>Cómo pasar de su comida actual a Dogfy, día a día, sin molestias digestivas.</span></span></button>
         <button class="acc-item" type="button" aria-expanded="false"><span class="acc-title">Tips y regalos perrunos</span><span class="acc-body"><span>Consejos para empezar con buen pie y un pack de stickers para presumir de perro.</span></span></button>
         <button class="acc-item" type="button" aria-expanded="false"><span class="acc-title">Acceso a tu nueva app</span><span class="acc-body"><span>Sigue sus pedidos, ajusta sus recetas y gestiona la suscripción desde el móvil.</span></span></button>
@@ -1347,13 +1346,13 @@ size();update();if(document.fonts)document.fonts.ready.then(()=>{size();update()
     rvDots.addEventListener('click',()=>{pause();unpause(8000);});}}
 })();
 // Caja de prueba: tantas imágenes como puntos (intro + apartados). En escritorio la pista mide 100vh por punto y el bloque queda sticky; al agotarla se suelta y sigue el scroll normal
-(()=>{const acc=document.getElementById('cajaAcc'),track=document.getElementById('cajaScroll');if(!acc||!track)return;const items=[...acc.querySelectorAll('.acc-item')],imgs=[...acc.querySelectorAll('.acc-media > *')],dots=[...acc.querySelectorAll('.acc-dots i')];const N=items.length+1;let cur=-2,tick=false;
-const go=k=>{if(k===cur)return;cur=k;const i=k-1;items.forEach((it,j)=>{it.classList.toggle('is-open',j===i);it.setAttribute('aria-expanded',j===i);});imgs.forEach((im,j)=>im.classList.toggle('is-on',j===k));dots.forEach((d,j)=>d.classList.toggle('active',j===k));};
+(()=>{const acc=document.getElementById('cajaAcc'),track=document.getElementById('cajaScroll');if(!acc||!track)return;const items=[...acc.querySelectorAll('.acc-item')],imgs=[...acc.querySelectorAll('.acc-media > *')],dots=[...acc.querySelectorAll('.acc-dots i')];const N=items.length;let cur=-2,tick=false;
+const go=k=>{if(k===cur)return;cur=k;const i=k;items.forEach((it,j)=>{it.classList.toggle('is-open',j===i);it.setAttribute('aria-expanded',j===i);});imgs.forEach((im,j)=>im.classList.toggle('is-on',j===k));dots.forEach((d,j)=>d.classList.toggle('active',j===k));};
 const media=acc.querySelector('.acc-media');const narrow=()=>innerWidth<=900;
 const introFrac=.4;  // la intro dura menos de un viewport: así el primer cambio llega enseguida al empezar a hacer scroll, no tras un tramo entero sin pasar nada
-const upd=()=>{tick=false;const r=track.getBoundingClientRect(),total=r.height-innerHeight;if(total<=0){go(0);return;}const step=narrow()?innerHeight*.55:innerHeight;const d=Math.min(total,Math.max(0,-r.top)),introPx=introFrac*step;const k=d<introPx?0:Math.min(N-1,1+Math.floor((d-introPx)/step));go(k);};
+const upd=()=>{tick=false;const r=track.getBoundingClientRect(),total=r.height-innerHeight;if(total<=0){go(0);return;}const d=Math.min(total,Math.max(0,-r.top)),introPx=introFrac*innerHeight*.5;const k=Math.min(N-1,Math.floor(Math.max(0,d-introPx)/((total-introPx)/N)));go(k);};  // la pista se reparte en N tramos iguales tras una intro corta: el último estado siempre se alcanza
 addEventListener('scroll',()=>{if(!tick){tick=true;requestAnimationFrame(upd)}},{passive:true});addEventListener('resize',upd);
-items.forEach((it,i)=>it.addEventListener('click',()=>{const r=track.getBoundingClientRect(),total=r.height-innerHeight,p=(i+1.5)/N;scrollTo({top:scrollY+r.top+p*total,behavior:'smooth'});}));
+items.forEach((it,i)=>it.addEventListener('click',()=>{const r=track.getBoundingClientRect(),total=r.height-innerHeight,p=(i+.5)/N;scrollTo({top:scrollY+r.top+p*total,behavior:'smooth'});}));
 upd();})();
 // Cintas en bucle (recetas ≤1074px, opiniones ≤767px): movidas por JS a 38px/s con rAF. Evita la animación CSS sobre una capa de miles de px, que en algunos móviles se acelera o deja de pintarse
 (()=>{if(matchMedia('(prefers-reduced-motion:reduce)').matches)return;
