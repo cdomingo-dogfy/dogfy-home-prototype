@@ -709,7 +709,8 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
   .s-cocina .media-wrap{display:contents}
   .s-cocina .media-wrap .btn{order:3;justify-self:center;width:auto;margin-top:0}  /* el botón, tras los pasos y centrado (el wrapper es display:contents) */
   .s-cocina .split{position:sticky;top:64px;gap:16px;align-content:start;padding-top:16px}  /* aire entre la cabecera fija y la imagen al quedar pegada */
-  .s-cocina .split .media{aspect-ratio:auto;height:30vh;height:30svh}  /* móvil: la foto ocupa el 30 % del alto de la pantalla */
+  .s-cocina .split .media{aspect-ratio:auto;height:40vh;height:40svh}  /* móvil/tablet: la foto ocupa el 40 % del alto de la pantalla */
+  @media (max-height:700px){.s-cocina .split .media{height:32svh}}  /* móviles bajos (iPhone SE): algo menos para que el último paso no quede bajo el CTA fijo */
   .s-cocina .right-col{position:static;height:auto;max-height:none;overflow:visible;justify-content:flex-start;gap:16px;padding:0}
   .s-cocina{padding-bottom:0}
   /* Raíl vertical entre insignias: se va rellenando con los pasos completados */
