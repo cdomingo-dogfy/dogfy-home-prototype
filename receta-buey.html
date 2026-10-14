@@ -1,0 +1,1142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Menú de buey · Dogfy Diet</title>
+<meta name="description" content="Menú de buey de Dogfy Diet: ingredientes, componentes analíticos y beneficios.">
+<meta name="theme-color" content="#fffae5">
+<meta property="og:title" content="Dogfy Diet · Comida real para perros">
+<meta property="og:description" content="Recetas naturales cocinadas a baja temperatura, formuladas por veterinarios y entregadas en casa.">
+<meta property="og:image" content="assets/hero.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@500;600;700;800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Manrope:wght@400;600&display=swap" rel="stylesheet">
+<style>
+@property --fill{syntax:"<percentage>";inherits:false;initial-value:0%}
+:root{
+  --cream:#fffae5; --sand:#f4f1ec;
+  --primary:#fa592d; --primary-dark:#ef6948;
+  --text-hi:#2a2724; --text:#565049; --text-toned:#767066; --text-muted:#968d82; --text-dimmed:#bcb2a6;
+  --border:#ebe4da; --border-acc:#dcd2c5; --bg:#fff; --bg-elev:#faf8f6; --bg-inv:#2a2724;
+  --peach:#fdf3ee; --blue:#e2e8fb; --blue-deco:#c6d4ff;
+  --font-display:"Urbanist",system-ui,sans-serif;
+  --font-body:"DM Sans",system-ui,sans-serif;
+  --font-alt:"Manrope",system-ui,sans-serif;
+  --gutter:clamp(16px,6vw,112px);
+  --container:1216px;
+  --radius:12px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);color:var(--text);background:var(--bg);line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
+h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;line-height:1.05;letter-spacing:-.01em}
+.container{box-sizing:content-box;width:auto;max-width:var(--container);margin:0 auto;padding-inline:var(--gutter)}
+.wide{max-width:calc(var(--container) + 64px)}
+.accent{color:var(--primary)}
+.eyebrow{font-family:var(--font-display);font-weight:500;font-size:18px;line-height:28px;color:#767066}  /* text-lg/medium · --ui-text-toned (PageSection 246:26107) */
+.h2{font-size:clamp(32px,4.2vw,48px);line-height:1}
+.center{text-align:center}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:999px;font-family:var(--font-display);font-weight:600;white-space:nowrap;transition:transform .15s,background .15s}
+.btn:active{transform:scale(.98)}
+.btn-primary{background:var(--primary);color:#fff;padding:8px 12px;font-size:16px;line-height:24px}
+.btn-primary:hover{background:#e84e25}
+.btn-sm{padding:6px 10px;font-size:14px;line-height:20px}
+.btn-neutral{color:var(--text);padding:6px 10px;font-size:14px;line-height:20px;border-radius:999px}
+.btn-neutral:hover{background:var(--bg-elev)}
+.btn-lg{height:64px;width:341px;max-width:100%;padding:8px 12px}
+
+/* Banner */
+.banner{background:var(--bg-inv);color:#fff;min-height:48px;display:flex;align-items:center;justify-content:center;text-align:center;padding:12px var(--gutter);font-family:var(--font-display);font-weight:500;font-size:14px;line-height:20px}
+
+/* Header */
+.header{position:sticky;top:0;z-index:50;background:var(--bg);border-bottom:1px solid var(--border);height:64px;transition:background .3s,border-color .3s}
+/* Arriba del todo: cabecera transparente sobre el hero, textos en blanco; al hacer scroll vuelve a blanco */
+.header.top{background:transparent;border-color:transparent}
+.header.top .nav a,.header.top .btn-neutral{color:#fff}
+.header.top .nav a:hover,.header.top .nav a.active{color:#fff;opacity:1}
+.header.top .nav a:not(.active){opacity:.8}
+.header.top img[alt="Dogfy Diet"],.header.top .btn-neutral img{filter:brightness(0) invert(1)}
+.header.top .burger span,.header.top .burger span::before,.header.top .burger span::after{background:#fff}
+.hero{margin-top:-64px;padding-top:64px}
+.header .container{height:100%;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.header .container>a:first-child{flex:0 0 auto}.header .container>a:first-child img{width:78px;height:44px;flex-shrink:0}
+.nav{min-width:0}.nav a{white-space:nowrap}
+.nav{display:flex;align-items:center;gap:6px}
+.nav a{padding:6px 10px;border-radius:12px;font-family:var(--font-display);font-weight:500;font-size:14px;line-height:20px;color:var(--text-muted);white-space:nowrap}
+.nav a:hover,.nav a.active{color:var(--text-hi)}
+.header-right{display:flex;align-items:center;gap:6px}
+.burger{display:none;width:44px;height:44px;align-items:center;justify-content:center;border-radius:12px}
+.burger span{display:block;width:22px;height:2px;background:var(--text-hi);position:relative}
+.burger span::before,.burger span::after{content:"";position:absolute;left:0;width:22px;height:2px;background:var(--text-hi)}
+.burger span::before{top:-7px}.burger span::after{top:7px}
+.mobile-menu{display:none;position:fixed;inset:0;top:var(--menu-top,112px);background:var(--bg);z-index:49;padding:24px var(--gutter);flex-direction:column;gap:8px}
+.mobile-menu.open{display:flex}
+.mobile-menu a{padding:14px 4px;border-bottom:1px solid var(--border);font-family:var(--font-display);font-weight:600;font-size:18px;color:var(--text-hi)}
+.mobile-menu .btn.btn-primary{margin-top:16px;align-self:stretch;width:100%;height:64px;padding:8px 12px;border:0;border-radius:999px;font-size:16px;font-weight:600;color:#fff;justify-content:center}  /* CTA del menú: mismo estilo que el resto de botones primarios y a todo el ancho */
+
+/* Hero */
+.hero{position:relative;min-height:800px;display:flex;align-items:center;color:#fff;overflow:hidden}
+.hero-bg{position:absolute;inset:0;z-index:0}
+.hero-bg img{position:absolute;left:0;top:0;width:100%;height:100%;object-fit:cover;object-position:center}
+.hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.2),rgba(0,0,0,.2)),linear-gradient(180deg,rgba(0,0,0,.55) 0%,rgba(102,102,102,0) 52.5%)}
+.hero-content{position:relative;z-index:1;padding-block:80px;display:flex;flex-direction:column;gap:40px;max-width:800px}
+
+.hero-badge{display:inline-flex;background:#ffea7c;color:#0f172b;font-family:var(--font-display);font-weight:600;font-size:21px;line-height:24px;padding:4px 14px;border-radius:7px}
+.hero h1{color:#fff;font-size:clamp(2rem,1rem + 5vw,3.75rem);line-height:1;margin-top:1em}  /* en rem: 32px mínimo (≈35px a 375), 60px en escritorio; escala con el viewport y con el tamaño de letra del usuario */
+.hero p{color:var(--border);font-size:clamp(1.0625rem,1.6vw,1.25rem);line-height:1.6;margin-top:1.5em}
+.hero-actions{display:flex;flex-direction:column;gap:16px}
+.select{display:flex;align-items:center;justify-content:space-between;background:#fff;border:1px solid var(--border-acc);border-radius:12px;height:64px;width:341px;max-width:100%;padding:8px 12px;color:var(--text-dimmed);font-size:16px;text-align:left;position:relative}
+.select select{position:absolute;inset:0;opacity:0;width:100%;cursor:pointer}
+.select img{width:24px;height:24px}
+
+/* Ribbon */
+.ribbon{overflow:hidden;padding:12px 0;background:#fff}
+.ribbon-track{display:flex;gap:48px;width:max-content;animation:marquee 28s linear infinite;padding-inline:24px}
+.ribbon:hover .ribbon-track{animation-play-state:paused}
+.pill{display:inline-flex;align-items:center;background:rgba(252,200,0,.1);color:#40350a;border-radius:999px;padding:4px 8px;font-family:var(--font-display);font-weight:500;font-size:14px;line-height:20px;white-space:nowrap}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+/* Franja de confianza: titular a la izquierda con palabra destacada, cifras a la derecha sin separadores */
+.stats-m{display:flex;background:#fff;padding:48px var(--gutter);align-items:center;justify-content:center;gap:24px clamp(24px,4vw,64px);flex-wrap:wrap;max-width:1440px;margin:0 auto}  /* contenido centrado; si salta de línea, solo 24px entre título y cifras; gap más contenido para que quepa en una sola línea en escritorios no ultra anchos */
+.stats-m .trust-eyebrow{font-family:var(--font-display);font-weight:500;font-size:clamp(28px,3.2vw,44px);line-height:1.1;letter-spacing:-.02em;color:#2a2724;text-align:left;margin:0}
+.stats-m .trust-eyebrow mark{background:#ffee99;color:inherit;padding:0 .14em;border-radius:6px}
+.stats-row{display:flex;align-items:flex-start;gap:clamp(16px,3vw,40px);flex-wrap:wrap}
+.stats-row .div{display:none}
+.stat{display:flex;flex-direction:column;align-items:center;gap:4px;color:#2a2724}
+.stat b{font-family:var(--font-display);font-weight:700;font-size:clamp(32px,3.4vw,44px);line-height:1;letter-spacing:-.02em}
+.stat span{font-family:var(--font-display);font-weight:500;font-size:14px;line-height:18px;color:#565049;white-space:nowrap}
+@media (max-width:900px){
+  /* Tablet/móvil: todo centrado, titular arriba y cifras en rejilla de dos columnas (la tercera centrada debajo) */
+  .stats-m{flex-direction:column;align-items:center;gap:36px;padding:56px var(--gutter)}
+  .stats-m .trust-eyebrow{text-align:center;font-size:clamp(30px,7.5vw,40px);max-width:22ch}
+  .stats-row{width:100%;max-width:480px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;align-items:stretch}  /* móvil: las tres tarjetas en una sola línea */
+  .stat{align-items:center;justify-content:center;min-width:0;min-height:96px;box-sizing:border-box;background:var(--sand);border-radius:16px;padding:12px 6px 10px}
+  .stat b{font-size:24px}
+  .stat span{white-space:normal;text-align:center;font-size:12px;line-height:16px}
+}
+
+/* Section 02/03: el titular vive dentro de .s-cocina (dentro del sticky), no en una sección aparte, para que no desaparezca antes de que el bloque quede fijo */
+.cocina-head{padding-top:32px;margin-bottom:40px}
+.cocina-head h2{margin-top:0}
+.s-cocina{padding:32px var(--gutter) 80px}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;max-width:var(--container);margin:0 auto}
+.split .media{border-radius:20px;overflow:hidden;width:100%;max-width:100%;min-width:0;aspect-ratio:1/1;height:auto;align-self:start}
+.split .media img{width:100%;height:100%;object-fit:cover}
+/* Stepper: una foto por paso con fundido y un pie con el título del paso que entra al cambiar */
+.media-steps{position:relative}
+.media-steps>img{position:absolute;inset:0;opacity:0;transform:scale(1.04);transition:opacity .5s ease,transform .8s ease}
+.media-steps>img.is-on{opacity:1;transform:none}  /* solo las fotos: la insignia del pie es otra img */
+.media-caps{position:absolute;left:16px;bottom:16px;display:flex;flex-direction:column;gap:8px;align-items:flex-start;transition:transform .5s cubic-bezier(.22,.61,.36,1)}  /* las cuatro en orden (1 arriba, check abajo), 4px entre ellas; la pila sube con el paso activo */
+.media-caps .media-cap{position:relative;left:auto;bottom:auto;margin:0;opacity:.9;background:rgba(255,255,255,.72);transform:scale(.94);transform-origin:left center;transition:opacity .4s ease,transform .4s ease,background .4s ease}
+.media-caps .media-cap.is-on{opacity:1;transform:none;z-index:2;background:#fff;box-shadow:0 6px 20px rgba(26,38,89,.18)}
+.media-caps .media-cap.is-on~.media-cap{opacity:0;transform:translateY(8px) scale(.94)}  /* las que aún no tocan no asoman */  /* la activa delante, las demás legibles en semitransparente */
+.media-cap{position:absolute;left:16px;bottom:16px;display:inline-flex;align-items:center;gap:10px;padding:8px 14px 8px 8px;border-radius:999px;background:rgba(255,255,255,.92);color:#2a2724;font-family:var(--font-display);font-weight:700;font-size:15px;line-height:20px;box-shadow:0 4px 16px rgba(26,38,89,.12);backdrop-filter:blur(6px)}
+.media-cap b{display:grid;place-items:center;width:28px;height:30px;background:none}  /* insignia de marca, la misma que en el stepper */
+.media-cap b img{width:28px;height:30px;object-fit:contain}
+.media-cap b.check{width:28px;height:28px;border-radius:50%;background:#767066}.media-cap b.check img{width:16px;height:16px}
+.media-cap.in{animation:capIn .45s cubic-bezier(.22,.61,.36,1) both}
+@keyframes capIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.media-steps img{transition:none}.media-cap.in{animation:none}}
+.features{display:flex;flex-direction:column;gap:32px}
+.feature{display:flex;gap:10px;align-items:flex-start}
+.feature .ico{flex:0 0 auto;padding:2px}
+.feature .ico img{width:20px;height:20px}
+.feature h3{font-family:var(--font-display);font-weight:700;font-size:clamp(18px,1.6vw,22px);line-height:1.2;letter-spacing:-.01em;color:var(--text-hi)}
+.feature p{font-size:15px;line-height:1.5;color:var(--text);margin-top:6px}
+.feature.lead h3{font-family:var(--font-display);font-weight:600;font-size:clamp(32px,3.5vw,44px);line-height:1.05;letter-spacing:-.01em}
+.feature.lead p{font-family:var(--font-alt);font-size:clamp(17px,1.5vw,21px);line-height:1.45;margin-top:8px}
+.right-col{display:flex;flex-direction:column;gap:32px;align-items:flex-start}
+@media (min-width:901px){
+  .s-cocina{height:400vh;position:relative}  /* pista de scroll en escritorio: 4 pasos × 100vh, el bloque (título + imagen + pasos) queda fijo y al agotarla sigue el scroll normal */
+  .s-cocina .cocina-sticky{position:sticky;top:64px;max-height:calc(100vh - 64px);overflow:hidden;display:flex;flex-direction:column;justify-content:center}
+}
+@media (prefers-reduced-motion:reduce){.s-cocina{height:auto}.s-cocina .cocina-sticky{position:static;height:auto;max-height:none;overflow:visible}.s-cocina .right-col{position:static;height:auto;max-height:none;overflow:visible}}
+/* Stepper (Figma 03 · Cocina a tu casa) */
+.stepper{list-style:none;display:flex;flex-direction:column;width:100%}
+.step{display:flex;gap:12px;align-items:flex-start}
+.step .ind{display:flex;flex-direction:column;align-items:center;gap:4px;flex:0 0 40px}
+.step .dot{width:40px;height:40px;border-radius:999px;background:var(--bg-elev);display:flex;align-items:center;justify-content:center}
+/* Pasos 1-3: insignia ilustrada (Figma 449:38269); el 4 mantiene el icono */
+.step .dot.badge-num{background:none!important;overflow:visible;transform:none}
+.step .dot.badge-num img{width:44px;height:48px;max-width:none;filter:none!important;opacity:0;transition:opacity .35s,transform .35s;transform:scale(.9)}
+.step .dot.badge-num img.muted{opacity:1;transform:none}
+.step.active .dot.badge-num img,.step.done .dot.badge-num img{opacity:1;transform:none}
+.step.active .dot.badge-num img.muted,.step.done .dot.badge-num img.muted{opacity:0}
+.step.active .dot.badge-num img{transform:scale(1.08)}
+.step .dot img{width:20px;height:20px;object-fit:contain;filter:none}
+.step .dot{transition:background .35s ease,transform .35s ease}
+.step .dot img{opacity:0;transition:opacity .35s}
+.step .dot img.muted{position:absolute;filter:none;opacity:1}
+.step .dot{position:relative}
+.step.active .dot,.step.done .dot{background:#e2e8fb}  /* mismo azul que el fondo de la sección del bol */
+.step.active .dot:not(.badge-num),.step.done .dot:not(.badge-num){background:#767066}  /* cierre: Stepper_Item 460:39650 */
+.step.active .dot{transform:scale(1.06)}
+.step.active .dot img,.step.done .dot img{opacity:1}
+.step.active .dot img.muted,.step.done .dot img.muted{opacity:0}
+.step .txt{flex:1;min-width:0;padding-bottom:28px;font-size:14px;line-height:20px;opacity:.55;transform:translateY(6px);transition:opacity .4s ease,transform .4s ease}
+.step.active .txt,.step.done .txt{opacity:1;transform:none}
+.step h3{font-family:var(--font-display);font-weight:700;font-size:clamp(20px,2.3vw,32px);line-height:1.2;letter-spacing:-.015em;color:var(--text-hi)}
+.step.active h3{color:var(--text-hi)}
+.step p{font-size:16px;line-height:1.5;color:var(--text);margin-top:0}
+/* Descripción colapsada por defecto: solo se ve el título; al activarse el punto se expande, igual que el acordeón de la caja de prueba */
+/* Descripción colapsada por defecto, igual para todos los pasos: solo se ve el título; al activarse el punto se expande */
+.step-body{display:grid;grid-template-rows:0fr;transition:grid-template-rows .4s ease}
+.step-body p{overflow:hidden;margin-top:8px}
+.step.active .step-body{grid-template-rows:1fr}
+@media (prefers-reduced-motion:reduce){.step .txt,.step .dot,.step-body{transition:none}}
+/* Escritorio (como beside.com/industries/insurance): foto fija a la izquierda con el botón debajo; a la derecha los pasos se leen uno a uno con scroll normal, cada uno ~72vh con su texto siempre visible */
+@media (min-width:901px){
+  .s-cocina{height:auto;padding-bottom:40px}
+  .s-cocina .cocina-sticky{position:static;max-height:none;overflow:visible;display:block}
+  .cocina-head{margin-bottom:40px}
+  .s-cocina .split{grid-template-columns:minmax(0,520px) minmax(0,1fr);gap:clamp(40px,5vw,72px);align-items:start}  /* el texto arranca justo al lado de la foto */
+  .s-cocina .media-wrap{order:1;position:sticky;top:calc(64px + 8vh);justify-self:start;align-self:start;display:flex;flex-direction:column;align-items:center;gap:20px;width:min(100%,calc(84vh - 64px - 60px),520px)}  /* foto + botón debajo, fijos juntos */
+  .s-cocina .split .media{position:relative;aspect-ratio:1/1;width:100%;max-height:none;border-radius:20px;overflow:hidden}  /* relative: las fotos absolutas se ciñen a la caja y respetan las esquinas */  /* cuadrada, nunca más alta que lo que queda de viewport bajo la cabecera */
+  .s-cocina .right-col{order:2;gap:0}
+  .stepper{min-height:0!important}
+  .step{min-height:56vh;align-items:center;gap:20px}  /* el siguiente paso asoma atenuado por abajo */
+  /* La insignia se alinea con la primera línea del título: texto e insignia van centrados en el li y la insignia se desplaza media altura del texto menos media línea del título (--off, calculado en JS) */
+  .step .ind{transform:translateY(var(--off,0px))}
+  .step:first-child{min-height:calc(56vh - 40px)}
+  .step .txt{padding-bottom:0;font-size:18px;line-height:28px;opacity:.35;transform:none}
+  .step.active .txt{opacity:1}
+  .step.done .txt{opacity:.35}
+  .step h3{font-size:clamp(26px,2.6vw,36px);line-height:1.15}
+  .step-body{grid-template-rows:1fr}
+  .step-body p{margin-top:12px;max-width:42ch}
+  .step .ind{display:none}  /* escritorio: sin insignias numeradas; el pie de la foto marca el paso */
+  .s-cocina .right-col{padding-bottom:10vh}
+}
+
+/* Section 04 · Bol con etiquetas */
+.s-porque{background:#e2e8fb}  /* sin overflow:hidden: rompería el sticky del bloque tablet/móvil */
+.bol-block.desk{overflow:hidden}
+.bol-block{position:relative;padding:88px 0 0}
+.bol-block .wave,.bol-sticky .wave{position:absolute;left:50%;top:0;transform:translateX(-50%);width:max(1440px,100%);height:auto;max-width:none;pointer-events:none}
+.bol-block .head{position:relative;z-index:1}
+.bol-block .head h2{margin-top:12px}
+.eyebrow.muted{font-family:var(--font-body);font-weight:400;color:rgba(42,39,36,.9)}
+.bol-stage{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1fr) 496px minmax(0,1fr);align-items:center;width:1322px;left:50%;margin:34px 0 0;padding:0;transform-origin:top center}  /* Figma 416:36880: tira de 1322; por debajo de 1440 se escala entera (JS); centrado con left:50%+translateX(-50%) (JS) en vez de margin:auto, que en Chrome no reparte el overflow por igual cuando el ancho supera al contenedor */
+.bol-block.desk{padding-bottom:128px}
+.bol-cta{display:flex;justify-content:center;position:relative;z-index:1;padding-top:40px}
+.bol-img{width:min(412px,100%);height:auto;justify-self:center;aspect-ratio:1;object-fit:contain;z-index:1;cursor:pointer}
+.bol-img.spin{animation:bolSpin .9s cubic-bezier(.3,.7,.2,1)}
+@keyframes bolSpin{to{rotate:360deg}}
+@media (prefers-reduced-motion:reduce){.bol-img.spin{animation:none}}
+.hs-col{position:relative;height:454px}
+.hs{position:absolute;z-index:2;display:flex;align-items:center;gap:12px;opacity:0}
+.hs-col.in .hs{animation:hsIn .45s ease forwards}
+.hs-col.in .hs:nth-child(2){animation-delay:.1s}.hs-col.in .hs:nth-child(3){animation-delay:.2s}.hs-col.in .hs:nth-child(4){animation-delay:.3s}
+@keyframes hsIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.hs{opacity:1}.hs-col.in .hs{animation:none}}
+.hs .lbl{background:#fff;border-radius:999px;padding:10px 16px;font-weight:700;font-size:16px;line-height:20px;color:var(--text-hi);white-space:nowrap;box-shadow:0 4px 12px rgba(26,38,89,.1)}
+.hs .thumb{position:relative;flex:0 0 64px;width:64px;height:64px;border-radius:10px;border:1.17px solid #fff;overflow:hidden}
+.hs .thumb img{position:absolute;max-width:none}
+.hs.r{flex-direction:row-reverse}
+/* posiciones de escritorio (Figma 416:36904) */
+.hs-col.left .hs:nth-child(1){left:auto;right:0;top:0}.hs-col.left .hs:nth-child(2){left:auto;right:50px;top:130px}.hs-col.left .hs:nth-child(3){left:auto;right:50px;top:260px}.hs-col.left .hs:nth-child(4){left:auto;right:0;top:390px}  /* Figma 416:36913: zigzag hacia el bol, bordes derechos a 403/353/353/403 */
+.hs-col.right .hs:nth-child(1){left:0;top:0}.hs-col.right .hs:nth-child(2){left:50px;top:130px}.hs-col.right .hs:nth-child(3){left:50px;top:260px}.hs-col.right .hs:nth-child(4){left:0;top:390px}
+.bol-scroll{display:none}
+@media (max-width:1100px){
+  .bol-block.desk{display:none}
+  .bol-scroll{display:block;height:260vh}
+  .bol-sticky{position:sticky;top:64px;height:calc(100vh - 64px);min-height:700px;overflow:hidden;background:#e2e8fb;padding-top:88px}
+  /* Chevron al pie de la escena fija: avisa de que hay que seguir haciendo scroll; desaparece al acabar la pista */
+  .scroll-hint{position:absolute;left:50%;bottom:20px;transform:translateX(-50%);z-index:3;width:40px;height:40px;color:rgba(42,39,36,.45);display:grid;place-items:center;transition:opacity .3s ease}  /* discreto: sin fondo, sin rebote, negro al 45 % */
+  .bol-sticky.done .scroll-hint{opacity:0}
+  /* 64px = header fijo */
+  .s-porque{padding-bottom:80px}  /* reserva la franja de la onda de recetas: nunca pisa el bol */
+  .bol-sticky .head{position:absolute;left:0;right:0;top:88px;z-index:2;visibility:hidden}
+  .bol-sticky .head.show{visibility:visible;animation:headIn .3s ease both}
+  @keyframes headIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  .bol-stage{display:block;position:absolute;left:0;right:0;top:200px;bottom:0;max-width:none;margin:0;padding:0}  /* la tira arranca justo bajo el título: más alto disponible */
+  /* Tira Figma tablet (Frame 1410105417): 1468×611 → etiquetas izq. 403 @0/79 · bol 611 @403 · etiquetas der. 423 @1045/85 */
+  .bol-track{position:absolute;top:0;left:0;width:1468px;height:611px;will-change:transform;transform-origin:0 0}
+  .hs .lbl{white-space:nowrap;max-width:none;font-size:24px;line-height:28px;padding:10px 16px}  /* tablet: una línea; la tira va a ~0,7×, así que la base sube para que en pantalla quede a ~16-17px */
+  .hs .thumb{flex-basis:80px;width:80px;height:80px}
+  .hs-col{position:absolute;height:454px;width:403px;top:79px;left:0;opacity:1}
+  .hs-col.st2{left:1045px;top:85px;width:423px}
+  .bol-img{position:absolute;top:0;left:403px;width:611px;max-width:none;transform:none!important}
+  .hs-col.st1 .hs:nth-child(1){left:auto;right:0;top:0}.hs-col.st1 .hs:nth-child(2){left:auto;right:24px;top:130px}.hs-col.st1 .hs:nth-child(3){left:auto;right:24px;top:260px}.hs-col.st1 .hs:nth-child(4){left:auto;right:0;top:390px}  /* miniaturas alineadas a la derecha, zigzag hacia el bol */
+  .hs-col.st2 .hs:nth-child(1){left:0;top:0}.hs-col.st2 .hs:nth-child(2){left:24px;top:130px}.hs-col.st2 .hs:nth-child(3){left:24px;top:260px}.hs-col.st2 .hs:nth-child(4){left:0;top:390px}
+}
+@media (max-width:600px){
+  /* 03 · Cocina a tu casa (Figma 302:31799): cabecera a 32px, imagen 343×277 con 27px arriba y abajo */
+  .cocina-head{padding-top:0}  /* gana a la regla de 900px; .s-cocina ya baja su padding-top a 27px aquí abajo */
+  .s-cocina{padding-top:27px}
+  .s-cocina .split{gap:27px}
+  .s-cocina .split .media{aspect-ratio:343/277}
+  .bol-sticky{min-height:600px}
+  .s-porque{padding-bottom:48px}
+  .bol-stage{top:141px}
+  /* Tira móvil según Figma 416:36243 (375 de base): etiquetas 354×412 · bol 443 · etiquetas 384×412. El bol se solapa 107px con cada columna */
+  .bol-track{width:967px;height:443px}
+  .hs-col{width:354px;height:412px;top:15.5px;left:0}
+  .hs-col.st2{left:583px;top:15.5px;width:384px}
+  .bol-img{left:247px;top:0;width:443px}
+  .hs{gap:11px}
+  .hs .lbl{font-size:14.5px;line-height:18px;padding:9px 14.5px;white-space:nowrap;max-width:none;box-shadow:0 3.6px 10.9px rgba(26,38,89,.1)}
+  .hs .thumb{flex-basis:58px;width:58px;height:58px;border-radius:9px;border:1px solid #fff}
+  .hs .thumb img{transform-origin:0 0;scale:.906}
+  .hs-col.st1 .hs:nth-child(1){left:33.4px;right:auto;top:0}.hs-col.st1 .hs:nth-child(2){left:97.8px;right:auto;top:117.9px}.hs-col.st1 .hs:nth-child(3){left:19.6px;right:auto;top:235.9px}.hs-col.st1 .hs:nth-child(4){left:62px;right:auto;top:353.8px}
+  .hs-col.st2 .hs:nth-child(1){left:0;top:0}.hs-col.st2 .hs:nth-child(2){left:44.9px;top:117.4px}.hs-col.st2 .hs:nth-child(3){left:45.4px;top:235.9px}.hs-col.st2 .hs:nth-child(4){left:0;top:353.4px}
+  .eyebrow,.eyebrow.muted{color:#767066;font-weight:500;font-size:16px;line-height:24px;font-family:var(--font-display)}  /* móvil: todos los antetítulos iguales, gris y sin negrita, a 16px (una línea) */
+}
+
+/* Recetas */
+.s-recetas{padding-top:128px;padding-bottom:109px}
+.s-recetas .head{padding-bottom:56px}
+.recetas-grid{box-sizing:content-box;display:grid;grid-template-columns:repeat(4,1fr);gap:24px;max-width:var(--container);margin:0 auto;padding-inline:var(--gutter)}
+.receta{border-radius:16px;padding:8px 8px 16px;display:flex;flex-direction:column;gap:12px}
+.receta .img{position:relative}
+.receta .r-ico{position:absolute;top:12px;right:12px;width:48px;height:48px;border-radius:999px;background:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 6px rgba(0,0,0,.08);z-index:1}
+.receta .img .r-ico img{width:26px;height:26px;object-fit:contain}
+.receta .img{height:216px;border-radius:16px;overflow:hidden}
+.receta h3,.receta p{padding:0 4px}  /* un pelín de aire lateral para el texto ahora que el padding de la card es menor */
+.receta .img img{width:100%;height:100%;object-fit:cover}
+.receta h3{font-size:24px;line-height:30px}
+.receta p{font-size:17px;line-height:26px;color:var(--text-muted);margin-top:8px}
+.receta{background:rgba(255,255,255,.9);transition:box-shadow .3s ease,transform .3s ease}  /* blanco al 90 % sobre el lavanda; el color de cada receta queda en la foto */
+.receta.is-hi{box-shadow:0 16px 40px rgba(26,38,89,.12);transform:translateY(-4px)}  /* seleccionada: solo se eleva, sin contorno amarillo */
+@media (min-width:1075px){.receta[data-clone]{display:none}}
+/* opiniones: las copias de la cinta se usan en todos los anchos */
+.s-recetas .cta{display:flex;justify-content:center;padding:48px 0 0}
+.dots{display:none}
+/* Pastillas de sabores visibles en todos los anchos, centradas sobre las tarjetas */
+.receta-tabs{display:none;gap:8px;justify-content:center;flex-wrap:nowrap;padding:0 var(--gutter) 32px}  /* solo hacen falta cuando las recetas son un carrusel con scroll (ver @media 1074px): con las 4 a la vista no aportan nada */
+@media (max-width:640px){
+  /* móvil: pestañas como "puntos" en una sola línea: las inactivas son solo el icono y la activa se expande con su nombre (sincronizada con la tarjeta que pasa) */
+  .s-recetas .receta-tabs{display:flex;flex-wrap:nowrap;justify-content:center;gap:8px;max-width:none;margin:0 auto;overflow:visible}
+  .receta-tabs>*{margin:0!important}
+  .receta-tabs .tab{flex:0 0 auto;width:auto;max-width:44px;min-height:44px;padding:4px;gap:0;justify-content:flex-start;overflow:hidden;white-space:nowrap;font-size:14px;line-height:1.3;transition:max-width .45s cubic-bezier(.22,.61,.36,1),padding .45s ease,gap .45s ease,background .3s ease}
+  .receta-tabs .tab img{width:34px;height:34px;flex:0 0 34px}
+  .receta-tabs .tab{color:transparent}  /* colapsada: el nombre no se ve ni asoma */
+  .receta-tabs .tab.active{max-width:180px;padding:4px 14px 4px 4px;gap:8px;animation:none;color:#3d3d3d}
+  /* tarjetas en móvil: sin el título (el nombre ya va en la pestaña), descripción en negro y sin el icono sobre la foto */
+  .receta h3,.receta .r-ico{display:none}
+  .receta p{color:var(--text-hi);margin-top:0}
+  @media (prefers-reduced-motion:reduce){.receta-tabs .tab{transition:none}}
+}
+.tab{flex:0 0 auto;display:flex;align-items:center;gap:8px;padding:4px 16px 4px 4px;border-radius:300px;border:1px solid #e8e8e8;background:rgba(255,255,255,.6);font-family:var(--font-alt);font-size:17px;line-height:1.35;color:#767676;white-space:nowrap}
+.tab img{width:40px;height:40px}
+.tab.active{background:#ffee99;color:#3d3d3d;font-weight:600}
+
+/* Precio */
+.yellow-wrap{position:relative;background:#fff;clip-path:inset(0)}  /* Figma 512:48725: fondo blanco; el amarillo va en la foto de cada tarjeta y en el bloque 07 */  /* clip-path en vez de overflow:hidden: no rompe el sticky de 08 */
+.yellow-wrap .deco-precio{display:none;position:absolute;right:0;top:-280px;width:min(825px,60vw);height:auto;pointer-events:none;will-change:transform;transform:translateY(var(--py,0px)) scaleX(-1)}  /* mancha a la derecha (espejada), con parallax */
+.yellow-wrap>section{position:relative}
+.s-precio{padding:96px var(--gutter)}
+.s-precio .head{position:relative;margin-bottom:32px}
+.s-precio .head h2{line-height:1}
+.precio-grid{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:24px;max-width:1280px;margin:0 auto}
+.pcard{background:#fff;border-radius:16px;padding:8px 8px 16px;box-shadow:0 24px 48px -24px rgba(122,52,25,.18),0 1px 3px rgba(0,0,0,.1),0 1px 2px rgba(0,0,0,.06);position:relative}
+/* Marco arena = solo fondo; fotos en absoluto respecto a la tarjeta, con la geometría de Figma (tarjeta 302px) */
+.pcard{overflow:hidden}
+.pcard .img{position:relative;height:320px;border-radius:8px;background:var(--sand)}  /* las fotos se posicionan respecto al marco */
+.pcard .img img{position:absolute;left:50%;transform:translateX(-50%);z-index:1;max-width:none}
+.pcard.c-minis img{width:219px;height:307px;bottom:0}  /* apoyado en el borde inferior del marco */          /* apoyado 10px bajo el borde del marco */
+.pcard.c-peq img{width:100%;height:auto;aspect-ratio:349/265;object-fit:cover;bottom:0}  /* patas sobre la zona blanca */
+.pcard.c-med img{width:453px;height:344px;top:35px}                 /* desborda por los lados, recorta la tarjeta */
+.pcard.c-gra img{width:425px;height:324px;top:0;object-fit:cover}  /* 15 % más pequeño que el original */
+.pcard .badge{z-index:2}
+.pcard .body{position:relative;z-index:2}
+.pcard .badge{position:absolute;top:22px;right:22px;background:rgba(255,255,255,.88);border-radius:8px;padding:8px 12px;display:flex;flex-direction:column;gap:2px}
+.pcard .badge b{font-family:var(--font-display);font-weight:700;font-size:18px;line-height:20px;color:var(--primary)}
+.pcard .badge span{font-size:13px;line-height:16px;color:var(--text)}
+.pcard .body{padding-top:16px;display:flex;flex-direction:column;gap:2px}
+.pcard .desde{font-size:13px;line-height:20px;display:flex;gap:4px}
+.pcard .desde s{color:var(--text)}
+.pcard .price{display:flex;align-items:center;gap:8px;color:var(--text-hi)}
+.pcard .price b{font-family:var(--font-display);font-weight:700;font-size:48px;line-height:48px}
+.pcard .price span{font-weight:500;font-size:24px;line-height:32px}
+.precio-foot{position:relative;display:flex;flex-direction:column;align-items:center;gap:24px;margin-top:32px}
+.precio-foot small{font-size:16px;line-height:24px;color:var(--text-toned);text-align:center}
+.btn-xl{background:var(--primary);color:#fff;border-radius:999px;padding:24px;width:338px;max-width:100%;font-family:var(--font-display);font-weight:600;font-size:22px;line-height:1;text-align:center}
+.btn-xl:hover{background:#e84e25}
+
+/* 07 */
+.s-caja{padding:0;background:#fff}
+.s-caja .wrap{position:relative;background:transparent;border-radius:0;padding:80px var(--gutter);max-width:1440px;margin:0 auto}  /* sin overflow:hidden, rompería el sticky */
+@media (prefers-reduced-motion:reduce){[data-parallax]{--py:0px!important}}
+.s-caja .head{max-width:760px;margin:0 auto 32px}
+.s-caja .head .h2{line-height:1.08}  /* a 1 las dos líneas del titular se tocaban; un poco de aire (~4px) entre ellas */
+/* Pista de scroll: en escritorio la sección queda fija (sticky) y cada tramo de 100vh activa un punto y su imagen; al llegar al final se suelta y sigue el scroll normal */
+.s-caja .wrap.acc-scroll{padding:0;height:400vh}  /* 4 estados × 100vh */
+.acc-sticky{position:sticky;top:64px;height:calc(100vh - 64px);min-height:620px;overflow:hidden;display:flex;flex-direction:column;justify-content:center;padding:48px var(--gutter) 56px;background:#fffae5}
+@media (prefers-reduced-motion:reduce){.s-caja .wrap.acc-scroll{height:auto;padding:80px var(--gutter)}.acc-sticky{position:static;min-height:0;height:auto;overflow:visible}}
+.s-caja .lead-p.center{display:none}
+/* Acordeón con imagen: lista de titulares a la derecha, el activo se abre y cambia la imagen de la izquierda */
+.acc{display:grid;grid-template-columns:40px minmax(0,1.8fr) minmax(0,1fr);gap:24px 16px;align-items:center;max-width:var(--container);margin:0 auto}
+@media (min-width:901px){.acc{grid-template-columns:40px minmax(0,1.5fr) minmax(0,1fr);gap:24px 16px}.acc-list{padding-left:48px}}  /* escritorio: la lista a 48px de la foto, sin el hueco de antes */
+.acc-dots{display:flex;flex-direction:column;align-items:center;gap:10px}.acc-dots i{width:6px;height:6px;border-radius:999px;background:#c2c2c2;transition:height .3s ease,background .3s ease}.acc-dots i.active{height:28px;background:#2a2724}
+.acc-media{position:relative;aspect-ratio:3/2;max-height:480px;border-radius:24px;overflow:hidden;background:#efe7db}  /* más ancha sin tocar el alto: antes 4/3 dejaba demasiado hueco junto al texto */
+@media (min-width:901px) and (max-width:1300px){.acc-media{aspect-ratio:1/1}}  /* tablet/escritorio estrecho: columna más angosta; cuadrada en vez de alargada, deja menos hueco junto al texto */
+.acc-media img,.acc-media .ph{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.04);transition:opacity .5s ease,transform .8s ease}.acc-media .is-on{opacity:1;transform:none}
+.acc-media .ph{background:#e8e8e8;display:grid;place-items:center}.acc-media .ph span{font-family:var(--font-display);font-size:14px;color:#767676;border:1px dashed #c2c2c2;border-radius:999px;padding:6px 14px}
+.acc-list{display:flex;flex-direction:column;gap:8px;align-items:flex-start}
+.acc-item{all:unset;cursor:pointer;display:block;width:100%;padding:10px 0;text-align:left}
+.acc-title{display:block;font-family:var(--font-display);font-weight:700;font-size:clamp(24px,2.3vw,32px);line-height:1.15;letter-spacing:-.015em;color:#a19c96;transition:color .3s ease}  /* un escalón por debajo del h2 de la sección */
+.acc-item:hover .acc-title{color:#565049}.acc-item.is-open .acc-title{color:#2a2724}
+.acc-body{display:grid;grid-template-rows:0fr;transition:grid-template-rows .4s ease}.acc-body>span{overflow:hidden;display:block;font-size:16px;line-height:1.5;color:#565049;max-width:460px}
+.acc-item.is-open .acc-body{grid-template-rows:1fr}.acc-item.is-open .acc-body>span{padding-top:8px}
+.acc-list .btn{margin-top:16px}
+@media (max-width:900px){
+  .receta p{font-size:15px;line-height:23px}  /* tarjetas de recetas: texto algo más pequeño en tablet y móvil */
+  /* Tablet/móvil: misma escena fija que en escritorio pero apilada: foto arriba, puntos en horizontal y la lista debajo. El scroll abre un apartado cada vez y cambia la foto; cada tramo mide 55vh */
+  .s-caja .wrap.acc-scroll{height:260vh}
+  .acc-sticky{height:calc(100vh - 64px);height:calc(100svh - 64px);min-height:0;justify-content:flex-start;padding:16px var(--gutter) 24px}  /* el amarillo llena el viewport mientras la escena está fija: así no asoma el blanco de la siguiente sección cuando cambia la altura del texto; al acabar la pista el bloque sube y se va */
+  .s-caja .head{margin-bottom:12px}
+  .acc{display:flex;flex-direction:column;gap:12px;align-items:stretch;flex:1 1 auto;min-height:0;width:100%;max-width:none;margin:0}  /* de gutter a gutter, como el resto de secciones */
+  .acc-media{order:1;flex:1 1 auto;min-height:120px;aspect-ratio:auto;max-height:min(24svh,220px);border-radius:20px;margin:0;width:100%;max-width:none}  /* baja: título + foto + lista + botón deben caber en la pantalla */  /* la foto absorbe el alto sobrante: lista y botón siempre dentro del bloque fijo */
+  .acc-list{flex:0 0 auto}
+  .acc-dots{display:none}  /* móvil/tablet: sin puntos bajo la foto */
+  .acc-dots i{width:6px;height:6px;background:#c2c2c2;filter:none;transition:width .3s ease,background .3s ease}
+  .acc-dots i.active{width:28px;height:6px;background:#2a2724}
+  .acc-list{order:3;gap:0;width:100%;max-width:none;margin:0;align-items:stretch}  /* mismo ancho que el resto de secciones (gutter a gutter) */
+  .acc-title{font-size:20px}
+  .acc-item{padding:8px 0}
+  .acc-body>span{font-size:15px}
+  .acc-list .btn{margin-top:12px;align-self:center}
+  @media (prefers-reduced-motion:reduce){.acc-item .acc-body{grid-template-rows:1fr}}
+}
+
+/* 08 */
+.s-receta{padding:128px var(--gutter)}
+.s-receta .media{border-radius:24px;aspect-ratio:1/1}
+.s-receta .lead-p{font-size:16px;line-height:24px;color:var(--text-muted);margin-top:24px}
+/* 08 · Escena parallax (Figma 503:2 "Sí, es real."): la foto crece hasta un banner a sangre con el claim y los sellos; después sigue Opiniones.
+   Móvil (<768): foto + texto y banner estático. Se revierte quitando .scene-* y su JS */
+.scene-stage{display:flex;flex-direction:column;gap:32px}
+.scene-title{text-align:center}.scene-title .h2{max-width:760px;margin-inline:auto}
+.scene-panel{position:relative;border-radius:20px;overflow:hidden;aspect-ratio:4/3}
+.scene-img{width:100%;height:100%;object-fit:cover;display:block}
+.scene-img-banner{display:none}
+.scene-banner{display:none}
+.scene-claim{font-family:var(--font-display);font-weight:700;font-size:clamp(40px,4.7vw,67px);line-height:.81;letter-spacing:-.035em;color:#fff;background:#c6d4ff;border-radius:11px;padding:15px;filter:drop-shadow(0 6px 3px rgba(0,0,0,.25));white-space:nowrap}
+.scene-claim em{font-style:normal;color:#ff7752}
+.scene-pills{display:flex;gap:28px;justify-content:center;flex-wrap:wrap}
+.sello{display:flex;align-items:center;gap:12px;width:300px;padding:17px 14px 17px 10px;border-radius:23px;background:rgba(255,255,255,.78);backdrop-filter:blur(6px);box-shadow:0 4px 16px rgba(26,38,89,.08)}
+.sello img{width:auto;height:40px;max-width:104px;object-fit:contain;flex:0 0 auto}  /* logos apaisados (Generalitat) a su ancho natural; el texto parte en dos líneas si hace falta */
+.sello p{font-family:var(--font-display);font-weight:500;font-size:14px;line-height:18px;color:#2a2724}
+/* Banner estático en móvil/tablet pequeño: bloque propio bajo la foto */
+@media (prefers-reduced-motion:reduce) and (max-width:767px){
+  .scene-static-banner{position:relative;margin:48px calc(-1 * var(--gutter)) 0;aspect-ratio:375/420;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:24px 16px}
+  .scene-static-banner>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:blur(2px);transform:scale(1.04)}
+  .scene-static-banner::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.4),rgba(102,102,102,0) 75%)}
+  .scene-static-banner>*{position:relative}
+  .scene-static-banner .scene-claim{font-size:40px}
+  .scene-static-banner .trust-eyebrow{color:#fff}
+  .scene-static-banner .scene-pills{flex-direction:column;gap:10px;width:100%}
+  .scene-static-banner .sello{width:100%;padding:10px 12px;border-radius:16px}.scene-static-banner .sello img{width:32px;height:32px;flex-basis:32px}
+  .s-opiniones .trust{display:none}
+}
+@media (prefers-reduced-motion:no-preference){
+  .s-opiniones .trust{display:none}
+  .s-receta{padding:0}
+  .scene-scroll{height:380vh}
+  .scene-sticky{position:sticky;top:64px;height:calc(100vh - 64px);display:flex;align-items:flex-start;justify-content:center;padding:64px 0 0}
+  .scene-stage{--ph:min(640px,calc(100vh - 64px - 64px));position:relative;display:block;width:100%;height:var(--ph);margin:0}
+  .scene-title{position:absolute;top:0;left:var(--gutter);right:var(--gutter);text-align:center;z-index:3}
+  .scene-title .h2{max-width:760px;margin-inline:auto}
+  .scene-panel{position:absolute;top:0;aspect-ratio:auto;will-change:width,height,transform;border-radius:var(--pr,24px);background:#e8e2d9}
+  .scene-img{position:absolute;inset:0;object-position:50% 45%}
+  .scene-img-banner{display:none}
+  .scene-panel::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.35),rgba(0,0,0,0) 60%);opacity:var(--bo,0);pointer-events:none}
+  .scene-text{position:absolute;top:50%;transform:translateY(calc(-50% + var(--tyd,0px))) translateX(var(--tx,0px));opacity:var(--to,1);will-change:opacity,transform;gap:28px}
+  /* Figma 512:48725: el bloque va en la mitad derecha (x 631 de 1440, 710 de ancho), claim arriba a la izquierda y sellos apilados en columna de 300 */
+  .scene-banner{display:flex;flex-direction:column;align-items:center;gap:18px;position:absolute;left:0;right:0;top:26%;transform:translateY(var(--bs,0px));z-index:2;pointer-events:none}
+  /* Claim y sellos no van ligados al scroll: se disparan por tiempo (after delay) cuando la foto llega a sangre, y se esconden si se vuelve atrás */
+  .scene-banner .scene-claim{opacity:0;transform:translateY(56px);transition:opacity .55s cubic-bezier(.22,.61,.36,1),transform .55s cubic-bezier(.22,.61,.36,1)}
+  .scene-banner .trust-eyebrow,.scene-banner .scene-pills{opacity:0;transform:translateY(48px);transition:opacity .55s cubic-bezier(.22,.61,.36,1),transform .55s cubic-bezier(.22,.61,.36,1)}  /* entrada suave hacia arriba */
+  .scene-banner.show .scene-claim{opacity:1;transform:none}
+  .scene-banner.show .trust-eyebrow,.scene-banner.show .scene-pills{opacity:1;transform:none;transition-delay:.25s}
+  .scene-banner .trust-eyebrow{font-size:14px;color:#fff;text-shadow:0 1px 8px rgba(0,0,0,.3);text-align:center}
+  .scene-banner .scene-pills{flex-direction:row;justify-content:center;gap:28px}
+}
+@media (max-width:1100px) and (prefers-reduced-motion:no-preference){
+  /* Tablet: misma composición que escritorio (foto a la izquierda, texto a la derecha). Solo móvil apila */
+  .scene-stage.narrow .scene-text{top:var(--tt,0px);left:var(--gutter);right:var(--gutter);width:auto!important;transform:translateY(var(--ty2,0px));gap:20px}
+  .scene-stage.narrow .scene-text .lead-p{margin-top:12px}
+  .scene-stage.narrow .features{gap:16px}
+  /* Tablet/móvil: se conserva la foto del señor con el perro (la panorámica recorta solo hierba). Se desenfoca al entrar el banner y el contenido se ancla abajo para dejar ver al protagonista */
+  .scene-img-banner{display:none}
+  .scene-panel .scene-img{filter:blur(calc(var(--bo,0) * 2.4px));transform:scale(calc(1 + var(--bo,0) * .04));object-position:50% 30%}
+  .scene-banner{left:var(--gutter);right:var(--gutter);top:50%;bottom:auto;transform:translateY(calc(-50% + var(--bs,0px)))}  /* móvil/tablet: claim y sellos centrados en la imagen */
+  .scene-panel .scene-img{filter:none;transform:none}
+  .scene-banner .trust-eyebrow{text-align:center}
+  .scene-banner .scene-pills{flex-direction:row;justify-content:center;align-items:center;flex-wrap:wrap}
+  .scene-pills{gap:12px}.sello{width:220px;padding:12px 10px}.sello img{height:32px;max-width:84px}.sello p{font-size:12px;line-height:16px}
+}
+@media (max-width:767px) and (prefers-reduced-motion:no-preference){
+  .scene-stage{--ph:calc(100vh - 64px)}  /* móvil: escena apilada a toda altura */
+  .scene-sticky{padding-top:24px}
+  .scene-stage.narrow .scene-text{gap:14px}
+  .scene-stage.narrow .scene-text .h2{font-size:28px;line-height:32px}
+  .scene-stage.narrow .scene-text .lead-p{font-size:15px;line-height:21px}
+  .scene-stage.narrow .features{gap:12px}
+  .scene-banner{gap:12px}
+  .scene-claim{font-size:40px}
+  .scene-banner .scene-pills{flex-direction:column;align-items:stretch;gap:10px;width:100%;max-width:420px}
+  .sello{width:100%;padding:10px 12px;border-radius:16px}.sello p{font-size:13px;line-height:17px}
+}
+
+/* 09 */
+.s-opiniones{position:relative;padding:0 0 48px;background:#fff}
+.s-opiniones .tramado{position:absolute;left:50%;bottom:0;transform:translateX(-50%);width:max(1448px,100%);height:auto;pointer-events:none;z-index:-1}
+@media (max-width:767px){.s-opiniones .tramado{width:320vw;max-width:none}}  /* móvil: trama 2,2× más grande (img lleva max-width:100% global) */  /* detrás del contenido (texto/tarjetas no posicionados pintan por encima de z-index negativo); se deja asomar bajo las tarjetas, pero sin salirse de esta sección hacia la del descuento */
+@media (prefers-reduced-motion:no-preference){.page .s-opiniones{position:relative;z-index:3;margin-top:calc(-100vh + 64px);transform:translateY(var(--opy,0px));border-radius:0;background:#fff!important}.s-opiniones .head{padding-top:64px}}
+.s-opiniones .head{padding-top:128px}
+/* Bloque de confianza (Figma 429:37106) */
+.trust{background:#fff3b4;padding:24px var(--gutter);display:flex;flex-direction:column;align-items:center;gap:14px}  /* franja discreta: el contenido ya pesa por sí solo */
+.trust-eyebrow{font-family:var(--font-display);font-weight:500;font-size:14px;line-height:20px;color:#767066;text-align:center}
+.metrics{display:flex;align-items:center;justify-content:center;gap:28px;width:100%;max-width:1216px;flex-wrap:wrap}
+.metric{display:flex;flex-direction:row;align-items:center;gap:12px;background:none;border-radius:0;padding:0}
+.metric img{width:auto!important;height:40px!important;max-width:88px;object-fit:contain}
+.metric p{font-family:var(--font-display);font-weight:500;font-size:14px;line-height:18px;color:#2a2724;text-align:left;max-width:200px}
+.metrics .div{display:block;width:1px;height:28px;background:rgba(42,39,36,.12)}
+@media (min-width:601px) and (max-width:1100px){
+  .metrics{gap:16px}
+  .metric{gap:10px}
+  .metric img{height:34px!important;max-width:72px}
+  .metric p{font-size:13px;line-height:17px;max-width:150px}
+}
+@media (max-width:600px){
+  .trust{padding:24px var(--gutter);gap:14px}
+  .metrics{flex-direction:column;align-items:flex-start;gap:12px;width:auto;margin:0 auto}  /* bloque centrado, filas alineadas a la izquierda */
+  .metrics .div{display:none}
+  .metric{gap:12px;width:auto}
+  .metric img{height:36px!important;width:72px!important;flex:0 0 72px;object-fit:contain;object-position:left center}  /* columna de logos fija para que los textos alineen */
+  .metric p{font-size:14px;line-height:18px;max-width:none}
+}
+.s-opiniones .head{padding:96px var(--gutter) 56px}  /* aire sobre el titular; la lámina entra con esquinas redondeadas */
+/* Opiniones: bloque Trustpilot + carrusel con tarjeta central destacada y puntos con el activo alargado */
+.rv-trust{display:flex;flex-direction:column;align-items:center;gap:10px;margin:-16px 0 40px}
+.rv-tp{display:inline-flex;align-items:center;gap:6px;font-family:var(--font-display);font-weight:700;font-size:26px;color:#191919}.rv-tp svg{width:28px;height:28px}
+.rv-tpstars{display:flex;gap:4px}.rv-tpstars i{width:48px;height:48px;background:#00b67a url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23fff' d='M12 3.5l2.6 5.6 6.1.6-4.6 4.1 1.3 6.1L12 16.8l-5.4 3.1 1.3-6.1-4.6-4.1 6.1-.6z'/%3E%3C/svg%3E") center/70% no-repeat}
+.rv-tpstars i.half{background-color:#dcdce6;background-image:linear-gradient(90deg,#00b67a 50%,transparent 50%),url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23fff' d='M12 3.5l2.6 5.6 6.1.6-4.6 4.1 1.3 6.1L12 16.8l-5.4 3.1 1.3-6.1-4.6-4.1 6.1-.6z'/%3E%3C/svg%3E");background-size:100% 100%,70%;background-position:center,center;background-repeat:no-repeat}
+.rv-score{margin:0;font-family:var(--font-display);font-size:16px;color:#191919}.rv-score span{color:#c2c2c2;margin:0 6px}.rv-score a{color:#191919;text-decoration:underline;text-underline-offset:3px;display:inline-block;padding:4px 0}
+.reviews{display:flex;gap:24px;overflow-x:auto;scroll-snap-type:x mandatory;padding:32px calc(50% - 250px) 40px;scrollbar-width:none;align-items:center}
+.reviews::-webkit-scrollbar{display:none}
+.rv-card{flex:0 0 420px;scroll-snap-align:center;box-sizing:border-box;padding:28px 24px 24px;border:1px solid #e8e8e8;border-radius:20px;background:#fff;display:flex;flex-direction:column;gap:18px;transition:transform .35s ease,background .35s ease,border-color .35s ease,box-shadow .35s ease;transform:scale(.94)}
+.rv-card.is-active{transform:scale(1.04);background:#f7f7f7;border-color:#f0f0f0;box-shadow:0 12px 32px rgba(26,38,89,.08);flex-basis:500px}
+.rv-head{display:flex;align-items:center;gap:16px}.rv-head b{display:block;font-family:var(--font-display);font-weight:700;font-size:18px;color:#191919}
+.rv-avatar{width:48px;height:48px;border-radius:50%;background:#ffee99;color:#2a2724;display:grid;place-items:center;font-family:var(--font-display);font-weight:700;font-size:18px;flex:0 0 48px}
+.rv-stars{display:inline-flex;gap:2px;margin-top:2px}.rv-stars i{width:16px;height:16px;display:block}.rv-stars svg{width:16px;height:16px;fill:#dcdce6}.rv-stars i.on svg{fill:#191919}
+.rv-text{margin:0;font-size:17px;line-height:1.5;color:#2a2724;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}.rv-card.is-active .rv-text{-webkit-line-clamp:unset;font-size:19px}
+.rv-when{margin:0;font-size:15px;color:#767066}
+.rv-dots{display:flex;justify-content:center;align-items:center;gap:8px;margin-top:8px}
+.rv-dots button{width:8px;height:8px;border-radius:999px;background:#c2c2c2;border:0;padding:0;cursor:pointer;transition:width .3s ease,background .3s ease}
+.rv-dots button{position:relative}.rv-dots button::after{content:"";position:absolute;inset:-10px}  /* zona de toque de 28px manteniendo el punto de 8px */
+.rv-dots button.active{width:32px;background:#191919}
+@media (min-width:0px){
+  /* Todos los anchos: cinta de opiniones en bucle (tarjetas duplicadas en JS); se pausa al tocar o pasar el ratón */
+  .s-opiniones{overflow:clip}
+  .reviews{gap:0;width:max-content;overflow:visible;scroll-snap-type:none;padding:24px 0 32px}
+  .rv-card{flex:0 0 300px;margin-right:16px;transform:none}
+  @media (min-width:768px){.rv-card{flex-basis:380px;margin-right:24px}}
+  .rv-card.is-active{flex-basis:300px;transform:none;background:#fff;border-color:#e8e8e8;box-shadow:none}
+  @media (min-width:768px){.rv-card.is-active{flex-basis:380px}}
+  .rv-card.is-active .rv-text{font-size:17px;-webkit-line-clamp:4}
+  .rv-dots{display:flex;margin-top:0}  /* puntos sincronizados con la cinta: marcan la opinión que pasa por el centro */
+  .rv-tpstars i{width:36px;height:36px}.rv-tp{font-size:22px}
+  @media (prefers-reduced-motion:reduce){.reviews{width:auto;overflow-x:auto;padding:24px 16px 32px}.rv-dots{display:flex}}
+}
+
+/* SMS */
+.s-sms{position:relative;overflow:hidden;color:#fff;padding:96px var(--gutter)}
+.s-sms .bg{position:absolute;inset:0;z-index:0}
+.s-sms .bg img{width:100%;height:100%;object-fit:cover}
+.s-sms .bg::after{content:"";position:absolute;inset:0;background:rgba(20,16,14,.45)}
+.s-sms .inner{position:relative;z-index:1;display:flex;flex-direction:column;gap:16px;align-items:center;text-align:center;max-width:var(--container);margin:0 auto}
+.sms-title{display:inline-block;background:var(--blue-deco);padding:10px;border-radius:7px;filter:drop-shadow(0 4px 2px rgba(0,0,0,.25));font-family:var(--font-display);font-weight:700;font-size:clamp(26px,3.5vw,42px);line-height:.85;letter-spacing:-.035em;color:#191919}  /* pastilla amarilla, texto negro y acento primary */
+.sms-title{background:#ffee99;display:inline;padding:8px 12px;line-height:1.35;-webkit-box-decoration-break:clone;box-decoration-break:clone}  /* en inline: el amarillo abraza cada línea de texto, no la caja entera */
+.sms-title-wrap{display:block;text-align:center;filter:drop-shadow(0 4px 2px rgba(0,0,0,.25))}.sms-title-wrap .sms-title{filter:none}
+.sms-title .accent{color:var(--primary)}
+.s-sms .desc{font-size:16px;line-height:24px;padding:0;max-width:760px;text-align:center}
+/* Guiño de dogfydiet.com: sello crema girando en bucle con el teléfono encima */
+.sms-lead{display:flex;justify-content:center;padding:0 24px 16px}
+.sticker.sticker-m{display:none}
+.sticker{position:relative;flex:0 0 64px;width:64px;height:64px;display:grid;place-items:center;color:#f9f8f7}  /* decorativo: 64px */
+.sticker-shape{position:absolute;inset:0;animation:sticker-spin 8s linear infinite}
+.sticker-emoji{position:relative;font-size:26px;line-height:1}
+@keyframes sticker-spin{to{transform:rotate(1turn)}}
+@media (prefers-reduced-motion:reduce){.sticker-shape{animation:none}}
+/* Tablet (601-900): el stepper fijo respira más: foto más baja y centrada, títulos más contenidos y más aire entre pasos */
+@media (min-width:601px) and (max-width:900px){
+  .step .ind{display:none}  /* como en móvil: sin insignias, el pie de la foto marca el paso */
+  .eyebrow,.eyebrow.muted{color:#767066;font-weight:500;font-size:16px;line-height:24px;font-family:var(--font-display)}
+  .s-cocina .split{gap:36px;padding-top:24px}
+  .s-cocina .split .media{aspect-ratio:3/2;max-width:480px;margin:0 auto;border-radius:16px}
+  .media-steps img{object-position:50% 35%}  /* las fotos verticales enseñan la parte alta, no las piernas */
+  .step{gap:14px}
+  .step .ind{flex:0 0 36px}
+  .step .dot{width:36px;height:36px}
+  .step .dot.badge-num img{width:38px;height:42px}
+  .step h3{font-size:21px;line-height:1.25}
+  .step .txt{font-size:15px;line-height:22px;padding-bottom:26px;opacity:.45}
+  .step.active .txt,.step.done .txt{opacity:1}
+  .step-body p{margin-top:8px;max-width:48ch}
+  .s-cocina .right-col{gap:20px}
+}
+/* Móvil: transición entre secciones. Cuando la siguiente entra por abajo, la actual se funde a blanco; nunca se ven dos secciones "compitiendo" */
+.sec-veil{display:none}
+@media (max-width:600px){
+  .sec-veil{display:block;position:absolute;inset:0;z-index:30;background:#fff;opacity:var(--veil,0);pointer-events:none}
+  .has-veil{position:relative}
+}
+/* PRUEBA · móvil: un único CTA fijo al pie sobre un velo blanco degradado; los CTAs de las secciones se ocultan */
+.cta-bar{display:none}
+@media (max-width:600px){
+  .cta-bar{display:block;position:fixed;left:0;right:0;bottom:0;z-index:40;padding:28px var(--gutter) calc(12px + env(safe-area-inset-bottom));pointer-events:none;transition:opacity .3s ease,transform .3s ease}
+  /* el velo "copia" lo que hay debajo: desenfoque del fondo con un ligero blanco, desvanecido hacia arriba con una máscara */
+  .cta-bar::before{content:"";position:absolute;inset:0;z-index:-1;background:rgba(255,255,255,.28);-webkit-backdrop-filter:blur(18px) saturate(1.1);backdrop-filter:blur(18px) saturate(1.1);-webkit-mask-image:linear-gradient(to top,#000 50%,transparent);mask-image:linear-gradient(to top,#000 50%,transparent)}
+  .cta-bar.is-hidden{opacity:0;transform:translateY(16px);pointer-events:none}.cta-bar.is-hidden .btn{pointer-events:none}
+  .cta-bar .btn{pointer-events:auto;width:100%;height:56px;font-size:17px;box-shadow:0 8px 24px rgba(250,89,45,.28)}
+  .hero-actions .btn-lg,.s-cocina .media-wrap .btn,.bol-cta,.s-recetas .cta,.precio-foot .btn,.acc-list .btn,.header-right .btn-primary{display:none!important}  /* también el CTA de la cabecera: el único es el fijo al pie */
+  .header .container{justify-content:flex-start}  /* sin CTA, el logo se queda junto a la hamburguesa */
+  /* Hero a pantalla completa: texto arriba y el selector de raza pegado justo encima del CTA fijo */
+  .hero{min-height:calc(100vh - 48px);min-height:calc(100svh - 48px);align-items:stretch}  /* 48px = banner promocional, que va encima */
+  /* Foto: franja central con el perro y el bol, fundida a negro por arriba y por abajo; así cabe el texto arriba y el selector abajo */
+  .hero{background:#3a332e}  /* gris cálido oscuro, no negro */
+  .hero-bg img{top:0;height:100%;transform:none;object-position:50% 70%}  /* la foto ocupa todo el hero: nada de cortes */  /* franja del 16 % al 86 % del alto; foto vertical propia de móvil (perro y bol centrados) */
+  .hero-bg::after{background:linear-gradient(180deg,rgba(40,34,30,.88) 0%,rgba(40,34,30,.8) 28%,rgba(40,34,30,.55) 44%,rgba(40,34,30,.15) 56%,rgba(40,34,30,0) 66%,rgba(40,34,30,.35) 85%,rgba(40,34,30,.7) 100%)}  /* más denso arriba, donde va el texto */  /* velo oscuro suave: arriba más denso para el texto, la foto se intuye siempre, sin cortes */
+  .hero-content>div:first-child{margin-top:0;margin-bottom:auto}
+  .hero p{color:#fff;opacity:.95;font-size:16px;line-height:1.4;text-shadow:0 1px 2px rgba(0,0,0,.45),0 4px 18px rgba(0,0,0,.45)}  /* entradilla a 16px, interlineado más corto, clara y con sombra */
+  .hero h1{text-shadow:0 2px 14px rgba(0,0,0,.4)}
+  .hero h1{margin-top:.35em}  /* el sello Full of life, pegado al título */  /* el texto arriba, sobre el negro y el fundido; el perro y el bol quedan libres */
+  .hero .hero-content{min-height:calc(100svh - 48px - 64px);justify-content:space-between;padding-block:12px calc(var(--hero-pb,100px) + env(safe-area-inset-bottom));box-sizing:border-box}  /* al cargar, el selector queda encima del CTA fijo; al hacer scroll el hueco se va cerrando (JS) hasta que el hero acaba justo bajo el selector */
+  .hero-actions{margin-top:0}
+  .mobile-menu.open~.cta-bar,body.menu-open .cta-bar{display:none}
+}
+@media (max-width:600px){.header .container>a:first-child img{width:62px;height:35px}
+  /* Stepper móvil: sin insignias numeradas (el pie de la foto ya marca el paso); títulos y pie más pequeños */
+  .step .ind{display:none}
+  .step{gap:10px}
+  .step .ind{flex:0 0 32px}
+  .step .dot{width:32px;height:32px}
+  .step .dot img{width:16px;height:16px}
+  .step .dot.badge-num img{width:34px;height:37px}
+  .step h3{font-size:18px;line-height:1.2}
+  .step .txt{font-size:14px;line-height:20px;padding-bottom:16px}
+  .media-cap{left:12px;bottom:12px;padding:6px 10px 6px 6px;gap:8px;font-size:13px;line-height:18px}
+  .media-cap b{width:24px;height:26px}.media-cap b img{width:24px;height:26px}.media-cap b.check{width:24px;height:24px}.media-cap b.check img{width:14px;height:14px}  /* logo un 20 % más pequeño en móvil */
+.sticker.sticker-d{display:none}.sticker.sticker-m{display:grid;margin:0 auto 4px}}  /* móvil: el sello sobre el título, como en dogfydiet.com */
+.sms-form{display:flex;flex-direction:column;gap:16px;align-items:center;width:min(760px,100%)}
+.sms-row{display:flex;gap:16px;width:100%;align-items:center}
+.sms-row .btn{padding:8px 24px;flex:0 0 auto}  /* más aire lateral en el botón de SMS */
+.sms-field{display:flex;align-items:center;gap:12px;flex:1;min-width:0}  /* icono + campo agrupados: en tablet/móvil quedan en la misma línea */
+.input{display:flex;align-items:center;gap:8px;background:#fff;border:none;border-radius:12px;height:40px;padding:8px 12px;font-size:16px;flex:1;min-width:0}
+.input:focus-within{outline:none}
+.input select:focus,.input input:focus{outline:none}
+.input span{color:var(--text-muted)}
+/* Prefijo con selector de mercado (ES · FR · IT · DE) */
+.input .prefix{position:relative;display:inline-flex;align-items:center;gap:4px;padding-right:8px;border-right:1px solid var(--border-acc);color:var(--text-hi);flex:0 0 auto}
+.input .prefix select{appearance:none;-webkit-appearance:none;border:0;background:transparent;font:inherit;color:inherit;padding:0 18px 0 0;cursor:pointer;outline:0}
+.input .prefix svg{position:absolute;right:8px;width:14px;height:14px;pointer-events:none;color:var(--text-muted)}
+.input input{border:0;outline:0;flex:1;min-width:0;font:inherit;color:var(--text-hi)}
+.input input::placeholder{color:var(--text-dimmed)}
+.check{display:flex;gap:8px;align-items:flex-start;font-family:var(--font-display);font-weight:500;font-size:14px;line-height:20px;text-align:left;cursor:pointer}
+.check input{appearance:none;width:16px;height:16px;border-radius:5px;background:#fff;border:1px solid var(--bg-elev);margin-top:2px;flex:0 0 16px;position:relative}
+.check input:checked{background:var(--primary);border-color:var(--primary)}
+.check input:checked::after{content:"";position:absolute;left:4.5px;top:1.5px;width:4px;height:8px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg)}
+
+/* FAQ */
+.s-faq{position:relative;z-index:2;background:var(--bg-inv);color:#fff;border-radius:0;padding:128px var(--gutter) 112px;margin-bottom:-324px}
+.s-faq .head{text-align:center;max-width:var(--container);margin:0 auto 48px}
+.s-faq .eyebrow{color:var(--text-dimmed)}  /* gris claro en vez de blanco puro o el muted oscuro: legible sobre el fondo oscuro, sin perder el aire "eyebrow" */
+.s-faq h2{color:#fff;margin-top:12px}
+.s-faq .sub{color:var(--text-dimmed);font-size:16px;line-height:24px;margin-top:24px}
+.faq{max-width:896px;margin:0 auto}
+.faq details{border-bottom:1px solid var(--bg-inv)}
+.faq summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0;cursor:pointer;font-family:var(--font-display);font-weight:500;font-size:16px;line-height:24px;color:#fff}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary img{width:20px;height:20px;transition:transform .2s;flex:0 0 20px}
+.faq details[open] summary img{transform:rotate(180deg)}
+.faq .ans{padding:0 0 14px;color:var(--text-dimmed);font-size:16px;line-height:24px}
+
+/* Footer */
+/* .page lleva fondo blanco en todo su alto salvo la zona de la FAQ (ahí es transparente para que el footer asome por las esquinas). Evita que el footer fijo se cuele por las juntas entre secciones */
+.page{position:relative;z-index:1;background:linear-gradient(var(--bg),var(--bg)) top/100% calc(100% - var(--faqh,0px)) no-repeat}
+.s-cocina{background:var(--bg)}
+.s-recetas{background:#c6d4ff;position:relative;overflow-x:clip}  /* Figma 541:50332: 04 en #e2e8fb, 05 en #c6d4ff con onda de entrada, y onda blanca al pie hacia precios */
+.s-recetas .wave-bottom{position:absolute;left:50%;bottom:-1px;transform:translateX(-50%);width:max(1440px,100%);height:auto;max-width:none;pointer-events:none;z-index:1}  /* Figma 541:50631: "Subtract" blanco dentro de los últimos 49px de la sección; el lavanda asoma en ondas */
+.s-recetas{z-index:2}
+@media (max-width:767px){.s-recetas .wave-top,.s-recetas .wave-bottom{width:200%}.s-recetas .wave-top{top:-38px}}  /* ondas a media escala en móvil */
+.s-recetas .wave-top{position:absolute;left:50%;top:-74px;transform:translateX(-50%);width:max(1440px,100%);height:auto;max-width:none;pointer-events:none;z-index:1}  /* Figma 541:50333: banda #e2e8fb, onda #c6d4ff y espuma clara, sin voltear */
+.s-recetas>*{position:relative;z-index:1}  /* fondos propios: la página es transparente para que el footer asome por las esquinas de FAQ */
+.footer{position:relative;z-index:0;background:#ff6d45;color:#fff;overflow:hidden;padding:calc(104px + 324px) clamp(16px,5.5vw,80px) 40px;display:flex;flex-direction:column;gap:40px}
+/* Footer reveal: con JS activo el footer queda fijo detrás de .page y un espaciador reserva su altura */
+.reveal .footer{position:fixed;top:0;left:0;right:0;will-change:transform}
+.reveal .footer-space{height:var(--fh,1000px)}
+@media (prefers-reduced-motion:reduce){.reveal .footer{position:relative}.reveal .footer-space{display:none}}
+.footer .deco-v{position:absolute;right:0;bottom:0;width:1027px;pointer-events:none}
+.footer .deco-dog{position:absolute;right:-79px;top:calc(324px - 60px);width:min(792px,50vw);height:auto;aspect-ratio:792/1284;transform:scaleX(-1);object-fit:cover;pointer-events:none}
+.footer .brand{position:static;display:block}
+.footer .cols,.footer .wordmark,.footer .badges,.footer .legal{z-index:2}
+.footer .cols{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:32px;font-size:16px}
+.footer .col{display:flex;flex-direction:column;gap:12px}
+.footer .col b{font-weight:700;line-height:1.4}
+.footer .col b,.footer .col p{color:rgba(255,255,255,.72)}  /* lo no clicable, en blanco atenuado: los enlaces destacan */
+.footer .col a,.footer .col p{line-height:1.45}
+.footer .col a,.footer .legal a{display:inline-block;padding:3px 0}  /* área táctil ≥24px sin cambiar el ritmo visual */
+.footer .col a,.footer .legal a{text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}.footer .col a:hover,.footer .legal a:hover{text-decoration-thickness:2px}  /* enlaces del footer siempre subrayados: se distinguen del texto plano */
+.footer .icons{display:flex;gap:16px}
+.footer .icons img{width:24px;height:24px}
+.footer .pays{display:flex;flex-wrap:wrap;gap:8px}
+.pay{position:relative;width:48px;height:32px;flex:0 0 48px}
+.pay.box{background:#fff;border:1px solid #d6d6d6;border-radius:4px;overflow:hidden}
+.pay img{position:absolute}
+.footer .badges{display:none}  /* disposición de referencia en todos los anchos: pagos → marca → legales, sin badges de app */
+.badge-app{position:relative;height:64px;display:block;flex:0 0 auto;zoom:.8}  /* 20 % más pequeños (51px de alto) */
+.badge-app img{position:absolute}
+.footer .wordmark{position:relative;width:clamp(240px,40vw,600px);height:auto}  /* 733/1440 = 51% del viewport en Figma */
+.footer .legal{position:relative;display:flex;flex-wrap:wrap;gap:12px 32px;font-size:14px}
+
+/* Responsive */
+@media (max-width:1100px){
+  .s-recetas{padding-top:64px}
+  .s-recetas .head{padding-bottom:32px}
+  .recetas-grid,.precio-grid{grid-template-columns:repeat(2,1fr)}
+  .footer .cols{grid-template-columns:repeat(2,1fr)}
+  /* Tablet/intermedio: el perro baja y se encoge para no pisar wordmark, badges ni legal */
+  .footer .deco-dog{left:auto;right:-140px;top:auto;bottom:-80px;width:min(420px,42vw);height:auto}
+  .footer{gap:32px}
+  .footer .wordmark{width:clamp(220px,34vw,460px)}
+  .badge-app{zoom:.75}  /* 48px de alto: por encima del mínimo de 40px que exigen Apple y Google */
+  .footer .badges{gap:12px}
+  .footer .legal{gap:10px 24px;font-size:14px;max-width:70%}
+}
+@media (max-width:1040px){
+  .nav,.header-right .btn-neutral{display:none}
+  .burger{display:flex}
+  /* Móvil/tablet: hamburguesa a la izquierda junto al logo y el CTA solo a la derecha (como en dogfydiet.com) */
+  .header-right{display:contents}
+  .burger{order:-2;margin-left:-10px}
+  .header .container>a:first-child{order:-1}
+  .header .container{gap:12px}
+  .header-right .btn-primary{order:1;margin-left:auto;font-size:15px;line-height:21px;padding:7px 12px}  /* un 5 % más grande */
+}
+@media (max-width:900px){
+  .split{grid-template-columns:1fr;gap:32px}
+  .s-cocina .split{height:auto}  /* pista de scroll: 4 pasos × 100vh; el bloque de pasos queda fijo y al agotarla sigue el scroll normal. align-content:start evita que el grid reparta el alto extra entre media y right-col (su comportamiento por defecto es "stretch") */
+  /* Tablet/móvil: imagen + pasos quedan fijos juntos bajo el header (la imagen siempre en pantalla); el título se desplaza */
+  .s-cocina .cocina-sticky{position:sticky;top:64px;height:calc(100vh - 64px);height:calc(100svh - 64px);max-height:none;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-start;padding-top:12px}  /* todo el bloque (título + foto + texto) queda fijo en el viewport */
+  .s-cocina .cocina-head{padding-top:0;margin-bottom:12px}  /* en móvil el contenedor es la pista; el split es lo que se queda fijo */
+  .s-cocina .media-wrap{display:contents}
+  .s-cocina .media-wrap .btn{order:3;justify-self:center;width:auto;margin-top:0}  /* el botón, tras los pasos y centrado (el wrapper es display:contents) */
+  .s-cocina .split{position:static;gap:12px;align-content:start;padding-top:0}  /* aire entre la cabecera fija y la imagen al quedar pegada */
+  .s-cocina .split .media{aspect-ratio:auto;height:48vh;height:48svh}  /* móvil/tablet: la foto ocupa el 48 % del alto de la pantalla */
+  @media (max-height:700px){.s-cocina .split .media{height:38svh}}  /* móviles bajos (iPhone SE): algo menos para que el último paso no quede bajo el CTA fijo */
+  .s-cocina .right-col{position:static;height:auto;max-height:none;overflow:visible;justify-content:flex-start;gap:16px;padding:0}
+  /* Móvil/tablet: solo se lee el paso activo; al cambiar, el texto saliente se funde y entra el siguiente */
+  .stepper{position:relative}
+  .step{position:absolute;left:0;top:0;width:100%;opacity:0;transform:translateY(14px);transition:opacity .4s ease,transform .4s ease;pointer-events:none}
+  .step.active{position:relative;opacity:1;transform:none;pointer-events:auto}
+  .step.done{transform:translateY(-14px)}
+  .step .txt,.step.done .txt{opacity:1;transform:none;padding-bottom:0}
+  .step-body,.step.active .step-body{grid-template-rows:1fr}
+  .s-cocina{padding-bottom:0}
+  /* Raíl vertical entre insignias: se va rellenando con los pasos completados */
+  .step .ind{align-self:stretch;position:relative}
+  .step .txt{padding-bottom:22px}
+  .step.active h3{transform:translateX(2px)}
+  .step h3{transition:transform .4s ease,color .4s ease}
+  .split .media{aspect-ratio:4/3;order:-1}
+  .s-receta .media{aspect-ratio:4/3}
+  .hero{min-height:640px}
+  .hero-bg img{object-position:63% 25%}  /* imagen panorámica: encuadre sobre la cara del perro */
+  .hero-content{padding-block:48px;margin-inline:auto;align-items:center;text-align:center}  /* tablet/móvil: contenido centrado */
+  .hero-actions{align-items:center;width:100%;max-width:480px}
+  .hero h1{margin-top:4px}.hero p{margin-top:4px}  /* sello, título y entradilla a 4px */
+  .hero{align-items:flex-start}  /* bloque alineado arriba */
+  .sms-row{display:contents}.sms-form .sms-field{order:1;align-self:stretch;width:100%;padding:0;margin:0}.sms-form .sms-field .input{flex:1 1 100%;width:100%;max-width:none;margin:0}.sms-form .check{order:2}.sms-form .sms-row .btn{order:3;width:auto;min-width:280px;align-self:center}  /* móvil: icono+campo en una línea · consentimiento · botón a todo el ancho */
+  .sms-form{align-items:stretch}
+  .input{max-width:280px}  /* el número solo tiene 9 cifras: no hace falta que el campo ocupe todo el ancho */
+  .sms-form .check{justify-content:center;text-align:center}  /* consentimiento centrado bajo el CTA */
+  .s-faq{border-radius:0;padding-top:80px;padding-bottom:80px}
+  .s-precio,.s-recetas,.s-sms{padding-top:72px}.s-receta{padding-top:0}  /* la escena ya lleva su aire */
+  .right-col .btn,.acc-list .btn,.scene-text .btn,.s-recetas .cta .btn{align-self:center;margin-inline:auto}  /* móvil: botones centrados en su contenedor */
+  .s-opiniones .head{padding-top:72px}
+  .s-precio{padding-bottom:72px}
+  .cocina-head{padding-top:40px}
+  .s-caja .wrap{padding:48px var(--gutter)}
+}
+@media (max-width:1074px){
+  /* 05: pestañas + carrusel de recetas (breakpoint Figma 469:40559 / móvil 272:39756) */
+  /* 05: carrusel de recetas con pestañas y bullets (Figma móvil) */
+  .s-recetas{padding-bottom:64px}
+  .s-recetas .head{padding-bottom:24px}
+  .receta-tabs{display:flex;padding-bottom:24px}
+  .receta-tabs::-webkit-scrollbar{display:none}
+  .tab{flex:0 0 auto;display:flex;align-items:center;gap:8px;padding:4px 16px 4px 4px;border-radius:300px;border:1px solid #e8e8e8;background:rgba(255,255,255,.6);font-family:var(--font-alt);font-size:17px;line-height:1.35;color:#767676;white-space:nowrap}
+  .tab img{width:40px;height:40px}
+  .tab.active{background:#ffee99;color:#3d3d3d;font-weight:600}
+  /* Tablet/móvil: cinta en bucle (las tarjetas se duplican en JS y la pista se desplaza media vuelta); se pausa al tocarla */
+  .recetas-grid{display:flex;gap:0;overflow:visible;width:max-content;padding:0;box-sizing:border-box;max-width:none}
+  .recetas-grid.stopped,.recetas-grid.sliding{transition:transform .8s cubic-bezier(.22,.61,.36,1)}  /* paso de tarjeta en tarjeta, suave */
+  @media (prefers-reduced-motion:reduce){.recetas-grid.sliding{transition:none}}
+  .reviews.stopped{transition:transform .55s cubic-bezier(.22,.61,.36,1)}
+  .recetas-grid .receta{margin-right:16px}
+  .s-recetas{overflow-x:clip;overflow-y:visible}  /* solo recorta en horizontal (cinta): con overflow:clip desaparecía la onda superior que entra en la sección del bol */
+  @media (prefers-reduced-motion:reduce){.recetas-grid{overflow-x:auto;width:auto;padding:0 22px}}
+  .recetas-grid::-webkit-scrollbar{display:none}
+  .receta{flex:0 0 min(calc(100vw - 44px),332px)}
+  .dots{display:none}  /* puntos del carrusel de opiniones ocultos */
+  .dots i{width:8px;height:8px;border-radius:50%;background:#c2c2c2}
+  .dots i.active{background:#3d3d3d}
+  .s-recetas .cta{padding-top:40px}
+}
+@media (max-width:600px){.sms-form .sms-row .btn{width:100%;min-width:0}  /* móvil: el CTA ocupa todo el ancho; en tablet vuelve a su ancho natural */
+
+  .precio-grid{grid-template-columns:1fr}
+  /* 06: tarjetas de precio móvil (Figma 272:40193): grid 2×2 de 165px, marco 172px, título 30px */
+  .s-precio .h2{font-size:30px;line-height:36px}
+  /* Fluido: la tarjeta ocupa la mitad del ancho disponible (165px en el Figma de 375) y todo lo de dentro va en % de la tarjeta, así escala con la pantalla */
+  .precio-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;justify-content:center;max-width:420px}
+  .pcard{width:auto;overflow:hidden;padding:8px 8px 16px;border-radius:16px;margin-top:0!important}
+  .pcard .img{position:relative;height:auto;aspect-ratio:149/172;overflow:visible}
+  .pcard .badge{top:16px;right:14px}
+  .pcard .desde{font-size:12px;line-height:18px}
+  .pcard .price b{font-size:clamp(22px,6.4vw,30px);line-height:1.1}
+  .pcard .price span{font-size:clamp(16px,4.8vw,22px)}
+  .pcard .img img{left:auto;transform:none;max-height:none;max-width:none;height:auto;bottom:auto;object-fit:cover}
+  .pcard.c-minis img{width:80.5%;aspect-ratio:120/168;left:9.4%;top:6.4%}
+  .pcard.c-peq img{width:106%;aspect-ratio:158/120;left:-6%;top:37.2%}
+  .pcard.c-med img{width:163%;aspect-ratio:243/184;left:-32.9%;top:9.9%}
+  .pcard.c-gra img{width:151.7%;aspect-ratio:226/172;left:0;top:0;clip-path:inset(0 44.25% 0 0)}
+  /* 09: carrusel de opiniones con bullets */
+  /* Footer compacto en móvil: 2 columnas, menos solape con FAQ, tipografía y badges menores */
+  .s-faq{margin-bottom:-120px}
+  .footer{padding:calc(56px + 120px) 20px calc(24px + env(safe-area-inset-bottom));gap:20px}  /* móvil: bloques más juntos; la barra de CTA se oculta aquí, así que no hace falta reservar sitio */
+  /* Footer móvil (estructura de referencia): Ayuda | Descubre Dogfy · Comunidad | Síguenos · Métodos de pago a todo el ancho · marca grande con el perro asomando · badges · legales en línea con separadores. Tipografía propia (12px) */
+  .footer .cols{grid-template-columns:1fr 1fr;gap:24px 16px;font-size:12px}
+  .footer .col b,.footer .col a,.footer .col p{font-size:12px;line-height:1.5}
+  .footer .col b{text-transform:uppercase;letter-spacing:.08em;font-size:11px;margin-bottom:2px}
+  .footer .col{gap:8px;align-self:start}
+  .footer .cols .col:nth-child(1){grid-column:1;grid-row:1}
+  .footer .cols .col:nth-child(2){grid-column:2;grid-row:1}
+  .footer .cols .col:nth-child(3){grid-column:1;grid-row:2}
+  .footer .cols .col:last-child{display:contents}
+  .footer .cols .col:last-child > b:first-child{grid-column:2;grid-row:2;align-self:start}
+  .footer .icons{grid-column:2;grid-row:2;gap:14px;align-self:start;margin-top:30px}  /* misma celda que el título Síguenos, 10px por debajo */
+  .footer .cols .col:last-child > b:last-of-type{grid-column:1/-1;grid-row:3;margin-top:8px}
+  .footer .pays{grid-column:1/-1;grid-row:4;flex-wrap:nowrap;gap:6px}
+  .footer .brand{position:relative;display:flex;align-items:flex-end;overflow:hidden;margin:0 -20px;padding:0 20px;min-height:0}
+  .footer .wordmark{width:min(68vw,330px);display:block}
+  .footer .deco-dog{position:absolute;right:-6%;top:auto;bottom:0;height:88%;width:auto;aspect-ratio:1;object-fit:cover;object-position:50% 73%;transform:scaleX(-1)}  /* asoma por la derecha, a la altura del logo */
+  .footer .badges{display:none}
+  .footer .brand{margin-top:4px;margin-bottom:4px}
+  .footer .legal{display:flex;flex-wrap:wrap;gap:8px 20px;font-size:12px;max-width:none}
+  .footer .legal a{padding:3px 0}
+  .btn-lg,.select{width:100%}
+}
+
+/* ===== Accesibilidad y microinteracciones ===== */
+:focus-visible{outline:3px solid #ffee99;outline-offset:3px;border-radius:12px}
+.btn:focus-visible,.tab:focus-visible{outline-offset:2px}
+.input:focus-within{box-shadow:0 0 0 3px #ffee99;border-color:#2a2724}
+.skip-link{position:absolute;left:16px;top:-60px;z-index:100;background:#2a2724;color:#fff;padding:10px 16px;border-radius:999px;font-family:var(--font-display);font-weight:600;transition:top .2s}
+.skip-link:focus{top:12px}
+*{-webkit-tap-highlight-color:transparent}
+.tab,.acc-item,.faq summary,.rv-dots button{touch-action:manipulation}
+.tab{transition:background .25s ease,transform .2s ease,color .25s ease}.tab:active{transform:scale(.96)}
+.tab.active{animation:tabPop .35s cubic-bezier(.34,1.56,.64,1)}
+@keyframes tabPop{0%{transform:scale(.94)}60%{transform:scale(1.04)}100%{transform:scale(1)}}
+.acc-item:active .acc-title{transform:translateX(4px)}
+.faq summary{transition:color .2s}.faq summary:active{color:var(--primary)}
+.faq details[open] .ans{animation:ansIn .3s ease both}
+@keyframes ansIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+.faq summary img{transition:transform .3s cubic-bezier(.34,1.56,.64,1)}
+.rv-dots button{position:relative}.rv-dots button::before{content:"";position:absolute;inset:-18px -8px}  /* área táctil ≥44px */
+
+/* Menú móvil: cerrado = display:none (sin capa fija gigante que rompa el pintado); abierto = animación de entrada */
+.mobile-menu.open{animation:menuIn .25s ease both}
+@keyframes menuIn{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
+.mobile-menu.open a{animation:menuLink .3s ease both}
+.mobile-menu.open a:nth-child(1){animation-delay:.05s}.mobile-menu.open a:nth-child(2){animation-delay:.1s}.mobile-menu.open a:nth-child(3){animation-delay:.15s}.mobile-menu.open a:nth-child(4){animation-delay:.2s}.mobile-menu.open a:nth-child(5){animation-delay:.25s}.mobile-menu.open a:nth-child(6){animation-delay:.3s}
+@keyframes menuLink{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.burger span,.burger span::before,.burger span::after{transition:transform .3s ease,top .3s ease,opacity .2s ease}
+.burger[aria-expanded="true"] span{background:transparent!important}
+.burger[aria-expanded="true"] span::before{top:0;transform:rotate(45deg)}
+.burger[aria-expanded="true"] span::after{top:0;transform:rotate(-45deg)}
+.fade-up{opacity:0;transform:translateY(10px);transition:opacity .6s ease,transform .6s ease}
+.fade-up.in{opacity:1;transform:none}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.check input:focus-visible{outline:3px solid #ffee99;outline-offset:2px}
+.check input{transition:background .2s,border-color .2s,transform .15s}.check input:active{transform:scale(.9)}
+@media (prefers-reduced-motion:reduce){.fade-up{opacity:1;transform:none;transition:none}.tab.active{animation:none}.faq details[open] .ans{animation:none}.mobile-menu.open,.mobile-menu.open a{animation:none}}
+.s-cocina .btn-steps{display:none}
+@media (min-width:901px){.s-cocina .btn-media{display:none}.s-cocina .btn-steps{display:inline-flex;margin-top:32px}}  /* desktop: el CTA va bajo el último paso */
+
+/* ===== Página de recetas ===== */
+.rp-hero{background:var(--blue-deco);position:relative;overflow-x:clip;padding:96px var(--gutter) 40px;text-align:center}
+.rp-hero h1{font-size:clamp(36px,5.2vw,64px);line-height:1;max-width:820px;margin:12px auto 0}
+.rp-hero .sub{font-size:clamp(16px,1.6vw,20px);line-height:1.5;color:var(--text);max-width:620px;margin:20px auto 0}
+.rp-tabs{position:sticky;top:64px;z-index:30;display:flex;gap:8px;justify-content:center;padding:16px var(--gutter);background:rgba(198,212,255,.86);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}
+.rp-tabs .tab img{width:40px;height:40px}
+.rp-tabs .tab.active{background:#fe9;border-color:#fe9;color:#3d3d3d;font-weight:600}
+.rp-receta{padding:96px var(--gutter);scroll-margin-top:136px}
+.rp-receta.rev{background:var(--bg-elev)}
+.rp-grid{max-width:var(--container);margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:72px;align-items:center}
+.rp-receta.rev .rp-media{order:2}
+.rp-media{position:relative;border-radius:24px;overflow:hidden;aspect-ratio:1/1;background:var(--tint,#fff6c7)}
+.rp-media img.photo{width:100%;height:100%;object-fit:cover}
+.rp-media .r-ico{position:absolute;left:20px;top:20px;width:56px;height:56px;border-radius:50%;background:#fff;display:grid;place-items:center;box-shadow:0 6px 20px rgba(0,0,0,.08)}
+.rp-media .r-ico img{width:34px;height:34px}
+.rp-pill{display:inline-flex;align-items:center;padding:4px 12px;border-radius:999px;background:var(--tint,#fff6c7);font-family:var(--font-display);font-weight:600;font-size:14px;line-height:20px;color:var(--text-hi)}
+.rp-txt h2{font-size:clamp(32px,3.6vw,48px);line-height:1;margin-top:16px}
+.rp-txt .lead{font-size:18px;line-height:28px;margin-top:16px;color:var(--text)}
+.rp-bar{display:flex;height:14px;border-radius:999px;overflow:hidden;margin-top:28px;background:#eee}
+.rp-bar span{display:block;height:100%}
+.rp-bar .p{background:var(--primary)}.rp-bar .v{background:#8fc46a}
+.rp-legend{display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:10px;font-size:14px;color:var(--text-toned)}
+.rp-legend i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px}
+.rp-h4{font-family:var(--font-display);font-weight:700;font-size:18px;color:var(--text-hi);margin-top:32px}
+.rp-ingr{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;list-style:none}
+.rp-ingr li{padding:6px 12px;border-radius:999px;border:1px solid var(--border);background:#fff;font-size:14px;line-height:20px;color:var(--text-hi)}
+.rp-benef{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px;list-style:none}
+.rp-benef li{display:flex;gap:10px;align-items:flex-start;font-size:15px;line-height:22px}
+.rp-benef li::before{content:"";flex:0 0 20px;height:20px;margin-top:1px;border-radius:50%;background:var(--primary) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M6 10.5l2.5 2.5L14 7.5' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/20px no-repeat}
+.rp-anal{width:100%;border-collapse:collapse;margin-top:12px;font-size:14px}
+.rp-anal td{padding:8px 0;border-bottom:1px solid var(--border)}
+.rp-anal td:last-child{text-align:right;font-weight:600;color:var(--text-hi)}
+.rp-ideal{margin-top:20px;font-size:15px;line-height:22px}
+.rp-ideal b{color:var(--text-hi)}
+.rp-txt .btn{margin-top:32px}
+.rp-compare{background:var(--cream);padding:112px var(--gutter)}
+.rp-compare .head,.rp-proc .head{text-align:center;max-width:760px;margin:0 auto 48px}
+.rp-table-wrap{max-width:var(--container);margin:0 auto;overflow-x:auto;border-radius:20px;background:#fff;box-shadow:0 2px 6px rgba(0,0,0,.06)}
+.rp-table{width:100%;min-width:640px;border-collapse:collapse;font-size:15px}
+.rp-table th,.rp-table td{padding:18px 20px;text-align:center;border-bottom:1px solid var(--border)}
+.rp-table th:first-child,.rp-table td:first-child{text-align:left;color:var(--text-hi);font-family:var(--font-display);font-weight:600}
+.rp-table thead th{font-family:var(--font-display);font-size:18px;color:var(--text-hi)}
+.rp-table thead img{width:36px;height:36px;margin:0 auto 6px}
+.rp-table tr:last-child td{border-bottom:0}
+.rp-dots{letter-spacing:2px;color:var(--primary);font-size:16px}
+.rp-dots .off{color:#e2dbd1}
+.rp-compare .cta{text-align:center;margin-top:40px}
+.rp-proc{padding:112px var(--gutter);background:#fff}
+.rp-steps{max-width:var(--container);margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:24px;list-style:none;counter-reset:s}
+.rp-steps li{counter-increment:s;background:var(--sand);border-radius:20px;padding:28px 24px}
+.rp-steps li::before{content:counter(s);display:grid;place-items:center;width:32px;height:32px;border-radius:8px;background:var(--blue);font-family:var(--font-display);font-weight:700;color:var(--text-hi)}
+.rp-steps h3{font-size:20px;line-height:1.2;margin-top:16px}
+.rp-steps p{font-size:15px;line-height:22px;margin-top:8px}
+@media (max-width:900px){
+  .rp-grid{grid-template-columns:1fr;gap:32px}
+  .rp-receta.rev .rp-media{order:0}
+  .rp-media{aspect-ratio:4/3}
+  .rp-receta{padding:64px var(--gutter)}
+  .rp-steps{grid-template-columns:1fr 1fr}
+}
+@media (max-width:600px){
+  .rp-hero{padding:56px var(--gutter) 24px}
+  .rp-tabs{justify-content:flex-start;overflow-x:auto;scrollbar-width:none}
+  .rp-tabs::-webkit-scrollbar{display:none}
+  .rp-tabs .tab{font-size:14px}.rp-tabs .tab img{width:32px;height:32px}
+  .rp-benef{grid-template-columns:1fr}
+  .rp-steps{grid-template-columns:1fr}
+  .rp-compare,.rp-proc{padding:64px var(--gutter)}
+  .rp-txt .btn{display:none}
+}
+/* ===== Recetas v2: listado + fichas ===== */
+.rp-hero h1 .accent{display:block}
+.rp-marquee{display:flex;overflow:hidden;background:var(--primary);color:#fff;padding:14px 0;font-family:var(--font-display);font-weight:600;font-size:18px;white-space:nowrap}
+.rp-marquee.alt{background:var(--text-hi)}
+.rp-marquee ul{display:flex;flex:0 0 auto;gap:48px;padding-right:48px;list-style:none;animation:rpMq 28s linear infinite}
+.rp-marquee li::before{content:"✓";margin-right:10px;opacity:.8}
+@keyframes rpMq{to{transform:translateX(-100%)}}
+.rp-menus{padding:112px var(--gutter);background:#fff}
+.rp-menus .head,.rp-rev-sec .head,.rp-info .head,.rp-others .head{text-align:center;max-width:780px;margin:0 auto 48px}
+.rp-menus .sub{font-size:18px;line-height:28px;margin-top:16px}
+.rp-cards{max-width:var(--container);margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.rp-card{display:flex;flex-direction:column;border-radius:20px;background:var(--bg-elev);overflow:hidden;border:1px solid var(--border)}
+.rp-card-img{position:relative;display:block;aspect-ratio:4/3;background:var(--tint)}
+.rp-card-img img{width:100%;height:100%;object-fit:cover}
+.rp-card-img .r-ico{position:absolute;left:12px;top:12px;width:44px;height:44px;border-radius:50%;background:#fff;display:grid;place-items:center}
+.rp-card-img .r-ico img{width:26px;height:26px}
+.rp-card-body{display:flex;flex-direction:column;gap:10px;padding:20px;flex:1}
+.rp-card h3{font-size:24px;line-height:1.1}
+.rp-card p{font-size:15px;line-height:22px;flex:1}
+.rp-card-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.btn-ghost{padding:8px 12px;font-size:16px;line-height:24px;color:var(--text-hi);border:1px solid var(--border-acc);background:#fff}
+.btn-ghost:hover{background:var(--sand)}
+.rp-rev-sec{padding:96px 0;background:var(--blue);overflow:hidden}
+.rp-rev-sec.slim{padding:32px 0}
+.rp-reviews{display:flex;overflow:hidden}
+.rp-reviews ul{display:flex;flex:0 0 auto;gap:16px;padding-right:16px;list-style:none;animation:rpMq 60s linear infinite}
+.rp-reviews li{width:300px;background:#fff;border-radius:16px;padding:20px;white-space:normal}
+.rp-reviews .stars{color:#00b67a;letter-spacing:2px}
+.rp-reviews p{font-size:15px;line-height:22px;color:var(--text-hi);margin-top:8px}
+.rp-snacks{padding:112px var(--gutter);background:var(--cream)}
+.rp-snacks-in{max-width:var(--container);margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
+.rp-snacks-img{border-radius:24px;overflow:hidden;aspect-ratio:4/3}
+.rp-snacks-img img{width:100%;height:100%;object-fit:cover}
+.rp-checks{list-style:none;display:flex;flex-direction:column;gap:12px;margin:24px 0 32px}
+.rp-checks li{display:flex;gap:10px;font-size:17px;color:var(--text-hi)}
+.rp-checks li::before{content:"✓";display:grid;place-items:center;flex:0 0 24px;height:24px;border-radius:50%;background:var(--primary);color:#fff;font-size:13px;font-weight:700}
+.rp-start{position:relative;z-index:2;margin-bottom:-324px;padding:112px var(--gutter) 112px;background:var(--blue-deco);text-align:center}
+.rp-mad{max-width:820px;margin:16px auto 0}
+.rp-mad>p:first-child{font-family:var(--font-display);font-weight:700;color:var(--text-hi);font-size:clamp(26px,3.4vw,40px);line-height:1.5}
+.rp-mad input{font:inherit;color:var(--primary);background:transparent;border:0;border-bottom:3px solid var(--primary);text-align:center;padding:0 4px;max-width:100%}
+.rp-mad input::placeholder{color:rgba(250,89,45,.45)}
+.rp-mad input:focus{outline:none;background:rgba(255,255,255,.5)}
+.rp-mad .sub{font-size:18px;margin:24px 0 32px}
+/* ficha */
+.rp-tabs{top:64px}
+.rp-tabs .tab{text-decoration:none}
+.rp-detail{padding-top:64px}
+.rp-detail h1{font-size:clamp(40px,4.6vw,60px);line-height:1;margin:12px 0 16px}
+.rp-back{font-size:14px;color:var(--text-toned)}
+.rp-back:hover{color:var(--primary)}
+.rp-detail .rp-benef{margin-top:28px}
+.rp-info{padding:112px var(--gutter);background:#fff}
+.rp-info-grid{max-width:var(--container);margin:0 auto;display:grid;grid-template-columns:1.3fr 1fr;gap:64px;align-items:start}
+.rp-h3{font-size:22px;margin-bottom:16px}
+.rp-ing{list-style:none;display:flex;flex-direction:column}
+.rp-ing li{padding:16px 0;border-bottom:1px solid var(--border)}
+.rp-ing-h{display:flex;justify-content:space-between;gap:16px;font-family:var(--font-display);font-size:18px;color:var(--text-hi)}
+.rp-ing-h span{color:var(--primary);font-weight:700;white-space:nowrap}
+.rp-ing p{font-size:15px;line-height:22px;margin-top:4px}
+.rp-ing .rp-note{font-size:13px;color:var(--text-muted)}
+.rp-an{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.rp-an li{background:var(--sand);border-radius:16px;padding:16px;text-align:center}
+.rp-an b{display:block;font-family:var(--font-display);font-size:28px;color:var(--text-hi)}
+.rp-an span{font-size:13px;color:var(--text-toned)}
+.rp-prep{margin-top:40px}
+.rp-prep ol{padding-left:20px;display:flex;flex-direction:column;gap:8px;font-size:15px;line-height:22px}
+.rp-others{padding:96px var(--gutter);background:var(--bg-elev)}
+.rp-minis{max-width:var(--container);margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.rp-mini{display:block;border-radius:20px;overflow:hidden;background:var(--tint);transition:transform .2s}
+.rp-mini:hover{transform:translateY(-4px)}
+.rp-mini img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.rp-mini span{display:block;padding:16px 20px;font-family:var(--font-display);font-weight:700;font-size:20px;color:var(--text-hi)}
+@media (prefers-reduced-motion:reduce){.rp-marquee ul,.rp-reviews ul{animation:none}}
+@media (max-width:1100px){.rp-cards{grid-template-columns:1fr 1fr}}
+@media (max-width:900px){.rp-snacks-in,.rp-info-grid{grid-template-columns:1fr;gap:40px}.rp-minis{grid-template-columns:1fr 1fr 1fr;gap:12px}.rp-mini span{font-size:16px;padding:12px}}
+@media (max-width:600px){
+  .rp-cards{grid-template-columns:1fr}
+  .rp-menus,.rp-snacks,.rp-info,.rp-others{padding:64px var(--gutter)}
+  .rp-rev-sec{padding:56px 0}
+  .rp-marquee{font-size:15px}
+  .rp-an{grid-template-columns:repeat(2,1fr)}
+  .rp-minis{grid-template-columns:1fr}
+  .rp-start{padding:64px var(--gutter);margin-bottom:-120px}
+  .rp-detail .rp-cta{display:none}
+}
+</style>
+</head>
+<body>
+<div class="page">
+<div class="banner">🔥 -30 % descuento &nbsp;🔥&nbsp; ENVÍO GRATIS &nbsp;🔥</div>
+<header class="header">
+  <div class="container">
+    <a href="index.html" aria-label="Dogfy Diet"><img src="assets/logo-dogfy.svg" alt="Dogfy Diet" width="78" height="44"></a>
+    <nav class="nav" aria-label="Principal">
+      <a href="index.html#como">Cómo funciona</a>
+      <a href="recetas.html" class="active" aria-current="page">Nuestras recetas</a>
+      <a href="index.html#nutricionistas">Nutricionistas</a>
+      <a href="index.html#opiniones">Opiniones</a>
+      <a href="index.html#faq">Ayuda</a>
+    </nav>
+    <div class="header-right">
+      <button class="btn btn-neutral">ES <img src="assets/chevron-down.svg" alt="" width="20" height="20"></button>
+      <a class="btn btn-neutral" href="#">Mi cuenta</a>
+      <a class="btn btn-primary btn-sm" href="index.html#precio">Crea tu menú</a>
+      <button class="burger" id="burger" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobileMenu"><span></span></button>
+    </div>
+  </div>
+</header>
+<nav class="mobile-menu" id="mobileMenu" aria-label="Menú móvil">
+  <a href="index.html#como">Cómo funciona</a>
+  <a href="recetas.html">Nuestras recetas</a>
+  <a href="index.html#nutricionistas">Nutricionistas</a>
+  <a href="index.html#opiniones">Opiniones</a>
+  <a href="index.html#faq">Ayuda</a>
+  <a href="#">Mi cuenta</a>
+  <a class="btn btn-primary" href="index.html#precio">Crea tu menú</a>
+</nav>
+
+<nav class="rp-tabs" aria-label="Recetas"><a class="tab" href="receta-pollo.html"><img src="assets/tab-pollo.svg" alt="">Pollo</a><a class="tab" href="receta-pavo.html"><img src="assets/tab-pavo.svg" alt="">Pavo</a><a class="tab" href="receta-salmon.html"><img src="assets/tab-salmon.svg" alt="">Salmón</a><a class="tab active" href="receta-buey.html" aria-current="page"><img src="assets/tab-buey.svg" alt="">Buey</a></nav>
+
+<section class="rp-receta rp-detail" style="--tint:#f7d7d4">
+  <div class="rp-grid">
+    <div class="rp-media"><img class="photo" src="assets/receta-buey.jpg" alt="Bol del menú de buey de Dogfy Diet" decoding="async"><span class="r-ico"><img src="assets/icon-receta-buey.svg" alt=""></span></div>
+    <div class="rp-txt">
+      <a class="rp-back" href="recetas.html">← Todas las recetas</a>
+      <h1>Menú de buey</h1>
+      <span class="rp-pill">139.972 menús vendidos este mes</span>
+      <p class="lead">Con un 60 % de buey y un 40 % de zanahoria, patata y otras verduras.</p>
+      <div class="rp-bar" role="img" aria-label="60,5 % buey"><span class="p" style="width:60.5%"></span><span class="v" style="width:39.5%"></span></div>
+      <div class="rp-legend"><span><i style="background:var(--primary)"></i>60,5 % buey</span><span><i style="background:#8fc46a"></i>verduras y otros ingredientes</span></div>
+      <ul class="rp-benef"><li>Bajo en calorías</li><li>Ayuda a mantener un peso saludable</li><li>Contiene una sola fuente de proteína</li><li>Minimiza el riesgo de alergias</li></ul>
+      <a class="btn btn-primary rp-cta" href="index.html#precio">¡Quiero probar!</a>
+    </div>
+  </div>
+</section>
+
+<section class="rp-rev-sec slim"><div class="rp-reviews"><ul><li><span class="stars">★★★★★</span><p>«Estoy muy feliz con ellos. ¡Ya no volveremos al pienso nunca!»</p></li><li><span class="stars">★★★★★</span><p>«Ninguna comida le gustaba a mi perro hasta que ha probado esta.»</p></li><li><span class="stars">★★★★★</span><p>«La mejor decisión que pude hacer por mi perra.»</p></li><li><span class="stars">★★★★★</span><p>«A mi dogo argentino le encanta la comida, va a comer más contento que nadie.»</p></li><li><span class="stars">★★★★★</span><p>«Es una maravilla verlos disfrutar así de su comida.»</p></li><li><span class="stars">★★★★★</span><p>«Muy contenta con su producto. A mi perro le sienta genial.»</p></li><li><span class="stars">★★★★★</span><p>«A mi perrita Suri le encanta, se lo come en un pispás.»</p></li><li><span class="stars">★★★★★</span><p>«Mi perro y yo estamos muy contentos con la comida.»</p></li></ul><ul aria-hidden="true"><li><span class="stars">★★★★★</span><p>«Estoy muy feliz con ellos. ¡Ya no volveremos al pienso nunca!»</p></li><li><span class="stars">★★★★★</span><p>«Ninguna comida le gustaba a mi perro hasta que ha probado esta.»</p></li><li><span class="stars">★★★★★</span><p>«La mejor decisión que pude hacer por mi perra.»</p></li><li><span class="stars">★★★★★</span><p>«A mi dogo argentino le encanta la comida, va a comer más contento que nadie.»</p></li><li><span class="stars">★★★★★</span><p>«Es una maravilla verlos disfrutar así de su comida.»</p></li><li><span class="stars">★★★★★</span><p>«Muy contenta con su producto. A mi perro le sienta genial.»</p></li><li><span class="stars">★★★★★</span><p>«A mi perrita Suri le encanta, se lo come en un pispás.»</p></li><li><span class="stars">★★★★★</span><p>«Mi perro y yo estamos muy contentos con la comida.»</p></li></ul></div></section>
+
+<section class="rp-info" id="info">
+  <div class="head"><p class="eyebrow">Información nutricional</p><h2 class="h2" style="margin-top:12px">Qué lleva su <span class="accent">menú de buey</span></h2></div>
+  <div class="rp-info-grid">
+    <div><h3 class="rp-h3">Ingredientes principales</h3><ul class="rp-ing"><li><div class="rp-ing-h"><b>Buey</b><span>60,5 %</span></div><p>Proteína de calidad que mejora el crecimiento muscular, el pelaje y aporta energía.</p><p class="rp-note">Asadura 48,6 %, carne 6,9 %, bazo 2,7 % e hígado 2,3 %</p></li><li><div class="rp-ing-h"><b>Zanahoria fresca</b><span>26 %</span></div><p>Rica en fibra y vitamina A, refuerza el sistema inmune, la piel y el pelaje.</p></li><li><div class="rp-ing-h"><b>Patata fresca</b><span>5,5 %</span></div><p>Nutritiva y antioxidante, brinda energía, contiene fibra y mejora la digestión.</p></li><li><div class="rp-ing-h"><b>Boniato fresco</b><span>3,6 %</span></div><p>Rico en nutrientes clave, ayuda a la salud cardiovascular y facilita la digestión.</p></li><li><div class="rp-ing-h"><b>Vitaminas y minerales</b><span>1,9 %</span></div><p>Vitales para asegurar un funcionamiento corporal óptimo y el bienestar general.</p></li><li><div class="rp-ing-h"><b>Aceite (salmón, oliva, girasol, canola)</b><span>1,6 %</span></div><p>Rico en grasas esenciales, aporta energía y mantiene el pelaje sano y brillante.</p></li><li><div class="rp-ing-h"><b>Almidón natural de patata</b><span>0,9 %</span></div><p>Asegura una consistencia perfecta, manteniendo intacto el sabor y la textura en cada bocado.</p></li></ul></div>
+    <div><h3 class="rp-h3">Componentes analíticos</h3><ul class="rp-an"><li><b>72 %</b><span>Humedad</span></li><li><b>12 %</b><span>Proteína bruta</span></li><li><b>10,5 %</b><span>Grasa bruta</span></li><li><b>1,3 %</b><span>Fibra bruta</span></li><li><b>1,2 %</b><span>Ceniza bruta</span></li><li><b>3 %</b><span>Carbohidratos</span></li></ul>
+      <div class="rp-prep"><h3 class="rp-h3">Modo de preparación</h3><ol><li>Descongela la bolsita en la nevera la noche anterior.</li><li>Ábrela y sirve la ración del día en su bol.</li><li>Una vez abierta, guárdala en la nevera y consúmela en un máximo de 4 días.</li></ol></div>
+    </div>
+  </div>
+</section>
+
+<section class="rp-others">
+  <div class="head"><h2 class="h2">Descubre <span class="accent">otras recetas</span></h2></div>
+  <div class="rp-minis"><a class="rp-mini" href="receta-pollo.html" style="--tint:#fff6c7"><img src="assets/receta-pollo.jpg" alt="" loading="lazy"><span>Menú de pollo</span></a><a class="rp-mini" href="receta-pavo.html" style="--tint:#e4d5f3"><img src="assets/receta-pavo.jpg" alt="" loading="lazy"><span>Menú de pavo</span></a><a class="rp-mini" href="receta-salmon.html" style="--tint:#fde0c8"><img src="assets/receta-salmon.jpg" alt="" loading="lazy"><span>Menú de salmón</span></a></div>
+</section>
+
+<section class="rp-start">
+  <p class="eyebrow">Empieza tu prueba</p>
+  <form class="rp-mad" onsubmit="event.preventDefault();location.href='index.html#precio'">
+    <p><input aria-label="Nombre de tu perro" placeholder="Tu perro" size="9"> nació en <input aria-label="Año de nacimiento" placeholder="2022" size="4" inputmode="numeric">, es un <input aria-label="Raza" placeholder="mestizo" size="9"> que pesa <input aria-label="Peso en kg" placeholder="12" size="3" inputmode="decimal"> kg y está deseando probar Dogfy Diet.</p>
+    <p class="sub">¿Quieres conocer la ración diaria de tu peludo? Empieza desde <b>1,09 €/día</b>.</p>
+    <button class="btn btn-primary btn-lg" type="submit">Empieza ahora con un -30 %</button>
+  </form>
+</section>
+
+</div><!-- /.page -->
+
+<footer class="footer">
+  <img class="deco-v" src="assets/footer-vector.svg" alt="" width="1027" height="748">
+  <div class="cols">
+    <div class="col"><b>Ayuda</b><a href="#">Atención al cliente</a><a href="#faq">Preguntas frecuentes</a><p>Contacta con nosotros<br>Lunes a jueves, de 9:00 a 17:00.<br>Viernes, de 9:00 a 14:00.</p></div>
+    <div class="col"><b>Descubre Dogfy</b><a href="index.html#como">Cómo funciona</a><a href="recetas.html">Nuestras recetas</a><a href="index.html#nutricionistas">Equipo veterinario y nutricional</a><a href="index.html#opiniones">Opiniones de clientes</a></div>
+    <div class="col"><b>Comunidad</b><a href="#">Nuestra historia</a><a href="#">Blog</a><a href="#">Podcast</a><a href="#">Invita a tus amigos</a></div>
+    <div class="col" style="gap:12px"><b>Síguenos</b>
+      <div class="icons"><a href="#" aria-label="TikTok"><img src="assets/social-tiktok.svg" alt=""></a><a href="#" aria-label="Instagram"><img src="assets/social-instagram-color.svg" alt="" style="width:21px;height:21px;margin:1.5px"></a><a href="#" aria-label="Facebook"><img src="assets/social-facebook-color.svg" alt=""></a><a href="#" aria-label="X"><img src="assets/social-twitter-color.svg" alt=""></a></div>
+      <b>Métodos de pago seguros</b>
+      <div class="pays">
+        <div class="pay box" title="Visa"><img src="assets/pay-visa.svg" alt="Visa" style="left:8.5px;top:11px;width:31px;height:10px"></div>
+        <div class="pay box" title="Mastercard"><img src="assets/pay-mastercard.svg" alt="Mastercard" style="left:10.5px;top:7.5px;width:26px;height:16px"></div>
+        <div class="pay box" title="American Express"><img src="assets/pay-amex.svg" alt="American Express" style="left:4px;top:11px;width:40px;height:10px"></div>
+        <div class="pay box" title="PayPal"><img src="assets/pay-paypal-2.svg" alt="" style="left:16.2px;top:3px;width:14.1px;height:16.6px"><img src="assets/pay-paypal-1.svg" alt="PayPal" style="left:9.9px;top:21.2px;width:25.2px;height:6.8px"></div>
+        <div class="pay box" title="Apple Pay"><img src="assets/pay-applepay-1.svg" alt="" style="left:5.8px;top:8.3px;width:10.1px;height:12.4px"><img src="assets/pay-applepay-2.svg" alt="Apple Pay" style="left:17.9px;top:9.2px;width:24.2px;height:14.5px"></div>
+        <div class="pay box" title="Google Pay"><img src="assets/pay-googlepay.svg" alt="Google Pay" style="left:4.1px;top:7.5px;width:37.8px;height:15px"></div>
+      </div></div>
+  </div>
+  <div class="brand"><img class="wordmark" src="assets/footer-wordmark.svg" alt="Dogfy Diet" width="733" height="413"><img class="deco-dog" src="assets/footer-dog.png" alt="" loading="lazy" decoding="async"></div>
+  <div class="badges"><a class="badge-app" href="#" aria-label="Consíguelo en el App Store" style="width:191.46px"><img src="assets/badge-apple-1.svg" alt="" style="inset:0;width:100%;height:100%"><img src="assets/badge-apple-2.svg" alt="" style="left:8.33%;top:21.8%;width:28.35px;height:34.84px"><img src="assets/badge-apple-3.svg" alt="" style="left:28.77%;top:44.68%;width:120.1px;height:25px"><img src="assets/badge-apple-4.svg" alt="" style="left:29.61%;top:20.05%;width:109.18px;height:13.44px"></a>
+    <a class="badge-app" href="#" aria-label="Descargar en Google Play" style="width:215.8px"><img src="assets/badge-gplay-4.svg" alt="" style="inset:0;width:100%;height:100%"><img src="assets/badge-gplay-2.svg" alt="" style="left:30.96%;top:17.21%;width:8.28px;height:9.96px"><img src="assets/badge-gplay-3.svg" alt="" style="left:35.72%;top:17.23%;width:6.05px;height:9.96px"><img src="assets/badge-gplay-5.svg" alt="" style="left:39.11%;top:16.88%;width:6.95px;height:10.42px"><img src="assets/badge-gplay-7.svg" alt="" style="left:42.98%;top:16.89%;width:9.17px;height:10.39px"><img src="assets/badge-gplay-1.svg" alt="" style="left:47.66%;top:17.23%;width:9.27px;height:9.96px"><img src="assets/badge-gplay-6.svg" alt="" style="left:52.67%;top:17.21%;width:7.16px;height:9.96px"><img src="assets/badge-gplay-8.svg" alt="" style="left:56.42%;top:16.9%;width:10.12px;height:10.43px"><img src="assets/badge-gplay-10.svg" alt="" style="left:61.42%;top:17.23%;width:9.27px;height:9.96px"><img src="assets/badge-gplay-9.svg" alt="" style="left:66.43%;top:17.21%;width:7.16px;height:9.96px"><img src="assets/badge-gplay-11.svg" alt="" style="left:71.85%;top:17.23%;width:6.05px;height:9.96px"><img src="assets/badge-gplay-12.svg" alt="" style="left:75.64%;top:17.2%;width:7.85px;height:9.97px"></a></div>
+  <div class="legal"><a href="#">Aviso legal</a><a href="#">Términos y condiciones</a><a href="#">Política de cookies</a><a href="#">Política de privacidad</a><a href="#">Canal de denuncias</a><a href="#">Mapa web</a></div>
+</footer>
+<div class="footer-space" aria-hidden="true"></div>
+<div class="cta-bar" id="ctaBar"><a class="btn btn-primary" href="index.html#precio">¡Quiero probar!</a></div>
+<script>
+const burger=document.getElementById('burger'),menu=document.getElementById('mobileMenu');
+burger.addEventListener('click',()=>{menu.style.setProperty('--menu-top',document.querySelector('.header').getBoundingClientRect().bottom+'px');const o=menu.classList.toggle('open');burger.setAttribute('aria-expanded',o);burger.setAttribute('aria-label',o?'Cerrar menú':'Abrir menú');document.body.style.overflow=o?'hidden':'';document.body.classList.toggle('menu-open',o);if(o)setTimeout(()=>menu.querySelector('a')?.focus(),260);});
+addEventListener('keydown',e=>{if(e.key==='Escape'&&menu.classList.contains('open')){menu.classList.remove('open');burger.setAttribute('aria-expanded','false');burger.setAttribute('aria-label','Abrir menú');document.body.style.overflow='';burger.focus();}});
+menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{menu.classList.remove('open');document.body.style.overflow='';document.body.classList.remove('menu-open')}));
+</script>
+</body>
+</html>
