@@ -376,7 +376,7 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
   .acc-sticky{height:calc(100vh - 64px);height:calc(100svh - 64px);min-height:0;justify-content:flex-start;padding:16px var(--gutter) 24px}  /* el amarillo llena el viewport mientras la escena está fija: así no asoma el blanco de la siguiente sección cuando cambia la altura del texto; al acabar la pista el bloque sube y se va */
   .s-caja .head{margin-bottom:12px}
   .acc{display:flex;flex-direction:column;gap:12px;align-items:stretch;flex:1 1 auto;min-height:0}
-  .acc-media{order:1;flex:1 1 auto;min-height:140px;aspect-ratio:auto;max-height:420px;border-radius:20px;margin:0}  /* la foto absorbe el alto sobrante: lista y botón siempre dentro del bloque fijo */
+  .acc-media{order:1;flex:1 1 auto;min-height:140px;aspect-ratio:auto;max-height:31svh;border-radius:20px;margin:0}  /* un 20 % más baja que antes; el resto del alto lo absorbe la lista */  /* la foto absorbe el alto sobrante: lista y botón siempre dentro del bloque fijo */
   .acc-list{flex:0 0 auto}
   .acc-dots{display:none}  /* móvil/tablet: sin puntos bajo la foto */
   .acc-dots i{width:6px;height:6px;background:#c2c2c2;filter:none;transition:width .3s ease,background .3s ease}
@@ -784,7 +784,7 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
   /* 09: carrusel de opiniones con bullets */
   /* Footer compacto en móvil: 2 columnas, menos solape con FAQ, tipografía y badges menores */
   .s-faq{margin-bottom:-120px}
-  .footer{padding:calc(56px + 120px) 20px calc(100px + env(safe-area-inset-bottom));gap:20px}  /* móvil: bloques más juntos; abajo, sitio para la barra de CTA fija */
+  .footer{padding:calc(56px + 120px) 20px calc(24px + env(safe-area-inset-bottom));gap:20px}  /* móvil: bloques más juntos; la barra de CTA se oculta aquí, así que no hace falta reservar sitio */
   /* Footer móvil (estructura de referencia): Ayuda | Descubre Dogfy · Comunidad | Síguenos · Métodos de pago a todo el ancho · marca grande con el perro asomando · badges · legales en línea con separadores. Tipografía propia (12px) */
   .footer .cols{grid-template-columns:1fr 1fr;gap:24px 16px;font-size:12px}
   .footer .col b,.footer .col a,.footer .col p{font-size:12px;line-height:1.5}
