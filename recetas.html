@@ -1310,6 +1310,44 @@ body:has(.rp-hero) .rp-crumbs{background:var(--blue-deco);max-width:none;padding
   .rp-bens-txt{grid-column:1;grid-row:1;padding:40px 0 8px}
 }
 @media (max-width:600px){.rp-bens-wrap{padding:0 22px}.rp-bens-txt{padding-top:32px}}
+/* ===== Ladridos v2: carrusel tipo stories ===== */
+.bk2{padding:104px 0 96px;background:#fff;overflow:hidden}
+.bk2-head{max-width:var(--container);margin:0 auto 36px;padding:0 var(--gutter);box-sizing:content-box;display:flex;align-items:flex-end;justify-content:space-between;gap:24px}
+.bk2-head .h2{margin-top:8px}
+.bk2-tp{display:inline-flex;align-items:center;gap:8px;margin-top:16px;padding:8px 14px;border-radius:999px;background:var(--sand);font-size:14px;color:var(--text-hi);transition:background .2s}
+.bk2-tp:hover{background:#ebe5dc}
+.bk2-tp b{font-family:var(--font-display);font-size:18px}
+.bk2-nav{display:flex;gap:10px;flex:0 0 auto}
+.bk2-arrow{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;background:#fff;border:1px solid var(--border);color:var(--text-hi);transition:background .2s,opacity .2s,transform .15s}
+.bk2-arrow:hover{background:var(--sand)}.bk2-arrow:active{transform:scale(.95)}
+.bk2-arrow:disabled{opacity:.35;pointer-events:none}
+.bk2-track{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding:12px max(var(--gutter),calc((100vw - var(--container)) / 2)) 24px;scroll-padding-inline:max(var(--gutter),calc((100vw - var(--container)) / 2))}
+.bk2-track::-webkit-scrollbar{display:none}
+.bk2-card{position:relative;flex:0 0 260px;aspect-ratio:9/16;border-radius:22px;overflow:hidden;padding:0;background:#1d1b19;color:#fff;text-align:left;scroll-snap-align:start;cursor:pointer;isolation:isolate;box-shadow:0 1px 2px rgba(41,38,36,.08),0 18px 36px -20px rgba(41,38,36,.45);transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s}
+.bk2-poster,.bk2-prev{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.2,.8,.2,1),opacity .4s}
+.bk2-prev{opacity:0}
+.bk2-card::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(to top,rgba(0,0,0,.72) 0%,rgba(0,0,0,.18) 38%,rgba(0,0,0,0) 60%);pointer-events:none}
+.bk2-badge{position:absolute;z-index:2;top:14px;right:14px;display:inline-flex;align-items:center;gap:0;height:32px;padding:0 10px;border-radius:999px;background:rgba(255,255,255,.22);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);font-size:13px;font-weight:600;white-space:nowrap;transition:background .3s,gap .3s}
+.bk2-badge-t{max-width:0;overflow:hidden;opacity:0;transition:max-width .35s ease,opacity .3s}
+.bk2-info{position:absolute;z-index:2;left:18px;right:18px;bottom:18px;display:flex;flex-direction:column;transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+.bk2-stars{font-size:13px;letter-spacing:2px;margin-bottom:6px;color:#ffd84d}
+.bk2-info b{font-family:var(--font-display);font-size:20px;line-height:24px}
+.bk2-info span:last-child{font-size:14px;opacity:.85}
+.bk2-card:hover,.bk2-card:focus-visible{transform:translateY(-6px);box-shadow:0 2px 4px rgba(41,38,36,.08),0 28px 48px -22px rgba(41,38,36,.55)}
+.bk2-card:focus-visible{outline:3px solid #f2c94c;outline-offset:3px}
+.bk2-card:hover .bk2-poster{transform:scale(1.05)}
+.bk2-card.is-live .bk2-prev{opacity:1;transform:scale(1.02)}
+.bk2-card:hover .bk2-badge,.bk2-card:focus-visible .bk2-badge{background:#fff;color:var(--text-hi);gap:6px}
+.bk2-card:hover .bk2-badge-t,.bk2-card:focus-visible .bk2-badge-t{max-width:120px;opacity:1}
+.bk2-card:hover .bk2-info{transform:translateY(-4px)}
+.bk2-progress{max-width:var(--container);margin:8px auto 0;height:3px;border-radius:3px;background:var(--border);overflow:hidden;box-sizing:content-box;background-clip:content-box;padding:0 var(--gutter)}
+.bk2-progress span{display:block;height:100%;border-radius:3px;background:var(--text-hi);transition:transform .2s linear,width .2s}
+.bk2-modal{padding:0;border:0;background:transparent;max-width:min(420px,92vw);width:100%;overflow:visible}
+.bk2-modal::backdrop{background:rgba(20,18,16,.78);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.bk2-modal video{display:block;width:100%;aspect-ratio:9/16;max-height:86vh;border-radius:20px;background:#000;object-fit:contain}
+.bk2-close{position:absolute;top:-52px;right:0;width:40px;height:40px;border-radius:50%;background:#fff;color:var(--text-hi);font-size:24px;line-height:1}
+@media (prefers-reduced-motion:reduce){.bk2-card,.bk2-poster,.bk2-info{transition:none}.bk2-card:hover{transform:none}}
+@media (max-width:600px){.bk2{padding:64px 0}.bk2-head{flex-direction:column;align-items:flex-start}.bk2-nav{display:none}.bk2-card{flex-basis:62vw;border-radius:18px}}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://cdomingo-dogfy.github.io/dogfy-home-prototype/index.html"}, {"@type": "ListItem", "position": 2, "name": "Nuestras recetas", "item": "https://cdomingo-dogfy.github.io/dogfy-home-prototype/recetas.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "¿Qué formatos hay?", "acceptedAnswer": {"@type": "Answer", "text": "Cada menú llega en bolsitas individuales con la ración diaria de tu perro, ya calculada según su peso, edad y actividad. Puedes elegir una receta o combinar varias en el mismo pedido."}}, {"@type": "Question", "name": "¿Qué cantidad se le debe dar?", "acceptedAnswer": {"@type": "Answer", "text": "Depende de su peso, edad y nivel de actividad. Al crear su plan calculamos su ración diaria exacta y cada bolsita contiene justo esa cantidad, así que no tienes que pesar nada."}}, {"@type": "Question", "name": "¿Cómo llega el producto?", "acceptedAnswer": {"@type": "Answer", "text": "Te lo enviamos a casa congelado y dividido en bolsitas diarias, con envío gratis. Solo tienes que guardarlo en el congelador al recibirlo."}}, {"@type": "Question", "name": "¿Cómo se prepara, debo cocinar el alimento al perro?", "acceptedAnswer": {"@type": "Answer", "text": "No hace falta cocinar nada. Nuestras recetas ya vienen cocinadas a baja temperatura: descongela la bolsita en la nevera, ábrela y sirve."}}, {"@type": "Question", "name": "¿Cada cuánto llegan los menús?", "acceptedAnswer": {"@type": "Answer", "text": "Tu primera caja trae 14 días de comida. Después la suscripción continúa y puedes cambiar recetas, aplazar envíos o cancelar cuando quieras, sin permanencia."}}]}</script>
@@ -1410,35 +1448,21 @@ body:has(.rp-hero) .rp-crumbs{background:var(--blue-deco);max-width:none;padding
   <ol class="rp-steps3"><li><div class="rp-step-img"><img src="assets/paso-perfil.jpg" alt="" loading="lazy" decoding="async"><span class="rp-step-n">1</span></div><h3>Nos presentas a tu perrete</h3><p>Cuéntanos cómo es tu peludo: su peso, tamaño, raza, preferencias… Te llevará 2 minutos y nos permitirá crear un plan hecho a su medida.</p></li><li><div class="rp-step-img"><img src="assets/como-empieza-caja.png" alt="" loading="lazy" decoding="async"><span class="rp-step-n">2</span></div><h3>Marchando su menú personalizado</h3><p>Cocinamos a fuego lento los mejores ingredientes para elaborar el menú personalizado de tu perro, y te lo enviamos a casa congelado y dividido en bolsitas diarias.</p></li><li><div class="rp-step-img"><img src="assets/paso-sirve.jpg" alt="" loading="lazy" decoding="async"><span class="rp-step-n">3</span></div><h3>Tu perro disfruta como nunca</h3><p>Recibe sus menús y mira cómo salta de alegría cada día a la hora de comer. Pausa o cancela cuando quieras, y quédate solo porque quieres hacerlo.</p></li></ol>
 </section>
 
-<section class="bk-sec" aria-labelledby="bkTitle">
-  <div class="bk-head">
-    <p class="eyebrow">Algunos ladridos de felicidad</p>
-    <h2 id="bkTitle">+700.000 perros eligen Dogfy Diet</h2>
+<section class="bk2" aria-labelledby="bkTitle">
+  <div class="bk2-head">
+    <div>
+      <p class="eyebrow">Algunos ladridos de felicidad</p>
+      <h2 id="bkTitle" class="h2">+700.000 perros eligen <span class="accent">Dogfy Diet</span></h2>
+      <a class="bk2-tp" href="https://es.trustpilot.com/review/dogfydiet.com" target="_blank" rel="noopener"><b>4,5</b><span class="rp-tp-stars" aria-hidden="true">★★★★★</span><span>12.480 opiniones en Trustpilot</span></a>
+    </div>
+    <div class="bk2-nav">
+      <button class="bk2-arrow prev" type="button" aria-label="Anterior"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></button>
+      <button class="bk2-arrow next" type="button" aria-label="Siguiente"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+    </div>
   </div>
-  <div class="bk-wrap">
-    <button class="bk-arrow prev" type="button" aria-label="Anterior"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></button>
-    <div class="bk-track" id="bkTrack"><div class="bk-card" data-video="https://stream.mux.com/5WmqpYq14lxEo7kdvuGmAM6Pw34BUlisKVZlxPNXG3o/medium.mp4"><div class="bk-inner">
-<div class="bk-front"><img src="assets/bark-lore.webp" alt="" loading="lazy" decoding="async"><span class="bk-play" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></span><span class="bk-info"><span class="bk-stars" aria-label="5 estrellas">★★★★★</span><b>Lore</b><span>Dogfyer</span></span></div>
-<div class="bk-back"><div class="bk-screen" style="background-image:url('assets/bark-lore-video.webp')"><button class="bk-bigplay" type="button" aria-label="Reproducir el vídeo de Lore"><svg width="20" height="20" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z"/></svg></button></div></div>
-</div></div><div class="bk-card" data-video="https://stream.mux.com/UmXzlzedLbM7KL6GlwLINORLGWv1e29OSVrWSbghbEY/medium.mp4"><div class="bk-inner">
-<div class="bk-front"><img src="assets/bark-pol.webp" alt="" loading="lazy" decoding="async"><span class="bk-play" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></span><span class="bk-info"><span class="bk-stars" aria-label="5 estrellas">★★★★★</span><b>Pol</b><span>Dogfyer</span></span></div>
-<div class="bk-back"><div class="bk-screen" style="background-image:url('assets/bark-pol-video.webp')"><button class="bk-bigplay" type="button" aria-label="Reproducir el vídeo de Pol"><svg width="20" height="20" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z"/></svg></button></div></div>
-</div></div><div class="bk-card" data-video="https://stream.mux.com/WekBB02R1DvWObRLSdzRb02X00xk1znidHmFh1KilnzgcY/medium.mp4"><div class="bk-inner">
-<div class="bk-front"><img src="assets/bark-pamela.webp" alt="" loading="lazy" decoding="async"><span class="bk-play" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></span><span class="bk-info"><span class="bk-stars" aria-label="5 estrellas">★★★★★</span><b>Pamela</b><span>Dogfyer</span></span></div>
-<div class="bk-back"><div class="bk-screen" style="background-image:url('assets/bark-pamela-video.webp')"><button class="bk-bigplay" type="button" aria-label="Reproducir el vídeo de Pamela"><svg width="20" height="20" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z"/></svg></button></div></div>
-</div></div><div class="bk-card" data-video="https://stream.mux.com/R6vYBsMGxb00D4xc6t3AKBJiavtyl02W6xn0201NwVSzzQI/medium.mp4"><div class="bk-inner">
-<div class="bk-front"><img src="assets/bark-eloy.webp" alt="" loading="lazy" decoding="async"><span class="bk-play" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></span><span class="bk-info"><span class="bk-stars" aria-label="5 estrellas">★★★★★</span><b>Eloy</b><span>Dogfyer desde hace 1 año</span></span></div>
-<div class="bk-back"><div class="bk-screen" style="background-image:url('assets/bark-eloy-video.webp')"><button class="bk-bigplay" type="button" aria-label="Reproducir el vídeo de Eloy"><svg width="20" height="20" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z"/></svg></button></div></div>
-</div></div><div class="bk-card" data-video="https://stream.mux.com/elTKCgJUL7mQG01017TiddqAZ100VD9Hv8NIvO38X3PZww/medium.mp4"><div class="bk-inner">
-<div class="bk-front"><img src="assets/bark-eva.webp" alt="" loading="lazy" decoding="async"><span class="bk-play" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></span><span class="bk-info"><span class="bk-stars" aria-label="5 estrellas">★★★★★</span><b>Eva</b><span>Mami perruna</span></span></div>
-<div class="bk-back"><div class="bk-screen" style="background-image:url('assets/bark-eva-video.webp')"><button class="bk-bigplay" type="button" aria-label="Reproducir el vídeo de Eva"><svg width="20" height="20" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z"/></svg></button></div></div>
-</div></div><div class="bk-card" data-video="https://stream.mux.com/tsmtKtV6vNSKdZlHBT6fsJxTfbfXWfL19CfUDYxDia00/medium.mp4"><div class="bk-inner">
-<div class="bk-front"><img src="assets/bark-cristina.webp" alt="" loading="lazy" decoding="async"><span class="bk-play" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></span><span class="bk-info"><span class="bk-stars" aria-label="5 estrellas">★★★★★</span><b>Cristina</b><span>Mamá de Narco</span></span></div>
-<div class="bk-back"><div class="bk-screen" style="background-image:url('assets/bark-cristina-video.webp')"><button class="bk-bigplay" type="button" aria-label="Reproducir el vídeo de Cristina"><svg width="20" height="20" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z"/></svg></button></div></div>
-</div></div></div>
-    <button class="bk-arrow next" type="button" aria-label="Siguiente"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
-  </div>
-  <a class="rp-tp" href="https://es.trustpilot.com/review/dogfydiet.com" target="_blank" rel="noopener"><span class="rp-tp-stars" aria-hidden="true">★★★★★</span><b>4,5</b> en Trustpilot · 12.480 opiniones</a>
+  <div class="bk2-track" id="bkTrack"><button class="bk2-card" type="button" data-video="https://stream.mux.com/5WmqpYq14lxEo7kdvuGmAM6Pw34BUlisKVZlxPNXG3o/medium.mp4" aria-label="Ver el vídeo de Lore con sonido"><img class="bk2-poster" src="assets/bark-lore.webp" alt="" loading="lazy" decoding="async"><video class="bk2-prev" muted loop playsinline preload="none" aria-hidden="true"></video><span class="bk2-badge" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg><span class="bk2-badge-t">Ver con sonido</span></span><span class="bk2-info"><span class="bk2-stars" aria-label="5 estrellas">★★★★★</span><b>Lore</b><span>Dogfyer</span></span></button><button class="bk2-card" type="button" data-video="https://stream.mux.com/UmXzlzedLbM7KL6GlwLINORLGWv1e29OSVrWSbghbEY/medium.mp4" aria-label="Ver el vídeo de Pol con sonido"><img class="bk2-poster" src="assets/bark-pol.webp" alt="" loading="lazy" decoding="async"><video class="bk2-prev" muted loop playsinline preload="none" aria-hidden="true"></video><span class="bk2-badge" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg><span class="bk2-badge-t">Ver con sonido</span></span><span class="bk2-info"><span class="bk2-stars" aria-label="5 estrellas">★★★★★</span><b>Pol</b><span>Dogfyer</span></span></button><button class="bk2-card" type="button" data-video="https://stream.mux.com/WekBB02R1DvWObRLSdzRb02X00xk1znidHmFh1KilnzgcY/medium.mp4" aria-label="Ver el vídeo de Pamela con sonido"><img class="bk2-poster" src="assets/bark-pamela.webp" alt="" loading="lazy" decoding="async"><video class="bk2-prev" muted loop playsinline preload="none" aria-hidden="true"></video><span class="bk2-badge" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg><span class="bk2-badge-t">Ver con sonido</span></span><span class="bk2-info"><span class="bk2-stars" aria-label="5 estrellas">★★★★★</span><b>Pamela</b><span>Dogfyer</span></span></button><button class="bk2-card" type="button" data-video="https://stream.mux.com/R6vYBsMGxb00D4xc6t3AKBJiavtyl02W6xn0201NwVSzzQI/medium.mp4" aria-label="Ver el vídeo de Eloy con sonido"><img class="bk2-poster" src="assets/bark-eloy.webp" alt="" loading="lazy" decoding="async"><video class="bk2-prev" muted loop playsinline preload="none" aria-hidden="true"></video><span class="bk2-badge" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg><span class="bk2-badge-t">Ver con sonido</span></span><span class="bk2-info"><span class="bk2-stars" aria-label="5 estrellas">★★★★★</span><b>Eloy</b><span>Dogfyer desde hace 1 año</span></span></button><button class="bk2-card" type="button" data-video="https://stream.mux.com/elTKCgJUL7mQG01017TiddqAZ100VD9Hv8NIvO38X3PZww/medium.mp4" aria-label="Ver el vídeo de Eva con sonido"><img class="bk2-poster" src="assets/bark-eva.webp" alt="" loading="lazy" decoding="async"><video class="bk2-prev" muted loop playsinline preload="none" aria-hidden="true"></video><span class="bk2-badge" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg><span class="bk2-badge-t">Ver con sonido</span></span><span class="bk2-info"><span class="bk2-stars" aria-label="5 estrellas">★★★★★</span><b>Eva</b><span>Mami perruna</span></span></button><button class="bk2-card" type="button" data-video="https://stream.mux.com/tsmtKtV6vNSKdZlHBT6fsJxTfbfXWfL19CfUDYxDia00/medium.mp4" aria-label="Ver el vídeo de Cristina con sonido"><img class="bk2-poster" src="assets/bark-cristina.webp" alt="" loading="lazy" decoding="async"><video class="bk2-prev" muted loop playsinline preload="none" aria-hidden="true"></video><span class="bk2-badge" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg><span class="bk2-badge-t">Ver con sonido</span></span><span class="bk2-info"><span class="bk2-stars" aria-label="5 estrellas">★★★★★</span><b>Cristina</b><span>Mamá de Narco</span></span></button></div>
+  <div class="bk2-progress" aria-hidden="true"><span id="bkBar"></span></div>
+  <dialog class="bk2-modal" id="bkModal" aria-label="Vídeo de opinión"><button class="bk2-close" type="button" aria-label="Cerrar vídeo">×</button><video id="bkModalVideo" controls playsinline></video></dialog>
 </section>
 
 <section class="rp-snacks">
@@ -1514,20 +1538,21 @@ const burger=document.getElementById('burger'),menu=document.getElementById('mob
 burger.addEventListener('click',()=>{menu.style.setProperty('--menu-top',document.querySelector('.header').getBoundingClientRect().bottom+'px');const o=menu.classList.toggle('open');burger.setAttribute('aria-expanded',o);burger.setAttribute('aria-label',o?'Cerrar menú':'Abrir menú');document.body.style.overflow=o?'hidden':'';document.body.classList.toggle('menu-open',o);if(o)setTimeout(()=>menu.querySelector('a')?.focus(),260);});
 addEventListener('keydown',e=>{if(e.key==='Escape'&&menu.classList.contains('open')){menu.classList.remove('open');burger.setAttribute('aria-expanded','false');burger.setAttribute('aria-label','Abrir menú');document.body.style.overflow='';burger.focus();}});
 menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{menu.classList.remove('open');document.body.style.overflow='';document.body.classList.remove('menu-open')}));
-// Ladridos de felicidad: flechas, giro de la tarjeta y vídeo en la cara trasera
-(()=>{const t=document.getElementById('bkTrack');if(!t)return;const step=()=>{const c=t.querySelector('.bk-card');return c?c.offsetWidth+parseFloat(getComputedStyle(t).columnGap||0):300};
-const prev=document.querySelector('.bk-arrow.prev'),next=document.querySelector('.bk-arrow.next');
-const upd=()=>{prev.disabled=t.scrollLeft<4;next.disabled=t.scrollLeft+t.clientWidth>=t.scrollWidth-4;};
-prev.addEventListener('click',()=>t.scrollBy({left:-step(),behavior:'smooth'}));next.addEventListener('click',()=>t.scrollBy({left:step(),behavior:'smooth'}));
+// Ladridos v2: flechas + barra de progreso; hover = vista previa muda; clic = vídeo con sonido en un visor
+(()=>{const t=document.getElementById('bkTrack');if(!t||!t.classList.contains('bk2-track'))return;
+const cards=[...t.querySelectorAll('.bk2-card')];const step=()=>cards[0].offsetWidth+parseFloat(getComputedStyle(t).columnGap||16);
+const prev=document.querySelector('.bk2-arrow.prev'),next=document.querySelector('.bk2-arrow.next'),bar=document.getElementById('bkBar');
+const upd=()=>{const max=t.scrollWidth-t.clientWidth;prev.disabled=t.scrollLeft<4;next.disabled=t.scrollLeft>=max-4;const vis=t.clientWidth/t.scrollWidth;bar.style.width=(vis*100)+'%';bar.style.transform='translateX('+(max>0?t.scrollLeft/max*(1/vis-1)*100:0)+'%)';};
+prev.onclick=()=>t.scrollBy({left:-step(),behavior:'smooth'});next.onclick=()=>t.scrollBy({left:step(),behavior:'smooth'});
 t.addEventListener('scroll',upd,{passive:true});addEventListener('resize',upd);upd();
-const cards=[...t.querySelectorAll('.bk-card')];
-const stop=c=>{c.querySelector('video')?.remove();c.classList.remove('playing','flipped');};
-const play=c=>{cards.forEach(o=>{if(o!==c)stop(o)});if(c.classList.contains('playing'))return;const v=document.createElement('video');v.src=c.dataset.video;v.controls=true;v.autoplay=true;v.playsInline=true;v.addEventListener('ended',()=>stop(c));c.querySelector('.bk-screen').appendChild(v);c.classList.add('playing','flipped');};
-const touch=matchMedia('(hover:none)');
-cards.forEach(c=>{c.querySelector('.bk-bigplay').addEventListener('click',e=>{e.stopPropagation();play(c)});
-  // En pantallas táctiles no hay hover: el primer toque gira la tarjeta y el segundo reproduce
-  c.addEventListener('click',()=>{if(!touch.matches||c.classList.contains('playing'))return;if(c.classList.contains('flipped'))play(c);else{cards.forEach(o=>{if(o!==c)stop(o)});c.classList.add('flipped');}});
-  c.addEventListener('mouseleave',()=>{if(!c.classList.contains('playing'))c.classList.remove('flipped')});});})();
+const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches,hover=matchMedia('(hover:hover)').matches;
+const start=c=>{if(reduce)return;const v=c.querySelector('.bk2-prev');if(!v.src)v.src=c.dataset.video;v.currentTime=0;v.play().then(()=>c.classList.add('is-live')).catch(()=>{});};
+const stop=c=>{const v=c.querySelector('.bk2-prev');v.pause();c.classList.remove('is-live');};
+if(hover)cards.forEach(c=>{c.addEventListener('mouseenter',()=>start(c));c.addEventListener('mouseleave',()=>stop(c));c.addEventListener('focus',()=>start(c));c.addEventListener('blur',()=>stop(c));});
+const m=document.getElementById('bkModal'),mv=document.getElementById('bkModalVideo');
+cards.forEach(c=>c.addEventListener('click',()=>{stop(c);mv.src=c.dataset.video;m.showModal();mv.play().catch(()=>{});}));
+const close=()=>{mv.pause();mv.removeAttribute('src');mv.load();m.close();};
+m.querySelector('.bk2-close').onclick=close;m.addEventListener('click',e=>{if(e.target===m)close();});m.addEventListener('cancel',e=>{e.preventDefault();close();});})();
 
 // Empieza su prueba: opciones de los desplegables y ancho de cada campo ajustado a su texto
 (()=>{const b=document.getElementById('stBirth'),w=document.getElementById('stWeight');if(!b)return;
