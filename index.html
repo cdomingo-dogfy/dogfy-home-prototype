@@ -135,9 +135,10 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
 .media-steps{position:relative}
 .media-steps>img{position:absolute;inset:0;opacity:0;transform:scale(1.04);transition:opacity .5s ease,transform .8s ease}
 .media-steps>img.is-on{opacity:1;transform:none}  /* solo las fotos: la insignia del pie es otra img */
-.media-caps{position:absolute;left:16px;bottom:16px;display:flex;flex-direction:column;gap:4px;align-items:flex-start;transition:transform .5s cubic-bezier(.22,.61,.36,1)}  /* las cuatro en orden (1 arriba, check abajo), 4px entre ellas; la pila sube con el paso activo */
+.media-caps{position:absolute;left:16px;bottom:16px;display:flex;flex-direction:column;gap:8px;align-items:flex-start;transition:transform .5s cubic-bezier(.22,.61,.36,1)}  /* las cuatro en orden (1 arriba, check abajo), 4px entre ellas; la pila sube con el paso activo */
 .media-caps .media-cap{position:relative;left:auto;bottom:auto;margin:0;opacity:.9;background:rgba(255,255,255,.72);transform:scale(.94);transform-origin:left center;transition:opacity .4s ease,transform .4s ease,background .4s ease}
-.media-caps .media-cap.is-on{opacity:1;transform:none;z-index:2;background:#fff;box-shadow:0 6px 20px rgba(26,38,89,.18)}  /* la activa delante, las demás legibles en semitransparente */
+.media-caps .media-cap.is-on{opacity:1;transform:none;z-index:2;background:#fff;box-shadow:0 6px 20px rgba(26,38,89,.18)}
+.media-caps .media-cap.is-on~.media-cap{opacity:0;transform:translateY(8px) scale(.94)}  /* las que aún no tocan no asoman */  /* la activa delante, las demás legibles en semitransparente */
 .media-cap{position:absolute;left:16px;bottom:16px;display:inline-flex;align-items:center;gap:10px;padding:8px 14px 8px 8px;border-radius:999px;background:rgba(255,255,255,.92);color:#2a2724;font-family:var(--font-display);font-weight:700;font-size:15px;line-height:20px;box-shadow:0 4px 16px rgba(26,38,89,.12);backdrop-filter:blur(6px)}
 .media-cap b{display:grid;place-items:center;width:28px;height:30px;background:none}  /* insignia de marca, la misma que en el stepper */
 .media-cap b img{width:28px;height:30px;object-fit:contain}
