@@ -313,7 +313,11 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
   .receta-tabs>*{margin:0!important}
   .receta-tabs .tab{flex:0 0 auto;width:auto;max-width:44px;min-height:44px;padding:4px;gap:0;justify-content:flex-start;overflow:hidden;white-space:nowrap;font-size:14px;line-height:1.3;transition:max-width .45s cubic-bezier(.22,.61,.36,1),padding .45s ease,gap .45s ease,background .3s ease}
   .receta-tabs .tab img{width:34px;height:34px;flex:0 0 34px}
-  .receta-tabs .tab.active{max-width:180px;padding:4px 14px 4px 4px;gap:8px;animation:none}
+  .receta-tabs .tab{color:transparent}  /* colapsada: el nombre no se ve ni asoma */
+  .receta-tabs .tab.active{max-width:180px;padding:4px 14px 4px 4px;gap:8px;animation:none;color:#3d3d3d}
+  /* tarjetas en móvil: sin el título (el nombre ya va en la pestaña), descripción en negro y sin el icono sobre la foto */
+  .receta h3,.receta .r-ico{display:none}
+  .receta p{color:var(--text-hi);margin-top:0}
   @media (prefers-reduced-motion:reduce){.receta-tabs .tab{transition:none}}
 }
 .tab{flex:0 0 auto;display:flex;align-items:center;gap:8px;padding:4px 16px 4px 4px;border-radius:300px;border:1px solid #e8e8e8;background:rgba(255,255,255,.6);font-family:var(--font-alt);font-size:17px;line-height:1.35;color:#767676;white-space:nowrap}
