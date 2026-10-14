@@ -193,7 +193,7 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
   .s-cocina{height:auto;padding-bottom:40px}
   .s-cocina .cocina-sticky{position:static;max-height:none;overflow:visible;display:block}
   .cocina-head{margin-bottom:40px}
-  .s-cocina .split{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(64px,8vw,120px);align-items:start}
+  .s-cocina .split{grid-template-columns:minmax(0,520px) minmax(0,1fr);gap:clamp(40px,5vw,72px);align-items:start}  /* el texto arranca justo al lado de la foto */
   .s-cocina .media-wrap{order:1;position:sticky;top:calc(64px + 8vh);justify-self:start;align-self:start;display:flex;flex-direction:column;align-items:center;gap:20px;width:min(100%,calc(84vh - 64px - 60px),520px)}  /* foto + botón debajo, fijos juntos */
   .s-cocina .split .media{position:relative;aspect-ratio:1/1;width:100%;max-height:none;border-radius:20px;overflow:hidden}  /* relative: las fotos absolutas se ciñen a la caja y respetan las esquinas */  /* cuadrada, nunca más alta que lo que queda de viewport bajo la cabecera */
   .s-cocina .right-col{order:2;gap:0}
@@ -208,7 +208,7 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
   .step h3{font-size:clamp(26px,2.6vw,36px);line-height:1.15}
   .step-body{grid-template-rows:1fr}
   .step-body p{margin-top:12px;max-width:42ch}
-  .step .ind{flex:0 0 48px}
+  .step .ind{display:none}  /* escritorio: sin insignias numeradas; el pie de la foto marca el paso */
   .s-cocina .right-col{padding-bottom:10vh}
 }
 
