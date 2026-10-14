@@ -186,14 +186,15 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
 .step-body p{overflow:hidden;margin-top:8px}
 .step.active .step-body{grid-template-rows:1fr}
 @media (prefers-reduced-motion:reduce){.step .txt,.step .dot,.step-body{transition:none}}
-/* Escritorio (como beside.com/industries/insurance): los pasos se leen uno a uno haciendo scroll normal, cada uno ocupa ~70vh con su texto siempre visible, y la foto queda fija a la derecha cambiando con el paso activo */
+/* Escritorio (como beside.com/industries/insurance): foto fija a la izquierda con el botón debajo; a la derecha los pasos se leen uno a uno con scroll normal, cada uno ~72vh con su texto siempre visible */
 @media (min-width:901px){
   .s-cocina{height:auto;padding-bottom:40px}
   .s-cocina .cocina-sticky{position:static;max-height:none;overflow:visible;display:block}
   .cocina-head{margin-bottom:40px}
   .s-cocina .split{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(64px,8vw,120px);align-items:start}
-  .s-cocina .split .media{order:2;position:sticky;top:calc(64px + 8vh);aspect-ratio:1/1;width:min(100%,calc(84vh - 64px),520px);max-height:none;justify-self:end;align-self:start}  /* cuadrada, nunca más alta que lo que queda de viewport bajo la cabecera */
-  .s-cocina .right-col{order:1;gap:0}
+  .s-cocina .media-wrap{order:1;position:sticky;top:calc(64px + 8vh);justify-self:start;align-self:start;display:flex;flex-direction:column;align-items:center;gap:20px;width:min(100%,calc(84vh - 64px - 60px),520px)}  /* foto + botón debajo, fijos juntos */
+  .s-cocina .split .media{position:static;aspect-ratio:1/1;width:100%;max-height:none}  /* cuadrada, nunca más alta que lo que queda de viewport bajo la cabecera */
+  .s-cocina .right-col{order:2;gap:0}
   .stepper{min-height:0!important}
   .step{min-height:72vh;align-items:center;gap:20px}
   .step:first-child{min-height:calc(72vh - 40px)}
@@ -204,7 +205,7 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
   .step-body{grid-template-rows:1fr}
   .step-body p{margin-top:12px;max-width:42ch}
   .step .ind{flex:0 0 48px}
-  .s-cocina .right-col .btn{margin-top:8px;margin-bottom:10vh}
+  .s-cocina .right-col{padding-bottom:10vh}
 }
 
 /* Section 04 · Bol con etiquetas */
@@ -655,6 +656,8 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
   .s-cocina .split{height:auto}  /* pista de scroll: 4 pasos × 100vh; el bloque de pasos queda fijo y al agotarla sigue el scroll normal. align-content:start evita que el grid reparta el alto extra entre media y right-col (su comportamiento por defecto es "stretch") */
   /* Tablet/móvil: imagen + pasos quedan fijos juntos bajo el header (la imagen siempre en pantalla); el título se desplaza */
   .s-cocina .cocina-sticky{position:static;max-height:none;overflow:visible;display:block}  /* en móvil el contenedor es la pista; el split es lo que se queda fijo */
+  .s-cocina .media-wrap{display:contents}
+  .s-cocina .media-wrap .btn{order:3;justify-self:center;width:auto;margin-top:0}  /* el botón, tras los pasos y centrado (el wrapper es display:contents) */
   .s-cocina .split{position:sticky;top:64px;gap:16px;align-content:start;padding-top:16px}  /* aire entre la cabecera fija y la imagen al quedar pegada */
   .s-cocina .split .media{aspect-ratio:343/176}  /* más apaisada para que imagen + pasos + botón quepan en un iPhone */
   .s-cocina .right-col{position:static;height:auto;max-height:none;overflow:visible;justify-content:flex-start;gap:16px;padding:0}
@@ -866,12 +869,15 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
     <h2 class="h2">¿Cómo empieza el cambio?</h2>
   </div>
   <div class="split">
+    <div class="media-wrap">
     <div class="media media-steps">
       <img src="assets/como-empieza-caja.png" alt="Un perro recibe su caja de Dogfy Diet en la entrada de casa" class="is-on" loading="lazy" decoding="async">
       <img src="assets/caja-bolsitas.jpg" alt="Bolsitas de comida Dogfy Diet listas para congelar" loading="lazy" decoding="async">
       <img src="assets/caja-prueba.jpg" alt="Caja de prueba de Dogfy Diet abierta" loading="lazy" decoding="async">
       <img src="assets/caja-app.jpg" alt="Una persona gestiona su suscripción desde el móvil" loading="lazy" decoding="async">
       <span class="media-cap" aria-hidden="true"><b>1</b><span>Su perfil</span></span>
+    </div>
+    <a class="btn btn-primary" href="#precio">Calcula su ración</a>
     </div>
     <div class="right-col">
       <ol class="stepper">
@@ -880,7 +886,6 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
         <li class="step"><div class="ind"><span class="dot badge-num"><img class="muted" src="assets/step-3-default.png" alt=""><img src="assets/step-3-active.png" alt="3"></span></div><div class="txt"><h3>Descongelas, abres y sirves.</h3><div class="step-body"><p>Tu primera caja trae 14 días de comida y una guía de transición. Descongela en la nevera y sirve. Nuestro equipo de Nutrición te acompaña.</p></div></div></li>
         <li class="step"><div class="ind"><span class="dot"><img class="muted" src="assets/step-check-default.svg" alt=""><img src="assets/step-check-active.svg" alt=""></span></div><div class="txt"><h3>Su comida sigue llegando. Tú gestionas los próximos pedidos.</h3><div class="step-body"><p>Tras los primeros 14 días la suscripción continúa. Cambia recetas, aplaza envíos o cancela cuando quieras, sin permanencia.</p></div></div></li>
       </ol>
-      <a class="btn btn-primary" href="#precio">Calcula su ración</a>
     </div>
   </div>
  </div>
