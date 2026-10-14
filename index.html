@@ -130,6 +130,15 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
 .split{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;max-width:var(--container);margin:0 auto}
 .split .media{border-radius:20px;overflow:hidden;width:100%;max-width:100%;min-width:0;aspect-ratio:1/1;height:auto;align-self:start}
 .split .media img{width:100%;height:100%;object-fit:cover}
+/* Stepper: una foto por paso con fundido y un pie con el título del paso que entra al cambiar */
+.media-steps{position:relative}
+.media-steps img{position:absolute;inset:0;opacity:0;transform:scale(1.04);transition:opacity .5s ease,transform .8s ease}
+.media-steps img.is-on{opacity:1;transform:none}
+.media-cap{position:absolute;left:16px;bottom:16px;display:inline-flex;align-items:center;gap:10px;padding:8px 14px 8px 8px;border-radius:999px;background:rgba(255,255,255,.92);color:#2a2724;font-family:var(--font-display);font-weight:700;font-size:15px;line-height:20px;box-shadow:0 4px 16px rgba(26,38,89,.12);backdrop-filter:blur(6px)}
+.media-cap b{display:grid;place-items:center;width:24px;height:24px;border-radius:50%;background:var(--primary);color:#fff;font-size:13px}
+.media-cap.in{animation:capIn .45s cubic-bezier(.22,.61,.36,1) both}
+@keyframes capIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.media-steps img{transition:none}.media-cap.in{animation:none}}
 .features{display:flex;flex-direction:column;gap:32px}
 .feature{display:flex;gap:10px;align-items:flex-start}
 .feature .ico{flex:0 0 auto;padding:2px}
@@ -823,7 +832,13 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
     <h2 class="h2">¿Cómo empieza el cambio?</h2>
   </div>
   <div class="split">
-    <div class="media"><img src="assets/como-empieza-caja.png" alt="Un perro recibe su caja de Dogfy Diet en la entrada de casa" loading="lazy" decoding="async"></div>
+    <div class="media media-steps">
+      <img src="assets/como-empieza-caja.png" alt="Un perro recibe su caja de Dogfy Diet en la entrada de casa" class="is-on" loading="lazy" decoding="async">
+      <img src="assets/caja-bolsitas.jpg" alt="Bolsitas de comida Dogfy Diet listas para congelar" loading="lazy" decoding="async">
+      <img src="assets/caja-prueba.jpg" alt="Caja de prueba de Dogfy Diet abierta" loading="lazy" decoding="async">
+      <img src="assets/caja-app.jpg" alt="Una persona gestiona su suscripción desde el móvil" loading="lazy" decoding="async">
+      <span class="media-cap" aria-hidden="true"><b>1</b><span>Su perfil</span></span>
+    </div>
     <div class="right-col">
       <ol class="stepper">
         <li class="step"><div class="ind"><span class="dot badge-num"><img class="muted" src="assets/step-1-default.png" alt=""><img src="assets/step-1-active.png" alt="1"></span></div><div class="txt"><h3>Cuéntanos cómo es tu perro.</h3><div class="step-body"><p>Con su peso, edad y actividad calculamos su ración diaria. Elige una o varias recetas y ve el precio antes de contratar.</p></div></div></li>
@@ -1201,15 +1216,18 @@ run(document.getElementById('reviews'),()=>true,34);})();
 (()=>{const steps=[...document.querySelectorAll('.stepper .step')];if(!steps.length)return;
 const split=document.querySelector('.s-cocina .split'),section=document.querySelector('.s-cocina'),N=steps.length,narrow=()=>innerWidth<=900;
 const wrap=document.querySelector('.s-cocina .cocina-sticky');const sizeTrack=()=>{if(!split)return;if(!narrow()){section.style.height='';wrap.style.height='';return;}const head=section.querySelector('.cocina-head');section.style.height='';wrap.style.height=(head.offsetHeight+split.offsetHeight+N*Math.round(innerHeight*.32))+'px';};sizeTrack();addEventListener('resize',sizeTrack);addEventListener('load',sizeTrack);if(document.fonts)document.fonts.ready.then(sizeTrack);
+// Foto y pie por paso: cambian con el paso activo
+const mImgs=[...document.querySelectorAll('.media-steps img')],cap=document.querySelector('.media-cap'),capTitles=['Su perfil','Cocinamos y enviamos','Descongela y sirve','Tú gestionas'];let shown=-1;
+const showStep=i=>{if(i===shown)return;shown=i;mImgs.forEach((im,j)=>im.classList.toggle('is-on',j===i));if(cap){cap.querySelector('b').textContent=i<3?String(i+1):'✓';cap.querySelector('span').textContent=capTitles[i]||'';cap.classList.remove('in');void cap.offsetWidth;cap.classList.add('in');}};
 let tick=false;const update=()=>{tick=false;
 const track=section;
 const r=track.getBoundingClientRect(),total=r.height-innerHeight;
-if(total>0){const p=Math.min(1,Math.max(0,-r.top/total));const cur=Math.min(N-1,Math.floor(p*N));steps.forEach((st,i)=>{st.classList.toggle('active',i===cur);st.classList.toggle('done',i<cur);if(i===cur)st.setAttribute('aria-current','step');else st.removeAttribute('aria-current');});return;}
+if(total>0){const p=Math.min(1,Math.max(0,-r.top/total));const cur=Math.min(N-1,Math.floor(p*N));steps.forEach((st,i)=>{st.classList.toggle('active',i===cur);st.classList.toggle('done',i<cur);if(i===cur)st.setAttribute('aria-current','step');else st.removeAttribute('aria-current');});showStep(cur);return;}
 // sin pista (p.ej. prefers-reduced-motion, que desactiva el scroll fijo): se activa el paso cuyo icono cruza el centro de la pantalla
 const mid=innerHeight*0.55;let cur=-1;
 steps.forEach((st,i)=>{const dr=st.querySelector('.dot').getBoundingClientRect();if(dr.top<=mid)cur=i;});
 if(cur<0&&steps[0].getBoundingClientRect().top<innerHeight*0.9)cur=0;
-steps.forEach((st,i)=>{st.classList.toggle('active',i===cur);st.classList.toggle('done',i<cur);});};
+steps.forEach((st,i)=>{st.classList.toggle('active',i===cur);st.classList.toggle('done',i<cur);});showStep(Math.max(0,cur));};
 addEventListener('scroll',()=>{if(!tick){tick=true;requestAnimationFrame(update)}},{passive:true});addEventListener('resize',update);update();})();
 // Bol con etiquetas: etiquetas entran escalonadas (escritorio); en tablet/móvil el bloque es sticky y el scroll
 // mueve el bol de derecha a izquierda cambiando título y etiquetas (dos estados de Figma "Animate scroll")
