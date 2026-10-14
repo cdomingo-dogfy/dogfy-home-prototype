@@ -609,7 +609,7 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
   .hero-bg img{top:0;height:100%;transform:none;object-position:50% 70%}  /* la foto ocupa todo el hero: nada de cortes */  /* franja del 16 % al 86 % del alto; foto vertical propia de móvil (perro y bol centrados) */
   .hero-bg::after{background:linear-gradient(180deg,rgba(40,34,30,.88) 0%,rgba(40,34,30,.8) 28%,rgba(40,34,30,.55) 44%,rgba(40,34,30,.15) 56%,rgba(40,34,30,0) 66%,rgba(40,34,30,.35) 85%,rgba(40,34,30,.7) 100%)}  /* más denso arriba, donde va el texto */  /* velo oscuro suave: arriba más denso para el texto, la foto se intuye siempre, sin cortes */
   .hero-content>div:first-child{margin-top:0;margin-bottom:auto}
-  .hero p{color:#fff;opacity:.95;text-shadow:0 1px 2px rgba(0,0,0,.45),0 4px 18px rgba(0,0,0,.45)}  /* entradilla más clara y con más sombra detrás */
+  .hero p{color:#fff;opacity:.95;font-size:16px;line-height:1.4;text-shadow:0 1px 2px rgba(0,0,0,.45),0 4px 18px rgba(0,0,0,.45)}  /* entradilla a 16px, interlineado más corto, clara y con sombra */
   .hero h1{text-shadow:0 2px 14px rgba(0,0,0,.4)}
   .hero h1{margin-top:.35em}  /* el sello Full of life, pegado al título */  /* el texto arriba, sobre el negro y el fundido; el perro y el bol quedan libres */
   .hero .hero-content{min-height:calc(100svh - 48px - 64px);justify-content:space-between;padding-block:12px calc(100px + env(safe-area-inset-bottom));box-sizing:border-box}  /* texto arriba; el selector queda justo encima del CTA fijo al cargar y sube con el scroll como el resto del hero */
