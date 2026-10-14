@@ -203,10 +203,10 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
   .s-cocina .split .media{position:relative;aspect-ratio:1/1;width:100%;max-height:none;border-radius:20px;overflow:hidden}  /* relative: las fotos absolutas se ciñen a la caja y respetan las esquinas */  /* cuadrada, nunca más alta que lo que queda de viewport bajo la cabecera */
   .s-cocina .right-col{order:2;gap:0}
   .stepper{min-height:0!important}
-  .step{min-height:72vh;align-items:center;gap:20px}
+  .step{min-height:56vh;align-items:center;gap:20px}  /* el siguiente paso asoma atenuado por abajo */
   /* La insignia se alinea con la primera línea del título: texto e insignia van centrados en el li y la insignia se desplaza media altura del texto menos media línea del título (--off, calculado en JS) */
   .step .ind{transform:translateY(var(--off,0px))}
-  .step:first-child{min-height:calc(72vh - 40px)}
+  .step:first-child{min-height:calc(56vh - 40px)}
   .step .txt{padding-bottom:0;font-size:18px;line-height:28px;opacity:.35;transform:none}
   .step.active .txt{opacity:1}
   .step.done .txt{opacity:.35}
