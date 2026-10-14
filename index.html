@@ -372,6 +372,7 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
 .s-caja .lead-p.center{display:none}
 /* Acordeón con imagen: lista de titulares a la derecha, el activo se abre y cambia la imagen de la izquierda */
 .acc{display:grid;grid-template-columns:40px minmax(0,1.8fr) minmax(0,1fr);gap:24px 16px;align-items:center;max-width:var(--container);margin:0 auto}
+@media (min-width:901px){.acc{grid-template-columns:40px minmax(0,1.5fr) minmax(0,1fr);gap:24px 16px}.acc-list{padding-left:48px}}  /* escritorio: la lista a 48px de la foto, sin el hueco de antes */
 .acc-dots{display:flex;flex-direction:column;align-items:center;gap:10px}.acc-dots i{width:6px;height:6px;border-radius:999px;background:#c2c2c2;transition:height .3s ease,background .3s ease}.acc-dots i.active{height:28px;background:#2a2724}
 .acc-media{position:relative;aspect-ratio:3/2;max-height:480px;border-radius:24px;overflow:hidden;background:#efe7db}  /* más ancha sin tocar el alto: antes 4/3 dejaba demasiado hueco junto al texto */
 @media (min-width:901px) and (max-width:1300px){.acc-media{aspect-ratio:1/1}}  /* tablet/escritorio estrecho: columna más angosta; cuadrada en vez de alargada, deja menos hueco junto al texto */
