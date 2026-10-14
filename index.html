@@ -621,7 +621,7 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
 .pay{position:relative;width:48px;height:32px;flex:0 0 48px}
 .pay.box{background:#fff;border:1px solid #d6d6d6;border-radius:4px;overflow:hidden}
 .pay img{position:absolute}
-.footer .badges{position:relative;display:flex;flex-wrap:wrap;gap:16px}
+.footer .badges{display:none}  /* disposición de referencia en todos los anchos: pagos → marca → legales, sin badges de app */
 .badge-app{position:relative;height:64px;display:block;flex:0 0 auto;zoom:.8}  /* 20 % más pequeños (51px de alto) */
 .badge-app img{position:absolute}
 .footer .wordmark{position:relative;width:clamp(240px,40vw,600px);height:auto}  /* 733/1440 = 51% del viewport en Figma */
@@ -738,21 +738,19 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
   .footer .col{gap:8px;align-self:start}
   .footer .cols .col:nth-child(1){grid-column:1;grid-row:1}
   .footer .cols .col:nth-child(2){grid-column:2;grid-row:1}
-  .footer .cols .col:nth-child(3){grid-column:1;grid-row:2/4}
+  .footer .cols .col:nth-child(3){grid-column:1;grid-row:2}
   .footer .cols .col:last-child{display:contents}
   .footer .cols .col:last-child > b:first-child{grid-column:2;grid-row:2;align-self:start}
-  .footer .icons{grid-column:2;grid-row:3;gap:14px;align-self:start;margin-top:-14px}  /* compensa el row-gap: los iconos quedan a 10px del título */
-  .footer .cols .col:last-child > b:last-of-type{grid-column:1/-1;grid-row:4;margin-top:8px}
-  .footer .pays{grid-column:1/-1;grid-row:5;flex-wrap:nowrap;gap:6px}
+  .footer .icons{grid-column:2;grid-row:2;gap:14px;align-self:start;margin-top:30px}  /* misma celda que el título Síguenos, 10px por debajo */
+  .footer .cols .col:last-child > b:last-of-type{grid-column:1/-1;grid-row:3;margin-top:8px}
+  .footer .pays{grid-column:1/-1;grid-row:4;flex-wrap:nowrap;gap:6px}
   .footer .brand{position:relative;display:flex;align-items:flex-end;overflow:hidden;margin:0 -20px;padding:0 20px;min-height:0}
   .footer .wordmark{width:min(68vw,330px);display:block}
   .footer .deco-dog{position:absolute;right:-6%;top:auto;bottom:0;height:88%;width:auto;aspect-ratio:1;object-fit:cover;object-position:50% 73%;transform:scaleX(-1)}  /* asoma por la derecha, a la altura del logo */
-  .footer .badges{display:flex;flex-wrap:wrap;gap:10px}
-  .badge-app{zoom:.7}
-  .footer .legal{display:flex;flex-wrap:wrap;gap:6px 0;font-size:12px;max-width:none}
+  .footer .badges{display:none}
+  .footer .brand{margin-top:4px;margin-bottom:4px}
+  .footer .legal{display:flex;flex-wrap:wrap;gap:8px 20px;font-size:12px;max-width:none}
   .footer .legal a{padding:3px 0}
-  .footer .legal a:not(:last-child)::after{content:"·";display:inline-block;margin:0 10px;color:rgba(255,255,255,.6);text-decoration:none}
-  .footer .legal a:not(:last-child){text-decoration:none}.footer .legal a:not(:last-child)::before{content:"";}
   .btn-lg,.select{width:100%}
 }
 
