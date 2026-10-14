@@ -1229,10 +1229,15 @@ let tick=false;const upd=()=>{tick=false;if(!mq.matches||matchMedia('(prefers-re
 addEventListener('scroll',()=>{if(!tick){tick=true;requestAnimationFrame(upd)}},{passive:true});addEventListener('resize',upd);upd();})();
 // Móvil/tablet: el scroll nunca se queda a medias entre dos secciones. Si al parar hay un límite de sección en la franja central de la pantalla (25-75 %), se "ancla": sube hasta dejar la nueva sección arriba o baja para completar la anterior
 (()=>{const mq=matchMedia('(max-width:900px)');if(matchMedia('(prefers-reduced-motion:reduce)').matches)return;
-const tops=()=>[...document.querySelectorAll('.page > section, .page > .stats-m, .page > .yellow-wrap, .yellow-wrap > .s-caja')].map(e=>e.getBoundingClientRect().top);
+// Límites de sección; las secciones bajas (menos del 70 % de la pantalla, p. ej. la banda de estadísticas) no cuentan como destino: se pasa de largo hasta la siguiente
+const tops=()=>[...document.querySelectorAll('.page > section, .page > .stats-m, .page > .yellow-wrap, .yellow-wrap > .s-caja')].filter(e=>e.offsetHeight>=innerHeight*.7).map(e=>e.getBoundingClientRect().top);
 let idle=null,touching=false,snapping=false;const HEAD=64;
-const settle=()=>{if(!mq.matches||touching||snapping)return;const vh=innerHeight;const lo=vh*.25,hi=vh*.75;const b=tops().find(t=>t>lo&&t<hi);if(b==null)return;const target=b<vh*.5?scrollY+b-HEAD:scrollY+b-vh;snapping=true;scrollTo({top:Math.max(0,target),behavior:'smooth'});setTimeout(()=>snapping=false,900);};
-addEventListener('scroll',()=>{clearTimeout(idle);idle=setTimeout(settle,180);},{passive:true});
+// Rango amplio (8-95 % de la pantalla): cualquier límite de sección que quede a la vista se ancla; por encima del 55 % se completa la sección anterior, por debajo entra la nueva
+const settle=()=>{if(!mq.matches||touching||snapping)return;const vh=innerHeight;const cands=tops().filter(t=>t>vh*.12&&t<vh*.95);if(!cands.length)return;const b=cands.sort((p,q)=>Math.abs(p-vh*.5)-Math.abs(q-vh*.5))[0];const target=b<vh*.55?scrollY+b-HEAD:scrollY+b-vh;if(Math.abs(target-scrollY)<8)return;snapping=true;scrollTo({top:Math.max(0,target),behavior:'smooth'});
+  // si el desplazamiento suave se interrumpe o no llega, se vuelve a intentar
+  clearTimeout(snapping._t);snapping._t=setTimeout(()=>{snapping=false;clearTimeout(idle);idle=setTimeout(settle,120);},1000);};
+addEventListener('scroll',()=>{clearTimeout(idle);idle=setTimeout(settle,160);},{passive:true});
+if('onscrollend' in window)addEventListener('scrollend',()=>{clearTimeout(idle);idle=setTimeout(settle,60);});
 addEventListener('touchstart',()=>{touching=true;clearTimeout(idle);},{passive:true});addEventListener('touchend',()=>{touching=false;clearTimeout(idle);idle=setTimeout(settle,220);},{passive:true});addEventListener('touchcancel',()=>{touching=false;},{passive:true});})();
 (()=>{const bar=document.getElementById('ctaBar');if(!bar||!('IntersectionObserver' in window))return;const zones=[...document.querySelectorAll('.s-sms,.s-faq,.footer-space')];const on=new Set();const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)on.add(e.target);else on.delete(e.target);});bar.classList.toggle('is-hidden',on.size>0);},{threshold:.15});zones.forEach(z=>io.observe(z));})();  // la barra se esconde en el SMS, las FAQ y el footer</script>
 
