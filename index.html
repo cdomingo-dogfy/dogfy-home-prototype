@@ -873,6 +873,8 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
 .check input:focus-visible{outline:3px solid #ffee99;outline-offset:2px}
 .check input{transition:background .2s,border-color .2s,transform .15s}.check input:active{transform:scale(.9)}
 @media (prefers-reduced-motion:reduce){.fade-up{opacity:1;transform:none;transition:none}.tab.active{animation:none}.faq details[open] .ans{animation:none}.mobile-menu.open,.mobile-menu.open a{animation:none}}
+.s-cocina .btn-steps{display:none}
+@media (min-width:901px){.s-cocina .btn-media{display:none}.s-cocina .btn-steps{display:inline-flex;margin-top:32px}}  /* desktop: el CTA va bajo el último paso */
 </style>
 </head>
 <body>
@@ -965,14 +967,14 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
         <span class="media-cap"><b class="check"><img src="assets/step-check-active.svg" alt=""></b><span>Tú gestionas</span></span>
       </div>
     </div>
-    <a class="btn btn-primary" href="#precio">Calcula su ración</a>
+    <a class="btn btn-primary btn-media" href="#precio">Calcula su ración</a>
     </div>
     <div class="right-col">
       <ol class="stepper">
         <li class="step"><div class="ind"><span class="dot badge-num"><img class="muted" src="assets/step-1-default.png" alt=""><img src="assets/step-1-active.png" alt="1"></span></div><div class="txt"><h3>Cuéntanos cómo es tu perro.</h3><div class="step-body"><p>Con su peso, edad y actividad calculamos su ración diaria. Elige una o varias recetas y ve el precio antes de contratar.</p></div></div></li>
         <li class="step"><div class="ind"><span class="dot badge-num"><img class="muted" src="assets/step-2-default.png" alt=""><img src="assets/step-2-active.png" alt="2"></span></div><div class="txt"><h3>Cocinamos, congelamos y te la enviamos a casa.</h3><div class="step-body"><p>Recetas completas formuladas por veterinarios, cocinadas a baja temperatura y congeladas. Las recibes en bolsitas de una ración.</p></div></div></li>
         <li class="step"><div class="ind"><span class="dot badge-num"><img class="muted" src="assets/step-3-default.png" alt=""><img src="assets/step-3-active.png" alt="3"></span></div><div class="txt"><h3>Descongelas, abres y sirves.</h3><div class="step-body"><p>Tu primera caja trae 14 días de comida y una guía de transición. Descongela en la nevera y sirve. Nuestro equipo de Nutrición te acompaña.</p></div></div></li>
-        <li class="step"><div class="ind"><span class="dot"><img class="muted" src="assets/step-check-default.svg" alt=""><img src="assets/step-check-active.svg" alt=""></span></div><div class="txt"><h3>Su comida sigue llegando. Tú gestionas los próximos pedidos.</h3><div class="step-body"><p>Tras los primeros 14 días la suscripción continúa. Cambia recetas, aplaza envíos o cancela cuando quieras, sin permanencia.</p></div></div></li>
+        <li class="step"><div class="ind"><span class="dot"><img class="muted" src="assets/step-check-default.svg" alt=""><img src="assets/step-check-active.svg" alt=""></span></div><div class="txt"><h3>Su comida sigue llegando. Tú gestionas los próximos pedidos.</h3><div class="step-body"><p>Tras los primeros 14 días la suscripción continúa. Cambia recetas, aplaza envíos o cancela cuando quieras, sin permanencia.</p></div><a class="btn btn-primary btn-steps" href="#precio">Calcula su ración</a></div></li>
       </ol>
     </div>
   </div>
