@@ -718,24 +718,28 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
   /* Footer compacto en móvil: 2 columnas, menos solape con FAQ, tipografía y badges menores */
   .s-faq{margin-bottom:-120px}
   .footer{padding:calc(56px + 120px) 20px 24px;gap:20px}  /* móvil: bloques más juntos */
-  /* Footer móvil: enlaces a dos columnas, redes y pagos a todo el ancho, marca con el perro recortado en su propia franja, badges a media anchura y legales en dos columnas. Nada se pisa */
-  .footer .cols{grid-template-columns:1fr 1fr;gap:20px 16px;font-size:12px}  /* móvil: todos los textos del footer a 12px */
+  /* Footer móvil (estructura de referencia): Ayuda | Descubre Dogfy · Comunidad | Síguenos · Métodos de pago a todo el ancho · marca grande con el perro asomando · badges · legales en línea con separadores. Tipografía propia (12px) */
+  .footer .cols{grid-template-columns:1fr 1fr;gap:24px 16px;font-size:12px}
   .footer .col b,.footer .col a,.footer .col p{font-size:12px;line-height:1.5}
-  .footer .col{gap:8px}
-  .footer .cols .col:first-child{grid-column:1/-1}  /* Ayuda a todo el ancho; debajo, Descubre Dogfy y Comunidad lado a lado */
-  .footer .cols .col:last-child{grid-column:1/-1;display:grid;grid-template-columns:auto 1fr;gap:10px 16px;align-items:center;padding-top:12px;border-top:1px solid rgba(255,255,255,.3)}
-  .footer .cols .col:last-child b:last-of-type,.footer .pays{grid-column:1/-1}  /* métodos de pago: título y los seis logos en una sola línea */
-  .footer .pays{flex-wrap:nowrap}
-  .footer .cols .col:last-child b{margin:0}
-  .footer .icons{gap:14px}
-  .footer .pays{gap:6px}
-  .footer .brand{position:relative;overflow:hidden;margin:0 -20px;padding:8px 20px 0}
-  .footer .wordmark{width:min(41vw,196px);display:block}  /* un 30 % más pequeño */
-  .footer .brand{display:flex;align-items:center;min-height:150px;padding-top:0}
-  .footer .deco-dog{position:absolute;right:-4%;top:0;bottom:auto;height:100%;width:auto;aspect-ratio:1;object-fit:cover;object-position:50% 73%;transform:scaleX(-1)}  /* la foto tiene un 28 % transparente arriba y la cabeza llega al 88 %: este encuadre la muestra entera, con oreja y hocico */  /* la cabeza entera dentro de la franja, sin cortes */
+  .footer .col b{text-transform:uppercase;letter-spacing:.08em;font-size:11px;margin-bottom:2px}
+  .footer .col{gap:8px;align-self:start}
+  .footer .cols .col:nth-child(1){grid-column:1;grid-row:1}
+  .footer .cols .col:nth-child(2){grid-column:2;grid-row:1}
+  .footer .cols .col:nth-child(3){grid-column:1;grid-row:2/4}
+  .footer .cols .col:last-child{display:contents}
+  .footer .cols .col:last-child > b:first-child{grid-column:2;grid-row:2;align-self:start}
+  .footer .icons{grid-column:2;grid-row:3;gap:14px;align-self:start;margin-top:-14px}  /* compensa el row-gap: los iconos quedan a 10px del título */
+  .footer .cols .col:last-child > b:last-of-type{grid-column:1/-1;grid-row:4;margin-top:8px}
+  .footer .pays{grid-column:1/-1;grid-row:5;flex-wrap:nowrap;gap:6px}
+  .footer .brand{position:relative;display:flex;align-items:flex-end;overflow:hidden;margin:0 -20px;padding:0 20px;min-height:0}
+  .footer .wordmark{width:min(68vw,330px);display:block}
+  .footer .deco-dog{position:absolute;right:-6%;top:auto;bottom:0;height:88%;width:auto;aspect-ratio:1;object-fit:cover;object-position:50% 73%;transform:scaleX(-1)}  /* asoma por la derecha, a la altura del logo */
   .footer .badges{display:flex;flex-wrap:wrap;gap:10px}
-  .badge-app{zoom:.7}  /* badges un 30 % más pequeños (45px de alto) */
-  .footer .legal{display:grid;grid-template-columns:1fr 1fr;gap:8px 16px;font-size:12px;max-width:none}
+  .badge-app{zoom:.7}
+  .footer .legal{display:flex;flex-wrap:wrap;gap:6px 0;font-size:12px;max-width:none}
+  .footer .legal a{padding:3px 0}
+  .footer .legal a:not(:last-child)::after{content:"·";display:inline-block;margin:0 10px;color:rgba(255,255,255,.6);text-decoration:none}
+  .footer .legal a:not(:last-child){text-decoration:none}.footer .legal a:not(:last-child)::before{content:"";}
   .btn-lg,.select{width:100%}
 }
 
