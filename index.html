@@ -567,6 +567,8 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
 @media (prefers-reduced-motion:reduce){.sticker-shape{animation:none}}
 /* Tablet (601-900): el stepper fijo respira más: foto más baja y centrada, títulos más contenidos y más aire entre pasos */
 @media (min-width:601px) and (max-width:900px){
+  .step .ind{display:none}  /* como en móvil: sin insignias, el pie de la foto marca el paso */
+  .eyebrow,.eyebrow.muted{color:#767066;font-weight:500;font-size:16px;line-height:24px;font-family:var(--font-display)}
   .s-cocina .split{gap:36px;padding-top:24px}
   .s-cocina .split .media{aspect-ratio:3/2;max-width:480px;margin:0 auto;border-radius:16px}
   .media-steps img{object-position:50% 35%}  /* las fotos verticales enseñan la parte alta, no las piernas */
