@@ -735,6 +735,13 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
   .s-cocina .split .media{aspect-ratio:auto;height:40vh;height:40svh}  /* móvil/tablet: la foto ocupa el 40 % del alto de la pantalla */
   @media (max-height:700px){.s-cocina .split .media{height:32svh}}  /* móviles bajos (iPhone SE): algo menos para que el último paso no quede bajo el CTA fijo */
   .s-cocina .right-col{position:static;height:auto;max-height:none;overflow:visible;justify-content:flex-start;gap:16px;padding:0}
+  /* Móvil/tablet: solo se lee el paso activo; al cambiar, el texto saliente se funde y entra el siguiente */
+  .stepper{position:relative}
+  .step{position:absolute;left:0;top:0;width:100%;opacity:0;transform:translateY(14px);transition:opacity .4s ease,transform .4s ease;pointer-events:none}
+  .step.active{position:relative;opacity:1;transform:none;pointer-events:auto}
+  .step.done{transform:translateY(-14px)}
+  .step .txt,.step.done .txt{opacity:1;transform:none;padding-bottom:0}
+  .step-body,.step.active .step-body{grid-template-rows:1fr}
   .s-cocina{padding-bottom:0}
   /* Raíl vertical entre insignias: se va rellenando con los pasos completados */
   .step .ind{align-self:stretch;position:relative}
