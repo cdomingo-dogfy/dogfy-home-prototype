@@ -195,8 +195,7 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
 /* Escritorio (como beside.com/industries/insurance): foto fija a la izquierda con el botón debajo; a la derecha los pasos se leen uno a uno con scroll normal, cada uno ~72vh con su texto siempre visible */
 @media (min-width:901px){
   .s-cocina{height:auto;padding-bottom:40px}
-  .s-cocina .cocina-sticky{position:sticky;top:64px;height:calc(100vh - 64px);height:calc(100svh - 64px);max-height:none;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-start;padding-top:12px}  /* todo el bloque (título + foto + texto) queda fijo en el viewport */
-  .s-cocina .cocina-head{padding-top:0;margin-bottom:12px}
+  .s-cocina .cocina-sticky{position:static;max-height:none;overflow:visible;display:block}
   .cocina-head{margin-bottom:40px}
   .s-cocina .split{grid-template-columns:minmax(0,520px) minmax(0,1fr);gap:clamp(40px,5vw,72px);align-items:start}  /* el texto arranca justo al lado de la foto */
   .s-cocina .media-wrap{order:1;position:sticky;top:calc(64px + 8vh);justify-self:start;align-self:start;display:flex;flex-direction:column;align-items:center;gap:20px;width:min(100%,calc(84vh - 64px - 60px),520px)}  /* foto + botón debajo, fijos juntos */
