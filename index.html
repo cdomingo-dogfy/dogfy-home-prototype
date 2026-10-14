@@ -340,12 +340,12 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
 .pcard{background:#fff;border-radius:16px;padding:8px 8px 16px;box-shadow:0 24px 48px -24px rgba(122,52,25,.18),0 1px 3px rgba(0,0,0,.1),0 1px 2px rgba(0,0,0,.06);position:relative}
 /* Marco arena = solo fondo; fotos en absoluto respecto a la tarjeta, con la geometría de Figma (tarjeta 302px) */
 .pcard{overflow:hidden}
-.pcard .img{position:static;height:320px;border-radius:8px;background:var(--sand)}
+.pcard .img{position:relative;height:320px;border-radius:8px;background:var(--sand)}  /* las fotos se posicionan respecto al marco */
 .pcard .img img{position:absolute;left:50%;transform:translateX(-50%);z-index:1;max-width:none}
-.pcard.c-minis img{width:219px;height:307px;bottom:122px}          /* apoyado 10px bajo el borde del marco */
-.pcard.c-peq img{width:100%;height:auto;aspect-ratio:349/265;object-fit:cover;bottom:108px}  /* patas sobre la zona blanca */
-.pcard.c-med img{width:453px;height:344px;top:43px}                 /* desborda por los lados, recorta la tarjeta */
-.pcard.c-gra img{width:425px;height:324px;top:8px;object-fit:cover}  /* 15 % más pequeño que el original */
+.pcard.c-minis img{width:219px;height:307px;bottom:0}  /* apoyado en el borde inferior del marco */          /* apoyado 10px bajo el borde del marco */
+.pcard.c-peq img{width:100%;height:auto;aspect-ratio:349/265;object-fit:cover;bottom:0}  /* patas sobre la zona blanca */
+.pcard.c-med img{width:453px;height:344px;top:35px}                 /* desborda por los lados, recorta la tarjeta */
+.pcard.c-gra img{width:425px;height:324px;top:0;object-fit:cover}  /* 15 % más pequeño que el original */
 .pcard .badge{z-index:2}
 .pcard .body{position:relative;z-index:2}
 .pcard .badge{position:absolute;top:22px;right:22px;background:rgba(255,255,255,.88);border-radius:8px;padding:8px 12px;display:flex;flex-direction:column;gap:2px}
