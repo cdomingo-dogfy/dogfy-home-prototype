@@ -251,9 +251,11 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
   .bol-sticky .head{position:absolute;left:0;right:0;top:88px;z-index:2;visibility:hidden}
   .bol-sticky .head.show{visibility:visible;animation:headIn .3s ease both}
   @keyframes headIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
-  .bol-stage{display:block;position:absolute;left:0;right:0;top:263px;bottom:0;max-width:none;margin:0;padding:0}
+  .bol-stage{display:block;position:absolute;left:0;right:0;top:200px;bottom:0;max-width:none;margin:0;padding:0}  /* la tira arranca justo bajo el título: más alto disponible */
   /* Tira Figma tablet (Frame 1410105417): 1468×611 → etiquetas izq. 403 @0/79 · bol 611 @403 · etiquetas der. 423 @1045/85 */
   .bol-track{position:absolute;top:0;left:0;width:1468px;height:611px;will-change:transform;transform-origin:0 0}
+  .hs .lbl{white-space:normal;max-width:11em;text-align:left;font-size:24px;line-height:28px;padding:10px 16px}  /* tablet: la tira va a ~0,7×, así que la base sube para que en pantalla quede a ~16-17px */
+  .hs .thumb{flex-basis:80px;width:80px;height:80px}
   .hs-col{position:absolute;height:454px;width:403px;top:79px;left:0;opacity:1}
   .hs-col.st2{left:1045px;top:85px;width:423px}
   .bol-img{position:absolute;top:0;left:403px;width:611px;max-width:none;transform:none!important}
@@ -275,8 +277,8 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
   .hs-col.st2{left:506px;top:70px;width:333px}
   .bol-img{left:214px;top:57px;width:385px}
   .hs{gap:9px}
-  .hs .lbl{font-size:12px;line-height:16px;padding:7px 11px}  /* base 12px: la tira se escala ×1,2-1,4 en móvil, así que en pantalla queda a 14-17px y cabe una escala mayor */
-  .hs .thumb{flex-basis:50px;width:50px;height:50px;border-radius:8px}
+  .hs .lbl{font-size:15px;line-height:19px;padding:8px 12px;white-space:normal;max-width:10em;text-align:left}  /* móvil: ×1,2 en pantalla ≈ 18px; las largas van a dos líneas */  /* base 12px: la tira se escala ×1,2-1,4 en móvil, así que en pantalla queda a 14-17px y cabe una escala mayor */
+  .hs .thumb{flex-basis:56px;width:56px;height:56px;border-radius:8px}
   .hs .thumb img{transform-origin:0 0;scale:.78}
   .hs-col.st1 .hs:nth-child(1){left:auto;right:0;top:0}.hs-col.st1 .hs:nth-child(2){left:auto;right:36px;top:102px}.hs-col.st1 .hs:nth-child(3){left:auto;right:36px;top:205px}.hs-col.st1 .hs:nth-child(4){left:auto;right:0;top:307px}
   .hs-col.st2 .hs:nth-child(1){left:0;top:0}.hs-col.st2 .hs:nth-child(2){left:39px;top:102px}.hs-col.st2 .hs:nth-child(3){left:39px;top:205px}.hs-col.st2 .hs:nth-child(4){left:0;top:307px}
@@ -1203,8 +1205,9 @@ size();update();if(document.fonts)document.fonts.ready.then(()=>{size();update()
   const dotsFor=(el,count)=>{const box=document.querySelector('.dots[data-for="'+el.id+'"]');if(!box)return null;box.innerHTML='';for(let i=0;i<count;i++)box.appendChild(document.createElement('i'));return box;};
   const rDots=dotsFor(grid,cards.length);
   const marquee=()=>innerWidth<=1074;
-  if(marquee()&&!grid.dataset.looped){grid.dataset.looped='1';cards.forEach(c=>{const k=c.cloneNode(true);k.setAttribute('aria-hidden','true');k.dataset.clone='1';grid.appendChild(k);});}
-  ['touchstart','pointerdown'].forEach(ev=>grid.addEventListener(ev,()=>grid.classList.add('paused'),{passive:true}));['touchend','pointerup','pointercancel','mouseleave'].forEach(ev=>grid.addEventListener(ev,()=>setTimeout(()=>grid.classList.remove('paused'),1200),{passive:true}));
+  const ensureClones=()=>{if(marquee()&&!grid.dataset.looped){grid.dataset.looped='1';cards.forEach(c=>{const k=c.cloneNode(true);k.setAttribute('aria-hidden','true');k.dataset.clone='1';grid.appendChild(k);});}};ensureClones();addEventListener('resize',ensureClones);  // también si se entra en modo cinta al girar la tablet
+  if(matchMedia('(hover:hover)').matches)['pointerdown'].forEach(ev=>grid.addEventListener(ev,()=>grid.classList.add('paused'),{passive:true}));  // solo con ratón: en táctil la cinta no se para nunca
+  ['touchend','pointerup','pointercancel','mouseleave'].forEach(ev=>grid.addEventListener(ev,()=>setTimeout(()=>grid.classList.remove('paused'),1200),{passive:true}));
   const setActive=(box,i)=>{if(box)[...box.children].forEach((d,j)=>d.classList.toggle('active',j===i));};
   const current=()=>{const c=grid.scrollLeft+grid.clientWidth/2;let best=0,bd=1e9;cards.forEach((card,i)=>{const d=Math.abs(card.offsetLeft+card.offsetWidth/2-c);if(d<bd){bd=d;best=i;}});return best;};
   const sync=()=>{const i=current();setActive(rDots,i);if(!grid.dataset.userTab)return;tabs.forEach(t=>{const on=t.dataset.key===cards[i].dataset.key;t.classList.toggle('active',on);t.setAttribute('aria-selected',on);});};   // sin pestaña activa por defecto: solo se marca tras elegir una
@@ -1291,7 +1294,7 @@ addEventListener('scroll',()=>{if(!tick){tick=true;requestAnimationFrame(update)
     const maxLbl=Math.max(...[...track.querySelectorAll('.hs')].map(h=>h.offsetWidth));
     const kFit=(W-32)/maxLbl;                                                      // tope: la etiqueta más ancha cabe entre los dos márgenes de 16px (las miniaturas pisan ~75px el bol)
     const lvh=(()=>{const d=document.createElement('div');d.style.cssText='position:fixed;top:0;left:0;width:0;height:100lvh;visibility:hidden;pointer-events:none';document.body.appendChild(d);const h=d.offsetHeight||innerHeight;d.remove();return Math.max(h,innerHeight);})();  // iOS Safari: innerHeight descuenta las barras; se usa el viewport grande
-    const k=mobile?Math.max(.6,Math.min(kFit,Math.min(avail,lvh*.75)/track.offsetHeight)):Math.min(1,Math.max(.6,avail/track.offsetHeight));
+    const k=mobile?Math.max(.6,Math.min(kFit,Math.min(avail,lvh*.85)/track.offsetHeight)):Math.min(1.25,(W-32)/423,Math.max(.6,avail/track.offsetHeight));  // móvil: hasta el 85 % del alto; tablet: hasta 1,25× (la columna de etiquetas, 423px, siempre cabe)
     const bw=mobile?385:611,bl=mobile?214:403,vis=mobile?Math.min(Math.max(151*k,16+75*k),W-16+75*k-maxLbl*k):305*k;   // móvil: parte visible del bol acotada para que las etiquetas de los dos estados queden a ≥16px de los bordes    // ancho del bol, su x dentro de la tira y parte visible
     const x1=mobile?W-vis-bl*k:Math.max(60*k,W-1045*k), x2=mobile?vis-(bl+bw)*k+8*k:Math.min(W-(1468+60)*k,-403*k);   // la columna contraria nunca asoma   // tablet/intermedio (Figma 469:40559 y 768): tira a 60px del borde; estado 2 a 60px del borde derecho · móvil: bol asomando
     const ty=Math.max(0,(avail-track.offsetHeight*k)/2);                       // reparte el aire sobrante arriba y abajo de la tira
