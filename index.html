@@ -11,7 +11,8 @@
 <meta property="og:image" content="assets/hero.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="image" href="assets/hero-900.jpg" media="(max-width:900px)">
+<link rel="preload" as="image" href="assets/hero-mobile.jpg" media="(max-width:600px)">
+<link rel="preload" as="image" href="assets/hero-900.jpg" media="(min-width:601px) and (max-width:900px)">
 <link rel="preload" as="image" href="assets/hero.jpg" media="(min-width:901px)">
 <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@500;600;700;800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Manrope:wght@400;600&display=swap" rel="stylesheet">
 <style>
@@ -599,7 +600,7 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
   .hero{min-height:calc(100vh - 48px);min-height:calc(100svh - 48px);align-items:stretch}  /* 48px = banner promocional, que va encima */
   /* Foto: franja central con el perro y el bol, fundida a negro por arriba y por abajo; así cabe el texto arriba y el selector abajo */
   .hero{background:#3a332e}  /* gris cálido oscuro, no negro */
-  .hero-bg img{top:16%;height:70%;transform:none;object-position:66% 55%}  /* franja del 16 % al 86 % del alto: la foto manda */
+  .hero-bg img{top:16%;height:70%;transform:none;object-position:50% 78%}  /* encuadre bajo: el perro y el bol quedan debajo del texto */  /* franja del 16 % al 86 % del alto; foto vertical propia de móvil (perro y bol centrados) */
   .hero-bg::after{background:linear-gradient(180deg,#3a332e 0%,#3a332e 16%,rgba(58,51,46,.5) 26%,rgba(58,51,46,0) 38%,rgba(58,51,46,0) 68%,rgba(58,51,46,.5) 78%,#3a332e 87%,#3a332e 100%)}  /* fundidos cortos y suaves en los bordes de la foto */
   .hero-content>div:first-child{margin-top:4px;margin-bottom:auto}
   .hero h1{margin-top:.35em}  /* el sello Full of life, pegado al título */  /* el texto arriba, sobre el negro y el fundido; el perro y el bol quedan libres */
@@ -896,7 +897,7 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
 
 <!-- Hero -->
 <section class="hero">
-  <div class="hero-bg"><img src="assets/hero.jpg" srcset="assets/hero-900.jpg 900w, assets/hero.jpg 2048w" sizes="100vw" alt="" fetchpriority="high" decoding="async"></div>
+  <div class="hero-bg"><picture><source media="(max-width:600px)" srcset="assets/hero-mobile.jpg"><img src="assets/hero.jpg" srcset="assets/hero-900.jpg 900w, assets/hero.jpg 2048w" sizes="100vw" alt="" fetchpriority="high" decoding="async"></picture></div>
   <div class="container hero-content">
     <div>
       <span class="hero-badge">Full of life</span>
@@ -1082,7 +1083,7 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
   </div>
   <div class="scene-text right-col" id="sceneText">
     <div class="features">
-      <div class="feature"><div class="ico"><img src="assets/icon-stethoscope.svg" alt=""></div><div><h3>Receta elaborada por veterinarios</h3><p>Formulada por un equipo de veterinarios nutricionistas, siguiendo las recomendaciones europeas.</p></div></div>
+      <div class="feature"><div class="ico"><img src="assets/icon-stethoscope.svg" alt=""></div><div><h3>Elaborada por veterinarios</h3><p>Formulada por un equipo de veterinarios nutricionistas, siguiendo las recomendaciones europeas.</p></div></div>
       <div class="feature"><div class="ico"><img src="assets/icon-shield-check.svg" alt=""></div><div><h3>Completa y equilibrada</h3><p>Con la suplementación precisa de vitaminas y minerales.</p></div></div>
       <div class="feature"><div class="ico"><img src="assets/icon-paw.svg" alt=""></div><div><h3>Adaptada a cada etapa</h3><p>De cachorro a sénior, ajustamos su ración.</p></div></div>
     </div>
