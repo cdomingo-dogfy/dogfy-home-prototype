@@ -195,7 +195,8 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
 /* Escritorio (como beside.com/industries/insurance): foto fija a la izquierda con el botón debajo; a la derecha los pasos se leen uno a uno con scroll normal, cada uno ~72vh con su texto siempre visible */
 @media (min-width:901px){
   .s-cocina{height:auto;padding-bottom:40px}
-  .s-cocina .cocina-sticky{position:static;max-height:none;overflow:visible;display:block}
+  .s-cocina .cocina-sticky{position:sticky;top:64px;height:calc(100vh - 64px);height:calc(100svh - 64px);max-height:none;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-start;padding-top:12px}  /* todo el bloque (título + foto + texto) queda fijo en el viewport */
+  .s-cocina .cocina-head{padding-top:0;margin-bottom:12px}
   .cocina-head{margin-bottom:40px}
   .s-cocina .split{grid-template-columns:minmax(0,520px) minmax(0,1fr);gap:clamp(40px,5vw,72px);align-items:start}  /* el texto arranca justo al lado de la foto */
   .s-cocina .media-wrap{order:1;position:sticky;top:calc(64px + 8vh);justify-self:start;align-self:start;display:flex;flex-direction:column;align-items:center;gap:20px;width:min(100%,calc(84vh - 64px - 60px),520px)}  /* foto + botón debajo, fijos juntos */
@@ -728,10 +729,11 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
   .split{grid-template-columns:1fr;gap:32px}
   .s-cocina .split{height:auto}  /* pista de scroll: 4 pasos × 100vh; el bloque de pasos queda fijo y al agotarla sigue el scroll normal. align-content:start evita que el grid reparta el alto extra entre media y right-col (su comportamiento por defecto es "stretch") */
   /* Tablet/móvil: imagen + pasos quedan fijos juntos bajo el header (la imagen siempre en pantalla); el título se desplaza */
-  .s-cocina .cocina-sticky{position:static;max-height:none;overflow:visible;display:block}  /* en móvil el contenedor es la pista; el split es lo que se queda fijo */
+  .s-cocina .cocina-sticky{position:sticky;top:64px;height:calc(100vh - 64px);height:calc(100svh - 64px);max-height:none;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-start;padding-top:12px}  /* todo el bloque (título + foto + texto) queda fijo en el viewport */
+  .s-cocina .cocina-head{padding-top:0;margin-bottom:12px}  /* en móvil el contenedor es la pista; el split es lo que se queda fijo */
   .s-cocina .media-wrap{display:contents}
   .s-cocina .media-wrap .btn{order:3;justify-self:center;width:auto;margin-top:0}  /* el botón, tras los pasos y centrado (el wrapper es display:contents) */
-  .s-cocina .split{position:sticky;top:64px;gap:16px;align-content:start;padding-top:16px}  /* aire entre la cabecera fija y la imagen al quedar pegada */
+  .s-cocina .split{position:static;gap:12px;align-content:start;padding-top:0}  /* aire entre la cabecera fija y la imagen al quedar pegada */
   .s-cocina .split .media{aspect-ratio:auto;height:40vh;height:40svh}  /* móvil/tablet: la foto ocupa el 40 % del alto de la pantalla */
   @media (max-height:700px){.s-cocina .split .media{height:32svh}}  /* móviles bajos (iPhone SE): algo menos para que el último paso no quede bajo el CTA fijo */
   .s-cocina .right-col{position:static;height:auto;max-height:none;overflow:visible;justify-content:flex-start;gap:16px;padding:0}
@@ -1378,7 +1380,7 @@ run(document.getElementById('reviews'),()=>true,34);})();
 // Stepper: el bloque queda fijo (como la caja de prueba) y cada 100vh de scroll activa un paso. En escritorio la pista es la sección entera (imagen + pasos fijos juntos); en tablet/móvil es solo el split (la imagen se desplaza normal y únicamente los pasos quedan fijos)
 (()=>{const steps=[...document.querySelectorAll('.stepper .step')];if(!steps.length)return;
 const split=document.querySelector('.s-cocina .split'),section=document.querySelector('.s-cocina'),N=steps.length,narrow=()=>innerWidth<=900;
-const wrap=document.querySelector('.s-cocina .cocina-sticky');const sizeTrack=()=>{if(!split)return;if(!narrow()){section.style.height='';wrap.style.height='';return;}const head=section.querySelector('.cocina-head');section.style.height='';wrap.style.height=(head.offsetHeight+split.offsetHeight+N*Math.round(innerHeight*.32))+'px';};sizeTrack();addEventListener('resize',sizeTrack);addEventListener('load',sizeTrack);if(document.fonts)document.fonts.ready.then(sizeTrack);
+const wrap=document.querySelector('.s-cocina .cocina-sticky');const sizeTrack=()=>{if(!split)return;if(!narrow()){section.style.height='';wrap.style.height='';return;}const head=section.querySelector('.cocina-head');wrap.style.height='';section.style.height=((innerHeight-64)+N*Math.round(innerHeight*.32))+'px';};sizeTrack();addEventListener('resize',sizeTrack);addEventListener('load',sizeTrack);if(document.fonts)document.fonts.ready.then(sizeTrack);
 // Foto y pie por paso: cambian con el paso activo
 const mImgs=[...document.querySelectorAll('.media-steps > img')],caps=[...document.querySelectorAll('.media-caps .media-cap')],cap=null,capTitles=['Su perfil','Cocinamos y enviamos','Descongela y sirve','Tú gestionas'];let shown=-1;
 const alignBadges=()=>{if(innerWidth<=900){steps.forEach(st=>st.querySelector('.ind').style.removeProperty('--off'));return;}steps.forEach(st=>{const txt=st.querySelector('.txt'),h3=st.querySelector('h3');const lh=parseFloat(getComputedStyle(h3).lineHeight)||h3.offsetHeight;st.querySelector('.ind').style.setProperty('--off',(-(txt.offsetHeight-lh)/2).toFixed(1)+'px');});};alignBadges();addEventListener('resize',alignBadges);addEventListener('load',alignBadges);if(document.fonts)document.fonts.ready.then(alignBadges);
