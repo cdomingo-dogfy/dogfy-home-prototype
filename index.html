@@ -563,6 +563,12 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
   .step-body p{margin-top:8px;max-width:48ch}
   .s-cocina .right-col{gap:20px}
 }
+/* Móvil: transición entre secciones. Cuando la siguiente entra por abajo, la actual se funde a blanco; nunca se ven dos secciones "compitiendo" */
+.sec-veil{display:none}
+@media (max-width:600px){
+  .sec-veil{display:block;position:absolute;inset:0;z-index:30;background:#fff;opacity:var(--veil,0);pointer-events:none}
+  .has-veil{position:relative}
+}
 /* PRUEBA · móvil: un único CTA fijo al pie sobre un velo blanco degradado; los CTAs de las secciones se ocultan */
 .cta-bar{display:none}
 @media (max-width:600px){
@@ -1160,7 +1166,14 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
 </footer>
 <div class="footer-space" aria-hidden="true"></div>
 <div class="cta-bar" id="ctaBar"><a class="btn btn-primary" href="#precio">¡Quiero probar!</a></div>
-<script>(()=>{const bar=document.getElementById('ctaBar'),sms=document.querySelector('.s-sms');if(!bar||!sms||!('IntersectionObserver' in window))return;new IntersectionObserver(es=>{bar.classList.toggle('is-hidden',es[0].isIntersecting);},{threshold:.25}).observe(sms);})();</script>
+<script>
+// Móvil: velo blanco por sección; su opacidad crece a medida que la sección siguiente entra en pantalla (termina cuando la siguiente ocupa el 55 % del alto)
+(()=>{const mq=matchMedia('(max-width:600px)');const secs=[...document.querySelectorAll('.page > section, .page > .stats-m, .yellow-wrap > section')].filter(e=>!e.classList.contains('s-receta')&&!e.classList.contains('s-opiniones'));
+secs.forEach(sec=>{if(sec.querySelector(':scope > .sec-veil'))return;sec.classList.add('has-veil');const v=document.createElement('div');v.className='sec-veil';v.setAttribute('aria-hidden','true');sec.appendChild(v);});
+const nextOf=sec=>{let n=sec.nextElementSibling;while(n&&(n.tagName==='IMG'||n.tagName==='SCRIPT'))n=n.nextElementSibling;if(!n&&sec.parentElement.classList.contains('yellow-wrap'))n=sec.parentElement.nextElementSibling;if(n&&n.classList.contains('yellow-wrap'))n=n.querySelector('section');return n;};
+let tick=false;const upd=()=>{tick=false;if(!mq.matches||matchMedia('(prefers-reduced-motion:reduce)').matches){secs.forEach(s=>s.style.removeProperty('--veil'));return;}const vh=innerHeight;secs.forEach(sec=>{const n=nextOf(sec);if(!n){sec.style.setProperty('--veil','0');return;}const t=n.getBoundingClientRect().top;const p=Math.min(1,Math.max(0,(vh-t)/(vh*.55)));sec.style.setProperty('--veil',(p*p).toFixed(3));});};
+addEventListener('scroll',()=>{if(!tick){tick=true;requestAnimationFrame(upd)}},{passive:true});addEventListener('resize',upd);upd();})();
+(()=>{const bar=document.getElementById('ctaBar');if(!bar||!('IntersectionObserver' in window))return;const zones=[...document.querySelectorAll('.s-sms,.s-faq,.footer-space')];const on=new Set();const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)on.add(e.target);else on.delete(e.target);});bar.classList.toggle('is-hidden',on.size>0);},{threshold:.15});zones.forEach(z=>io.observe(z));})();  // la barra se esconde en el SMS, las FAQ y el footer</script>
 
 
 
