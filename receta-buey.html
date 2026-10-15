@@ -1376,6 +1376,36 @@ body:has(.rp-hero) .rp-crumbs{background:var(--blue-deco);max-width:none;padding
 .rp-detail .rp-rating{display:flex;width:max-content}
 .rp-detail .rp-cta{height:56px;min-width:280px;padding:0 32px;font-size:18px;line-height:24px}
 .rp-detail{padding-top:24px}
+/* ===== Por qué comida natural v4 (Figma 674:54984): tarjeta crema con el bol asomando ===== */
+.rp-menus{padding-bottom:112px}
+.nb{position:relative;max-width:var(--container);margin:96px auto 0;padding:80px 64px 80px 360px;border-radius:20px;background:var(--cream);overflow:hidden;min-height:520px;display:flex;align-items:center}
+.nb-bol{position:absolute;left:-293px;top:50%;width:586px;height:auto;transform:translateY(-50%);pointer-events:none}
+.nb-txt{position:relative;max-width:576px;display:flex;flex-direction:column;align-items:flex-start}
+.nb-title{font-size:clamp(34px,3.6vw,48px);line-height:1;margin-top:12px}
+.nb-list{list-style:none;display:flex;flex-direction:column;gap:32px;margin-top:32px}
+.nb-list li{display:flex;gap:10px;align-items:flex-start}
+.nb-list img{flex:0 0 20px;margin-top:4px}
+.nb-list h3{font-family:var(--font-display);font-weight:700;font-size:20px;line-height:28px;color:var(--text-hi)}
+.nb-list p{font-size:17px;line-height:26px;color:var(--text-toned);margin-top:4px}
+.nb-cta{margin-top:40px;width:338px;max-width:100%;height:70px;padding:0 24px;font-size:22px;line-height:1}
+@media (max-width:1100px){.nb{padding-left:300px}.nb-bol{left:-330px}}
+@media (max-width:900px){
+  .nb{display:block;padding:240px 28px 48px;min-height:0}
+  .nb-bol{left:50%;top:-290px;width:520px;transform:translateX(-50%)}
+}
+@media (max-width:600px){.nb{margin-top:56px;padding:200px 22px 40px;border-radius:20px}.nb-bol{width:440px;top:-250px}.nb-list{gap:24px}.nb-list h3{font-size:18px;line-height:24px}.nb-list p{font-size:15px;line-height:22px}.nb-cta{width:100%;height:60px;font-size:19px}}
+/* FAQ en claro (sin negro): fondo azul de marca y preguntas en tarjetas blancas */
+.s-faq.rp-faq{background:var(--blue);color:var(--text-hi)}
+.rp-faq .eyebrow{color:var(--text-toned)}
+.rp-faq h2{color:var(--text-hi)}
+.rp-faq .faq{display:flex;flex-direction:column;gap:12px}
+.rp-faq .faq details{border:0;border-radius:18px;background:#fff;padding:0 24px;box-shadow:0 1px 2px rgba(26,38,89,.05),0 8px 20px -14px rgba(26,38,89,.25);transition:box-shadow .2s}
+.rp-faq .faq details[open]{box-shadow:0 2px 4px rgba(26,38,89,.06),0 14px 30px -16px rgba(26,38,89,.3)}
+.rp-faq .faq summary{color:var(--text-hi);font-weight:600;font-size:17px;padding:20px 0}
+.rp-faq .faq summary:hover{color:var(--text)}
+.rp-faq .faq summary img{filter:brightness(0) saturate(100%);opacity:.75}
+.rp-faq .faq .ans{color:var(--text);padding:0 0 20px}
+@media (max-width:600px){.rp-faq .faq details{padding:0 18px}.rp-faq .faq summary{font-size:16px;padding:16px 0}}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://cdomingo-dogfy.github.io/dogfy-home-prototype/index.html"}, {"@type": "ListItem", "position": 2, "name": "Nuestras recetas", "item": "https://cdomingo-dogfy.github.io/dogfy-home-prototype/recetas.html"}, {"@type": "ListItem", "position": 3, "name": "Menú de buey", "item": "https://cdomingo-dogfy.github.io/dogfy-home-prototype/receta-buey.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "¿Qué formatos hay?", "acceptedAnswer": {"@type": "Answer", "text": "Cada menú llega en bolsitas individuales con la ración diaria de tu perro, ya calculada según su peso, edad y actividad. Puedes elegir una receta o combinar varias en el mismo pedido."}}, {"@type": "Question", "name": "¿Qué cantidad se le debe dar?", "acceptedAnswer": {"@type": "Answer", "text": "Depende de su peso, edad y nivel de actividad. Al crear su plan calculamos su ración diaria exacta y cada bolsita contiene justo esa cantidad, así que no tienes que pesar nada."}}, {"@type": "Question", "name": "¿Cómo llega el producto?", "acceptedAnswer": {"@type": "Answer", "text": "Te lo enviamos a casa congelado y dividido en bolsitas diarias, con envío gratis. Solo tienes que guardarlo en el congelador al recibirlo."}}]}</script>
