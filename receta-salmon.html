@@ -1732,7 +1732,7 @@ body:has(.rp-hero) .rp-crumbs{background:var(--blue-deco);max-width:none;padding
 .mx-more:hover{background:#faf8f6;border-color:#bfb7ac}.mx-more:hover svg{transform:translateX(4px)}
 .mx-more:focus-visible,.mx-add:focus-visible{outline:3px solid #f2c94c;outline-offset:2px}
 @media (max-width:1100px){.mx-row{gap:32px}.mx-row.is-open .mx-img{width:420px;height:420px}.mx-img{width:220px;height:165px}}
-@media (max-width:760px){
+@media (max-width:600px){
   .rp-cards-sec{padding:48px var(--gutter) 40px}
   .mx-row{flex-wrap:wrap;align-items:flex-start;gap:16px;padding:24px 0}
   .mx-img{width:104px;height:78px;border-radius:16px}
@@ -1746,7 +1746,7 @@ body:has(.rp-hero) .rp-crumbs{background:var(--blue-deco);max-width:none;padding
   .mx-more{padding:0 18px}
 }
 @media (prefers-reduced-motion:reduce){.mx-img,.mx-ico,.mx-more svg{transition:none}}
-@media (max-width:760px){
+@media (max-width:600px){
   .mx-row{align-items:center}
   .mx-row:not(.is-open) .mx-desc,.mx-row:not(.is-open) .mx-btns{display:none}
   .mx-row:not(.is-open) .mx-title::after{content:"";display:inline-block;width:9px;height:9px;margin-left:10px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:translateY(-4px) rotate(45deg);opacity:.5}
@@ -1764,7 +1764,7 @@ body:has(.rp-hero) .rp-crumbs{background:var(--blue-deco);max-width:none;padding
 @media (prefers-reduced-motion:reduce){.hp-link img{transition:none}}
 /* Nuestras recetas · móvil: pestañas de menú (como en la home) sincronizadas con la lista; envases del hero sin enlace */
 .hp-tabs{display:none}
-@media (max-width:760px){
+@media (max-width:600px){
   .hp-tabs{display:flex;justify-content:center;gap:8px;margin:0 auto 8px}
   .hp-tabs .tab{flex:0 0 auto;max-width:44px;min-height:44px;padding:4px;gap:0;overflow:hidden;white-space:nowrap;border:1px solid #dfe6fb;background:#eef2fc;font-family:var(--font-alt);font-size:14px;line-height:1.3;color:transparent;cursor:pointer;transition:max-width .45s cubic-bezier(.22,.61,.36,1),padding .45s ease,gap .45s ease,background .3s ease}
   .hp-tabs .tab img{width:34px;height:34px;flex:0 0 34px}
@@ -1791,6 +1791,20 @@ body:has(.rp-hero) .rp-crumbs{background:var(--blue-deco);max-width:none;padding
 @media (max-width:600px){.rp-hero3 .rp-marquee.is-static{padding:0;margin-top:4px}.rp-hero3{padding-bottom:48px}}
 .rp-hero3{padding-bottom:88px}@media (max-width:600px){.rp-hero3{padding-bottom:64px}}
 @media (max-width:600px){.rp-hero3 .rp-marquee.is-static{margin-inline:calc(10px - var(--gutter))}}
+/* Lista de menús en tablet: mismo layout en fila, con un salto de tamaño más contenido */
+@media (min-width:601px) and (max-width:1100px){
+  .mx-row{gap:28px;padding:28px 0}
+  .mx-img{width:180px;height:135px;border-radius:18px}
+  .mx-row.is-open .mx-img{width:300px;height:300px;border-radius:22px}
+  .mx-ico{left:12px;top:12px;width:44px;height:44px}.mx-ico img{width:26px;height:26px}
+  .mx-txt{gap:16px}
+  .mx-title{font-size:24px}
+  .mx-desc{font-size:16px;margin-top:-6px}
+  .mx-btns{gap:10px;flex-wrap:wrap}
+  .mx-add,.mx-more{min-width:0;height:52px;font-size:16px}
+  .mx-add{flex:1 1 180px}
+  .mx-more{padding:0 18px}
+}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://cdomingo-dogfy.github.io/dogfy-home-prototype/index.html"}, {"@type": "ListItem", "position": 2, "name": "Nuestras recetas", "item": "https://cdomingo-dogfy.github.io/dogfy-home-prototype/recetas.html"}, {"@type": "ListItem", "position": 3, "name": "Menú de salmón", "item": "https://cdomingo-dogfy.github.io/dogfy-home-prototype/receta-salmon.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "¿Qué formatos hay?", "acceptedAnswer": {"@type": "Answer", "text": "Cada menú llega en bolsitas individuales con la ración diaria de tu perro, ya calculada según su peso, edad y actividad. Puedes elegir una receta o combinar varias en el mismo pedido."}}, {"@type": "Question", "name": "¿Qué cantidad se le debe dar?", "acceptedAnswer": {"@type": "Answer", "text": "Depende de su peso, edad y nivel de actividad. Al crear su plan calculamos su ración diaria exacta y cada bolsita contiene justo esa cantidad, así que no tienes que pesar nada."}}, {"@type": "Question", "name": "¿Cómo llega el producto?", "acceptedAnswer": {"@type": "Answer", "text": "Te lo enviamos a casa congelado y dividido en bolsitas diarias, con envío gratis. Solo tienes que guardarlo en el congelador al recibirlo."}}]}</script>
