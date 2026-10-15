@@ -1676,6 +1676,17 @@ body:has(.rp-hero) .rp-crumbs{background:var(--blue-deco);max-width:none;padding
 }
 @media (prefers-reduced-motion:reduce){.hp-packs img{transition:none}}
 .rp-hero3 h1 .accent{display:inline}.rp-hero3 .rp-hero-title{max-width:1140px}
+/* Cómo funciona · hero en vídeo (Vimeo 4:3, recortado para cubrir) */
+.ph-video{position:relative;background:#e9e2d6}
+.ph-video .ph-poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .4s}
+.ph-video.is-playing .ph-poster{opacity:0}
+.ph-video iframe{position:absolute;top:-4.8%;left:0;width:100%;height:109.6%;border:0;pointer-events:none}
+.ph-ctrl{left:auto;right:16px}
+@media (max-width:900px){
+  .ph-video{aspect-ratio:1/1;width:100%;max-width:560px;margin-inline:auto}
+  .ph-video iframe{top:0;height:100%;left:-16.67%;width:133.34%}
+}
+@media (prefers-reduced-motion:reduce){.ph-video .ph-poster{transition:none}}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://cdomingo-dogfy.github.io/dogfy-home-prototype/index.html"}, {"@type": "ListItem", "position": 2, "name": "Nuestras recetas", "item": "https://cdomingo-dogfy.github.io/dogfy-home-prototype/recetas.html"}, {"@type": "ListItem", "position": 3, "name": "Menú de buey", "item": "https://cdomingo-dogfy.github.io/dogfy-home-prototype/receta-buey.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "¿Qué formatos hay?", "acceptedAnswer": {"@type": "Answer", "text": "Cada menú llega en bolsitas individuales con la ración diaria de tu perro, ya calculada según su peso, edad y actividad. Puedes elegir una receta o combinar varias en el mismo pedido."}}, {"@type": "Question", "name": "¿Qué cantidad se le debe dar?", "acceptedAnswer": {"@type": "Answer", "text": "Depende de su peso, edad y nivel de actividad. Al crear su plan calculamos su ración diaria exacta y cada bolsita contiene justo esa cantidad, así que no tienes que pesar nada."}}, {"@type": "Question", "name": "¿Cómo llega el producto?", "acceptedAnswer": {"@type": "Answer", "text": "Te lo enviamos a casa congelado y dividido en bolsitas diarias, con envío gratis. Solo tienes que guardarlo en el congelador al recibirlo."}}]}</script>
@@ -1848,10 +1859,12 @@ addEventListener('resize',()=>all.forEach(fit));if(document.fonts)document.fonts
 // Ficha: galería (miniaturas que cambian la imagen principal)
 (()=>{const main=document.getElementById('galMain');if(!main)return;document.querySelectorAll('.rp-thumb').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.rp-thumb').forEach(x=>x.classList.toggle('is-on',x===b));main.src=b.dataset.src;main.alt=b.dataset.alt;}));})();
 
-// Cómo funciona: vídeo de Vimeo en bucle y sin sonido, con botones de pausa y sonido
-(()=>{const f=document.getElementById('cfVideo');if(!f)return;const s=document.createElement('script');s.src='https://player.vimeo.com/api/player.js';s.onload=()=>{const p=new Vimeo.Player(f);const pb=document.querySelector('.ps-vplay'),mb=document.querySelector('.ps-vmute');
-pb.onclick=async()=>{if(pb.dataset.state==='playing'){await p.pause();pb.dataset.state='paused';pb.setAttribute('aria-label','Reproducir el vídeo')}else{await p.play();pb.dataset.state='playing';pb.setAttribute('aria-label','Pausar el vídeo')}};
-mb.onclick=async()=>{const m=mb.dataset.muted==='1';await p.setVolume(m?1:0);await p.setMuted(!m).catch(()=>{});mb.dataset.muted=m?'0':'1';mb.setAttribute('aria-label',m?'Silenciar el vídeo':'Activar el sonido')};};document.head.appendChild(s);})();
+// Vídeos de Vimeo en bucle y sin sonido ([data-vbox]), con botones propios de pausa y sonido
+(()=>{const boxes=[...document.querySelectorAll('[data-vbox]')];if(!boxes.length)return;const s=document.createElement('script');s.src='https://player.vimeo.com/api/player.js';s.onload=()=>boxes.forEach(b=>{const f=b.querySelector('iframe');if(!f)return;const p=new Vimeo.Player(f);const pb=b.querySelector('.ps-vplay'),mb=b.querySelector('.ps-vmute');
+p.on('play',()=>b.classList.add('is-playing'));
+if(matchMedia('(prefers-reduced-motion: reduce)').matches&&pb){p.pause().catch(()=>{});pb.dataset.state='paused';pb.setAttribute('aria-label','Reproducir el vídeo')}
+if(pb)pb.onclick=async()=>{if(pb.dataset.state==='playing'){await p.pause();pb.dataset.state='paused';pb.setAttribute('aria-label','Reproducir el vídeo')}else{await p.play();pb.dataset.state='playing';pb.setAttribute('aria-label','Pausar el vídeo')}};
+if(mb)mb.onclick=async()=>{const m=mb.dataset.muted==='1';await p.setVolume(m?1:0);await p.setMuted(!m).catch(()=>{});mb.dataset.muted=m?'0':'1';mb.setAttribute('aria-label',m?'Silenciar el vídeo':'Activar el sonido')};});document.head.appendChild(s);})();
 
 (()=>{const l=document.querySelector('.rp-tabs-list'),a=l&&l.querySelector('.active');if(a&&l.scrollWidth>l.clientWidth)l.scrollLeft=a.offsetLeft-l.offsetLeft-(l.clientWidth-a.offsetWidth)/2;})();
 </script>
