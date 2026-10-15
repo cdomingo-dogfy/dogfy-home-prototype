@@ -1376,6 +1376,24 @@ body:has(.rp-hero) .rp-crumbs{background:var(--blue-deco);max-width:none;padding
 .rp-detail .rp-rating{display:flex;width:max-content}
 .rp-detail .rp-cta{height:56px;min-width:280px;padding:0 32px;font-size:18px;line-height:24px}
 .rp-detail{padding-top:24px}
+/* ===== Por qué comida natural v4 (Figma 674:54984): tarjeta crema con el bol asomando ===== */
+.rp-menus{padding-bottom:112px}
+.nb{position:relative;max-width:var(--container);margin:96px auto 0;padding:80px 64px 80px 360px;border-radius:20px;background:var(--cream);overflow:hidden;min-height:520px;display:flex;align-items:center}
+.nb-bol{position:absolute;left:-293px;top:50%;width:586px;height:auto;transform:translateY(-50%);pointer-events:none}
+.nb-txt{position:relative;max-width:576px;display:flex;flex-direction:column;align-items:flex-start}
+.nb-title{font-size:clamp(34px,3.6vw,48px);line-height:1;margin-top:12px}
+.nb-list{list-style:none;display:flex;flex-direction:column;gap:32px;margin-top:32px}
+.nb-list li{display:flex;gap:10px;align-items:flex-start}
+.nb-list img{flex:0 0 20px;margin-top:4px}
+.nb-list h3{font-family:var(--font-display);font-weight:700;font-size:20px;line-height:28px;color:var(--text-hi)}
+.nb-list p{font-size:17px;line-height:26px;color:var(--text-toned);margin-top:4px}
+.nb-cta{margin-top:40px;width:338px;max-width:100%;height:70px;padding:0 24px;font-size:22px;line-height:1}
+@media (max-width:1100px){.nb{padding-left:300px}.nb-bol{left:-330px}}
+@media (max-width:900px){
+  .nb{display:block;padding:240px 28px 48px;min-height:0}
+  .nb-bol{left:50%;top:-290px;width:520px;transform:translateX(-50%)}
+}
+@media (max-width:600px){.nb{margin-top:56px;padding:200px 22px 40px;border-radius:20px}.nb-bol{width:440px;top:-250px}.nb-list{gap:24px}.nb-list h3{font-size:18px;line-height:24px}.nb-list p{font-size:15px;line-height:22px}.nb-cta{width:100%;height:60px;font-size:19px}}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://cdomingo-dogfy.github.io/dogfy-home-prototype/index.html"}, {"@type": "ListItem", "position": 2, "name": "Nuestras recetas", "item": "https://cdomingo-dogfy.github.io/dogfy-home-prototype/recetas.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "¿Qué formatos hay?", "acceptedAnswer": {"@type": "Answer", "text": "Cada menú llega en bolsitas individuales con la ración diaria de tu perro, ya calculada según su peso, edad y actividad. Puedes elegir una receta o combinar varias en el mismo pedido."}}, {"@type": "Question", "name": "¿Qué cantidad se le debe dar?", "acceptedAnswer": {"@type": "Answer", "text": "Depende de su peso, edad y nivel de actividad. Al crear su plan calculamos su ración diaria exacta y cada bolsita contiene justo esa cantidad, así que no tienes que pesar nada."}}, {"@type": "Question", "name": "¿Cómo llega el producto?", "acceptedAnswer": {"@type": "Answer", "text": "Te lo enviamos a casa congelado y dividido en bolsitas diarias, con envío gratis. Solo tienes que guardarlo en el congelador al recibirlo."}}, {"@type": "Question", "name": "¿Cómo se prepara, debo cocinar el alimento al perro?", "acceptedAnswer": {"@type": "Answer", "text": "No hace falta cocinar nada. Nuestras recetas ya vienen cocinadas a baja temperatura: descongela la bolsita en la nevera, ábrela y sirve."}}, {"@type": "Question", "name": "¿Cada cuánto llegan los menús?", "acceptedAnswer": {"@type": "Answer", "text": "Tu primera caja trae 14 días de comida. Después la suscripción continúa y puedes cambiar recetas, aplazar envíos o cancelar cuando quieras, sin permanencia."}}]}</script>
@@ -1457,12 +1475,13 @@ body:has(.rp-hero) .rp-crumbs{background:var(--blue-deco);max-width:none;padding
       </div>
     </article>
   </div>
-  <div class="rp-bens-wrap">
-    <img class="rp-bens-dog" src="assets/beagle-bol.webp" alt="Un beagle comiendo su menú Dogfy Diet del bol, visto desde arriba" width="748" height="1100" loading="lazy" decoding="async">
-    <div class="rp-bens-txt">
+  <div class="nb">
+    <img class="nb-bol" src="assets/bol2-main.png" alt="" aria-hidden="true" width="898" height="900" loading="lazy" decoding="async">
+    <div class="nb-txt">
       <p class="eyebrow">¡Tu perro ya está moviendo la cola!</p>
-      <h2 class="rp-bens-title">Por qué darle <span class="accent">comida natural</span></h2>
-      <ul class="rp-bens"><li class="rp-ben"><div class="rp-ben-row"><h3 class="lbl">Más vitalidad</h3></div><p>Ingredientes reales y una ración ajustada a lo que necesita: más energía para jugar, pasear y disfrutar.</p></li><li class="rp-ben"><div class="rp-ben-row"><h3 class="lbl">Mejor higiene</h3></div><p>Mejores digestiones y heces más pequeñas y compactas, más fáciles de recoger.</p></li><li class="rp-ben"><div class="rp-ben-row"><h3 class="lbl">Menos problemas de salud</h3></div><p>Una dieta completa y equilibrada ayuda a cuidar su sistema inmune, su piel y su peso.</p></li></ul>
+      <h2 class="nb-title">Por qué darle comida natural</h2>
+      <ul class="nb-list"><li><img src="assets/icon-package.svg" alt="" width="20" height="20"><div><h3>Más vitalidad</h3><p>Ingredientes reales y una ración ajustada a lo que necesita: más energía para jugar, pasear y disfrutar.</p></div></li><li><img src="assets/icon-clipboard.svg" alt="" width="20" height="20"><div><h3>Mejor higiene</h3><p>Mejores digestiones y heces más pequeñas y compactas, más fáciles de recoger.</p></div></li><li><img src="assets/icon-gift.svg" alt="" width="20" height="20"><div><h3>Menos problemas de salud</h3><p>Una dieta completa y equilibrada ayuda a cuidar su sistema inmune, su piel y su peso.</p></div></li></ul>
+      <a class="btn btn-primary nb-cta" href="index.html#precio">¡Quiero probar!</a>
     </div>
   </div>
 </section>
