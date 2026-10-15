@@ -1711,6 +1711,48 @@ body:has(.rp-hero) .rp-crumbs{background:var(--blue-deco);max-width:none;padding
   .hp-pavo{transform:translateY(18px) rotate(13deg)}
 }
 .rp-cards-sec{overflow-x:clip}  /* la onda mide 1440px: sin recorte, ensanchaba la página en móvil */
+/* Nuestras recetas · lista de menús desplegable (Figma 704:61329) */
+.rp-cards-sec{padding:64px var(--gutter)}
+.mx-list{list-style:none;max-width:var(--container);margin:0 auto;border-bottom:1px solid #ebe7e1}
+.mx-row{display:flex;align-items:center;gap:48px;padding:39px 0;border-top:1px solid #ebe7e1;cursor:pointer}
+.mx-row:first-child{border-top:0}
+.mx-img{position:relative;flex:none;width:270px;height:203px;border-radius:22px;overflow:hidden;transition:width .55s cubic-bezier(.2,.8,.2,1),height .55s cubic-bezier(.2,.8,.2,1),border-radius .55s}
+.mx-img>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.mx-row.is-open .mx-img{width:572px;height:572px;border-radius:24px}
+.mx-ico{position:absolute;left:20px;top:20px;width:56px;height:56px;border-radius:50%;background:#fff;display:grid;place-items:center;box-shadow:0 6px 20px rgba(0,0,0,.08);opacity:0;transform:scale(.8);transition:opacity .3s,transform .3s}
+.mx-ico img{width:34px;height:34px}
+.mx-row.is-open .mx-ico{opacity:1;transform:none;transition-delay:.2s}
+.mx-txt{flex:1;min-width:0;display:flex;flex-direction:column;gap:24px}
+.mx-title{font-family:var(--font-display);font-weight:700;font-size:clamp(26px,2.2vw,32px);line-height:1.2;color:var(--text-hi)}
+.mx-desc{font-size:clamp(17px,1.5vw,21px);line-height:1.45;color:var(--text);margin-top:-8px;max-width:760px}
+.mx-btns{display:flex;gap:16px;align-items:center}
+.mx-add{flex:1;max-width:500px;min-width:200px;height:64px;font-size:17px;justify-content:center}
+.mx-more{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:64px;min-width:200px;padding:0 24px;border-radius:999px;border:1px solid #d6d1ca;background:#fff;color:var(--text-hi);font-size:17px;text-decoration:none;transition:background .2s,border-color .2s}
+.mx-more svg{transition:transform .25s}
+.mx-more:hover{background:#faf8f6;border-color:#bfb7ac}.mx-more:hover svg{transform:translateX(4px)}
+.mx-more:focus-visible,.mx-add:focus-visible{outline:3px solid #f2c94c;outline-offset:2px}
+@media (max-width:1100px){.mx-row{gap:32px}.mx-row.is-open .mx-img{width:420px;height:420px}.mx-img{width:220px;height:165px}}
+@media (max-width:760px){
+  .rp-cards-sec{padding:48px var(--gutter) 40px}
+  .mx-row{flex-wrap:wrap;align-items:flex-start;gap:16px;padding:24px 0}
+  .mx-img{width:104px;height:78px;border-radius:16px}
+  .mx-row.is-open .mx-img{width:100%;height:calc((100vw - 2 * var(--gutter)) * .75);border-radius:20px}
+  .mx-txt{flex:1 1 180px;gap:16px}
+  .mx-row.is-open .mx-txt{flex-basis:100%}
+  .mx-title{font-size:22px}
+  .mx-desc{font-size:16px;margin-top:-6px}
+  .mx-btns{gap:10px}
+  .mx-add,.mx-more{min-width:0;height:52px;font-size:16px}
+  .mx-more{padding:0 18px}
+}
+@media (prefers-reduced-motion:reduce){.mx-img,.mx-ico,.mx-more svg{transition:none}}
+@media (max-width:760px){
+  .mx-row{align-items:center}
+  .mx-row:not(.is-open) .mx-desc,.mx-row:not(.is-open) .mx-btns{display:none}
+  .mx-row:not(.is-open) .mx-title::after{content:"";display:inline-block;width:9px;height:9px;margin-left:10px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:translateY(-4px) rotate(45deg);opacity:.5}
+  .mx-row.is-open{align-items:flex-start}
+  .mx-btns .mx-add{flex:1}
+}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://cdomingo-dogfy.github.io/dogfy-home-prototype/index.html"}, {"@type": "ListItem", "position": 2, "name": "Cómo funciona", "item": "https://cdomingo-dogfy.github.io/dogfy-home-prototype/como-funciona.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "¿Qué formatos hay?", "acceptedAnswer": {"@type": "Answer", "text": "Cada menú llega en bolsitas individuales con la ración diaria de tu perro, ya calculada según su peso, edad y actividad. Puedes elegir una receta o combinar varias en el mismo pedido."}}, {"@type": "Question", "name": "¿Cómo llega el producto?", "acceptedAnswer": {"@type": "Answer", "text": "Te lo enviamos a casa congelado y dividido en bolsitas diarias, con envío gratis. Solo tienes que guardarlo en el congelador al recibirlo."}}, {"@type": "Question", "name": "¿Cómo se prepara, debo cocinar el alimento al perro?", "acceptedAnswer": {"@type": "Answer", "text": "No hace falta cocinar nada. Nuestras recetas ya vienen cocinadas a baja temperatura: descongela la bolsita en la nevera, ábrela y sirve."}}, {"@type": "Question", "name": "¿Cada cuánto llegan los menús?", "acceptedAnswer": {"@type": "Answer", "text": "Tu primera caja trae 14 días de comida. Después la suscripción continúa y puedes cambiar recetas, aplazar envíos o cancelar cuando quieras, sin permanencia."}}, {"@type": "Question", "name": "¿Puedo hablar con el equipo de nutrición?", "acceptedAnswer": {"@type": "Answer", "text": "Sí. Tu plan incluye seguimiento nutricional gratuito: puedes escribir a nuestro equipo de Nutrición canina siempre que lo necesites, en cualquier etapa de la vida de tu perro."}}]}</script>
@@ -1938,6 +1980,17 @@ p.on('play',()=>b.classList.add('is-playing'));
 if(matchMedia('(prefers-reduced-motion: reduce)').matches&&pb){p.pause().catch(()=>{});pb.dataset.state='paused';pb.setAttribute('aria-label','Reproducir el vídeo')}
 if(pb)pb.onclick=async()=>{if(pb.dataset.state==='playing'){await p.pause();pb.dataset.state='paused';pb.setAttribute('aria-label','Reproducir el vídeo')}else{await p.play();pb.dataset.state='playing';pb.setAttribute('aria-label','Pausar el vídeo')}};
 if(mb)mb.onclick=async()=>{const m=mb.dataset.muted==='1';await p.setVolume(m?1:0);await p.setMuted(!m).catch(()=>{});mb.dataset.muted=m?'0':'1';mb.setAttribute('aria-label',m?'Silenciar el vídeo':'Activar el sonido')};});document.head.appendChild(s);})();
+
+// Nuestras recetas: lista de menús; se despliega la fila con el ratón encima (o al tocarla en móvil)
+(()=>{const rows=[...document.querySelectorAll('[data-mx]')];if(!rows.length)return;let lock=0,t;
+const open=r=>{if(r.classList.contains('is-open'))return;rows.forEach(x=>x.classList.toggle('is-open',x===r));lock=Date.now()+550};
+const fine=matchMedia('(hover:hover) and (pointer:fine)');
+rows.forEach(r=>{
+  r.addEventListener('mouseenter',()=>{if(!fine.matches)return;clearTimeout(t);t=setTimeout(()=>{if(Date.now()<lock){t=setTimeout(()=>r.matches(':hover')&&open(r),lock-Date.now());return}open(r)},90)});
+  r.addEventListener('mouseleave',()=>clearTimeout(t));
+  r.addEventListener('focusin',()=>open(r));
+  r.addEventListener('click',e=>{if(!e.target.closest('a'))open(r)});
+});})();
 
 (()=>{const l=document.querySelector('.rp-tabs-list'),a=l&&l.querySelector('.active');if(a&&l.scrollWidth>l.clientWidth)l.scrollLeft=a.offsetLeft-l.offsetLeft-(l.clientWidth-a.offsetWidth)/2;})();
 </script>
