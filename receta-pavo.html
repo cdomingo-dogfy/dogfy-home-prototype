@@ -1753,6 +1753,15 @@ body:has(.rp-hero) .rp-crumbs{background:var(--blue-deco);max-width:none;padding
   .mx-row.is-open{align-items:flex-start}
   .mx-btns .mx-add{flex:1}
 }
+/* Nuestras recetas · envases del hero clicables: cursor blanco más grande, crecen y ganan sombra */
+.hp-link{display:block;width:100%;border-radius:12px;cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Cpath d='M6 4 L6 32 L13 25.5 L18 36 L23.5 33.5 L18.5 23 L28 23 Z' fill='%23fff' stroke='%232a2724' stroke-width='2.2' stroke-linejoin='round'/%3E%3C/svg%3E") 6 4,pointer}
+.hp-link img{display:block;margin:0 auto;transition:transform .35s cubic-bezier(.2,.8,.2,1),filter .35s}
+@media (hover:hover){
+  .hp-packs li:hover img,.hp-packs .hp-link:focus-visible img{transform:translateY(-10px) scale(1.07) rotate(-1deg);filter:drop-shadow(0 26px 30px rgba(26,38,89,.30)) drop-shadow(0 8px 10px rgba(26,38,89,.16))}
+  .hp-packs li:hover{position:relative;z-index:2}
+}
+.hp-link:focus-visible{outline:3px solid #f2c94c;outline-offset:6px}
+@media (prefers-reduced-motion:reduce){.hp-link img{transition:none}}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://cdomingo-dogfy.github.io/dogfy-home-prototype/index.html"}, {"@type": "ListItem", "position": 2, "name": "Nuestras recetas", "item": "https://cdomingo-dogfy.github.io/dogfy-home-prototype/recetas.html"}, {"@type": "ListItem", "position": 3, "name": "Menú de pavo", "item": "https://cdomingo-dogfy.github.io/dogfy-home-prototype/receta-pavo.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "¿Qué formatos hay?", "acceptedAnswer": {"@type": "Answer", "text": "Cada menú llega en bolsitas individuales con la ración diaria de tu perro, ya calculada según su peso, edad y actividad. Puedes elegir una receta o combinar varias en el mismo pedido."}}, {"@type": "Question", "name": "¿Qué cantidad se le debe dar?", "acceptedAnswer": {"@type": "Answer", "text": "Depende de su peso, edad y nivel de actividad. Al crear su plan calculamos su ración diaria exacta y cada bolsita contiene justo esa cantidad, así que no tienes que pesar nada."}}, {"@type": "Question", "name": "¿Cómo llega el producto?", "acceptedAnswer": {"@type": "Answer", "text": "Te lo enviamos a casa congelado y dividido en bolsitas diarias, con envío gratis. Solo tienes que guardarlo en el congelador al recibirlo."}}]}</script>
