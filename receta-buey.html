@@ -1814,6 +1814,42 @@ body:has(.rp-hero) .rp-crumbs{background:var(--blue-deco);max-width:none;padding
 /* Desktop: desplegado contenido (4:3), sin el cuadrado de 572px que hacía saltar la lista */
 @media (min-width:1101px){.mx-row.is-open .mx-img{width:360px;height:270px;border-radius:24px}}
 @media (min-width:1101px){.mx-row.is-open .mx-img{width:300px;height:225px}}
+/* Lista de menús: solo «Ver detalles», con el ButtonSecondary (Solid · xl) de la librería Nuxt de Javi: --ui-secondary #ffe86c, radio 999, 8/12, gap 8, 16px */
+.mx-more,.mx-more:hover{border:0}
+.mx-more{min-width:200px;height:40px;padding:8px 12px;gap:8px;background:#ffe86c;color:var(--text-hi);font-family:var(--font-display);font-weight:500;font-size:16px;line-height:24px}
+.mx-more svg{width:20px;height:20px}
+.mx-more:hover{background:rgba(255,232,108,.75)}
+@media (max-width:1100px){.mx-more{min-width:200px;height:40px;padding:8px 12px;font-size:16px}}
+@media (max-width:600px){.mx-more{min-width:200px;height:40px;padding:8px 12px;font-size:16px}}
+
+/* Fichas de receta: la galería entera (foto + miniaturas) cabe en el alto de la pantalla */
+@media (min-width:901px){
+  .rp-detail .rp-gallery{width:100%;max-width:max(340px,calc(80svh - 170px))}
+}
+
+/* Fichas de receta: pestañas de menú más compactas */
+.rp-tabs.has-back{padding:8px var(--gutter)}
+.rp-tabs.has-back .rp-tabs-list{gap:6px}
+.rp-tabs.has-back .tab{padding:3px 14px 3px 3px;gap:8px;font-size:15px;line-height:20px}
+.rp-tabs.has-back .tab img{width:30px;height:30px}
+@media (max-width:600px){.rp-tabs.has-back{padding:8px var(--gutter)}.rp-tabs.has-back .tab{font-size:14px}.rp-tabs.has-back .tab img{width:28px;height:28px}}
+@media (min-width:901px){
+  .rp-detail .rp-grid{align-items:start}
+  .rp-detail .rp-gallery{max-width:max(320px,calc(80svh - 200px));position:sticky;top:136px;align-self:start}
+}
+@media (max-width:900px){
+  .rp-detail .rp-gallery .rp-media{aspect-ratio:auto;height:max(220px,min(75vw,calc(100svh - 300px)))}
+  .rp-detail .rp-gallery .rp-media img.photo{height:100%}
+}
+/* «Ver detalles»: ButtonNeutral · Outline · xl de la librería Nuxt (blanco, borde #dcd2c5, texto #565049; hover #faf8f6) */
+.mx-more,.mx-more:hover{border:1px solid #dcd2c5}
+.mx-more{background:#fff;color:#565049}
+.mx-more:hover{background:#faf8f6}
+/* Fichas: la galería ocupa solo su ancho y el texto queda a 32px */
+@media (min-width:901px){
+  .rp-detail .rp-grid{grid-template-columns:auto minmax(0,1fr);gap:32px}
+  .rp-detail .rp-gallery{width:min(max(320px,calc(80svh - 200px)),560px);max-width:none}
+}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://cdomingo-dogfy.github.io/dogfy-home-prototype/index.html"}, {"@type": "ListItem", "position": 2, "name": "Nuestras recetas", "item": "https://cdomingo-dogfy.github.io/dogfy-home-prototype/recetas.html"}, {"@type": "ListItem", "position": 3, "name": "Menú de buey", "item": "https://cdomingo-dogfy.github.io/dogfy-home-prototype/receta-buey.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "¿Qué formatos hay?", "acceptedAnswer": {"@type": "Answer", "text": "Cada menú llega en bolsitas individuales con la ración diaria de tu perro, ya calculada según su peso, edad y actividad. Puedes elegir una receta o combinar varias en el mismo pedido."}}, {"@type": "Question", "name": "¿Qué cantidad se le debe dar?", "acceptedAnswer": {"@type": "Answer", "text": "Depende de su peso, edad y nivel de actividad. Al crear su plan calculamos su ración diaria exacta y cada bolsita contiene justo esa cantidad, así que no tienes que pesar nada."}}, {"@type": "Question", "name": "¿Cómo llega el producto?", "acceptedAnswer": {"@type": "Answer", "text": "Te lo enviamos a casa congelado y dividido en bolsitas diarias, con envío gratis. Solo tienes que guardarlo en el congelador al recibirlo."}}]}</script>
