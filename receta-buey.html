@@ -1575,6 +1575,71 @@ body:has(.rp-hero) .rp-crumbs{background:var(--blue-deco);max-width:none;padding
 .ps-vbtn svg{width:16px;height:16px}
 .ps-vplay{left:16px}.ps-vmute{right:16px}
 .ps-vbtn:focus-visible{outline:3px solid #f2c94c;outline-offset:2px}
+/* Cómo funciona · seguimiento nutricional (rediseño) */
+.nt{max-width:var(--container);margin:0 auto;display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,1fr);gap:80px;align-items:center}
+.nt-media{position:relative}
+.nt-video{aspect-ratio:6/5;border-radius:32px;background:#e9e2d6;box-shadow:0 24px 48px -24px rgba(42,39,36,.35)}
+.nt-video iframe{left:-24.1%;width:148.2%;pointer-events:none}
+.nt-ctrl{position:absolute;left:16px;bottom:16px;z-index:2;display:flex;align-items:center;gap:2px;padding:4px;border-radius:999px;background:rgba(255,255,255,.92);border:1px solid #dcd2c5;box-shadow:0 2px 8px rgba(42,39,36,.12);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.nt-ctrl .ps-vbtn{position:static;width:36px;height:36px;border:0;box-shadow:none;background:transparent;-webkit-backdrop-filter:none;backdrop-filter:none}
+.nt-ctrl .ps-vbtn:hover{background:#f4f1ec}
+.nt-ctrl-sep{width:1px;height:18px;background:#dcd2c5}
+.nt-badge{position:absolute;right:-32px;bottom:40px;z-index:3;display:flex;align-items:center;gap:12px;padding:12px 18px 12px 12px;border-radius:20px;background:#fff;border:1px solid #ebe4da;box-shadow:0 12px 32px -12px rgba(42,39,36,.28)}
+.nt-badge img{width:48px;height:48px;border-radius:50%;object-fit:cover;flex:none;box-shadow:0 0 0 3px #fff6c7}
+.nt-badge b{display:block;font-family:var(--font-display);font-weight:700;font-size:15px;line-height:20px;color:var(--text-hi)}
+.nt-badge span{display:block;font-size:13px;line-height:18px;color:var(--ui-muted)}
+.nt-txt{display:flex;flex-direction:column;align-items:flex-start;gap:12px}
+.nt-txt .ps-desc{margin-top:4px}
+.nt-list{list-style:none;display:grid;gap:12px;width:100%;margin-top:16px}
+.nt-list li{display:flex;gap:16px;align-items:flex-start;padding:16px 20px 16px 16px;border-radius:20px;background:#fff;border:1px solid #ebe4da}
+.nt-ico{flex:none;display:grid;place-items:center;width:40px;height:40px;border-radius:12px;background:#eef2fc}
+.nt-list h3{font-family:var(--font-display);font-weight:700;font-size:16px;line-height:24px;color:var(--text-hi)}
+.nt-list p{font-size:15px;line-height:20px;color:var(--ui-muted);margin-top:2px}
+.nt-cta{margin-top:20px}
+@media (max-width:1100px){.nt{gap:56px}.nt-badge{right:16px;bottom:16px}.nt-ctrl{bottom:auto;top:16px;left:auto;right:16px}}
+@media (max-width:900px){.nt{grid-template-columns:1fr;gap:56px}.nt-video{border-radius:24px}}
+@media (max-width:600px){
+  .nt{gap:72px}
+  .nt-badge{left:16px;right:16px;bottom:-48px;padding:10px 14px 10px 10px}
+  .nt-badge img{width:40px;height:40px}
+  .nt-list li{padding:14px 16px 14px 14px}
+  .nt-cta{width:100%;justify-content:center}
+}
+/* Cómo funciona · «Empecemos por tu perro» (igual que la home de referencia) */
+.emp{padding:112px var(--gutter) 0}
+.emp-card{position:relative;max-width:var(--container);margin:0 auto;overflow:hidden;border-radius:30px;background:#2a2724}
+.emp-photo{position:absolute;left:0;right:0;bottom:0;height:400px}
+.emp-photo img{position:absolute;inset:0;width:100%;height:100%;max-width:none;object-fit:cover;object-position:66% 40%}
+.emp-photo::after{content:"";position:absolute;left:0;right:0;top:-2px;bottom:0;pointer-events:none;background:linear-gradient(180deg,#2a2724 0%,#2a2724 8%,rgba(42,39,36,.6) 22%,rgba(42,39,36,.15) 42%,rgba(42,39,36,0) 55%)}
+.emp-in{position:relative;max-width:720px;margin:0 auto;padding:72px 0 360px;display:flex;flex-direction:column;align-items:flex-start;gap:32px}
+.emp-txt{display:flex;flex-direction:column;gap:24px;color:#fff}
+.emp-txt h2{font-family:var(--font-display);font-weight:700;font-size:34px;line-height:38px;color:#fff}
+.emp-txt p{font-size:18px;line-height:28px;color:#fff}
+.emp-form{display:flex;align-items:flex-start;gap:16px}
+.emp-col{display:flex;flex-direction:column;gap:8px;width:300px}
+.emp-field{position:relative;height:48px;border-radius:12px;border:1.5px solid transparent;background:#fff;transition:background-color .2s,border-color .2s,box-shadow .2s}
+.emp-field select{display:block;width:100%;height:100%;appearance:none;-webkit-appearance:none;background:transparent;border:0;outline:none;cursor:pointer;border-radius:12px;padding:0 42px 0 14px;font:inherit;font-size:16px;line-height:24px;color:#767066}
+.emp-field select.is-set{color:var(--text-hi)}
+.emp-field img{position:absolute;right:14px;top:50%;width:20px;height:20px;transform:translateY(-50%);pointer-events:none;transition:transform .2s}
+@media (hover:hover){.emp-field:hover{background:#faf7f3;border-color:#e4ddd5}.emp-field:hover img{transform:translateY(calc(-50% + 2px))}}
+.emp-field:focus-within{border-color:#f2c94c;box-shadow:0 0 0 3px rgba(242,201,76,.4)}
+.emp-msg{font-size:16px;line-height:24px;color:#fff}
+.emp-cta{height:48px;padding:0 24px;flex:none;white-space:nowrap}
+@media (max-width:900px){.emp-in{padding:72px 32px 360px}}
+@media (max-width:767px){
+  .emp{padding-top:72px}
+  .emp-photo{height:300px}
+  .emp-photo img{object-position:60% 40%}
+  .emp-in{max-width:none;padding:48px 18px 284px;gap:24px}
+  .emp-txt{gap:16px}
+  .emp-txt h2{font-size:22px;line-height:27px}
+  .emp-txt p{font-size:16px;line-height:24px}
+  .emp-txt br{display:none}
+  .emp-form,.emp-col{flex-direction:column;width:100%}
+  .emp-form{gap:12px}
+  .emp-cta{width:100%;justify-content:center}
+}
+@media (prefers-reduced-motion:reduce){.emp-field,.emp-field img{transition:none}}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://cdomingo-dogfy.github.io/dogfy-home-prototype/index.html"}, {"@type": "ListItem", "position": 2, "name": "Nuestras recetas", "item": "https://cdomingo-dogfy.github.io/dogfy-home-prototype/recetas.html"}, {"@type": "ListItem", "position": 3, "name": "Menú de buey", "item": "https://cdomingo-dogfy.github.io/dogfy-home-prototype/receta-buey.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "¿Qué formatos hay?", "acceptedAnswer": {"@type": "Answer", "text": "Cada menú llega en bolsitas individuales con la ración diaria de tu perro, ya calculada según su peso, edad y actividad. Puedes elegir una receta o combinar varias en el mismo pedido."}}, {"@type": "Question", "name": "¿Qué cantidad se le debe dar?", "acceptedAnswer": {"@type": "Answer", "text": "Depende de su peso, edad y nivel de actividad. Al crear su plan calculamos su ración diaria exacta y cada bolsita contiene justo esa cantidad, así que no tienes que pesar nada."}}, {"@type": "Question", "name": "¿Cómo llega el producto?", "acceptedAnswer": {"@type": "Answer", "text": "Te lo enviamos a casa congelado y dividido en bolsitas diarias, con envío gratis. Solo tienes que guardarlo en el congelador al recibirlo."}}]}</script>
