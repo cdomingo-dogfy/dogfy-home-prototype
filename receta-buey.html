@@ -1640,6 +1640,42 @@ body:has(.rp-hero) .rp-crumbs{background:var(--blue-deco);max-width:none;padding
   .emp-cta{width:100%;justify-content:center}
 }
 @media (prefers-reduced-motion:reduce){.emp-field,.emp-field img{transition:none}}
+/* Nuestras recetas · hero con los envases (Figma 700:58803) */
+.rp-hero3{padding:56px var(--gutter) 40px}
+.hp-packs{list-style:none;display:flex;justify-content:center;gap:0;max-width:1142px;margin:0 auto;padding:13px 0}
+.hp-packs li{flex:0 1 25%;padding:13px;display:flex;justify-content:center}
+.hp-packs img{width:100%;max-width:252px;height:auto;aspect-ratio:252/387;object-fit:cover;filter:drop-shadow(0 18px 24px rgba(26,38,89,.16));transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+.hp-pollo img{transform:skewX(1.5deg)}.hp-salmon img{transform:skewX(-1.6deg)}.hp-buey img{transform:skewX(-.6deg)}.hp-pavo img{transform:skewX(-2.6deg)}
+@media (hover:hover){.hp-packs li:hover img{transform:translateY(-8px) rotate(-1deg)}}
+.rp-hero3 .rp-hero-title{margin-top:20px;font-size:clamp(32px,4.4vw,52px);line-height:1.15;letter-spacing:-.01em}
+.rp-hero3 .sub{max-width:720px;margin:20px auto 0;font-size:20px;line-height:30px}
+.rp-cards-sec{position:relative;padding:72px var(--gutter) 0;background:#fff}
+.rp-cards-sec .rp-why-wave{top:-43px}
+.rp-cards-sec .rc-grid{position:relative;padding-top:0}
+.rp-cards-sec .rc-card{background:linear-gradient(var(--rc-tint),var(--rc-tint)),#fff;padding:8px}
+.rp-cards-sec .rc-card-pollo{--rc-tint:rgba(253,241,191,.5)}
+.rp-cards-sec .rc-card-salmon{--rc-tint:rgba(254,215,184,.5)}
+.rp-cards-sec .rc-card-buey{--rc-tint:rgba(248,204,195,.5)}
+.rp-cards-sec .rc-card-pavo{--rc-tint:rgba(214,198,227,.5)}
+.rp-cards-sec .rc-media{padding:0}
+.rp-cards-sec .rc-sold{display:none}
+.rp-cards-sec .rc-body{padding:16px 10px 10px}
+.rp-cards-sec .rc-top h3,.rp-cards-sec .rc-top h2{font-size:20px;line-height:24px}
+.rp-cards-sec .rc-desc{color:#767066}
+.rp-cards-sec .rc-foot{margin-top:auto;padding-top:6px;display:flex;justify-content:flex-end}
+.rp-cards-sec .rc-toggle{background:#f4f1ec}
+.rp-why{padding-top:80px}
+.s-faq.rp-faq{background:#fffae5}
+@media (max-width:900px){.hp-packs li{padding:8px}}
+@media (max-width:600px){
+  .rp-hero3{padding:32px var(--gutter) 28px}
+  .hp-packs{flex-wrap:nowrap;margin-inline:-6px}
+  .hp-packs li{padding:4px}
+  .rp-hero3 .sub{font-size:17px;line-height:26px;margin-top:12px}
+  .rp-cards-sec{padding-top:48px}
+}
+@media (prefers-reduced-motion:reduce){.hp-packs img{transition:none}}
+.rp-hero3 h1 .accent{display:inline}.rp-hero3 .rp-hero-title{max-width:1140px}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://cdomingo-dogfy.github.io/dogfy-home-prototype/index.html"}, {"@type": "ListItem", "position": 2, "name": "Nuestras recetas", "item": "https://cdomingo-dogfy.github.io/dogfy-home-prototype/recetas.html"}, {"@type": "ListItem", "position": 3, "name": "Menú de buey", "item": "https://cdomingo-dogfy.github.io/dogfy-home-prototype/receta-buey.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "¿Qué formatos hay?", "acceptedAnswer": {"@type": "Answer", "text": "Cada menú llega en bolsitas individuales con la ración diaria de tu perro, ya calculada según su peso, edad y actividad. Puedes elegir una receta o combinar varias en el mismo pedido."}}, {"@type": "Question", "name": "¿Qué cantidad se le debe dar?", "acceptedAnswer": {"@type": "Answer", "text": "Depende de su peso, edad y nivel de actividad. Al crear su plan calculamos su ración diaria exacta y cada bolsita contiene justo esa cantidad, así que no tienes que pesar nada."}}, {"@type": "Question", "name": "¿Cómo llega el producto?", "acceptedAnswer": {"@type": "Answer", "text": "Te lo enviamos a casa congelado y dividido en bolsitas diarias, con envío gratis. Solo tienes que guardarlo en el congelador al recibirlo."}}]}</script>
@@ -1711,7 +1747,7 @@ body:has(.rp-hero) .rp-crumbs{background:var(--blue-deco);max-width:none;padding
 <section class="rp-others">
   <div class="head"><h2 class="h2">También te puede <span class="accent">interesar</span></h2></div>
   <div class="rc-grid rc-grid-3">
-    <article class="rc-card" onclick="if(!event.target.closest('a'))location.href='receta-pollo.html'">
+    <article class="rc-card rc-card-pollo" onclick="if(!event.target.closest('a'))location.href='receta-pollo.html'">
       <div class="rc-media"><div class="rc-img"><img src="assets/receta-pollo.jpg" alt="Bol del menú de pollo de Dogfy Diet" loading="lazy" decoding="async"><img class="rc-pack" src="assets/rc-pack-chicken.jpg" alt="Envase del menú de pollo de Dogfy Diet" loading="lazy" decoding="async"></div></div>
       <div class="rc-body">
         <div class="rc-top"><h3>Pollo</h3><span class="rc-sold"><b>139.571</b> vendidos/mes</span></div>
@@ -1719,7 +1755,7 @@ body:has(.rp-hero) .rp-crumbs{background:var(--blue-deco);max-width:none;padding
         <div class="rc-foot"><a class="rc-toggle" href="receta-pollo.html" aria-label="Ver el menú de pollo"><span>Ver receta</span><svg class="rc-chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></a></div>
       </div>
     </article>
-    <article class="rc-card" onclick="if(!event.target.closest('a'))location.href='receta-salmon.html'">
+    <article class="rc-card rc-card-salmon" onclick="if(!event.target.closest('a'))location.href='receta-salmon.html'">
       <div class="rc-media"><div class="rc-img"><img src="assets/receta-salmon.jpg" alt="Bol del menú de salmón de Dogfy Diet" loading="lazy" decoding="async"><img class="rc-pack" src="assets/rc-pack-salmon.jpg" alt="Envase del menú de salmón de Dogfy Diet" loading="lazy" decoding="async"></div></div>
       <div class="rc-body">
         <div class="rc-top"><h3>Salmón</h3><span class="rc-sold"><b>139.312</b> vendidos/mes</span></div>
@@ -1727,7 +1763,7 @@ body:has(.rp-hero) .rp-crumbs{background:var(--blue-deco);max-width:none;padding
         <div class="rc-foot"><a class="rc-toggle" href="receta-salmon.html" aria-label="Ver el menú de salmón"><span>Ver receta</span><svg class="rc-chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></a></div>
       </div>
     </article>
-    <article class="rc-card" onclick="if(!event.target.closest('a'))location.href='receta-pavo.html'">
+    <article class="rc-card rc-card-pavo" onclick="if(!event.target.closest('a'))location.href='receta-pavo.html'">
       <div class="rc-media"><div class="rc-img"><img src="assets/receta-pavo.jpg" alt="Bol del menú de pavo de Dogfy Diet" loading="lazy" decoding="async"><img class="rc-pack" src="assets/rc-pack-turkey.jpg" alt="Envase del menú de pavo de Dogfy Diet" loading="lazy" decoding="async"></div></div>
       <div class="rc-body">
         <div class="rc-top"><h3>Pavo</h3><span class="rc-sold"><b>140.611</b> vendidos/mes</span></div>
