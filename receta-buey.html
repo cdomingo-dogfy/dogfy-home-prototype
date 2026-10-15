@@ -1465,6 +1465,100 @@ body:has(.rp-hero) .rp-crumbs{background:var(--blue-deco);max-width:none;padding
 .s-faq.rp-faq{background:var(--yellow,#ffee99)}
 .rp-faq .eyebrow,.rp-faq .faq .ans{color:#83807b}
 .rp-faq .faq details,.rp-faq .faq details[open]{border-bottom-color:rgba(42,39,36,.16)}
+/* ===== Cómo funciona · componentes de la librería Nuxt UI (Dogfy) ===== */
+:root{--ui-muted:#968d82;--ui-border-acc:#dcd2c5;--ui-elev:#faf8f6}
+/* PageHero · horizontal */
+.ph{max-width:var(--container);margin:0 auto;padding:72px var(--gutter) 112px;box-sizing:content-box;display:flex;align-items:center;gap:96px}
+.ph-top{flex:1;min-width:0;display:flex;flex-direction:column;align-items:flex-start;gap:16px}
+.ph-badge{display:inline-flex;align-items:center;padding:4px 8px;border-radius:999px;background:rgba(250,89,45,.1);border:1px solid rgba(250,89,45,.25);color:var(--primary);font-family:var(--font-display);font-weight:500;font-size:12px;line-height:16px}
+.ph-badge-light{background:rgba(255,255,255,.7);border-color:rgba(250,89,45,.25)}
+.ph-title{font-family:var(--font-display);font-weight:700;font-size:clamp(40px,5vw,72px);line-height:1;color:var(--text-hi);letter-spacing:-.01em}
+.ph-desc{font-size:20px;line-height:32px;color:var(--ui-muted)}
+.ph-links{display:flex;flex-wrap:wrap;gap:24px;margin-top:24px}
+.ph-btn{height:48px;padding:0 20px;font-size:16px;font-weight:600}
+.ph-btn-neutral{background:#fff;color:var(--text);border:1px solid var(--ui-border-acc)}
+.ph-btn-neutral:hover{background:var(--ui-elev)}
+.ph-slot{flex:1;min-width:0;border-radius:24px;overflow:hidden;aspect-ratio:613/420}
+.ph-slot img{width:100%;height:100%;object-fit:cover}
+/* PageGrid · PageFeature */
+.pg-sec{padding:0 var(--gutter) 112px}
+.pg{list-style:none;max-width:var(--container);margin:0 auto;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px 40px}
+.pg-col{grid-template-columns:1fr;gap:24px;margin-top:8px}
+.pf{display:flex;gap:10px;align-items:flex-start}
+.pf img{flex:0 0 20px;margin-top:2px}
+.pf h3{font-family:var(--font-display);font-weight:700;font-size:16px;line-height:24px;color:var(--text-hi)}
+.pf p{font-size:15px;line-height:20px;color:var(--ui-muted);margin-top:4px}
+/* PageSection · horizontal / reverse */
+.ps-sec{padding:112px var(--gutter)}
+.ps-sec-cream{background:var(--cream)}
+.ps-head{max-width:var(--container);margin:0 auto 24px;text-align:center}
+.ps-head .h2{margin-top:12px}
+.ps{max-width:var(--container);margin:0 auto;display:flex;align-items:center;gap:64px;padding:48px 0}
+.ps-rev{flex-direction:row-reverse}
+.ps-txt{flex:1;min-width:0;display:flex;flex-direction:column;align-items:flex-start;gap:12px}
+.ps-headline{font-family:var(--font-display);font-weight:700;font-size:16px;line-height:24px;color:var(--primary)}
+.ps-title{font-family:var(--font-display);font-weight:700;font-size:clamp(28px,3vw,40px);line-height:1.1;color:var(--text-hi)}
+.ps-title-lg{font-size:clamp(32px,3.4vw,48px);line-height:1}
+.ps-desc{font-size:16px;line-height:24px;color:var(--ui-muted);margin-top:12px;max-width:540px}
+.ps-btn-dark{margin-top:20px;background:var(--text-hi);color:#fff;height:44px;padding:0 16px;font-size:14px;font-weight:600}
+.ps-btn-dark:hover{background:#45403b}
+.ps-slot{position:relative;flex:1;min-width:0;border-radius:24px;overflow:hidden;aspect-ratio:800/588;background:var(--ui-elev)}
+.ps-slot img{width:100%;height:100%;object-fit:cover}
+.ps-num{position:absolute;left:20px;top:20px;width:44px;height:44px;border-radius:50%;background:#fff;display:grid;place-items:center;font-family:var(--font-display);font-weight:700;font-size:18px;color:var(--text-hi);box-shadow:0 4px 12px rgba(0,0,0,.08)}
+/* PageCard */
+.pc{border-radius:20px;padding:24px}
+.pc-soft{background:rgba(244,241,236,.5)}
+.pc-outline{background:#fff;border:1px solid var(--border)}
+/* Cita del equipo de nutrición */
+.cf-nutri{padding:0 var(--gutter) 112px}
+.cf-quote{max-width:820px;margin:0 auto;display:flex;flex-direction:column;align-items:center;text-align:center;gap:16px;padding:48px 40px;background:var(--sand)}
+.cf-avatar{width:96px;height:96px;border-radius:50%;object-fit:cover}
+.cf-quote blockquote{font-family:var(--font-display);font-weight:600;font-size:clamp(20px,2vw,26px);line-height:1.35;color:var(--text-hi)}
+.cf-quote figcaption{font-size:15px;color:var(--ui-muted)}
+.cf-quote figcaption b{color:var(--text-hi)}
+.cf-quote .btn{margin-top:8px}
+/* Oferta de bienvenida */
+.cf-offer{padding:112px var(--gutter) 0}
+.cf-offer-card{position:relative;max-width:var(--container);margin:0 auto;padding:64px 56px 56px;border-radius:32px;background:var(--blue-deco);text-align:center;display:flex;flex-direction:column;align-items:center;gap:16px;overflow:hidden}
+.cf-dogs{width:min(520px,90%);height:auto;margin-bottom:8px}
+.cf-offer-title{font-family:var(--font-display);font-weight:700;font-size:clamp(28px,3.4vw,44px);line-height:1.1;color:var(--text-hi);max-width:760px}
+.cf-form{display:flex;flex-direction:column;align-items:center;gap:12px;margin-top:8px;width:100%;max-width:620px}
+.cf-form label{font-size:17px;color:var(--text)}
+.cf-form-row{display:flex;gap:12px;width:100%}
+.cf-form input{flex:1;min-width:0;height:48px;padding:0 18px;border-radius:999px;border:1px solid var(--ui-border-acc);background:#fff;font:inherit;font-size:16px;color:var(--text-hi)}
+.cf-form input:focus{outline:2px solid #f2c94c;outline-offset:2px}
+/* Opiniones (PageGrid de PageCard) */
+.pr-sec{padding:112px var(--gutter)}
+.pr-head{max-width:var(--container);margin:0 auto 40px;display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.pr-head .h2{margin-top:8px}
+.pr-head .bk2-tp{margin-top:0}
+.pr-grid{list-style:none;max-width:var(--container);margin:0 auto;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.pr-grid .pc{display:flex;flex-direction:column;gap:12px}
+.pr-grid .pc:nth-child(4){grid-column:span 2}
+.pc-stars{color:var(--tp-green,#00b67a);letter-spacing:2px}
+.pr-grid p{font-size:16px;line-height:25px;color:var(--text)}
+.pr-grid b{font-family:var(--font-display);font-size:16px;color:var(--text-hi);margin-top:auto}
+.cf-join{max-width:var(--container);margin:56px auto 0;display:flex;align-items:center;justify-content:center;gap:20px;flex-wrap:wrap;text-align:center}
+.cf-join p{font-family:var(--font-display);font-weight:700;font-size:clamp(22px,2.4vw,30px);color:var(--text-hi)}
+.cf-join .btn{margin-top:0}
+@media (max-width:1100px){.ph{gap:56px}.ps{gap:40px}}
+@media (max-width:900px){
+  .ph{flex-direction:column;align-items:stretch;gap:40px;padding-top:48px;padding-bottom:72px}
+  .pg{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .ps,.ps-rev{flex-direction:column;align-items:stretch;gap:28px;padding:32px 0}
+  .ps-sec,.pr-sec{padding:72px var(--gutter)}
+  .pr-grid{grid-template-columns:1fr 1fr}.pr-grid .pc:nth-child(4){grid-column:auto}
+}
+@media (max-width:600px){
+  .pg{grid-template-columns:1fr;gap:24px}
+  .pg-sec{padding-bottom:72px}
+  .ph-links{gap:12px}.ph-btn{width:100%}
+  .cf-offer-card{padding:40px 22px;border-radius:24px}
+  .cf-form-row{flex-direction:column}
+  .pr-grid{grid-template-columns:1fr}
+  .cf-quote{padding:32px 22px}
+}
+.cf-dogs{width:min(340px,70%)}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://cdomingo-dogfy.github.io/dogfy-home-prototype/index.html"}, {"@type": "ListItem", "position": 2, "name": "Nuestras recetas", "item": "https://cdomingo-dogfy.github.io/dogfy-home-prototype/recetas.html"}, {"@type": "ListItem", "position": 3, "name": "Menú de buey", "item": "https://cdomingo-dogfy.github.io/dogfy-home-prototype/receta-buey.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "¿Qué formatos hay?", "acceptedAnswer": {"@type": "Answer", "text": "Cada menú llega en bolsitas individuales con la ración diaria de tu perro, ya calculada según su peso, edad y actividad. Puedes elegir una receta o combinar varias en el mismo pedido."}}, {"@type": "Question", "name": "¿Qué cantidad se le debe dar?", "acceptedAnswer": {"@type": "Answer", "text": "Depende de su peso, edad y nivel de actividad. Al crear su plan calculamos su ración diaria exacta y cada bolsita contiene justo esa cantidad, así que no tienes que pesar nada."}}, {"@type": "Question", "name": "¿Cómo llega el producto?", "acceptedAnswer": {"@type": "Answer", "text": "Te lo enviamos a casa congelado y dividido en bolsitas diarias, con envío gratis. Solo tienes que guardarlo en el congelador al recibirlo."}}]}</script>
@@ -1476,7 +1570,7 @@ body:has(.rp-hero) .rp-crumbs{background:var(--blue-deco);max-width:none;padding
   <div class="container">
     <a href="index.html" aria-label="Dogfy Diet"><img src="assets/logo-dogfy.svg" alt="Dogfy Diet" width="78" height="44"></a>
     <nav class="nav" aria-label="Principal">
-      <a href="index.html#como">Cómo funciona</a>
+      <a href="como-funciona.html">Cómo funciona</a>
       <a href="recetas.html" class="active" aria-current="page">Nuestras recetas</a>
       <a href="index.html#nutricionistas">Nutricionistas</a>
       <a href="index.html#opiniones">Opiniones</a>
@@ -1491,7 +1585,7 @@ body:has(.rp-hero) .rp-crumbs{background:var(--blue-deco);max-width:none;padding
   </div>
 </header>
 <nav class="mobile-menu" id="mobileMenu" aria-label="Menú móvil">
-  <a href="index.html#como">Cómo funciona</a>
+  <a href="como-funciona.html">Cómo funciona</a>
   <a href="recetas.html">Nuestras recetas</a>
   <a href="index.html#nutricionistas">Nutricionistas</a>
   <a href="index.html#opiniones">Opiniones</a>
@@ -1583,7 +1677,7 @@ body:has(.rp-hero) .rp-crumbs{background:var(--blue-deco);max-width:none;padding
   <img class="deco-v" src="assets/footer-vector.svg" alt="" width="1027" height="748">
   <div class="cols">
     <div class="col"><b>Ayuda</b><a href="#">Atención al cliente</a><a href="#faq">Preguntas frecuentes</a><p>Contacta con nosotros<br>Lunes a jueves, de 9:00 a 17:00.<br>Viernes, de 9:00 a 14:00.</p></div>
-    <div class="col"><b>Descubre Dogfy</b><a href="index.html#como">Cómo funciona</a><a href="recetas.html">Nuestras recetas</a><a href="index.html#nutricionistas">Equipo veterinario y nutricional</a><a href="index.html#opiniones">Opiniones de clientes</a></div>
+    <div class="col"><b>Descubre Dogfy</b><a href="como-funciona.html">Cómo funciona</a><a href="recetas.html">Nuestras recetas</a><a href="index.html#nutricionistas">Equipo veterinario y nutricional</a><a href="index.html#opiniones">Opiniones de clientes</a></div>
     <div class="col"><b>Comunidad</b><a href="#">Nuestra historia</a><a href="#">Blog</a><a href="#">Podcast</a><a href="#">Invita a tus amigos</a></div>
     <div class="col" style="gap:12px"><b>Síguenos</b>
       <div class="icons"><a href="#" aria-label="TikTok"><img src="assets/social-tiktok.svg" alt=""></a><a href="#" aria-label="Instagram"><img src="assets/social-instagram-color.svg" alt="" style="width:21px;height:21px;margin:1.5px"></a><a href="#" aria-label="Facebook"><img src="assets/social-facebook-color.svg" alt=""></a><a href="#" aria-label="X"><img src="assets/social-twitter-color.svg" alt=""></a></div>
