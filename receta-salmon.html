@@ -1445,6 +1445,26 @@ body:has(.rp-hero) .rp-crumbs{background:var(--blue-deco);max-width:none;padding
 @media (max-width:1100px){.nb3{gap:40px}.nb3-img{flex-basis:380px;width:380px;height:400px}}
 @media (max-width:900px){.nb3{flex-direction:column;align-items:stretch;gap:32px}.nb3-img{width:100%;height:auto;aspect-ratio:452/472;flex:none;max-height:520px}.rp-why{padding:64px var(--gutter)}}
 @media (max-width:600px){.rp-why{padding:48px var(--gutter) 40px}.nb3-img{aspect-ratio:4/3}}
+/* ===== Listado v6 (Figma 659:16079) ===== */
+.rp-hero2 .rp-hero-eyebrow{font-family:var(--font-display);font-weight:500;font-size:18px;line-height:28px;color:var(--text-toned);letter-spacing:0}
+.rp-hero2 .rp-hero-title{font-family:var(--font-display);font-weight:700;font-size:clamp(34px,4.4vw,52px);line-height:1.15;color:var(--text-hi);margin-top:4px;letter-spacing:-.01em}
+.rp-hero2 .sub{max-width:720px;margin:12px auto 0}
+.rc-desc{font-size:14px;line-height:20px;color:var(--text-toned)}
+/* Snacks: foto en tarjeta redondeada */
+.rp-snacks-photo{border-radius:23px;overflow:hidden;aspect-ratio:572/358}
+.rp-snacks-photo img{width:100%;height:100%;object-fit:cover;filter:none}
+.rp-snacks-photo::after{display:none}
+/* Empieza su prueba: tarjeta azul con el perro ilustrado asomando por arriba */
+.rp-start{padding-top:150px}
+.st-card2{position:relative;display:block;background:var(--blue);border-radius:42px;overflow:visible;min-height:370px;padding-left:335px}
+.st-card2 .st-body{padding:32px 48px 32px 51px;min-height:370px}
+.st-dog{position:absolute;left:20px;bottom:30px;width:300px;height:auto;pointer-events:none}
+@media (max-width:900px){.rp-start{padding-top:140px}.st-card2{padding-left:0;padding-top:200px;border-radius:32px}.st-dog{left:50%;transform:translateX(-50%);bottom:auto;top:-120px;width:180px}.st-card2 .st-body{min-height:0;padding:20px 24px 28px}}
+@media (max-width:600px){.st-card2{padding-top:170px}.st-dog{width:150px;top:-110px}}
+/* FAQ en amarillo */
+.s-faq.rp-faq{background:var(--yellow,#ffee99)}
+.rp-faq .eyebrow,.rp-faq .faq .ans{color:#83807b}
+.rp-faq .faq details,.rp-faq .faq details[open]{border-bottom-color:rgba(42,39,36,.16)}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://cdomingo-dogfy.github.io/dogfy-home-prototype/index.html"}, {"@type": "ListItem", "position": 2, "name": "Nuestras recetas", "item": "https://cdomingo-dogfy.github.io/dogfy-home-prototype/recetas.html"}, {"@type": "ListItem", "position": 3, "name": "Menú de salmón", "item": "https://cdomingo-dogfy.github.io/dogfy-home-prototype/receta-salmon.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "¿Qué formatos hay?", "acceptedAnswer": {"@type": "Answer", "text": "Cada menú llega en bolsitas individuales con la ración diaria de tu perro, ya calculada según su peso, edad y actividad. Puedes elegir una receta o combinar varias en el mismo pedido."}}, {"@type": "Question", "name": "¿Qué cantidad se le debe dar?", "acceptedAnswer": {"@type": "Answer", "text": "Depende de su peso, edad y nivel de actividad. Al crear su plan calculamos su ración diaria exacta y cada bolsita contiene justo esa cantidad, así que no tienes que pesar nada."}}, {"@type": "Question", "name": "¿Cómo llega el producto?", "acceptedAnswer": {"@type": "Answer", "text": "Te lo enviamos a casa congelado y dividido en bolsitas diarias, con envío gratis. Solo tienes que guardarlo en el congelador al recibirlo."}}]}</script>

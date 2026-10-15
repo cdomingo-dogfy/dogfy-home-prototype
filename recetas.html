@@ -1445,6 +1445,26 @@ body:has(.rp-hero) .rp-crumbs{background:var(--blue-deco);max-width:none;padding
 @media (max-width:1100px){.nb3{gap:40px}.nb3-img{flex-basis:380px;width:380px;height:400px}}
 @media (max-width:900px){.nb3{flex-direction:column;align-items:stretch;gap:32px}.nb3-img{width:100%;height:auto;aspect-ratio:452/472;flex:none;max-height:520px}.rp-why{padding:64px var(--gutter)}}
 @media (max-width:600px){.rp-why{padding:48px var(--gutter) 40px}.nb3-img{aspect-ratio:4/3}}
+/* ===== Listado v6 (Figma 659:16079) ===== */
+.rp-hero2 .rp-hero-eyebrow{font-family:var(--font-display);font-weight:500;font-size:18px;line-height:28px;color:var(--text-toned);letter-spacing:0}
+.rp-hero2 .rp-hero-title{font-family:var(--font-display);font-weight:700;font-size:clamp(34px,4.4vw,52px);line-height:1.15;color:var(--text-hi);margin-top:4px;letter-spacing:-.01em}
+.rp-hero2 .sub{max-width:720px;margin:12px auto 0}
+.rc-desc{font-size:14px;line-height:20px;color:var(--text-toned)}
+/* Snacks: foto en tarjeta redondeada */
+.rp-snacks-photo{border-radius:23px;overflow:hidden;aspect-ratio:572/358}
+.rp-snacks-photo img{width:100%;height:100%;object-fit:cover;filter:none}
+.rp-snacks-photo::after{display:none}
+/* Empieza su prueba: tarjeta azul con el perro ilustrado asomando por arriba */
+.rp-start{padding-top:150px}
+.st-card2{position:relative;display:block;background:var(--blue);border-radius:42px;overflow:visible;min-height:370px;padding-left:335px}
+.st-card2 .st-body{padding:32px 48px 32px 51px;min-height:370px}
+.st-dog{position:absolute;left:20px;bottom:30px;width:300px;height:auto;pointer-events:none}
+@media (max-width:900px){.rp-start{padding-top:140px}.st-card2{padding-left:0;padding-top:200px;border-radius:32px}.st-dog{left:50%;transform:translateX(-50%);bottom:auto;top:-120px;width:180px}.st-card2 .st-body{min-height:0;padding:20px 24px 28px}}
+@media (max-width:600px){.st-card2{padding-top:170px}.st-dog{width:150px;top:-110px}}
+/* FAQ en amarillo */
+.s-faq.rp-faq{background:var(--yellow,#ffee99)}
+.rp-faq .eyebrow,.rp-faq .faq .ans{color:#83807b}
+.rp-faq .faq details,.rp-faq .faq details[open]{border-bottom-color:rgba(42,39,36,.16)}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://cdomingo-dogfy.github.io/dogfy-home-prototype/index.html"}, {"@type": "ListItem", "position": 2, "name": "Nuestras recetas", "item": "https://cdomingo-dogfy.github.io/dogfy-home-prototype/recetas.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "¿Qué formatos hay?", "acceptedAnswer": {"@type": "Answer", "text": "Cada menú llega en bolsitas individuales con la ración diaria de tu perro, ya calculada según su peso, edad y actividad. Puedes elegir una receta o combinar varias en el mismo pedido."}}, {"@type": "Question", "name": "¿Qué cantidad se le debe dar?", "acceptedAnswer": {"@type": "Answer", "text": "Depende de su peso, edad y nivel de actividad. Al crear su plan calculamos su ración diaria exacta y cada bolsita contiene justo esa cantidad, así que no tienes que pesar nada."}}, {"@type": "Question", "name": "¿Cómo llega el producto?", "acceptedAnswer": {"@type": "Answer", "text": "Te lo enviamos a casa congelado y dividido en bolsitas diarias, con envío gratis. Solo tienes que guardarlo en el congelador al recibirlo."}}, {"@type": "Question", "name": "¿Cómo se prepara, debo cocinar el alimento al perro?", "acceptedAnswer": {"@type": "Answer", "text": "No hace falta cocinar nada. Nuestras recetas ya vienen cocinadas a baja temperatura: descongela la bolsita en la nevera, ábrela y sirve."}}, {"@type": "Question", "name": "¿Cada cuánto llegan los menús?", "acceptedAnswer": {"@type": "Answer", "text": "Tu primera caja trae 14 días de comida. Después la suscripción continúa y puedes cambiar recetas, aplazar envíos o cancelar cuando quieras, sin permanencia."}}]}</script>
@@ -1482,14 +1502,15 @@ body:has(.rp-hero) .rp-crumbs{background:var(--blue-deco);max-width:none;padding
 
 <nav class="rp-crumbs" aria-label="Ruta de navegación"><ol><li><a href="index.html">Inicio</a></li><li><span aria-current="page">Nuestras recetas</span></li></ol></nav>
 <section class="rp-hero rp-hero2">
-  <h1>Nuestras recetas</h1>
-  <p class="sub">Descubre nuestras recetas cocinadas para perros</p>
+  <h1 class="rp-hero-eyebrow">Nuestras recetas</h1>
+  <p class="rp-hero-title">Huele rico... ¡Porque estás en nuestras cocinas!</p>
+  <p class="sub">Nuestras recetas solo llevan ingredientes naturales seleccionados para ofrecerle una alimentación completa y balanceada a tu perro.</p>
   <div class="rc-grid">
     <article class="rc-card" onclick="if(!event.target.closest('a'))location.href='receta-pollo.html'">
       <div class="rc-media"><div class="rc-img"><img src="assets/receta-pollo.jpg" alt="Bol del menú de pollo de Dogfy Diet" loading="lazy" decoding="async"><img class="rc-pack" src="assets/rc-pack-chicken.jpg" alt="Envase del menú de pollo de Dogfy Diet" loading="lazy" decoding="async"></div></div>
       <div class="rc-body">
         <div class="rc-top"><h3>Pollo</h3><span class="rc-sold"><b>139.571</b> vendidos/mes</span></div>
-        <ul class="rc-list"><li><img src="assets/rc-heart.svg" alt="">Mantiene los músculos fuertes.</li><li><img src="assets/rc-sparkles.svg" alt="">Favorece un pelaje sano y brillante.</li><li><img src="assets/rc-ham.svg" alt="">Contiene una sola fuente de proteína.</li></ul>
+        <p class="rc-desc">El que les gusta a todos los peludines. ¿Quieres triunfar? El menú de pollo te garantiza el éxito. El sabor clásico que nunca falla.</p>
         <div class="rc-foot"><a class="rc-toggle" href="receta-pollo.html" aria-label="Ver el menú de pollo"><span>Ver receta</span><svg class="rc-chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></a></div>
       </div>
     </article>
@@ -1497,7 +1518,7 @@ body:has(.rp-hero) .rp-crumbs{background:var(--blue-deco);max-width:none;padding
       <div class="rc-media"><div class="rc-img"><img src="assets/receta-salmon.jpg" alt="Bol del menú de salmón de Dogfy Diet" loading="lazy" decoding="async"><img class="rc-pack" src="assets/rc-pack-salmon.jpg" alt="Envase del menú de salmón de Dogfy Diet" loading="lazy" decoding="async"></div></div>
       <div class="rc-body">
         <div class="rc-top"><h3>Salmón</h3><span class="rc-sold"><b>139.312</b> vendidos/mes</span></div>
-        <ul class="rc-list"><li><img src="assets/rc-heart.svg" alt="">Ideal para hocicos refinados.</li><li><img src="assets/rc-sparkles.svg" alt="">Favorece el desarrollo del sistema nervioso.</li><li><img src="assets/rc-ham.svg" alt="">Ayuda a fortalecer la salud ósea.</li></ul>
+        <p class="rc-desc">Deliciosa receta repleta de ácidos grasos Omega-3. Pregúntale a tu perro si le gusta o le encanta.</p>
         <div class="rc-foot"><a class="rc-toggle" href="receta-salmon.html" aria-label="Ver el menú de salmón"><span>Ver receta</span><svg class="rc-chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></a></div>
       </div>
     </article>
@@ -1505,7 +1526,7 @@ body:has(.rp-hero) .rp-crumbs{background:var(--blue-deco);max-width:none;padding
       <div class="rc-media"><div class="rc-img"><img src="assets/receta-buey.jpg" alt="Bol del menú de buey de Dogfy Diet" loading="lazy" decoding="async"><img class="rc-pack" src="assets/rc-pack-beef.jpg" alt="Envase del menú de buey de Dogfy Diet" loading="lazy" decoding="async"></div></div>
       <div class="rc-body">
         <div class="rc-top"><h3>Buey</h3><span class="rc-sold"><b>139.972</b> vendidos/mes</span></div>
-        <ul class="rc-list"><li><img src="assets/rc-heart.svg" alt="">Bajo en calorías.</li><li><img src="assets/rc-sparkles.svg" alt="">Ayuda a mantener un peso saludable.</li><li><img src="assets/rc-ham.svg" alt="">Contiene una sola fuente de proteína.</li></ul>
+        <p class="rc-desc">¿Necesitas empezar a controlar el peso de tu perro? No se ladre más. Bajo en calorías, pero alto en nutrientes y lleno de sabor.</p>
         <div class="rc-foot"><a class="rc-toggle" href="receta-buey.html" aria-label="Ver el menú de buey"><span>Ver receta</span><svg class="rc-chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></a></div>
       </div>
     </article>
@@ -1513,7 +1534,7 @@ body:has(.rp-hero) .rp-crumbs{background:var(--blue-deco);max-width:none;padding
       <div class="rc-media"><div class="rc-img"><img src="assets/receta-pavo.jpg" alt="Bol del menú de pavo de Dogfy Diet" loading="lazy" decoding="async"><img class="rc-pack" src="assets/rc-pack-turkey.jpg" alt="Envase del menú de pavo de Dogfy Diet" loading="lazy" decoding="async"></div></div>
       <div class="rc-body">
         <div class="rc-top"><h3>Pavo</h3><span class="rc-sold"><b>140.611</b> vendidos/mes</span></div>
-        <ul class="rc-list"><li><img src="assets/rc-heart.svg" alt="">Ideal para estómagos sensibles.</li><li><img src="assets/rc-sparkles.svg" alt="">Refuerza la salud intestinal.</li><li><img src="assets/rc-ham.svg" alt="">Contiene una sola fuente de proteína.</li></ul>
+        <p class="rc-desc">Al estómago sensible de tu peludo le caerá genial. Deliciosa carne de máxima calidad, suave y ligera para la barriguita de tu perro.</p>
         <div class="rc-foot"><a class="rc-toggle" href="receta-pavo.html" aria-label="Ver el menú de pavo"><span>Ver receta</span><svg class="rc-chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></a></div>
       </div>
     </article>
@@ -1568,13 +1589,13 @@ body:has(.rp-hero) .rp-crumbs{background:var(--blue-deco);max-width:none;padding
       <ul class="rp-checks"><li>Alta digestibilidad y palatabilidad</li><li>Sin cereales</li><li>Sin conservantes ni aromas artificiales</li></ul>
       <a class="btn btn-primary" href="#">Ver snacks y extras</a>
     </div>
-    <div class="rp-snacks-img"><img src="assets/snacks-bites.webp" alt="Bolsas de Beef Bites, Salmon Bites y Lamb Bites de Dogfy Diet" width="1565" height="980" loading="lazy" decoding="async"></div>
+    <div class="rp-snacks-img rp-snacks-photo"><img src="assets/snacks-bites-foto.jpg" alt="Bolsas de Beef Bites, Salmon Bites y Lamb Bites de Dogfy Diet con snacks sobre la mesa" width="1200" height="805" loading="lazy" decoding="async"></div>
   </div>
 </section>
 
 <section class="rp-start" aria-label="Empieza su prueba">
-  <div class="st-card">
-    <div class="st-photo"><img src="assets/start-perro.jpg" alt="Un perro tumbado en el suelo enseñando los dientes mientras juega" loading="lazy" decoding="async"></div>
+  <div class="st-card st-card2">
+    <img class="st-dog" src="assets/perro-ilustrado.png" alt="" aria-hidden="true" width="625" height="1100" loading="lazy" decoding="async">
     <form class="st-body" onsubmit="event.preventDefault();location.href='index.html#precio'">
       <p class="st-mad">
         <span class="st-f"><input class="st-in" id="stName" aria-label="Nombre de tu perro" placeholder="Zeus" autocomplete="off"></span>
