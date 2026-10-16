@@ -1238,6 +1238,14 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
 @media (max-width:600px){.pq-fediaf{width:84px;right:4%;bottom:clamp(140px,48vw,220px)}}
 @media (max-width:1200px){.sms2-row{flex-wrap:wrap}.sms2-input{flex:1 1 100%;min-width:0}.sms2-row .btn{flex:1 1 auto}}
 @media (min-width:601px) and (max-width:1200px){.sms2-row .btn{flex:0 0 auto}}
+/* Menos aire entre sellos y recetas */
+.s-sellos{padding-bottom:24px}
+.yellow-wrap>.s-recetas{padding-top:56px}
+@media (max-width:600px){.yellow-wrap>.s-recetas{padding-top:40px}}
+/* Sticker FEDIAF más grande, a la derecha del bol a media altura (como en la home de referencia) */
+.pq-fediaf{width:clamp(120px,10.5vw,150px);top:auto;bottom:22%;left:calc(50% + clamp(120px,13vw,210px))}
+@media (max-width:1100px){.pq-fediaf{left:auto;right:6%;bottom:clamp(160px,30vw,300px);width:120px}}
+@media (max-width:600px){.pq-fediaf{width:92px;right:3%}}
 </style>
 </head>
 <body>
