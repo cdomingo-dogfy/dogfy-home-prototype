@@ -989,12 +989,6 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
   .js-ce .ce2-step.in .ce2-n{transform:none}
   .js-ce .ce2-step.in .ce2-txt h3,.js-ce .ce2-step.in .ce2-txt p{opacity:1;transform:none}
 }
-/* Menús en blanco; el tramado amarillo sube en parallax y desemboca en «Tu caja de prueba» */
-.s-recetas{background:#fff}
-.s-precio{position:relative;overflow:clip;padding-bottom:calc(96px + 120px)}
-.s-precio > :not(.pr-trama){position:relative;z-index:1}
-.pr-trama{position:absolute;left:50%;bottom:-1px;width:max(1448px,100%);max-width:none;height:auto;transform:translate(-50%,var(--try,0px));pointer-events:none;z-index:0}
-@media (max-width:767px){.pr-trama{width:320vw}.s-precio{padding-bottom:calc(72px + 64px)}}
 /* FAQ en amarillo suave (Figma 636:329), mismo contenido */
 .s-faq{background:#fffae5;color:var(--text-hi);padding:80px var(--gutter) 112px}
 .s-faq .head{margin-bottom:24px;max-width:760px}
@@ -1024,6 +1018,13 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
 .footer a:focus-visible{outline:3px solid #f2c94c;outline-offset:2px;border-radius:999px}
 @media (max-width:600px){.footer .col b{font-size:11px;line-height:16px}.footer .col > a{font-size:14px;line-height:20px;min-height:32px;padding:6px 8px;margin-left:-8px;gap:4px}.footer .col > a::after{flex-basis:13px;width:13px;height:13px;background-size:13px}.footer .col p{font-size:12px}}
 @media (prefers-reduced-motion:reduce){.footer .col > a::after{transition:none}}
+/* Trama amarilla (Figma 729:62318): nace a la derecha de los menús, baja por precios y desemboca en «Tu caja de prueba» */
+.yellow-wrap{clip-path:none;overflow-x:clip}
+.yellow-wrap>.s-recetas{background:transparent;z-index:auto}
+.ym-trama{position:absolute;left:0;top:var(--ymt,0px);width:100%;height:var(--ymh,1653px);max-width:none;pointer-events:none;z-index:0;transform:translateY(var(--ymy,0px));will-change:transform}
+/* Conoce más: mismo espacio entre todas las tarjetas (también entre las dos columnas apiladas) */
+@media (max-width:1100px){.pq-body{column-gap:16px}}
+@media (max-width:600px){.pq-body{row-gap:0}.pq-body>.pq-col:last-child{margin-top:12px}.pq-bol{margin-top:24px}}
 </style>
 </head>
 <body>
@@ -1119,6 +1120,11 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
 </section>
 
 <!-- 05 · Recetas -->
+
+
+<!-- 06 · Precio · 07 · 08 (bloque crema) -->
+<div class="yellow-wrap">
+<img class="ym-trama" src="assets/trama-menus.svg" alt="" aria-hidden="true">
 <section class="s-recetas" id="recetas">
   <div class="container head center">
     <p class="eyebrow">¡Tu perro ya está moviendo la cola!</p>
@@ -1138,12 +1144,8 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
   </div>
   <div class="cta"><a class="btn btn-primary" href="recetas.html">Explorar recetas</a></div>
 </section>
-
-<!-- 06 · Precio · 07 · 08 (bloque crema) -->
-<div class="yellow-wrap">
 <img class="deco-precio" data-parallax="0.12" src="assets/precio-vector.svg" alt="" width="825" height="1291">
 <section class="s-precio" id="precio">
-  <img class="pr-trama" src="assets/tramado-c14.svg" alt="" aria-hidden="true" width="1448" height="256">
   <div class="head center">
     <h2 class="h2">Menús <span class="accent">hechos a su medida</span><br>y el precio hecho a la tuya</h2>
   </div>
@@ -1554,9 +1556,10 @@ document.getElementById('smsForm').addEventListener('submit',e=>{e.preventDefaul
 <script>
 // Cómo empezar: cada paso entra al llegar al viewport. Tramado de precios: parallax suave hasta quedar pegado a la caja de prueba.
 (()=>{const steps=document.querySelectorAll('.ce2-step');if(steps.length&&'IntersectionObserver' in window){document.documentElement.classList.add('js-ce');const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.35,rootMargin:'0px 0px -8% 0px'});steps.forEach(s=>io.observe(s));}
-const sec=document.querySelector('.s-precio'),tr=sec&&sec.querySelector('.pr-trama');if(!tr||matchMedia('(prefers-reduced-motion:reduce)').matches)return;
-let t=false;const upd=()=>{t=false;const r=sec.getBoundingClientRect(),d=Math.max(0,Math.min(1,(r.bottom-innerHeight*.6)/(innerHeight*1.2)));tr.style.setProperty('--try',(d*140).toFixed(1)+'px');};
-addEventListener('scroll',()=>{if(!t){t=true;requestAnimationFrame(upd);}},{passive:true});addEventListener('resize',upd);upd();})();
+const tr=document.querySelector('.ym-trama'),wrap=tr&&tr.parentElement,caja=wrap&&wrap.querySelector('.s-caja'),rec=wrap&&wrap.querySelector('.s-recetas');if(!tr||!caja)return;
+const place=()=>{const w=wrap.clientWidth,end=caja.offsetTop,start=rec?rec.offsetTop+(w<900?140:0):0;const H=w>=900?Math.min(w*1653/1440,end-start):end-start;tr.style.setProperty('--ymh',H+'px');tr.style.setProperty('--ymt',(end-H)+'px');};
+const red=matchMedia('(prefers-reduced-motion:reduce)').matches;let t=false;const upd=()=>{t=false;if(red)return;const r=caja.getBoundingClientRect(),d=Math.max(0,Math.min(1,(r.top-innerHeight*.5)/(innerHeight*1.5)));tr.style.setProperty('--ymy',(d*120).toFixed(1)+'px');};
+addEventListener('scroll',()=>{if(!t){t=true;requestAnimationFrame(upd);}},{passive:true});addEventListener('resize',()=>{place();upd();});addEventListener('load',()=>{place();upd();});if(window.ResizeObserver)new ResizeObserver(()=>{place();upd();}).observe(wrap);place();upd();})();
 </script>
 <script>
 // Blog: en tablet/móvil las tarjetas van en fila deslizable con puntos de carrusel sincronizados
