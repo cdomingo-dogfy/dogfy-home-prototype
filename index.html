@@ -1098,6 +1098,22 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
 .c14-list li>img{background-image:url("assets/blob-bg-1-blanco.svg")}
 .c14-list li:nth-child(3n+2)>img{background-image:url("assets/blob-bg-2-blanco.svg")}
 .c14-list li:nth-child(3n)>img{background-image:url("assets/blob-bg-3-blanco.svg")}
+/* Estadísticas más compactas en todos los anchos; en desktop siempre en una fila */
+.stats-m{padding:32px var(--gutter);gap:16px clamp(24px,3vw,40px);flex-wrap:nowrap}
+.stats-m .trust-eyebrow{font-size:clamp(26px,2.4vw,34px);line-height:1.2;white-space:nowrap}
+.stats-row{gap:12px;flex-wrap:nowrap}
+.stats-row .stat{width:clamp(130px,12vw,176px);min-height:0;padding:8px 0}
+.stats-row .stat b{font-size:clamp(26px,2.4vw,34px);line-height:1.15}
+.stats-row .stat span{font-size:13px;line-height:17px}
+@media (max-width:1100px){.stats-m{flex-wrap:wrap;padding:36px var(--gutter);gap:16px}.stats-m .trust-eyebrow{font-size:clamp(22px,3.4vw,28px);white-space:normal}.stats-row{max-width:560px;gap:10px}.stats-row .stat{width:auto;min-height:84px;padding:12px 8px}.stats-row .stat b{font-size:clamp(22px,3vw,28px)}}
+@media (max-width:600px){.stats-m{padding:28px var(--gutter);gap:14px}.stats-m .trust-eyebrow{font-size:22px}.stats-row{gap:8px}.stats-row .stat{min-height:76px;padding:10px 6px}.stats-row .stat b{font-size:21px}.stats-row .stat span{font-size:11.5px;line-height:15px}}
+/* Pasos no activos: número en gris claro */
+.ce3.is-anim .ce3-card:not(.is-active) .ce3-n{color:#b3aca3}
+/* Sellos: cada logo en una caja de la misma altura, centrado; el de la Generalitat (ancho y bajo) se compensa ópticamente */
+.sl-list li{justify-content:flex-start}
+.sl-list img{margin:0;align-self:center}
+.sl-list li{display:grid;grid-template-rows:64px auto;justify-items:center;align-items:center;row-gap:12px}
+@media (max-width:600px){.sl-list li{grid-template-rows:48px auto;row-gap:8px}.sl-list img[alt^="Gene"]{height:32px!important}}
 </style>
 </head>
 <body>
@@ -1207,7 +1223,7 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
     <ul class="sl-list">
       <li><img src="assets/sello-fediaf.png" alt="FEDIAF" width="348" height="374" loading="lazy" decoding="async" style="height:56px"><span>Recetas según los estándares <b>FEDIAF</b></span></li>
       <li><img src="assets/sello-unibo.png" alt="Università di Bologna" width="400" height="400" loading="lazy" decoding="async" style="height:60px"><span>Digestibilidad testada por la <b>Universidad de Bolonia</b></span></li>
-      <li><img src="assets/sello-generalitat.png" alt="Generalitat de Catalunya" width="640" height="186" loading="lazy" decoding="async" style="height:34px"><span>Calidad certificada por la <b>Generalitat de Catalunya</b></span></li>
+      <li><img src="assets/sello-generalitat.png" alt="Generalitat de Catalunya" width="640" height="186" loading="lazy" decoding="async" style="height:46px"><span>Calidad certificada por la <b>Generalitat de Catalunya</b></span></li>
     </ul>
   </div>
 </section>
