@@ -2204,6 +2204,34 @@ body:has(.rp-hero) .rp-crumbs{background:var(--blue-deco);max-width:none;padding
 @media (max-width:767px){.cf2-support{padding-inline:0}.cf2-support-card:has(.cf6-vida){height:300px;border-radius:24px}}
 @media (max-width:479px){.cf2-support-card:has(.cf6-vida){height:240px}}
 .cf3-rev-list{align-items:stretch}.cf3-rev{flex:1 1 0;max-width:380px}.cf3-rev .cf3-when{margin-top:auto}@media (max-width:900px){.cf3-rev{max-width:none}}
+/* «Empecemos por tu perro»: el formulario va dentro de una tarjeta translúcida con titular y ventajas */
+.emp2-box{position:absolute;z-index:2;display:flex;flex-direction:column;align-items:center;gap:14px;padding:28px 32px 24px;border-radius:24px;background:rgba(42,39,36,.38);border:1px solid rgba(255,255,255,.22);-webkit-backdrop-filter:blur(14px) saturate(1.1);backdrop-filter:blur(14px) saturate(1.1);box-shadow:0 24px 48px -20px rgba(0,0,0,.45);color:#fff;text-align:center}
+.emp2-kicker{display:inline-flex;padding:4px 12px;border-radius:7px;background:#ffea7c;color:#2a2724;font-family:var(--font-display);font-weight:600;font-size:14px;line-height:20px}
+.emp2-h{font-family:var(--font-display);font-weight:700;font-size:clamp(24px,2.2vw,32px);line-height:1.1;color:#fff}
+.emp2-box .emp2-form{position:static;transform:none;margin-top:4px;left:auto;right:auto;top:auto;bottom:auto;width:auto}
+.emp2-box .emp-field{height:52px;border-radius:14px}
+.emp2-box .emp-cta{height:52px;padding:0 28px;font-size:17px;box-shadow:0 8px 20px -8px rgba(250,89,45,.6)}
+.emp2-perks{list-style:none;display:flex;flex-wrap:wrap;justify-content:center;gap:6px 18px;font-size:14px;line-height:20px;color:rgba(255,255,255,.92)}
+.emp2-perks li{display:inline-flex;align-items:center;gap:6px}
+.emp2-perks li::before{content:"";width:16px;height:16px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 22 22'%3E%3Ccircle cx='11' cy='11' r='10' fill='none' stroke='%23fff' stroke-width='1.8'/%3E%3Cpath d='M6.8 11.3l2.7 2.7 5.7-5.8' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/16px no-repeat}
+@media (min-width:901px){
+  .emp2-box{left:50%;top:50%;transform:translate(-50%,-50%)}
+  .emp2-stage.is-anim .emp2-form{opacity:1;transform:none;pointer-events:auto}
+  .emp2-stage.is-anim .emp2-box{opacity:var(--fo,0);transform:translate(-50%,calc(-50% + var(--fy,24px)));pointer-events:none}
+  .emp2-stage.is-anim.is-done .emp2-box{pointer-events:auto}
+}
+@media (max-width:900px){
+  .emp2-box{left:16px;right:16px;bottom:16px;padding:20px 18px 18px;gap:10px}
+  .emp2-box .emp2-form{width:100%}
+  .emp2-h{font-size:22px}
+  .emp2-panel{height:520px}
+}
+@media (max-width:600px){.emp2-panel{height:500px}.emp2-perks{gap:4px 12px;font-size:13px}}
+/* «Más sabor en su cuenco»: iconos sobre las manchas de marca (como en Cómo funciona), alternando las 3 formas */
+.nb-list li>img{flex:0 0 44px;width:44px;height:48px;padding:14px 12px;margin:-10px 0 0 -6px;box-sizing:border-box;background:url("assets/blob-bg-1.svg") center/contain no-repeat}
+.nb-list li:nth-child(3n+2)>img{background-image:url("assets/blob-bg-2.svg")}
+.nb-list li:nth-child(3n)>img{background-image:url("assets/blob-bg-3.svg")}
+.emp2-box{background:none;border:0;box-shadow:none;-webkit-backdrop-filter:none;backdrop-filter:none;padding:0}.emp2-h{font-size:clamp(28px,2.8vw,40px);text-shadow:0 2px 14px rgba(0,0,0,.35)}.emp2-perks{text-shadow:0 1px 8px rgba(0,0,0,.45)}@media (max-width:900px){.emp2-box{padding:0}}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://cdomingo-dogfy.github.io/dogfy-home-prototype/index.html"}, {"@type": "ListItem", "position": 2, "name": "Nuestras recetas", "item": "https://cdomingo-dogfy.github.io/dogfy-home-prototype/recetas.html"}, {"@type": "ListItem", "position": 3, "name": "Menú de buey", "item": "https://cdomingo-dogfy.github.io/dogfy-home-prototype/receta-buey.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "¿Qué formatos hay?", "acceptedAnswer": {"@type": "Answer", "text": "Cada menú llega en bolsitas individuales con la ración diaria de tu perro, ya calculada según su peso, edad y actividad. Puedes elegir una receta o combinar varias en el mismo pedido."}}, {"@type": "Question", "name": "¿Qué cantidad se le debe dar?", "acceptedAnswer": {"@type": "Answer", "text": "Depende de su peso, edad y nivel de actividad. Al crear su plan calculamos su ración diaria exacta y cada bolsita contiene justo esa cantidad, así que no tienes que pesar nada."}}, {"@type": "Question", "name": "¿Cómo llega el producto?", "acceptedAnswer": {"@type": "Answer", "text": "Te lo enviamos a casa congelado y dividido en bolsitas diarias, con envío gratis. Solo tienes que guardarlo en el congelador al recibirlo."}}]}</script>
@@ -2418,7 +2446,7 @@ const set=(k,v)=>stage.style.setProperty(k,v);
 const upd=()=>{if(!mq.matches){stage.removeAttribute('style');stage.classList.remove('is-anim','is-done');return}stage.classList.add('is-anim');
   const r=sec.getBoundingClientRect(),total=Math.max(1,sec.offsetHeight-stick.offsetHeight),p=cl(-r.top/total,0,1),g=ease(cl((p-.12)/.62,0,1));
   const vw=stage.clientWidth,H=stage.clientHeight,rr=ref?ref.getBoundingClientRect():null,cw=rr?rr.width:Math.min(1216,vw-96),cx=rr?rr.left:(vw-cw)/2;
-  const w0=Math.min(cw*.46,H*.88),h0=w0,w1=vw,h1=H;
+  const w0=Math.min(cw*.46,H*.88),h0=w0,w1=vw,h1=h0;
   set('--x',(cx*(1-g))+'px');set('--w',(w0+(w1-w0)*g)+'px');set('--h',(h0+(h1-h0)*g)+'px');set('--r',(24*(1-g))+'px');
   set('--cx',cx+'px');set('--cw',cw+'px');set('--to',1-cl(g/.4,0,1));set('--tx',(64*g)+'px');
   set('--sh',cl((g-.45)/.45,0,1));const fo=cl((g-.78)/.2,0,1);set('--fo',fo);set('--fy',(24*(1-fo))+'px');
