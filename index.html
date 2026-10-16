@@ -1529,6 +1529,17 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
 .ce3 .ce3-top h3{transition:none!important;color:var(--text-hi)!important}
 .ce3-card,.ce3-card:hover{transform:translateY(var(--y,0px))!important;box-shadow:0 -8px 20px -12px rgba(42,39,36,.28),0 8px 20px -14px rgba(42,39,36,.22)!important}
 .ce3:not(.is-anim) .ce3-card,.ce3:not(.is-anim) .ce3-card:hover{transform:none!important}
+
+/* Recetas: flechas en tablet (carrusel). En móvil se desliza con el dedo; en escritorio se ven las 4 */
+.rc-arrow{display:none}
+@media (min-width:768px) and (max-width:1074px){
+  .rc-arrow{display:grid;place-items:center;position:absolute;top:var(--rc-y,50%);z-index:3;width:52px;height:52px;margin-top:-26px;border-radius:50%;border:1px solid rgba(41,38,36,.12);background:#fff;color:#5b78d6;cursor:pointer;box-shadow:0 8px 20px -8px rgba(41,38,36,.3);transition:transform .2s ease}
+  .rc-arrow--prev{left:16px}.rc-arrow--next{right:16px}
+  .rc-arrow:active{transform:scale(.94)}
+  .rc-arrow:focus-visible{outline:3px solid #f2c94c;outline-offset:3px}
+}
+/* Cómo empezar: 4px de aire bajo la pila para que se vea entero el borde de la última tarjeta */
+.ce3.is-anim .ce3-cards{box-sizing:content-box!important;padding-bottom:4px!important}
 </style>
 </head>
 <body>
@@ -1779,7 +1790,7 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
     <p class="sub">Si te queda alguna duda, nuestro equipo te responde de lunes a viernes.</p>
   </div>
   <div class="faq">
-    <details open><summary>¿Qué es Dogfy Diet? <img src="assets/chevron-faq-dark.svg" alt=""></summary><div class="ans">Comida natural cocinada para perros, completa y equilibrada, formulada por veterinarios nutricionistas y enviada a casa congelada en raciones diarias.</div></details>
+    <details><summary>¿Qué es Dogfy Diet? <img src="assets/chevron-faq-dark.svg" alt=""></summary><div class="ans">Comida natural cocinada para perros, completa y equilibrada, formulada por veterinarios nutricionistas y enviada a casa congelada en raciones diarias.</div></details>
     <details><summary>¿Qué cambia respecto al pienso seco? <img src="assets/chevron-faq-dark.svg" alt=""></summary><div class="ans">Ingredientes reales cocinados a baja temperatura, sin harinas ni aditivos. Tu perro nota más vitalidad, mejor digestión y un pelaje más sano.</div></details>
     <details><summary>¿Cómo creamos el menú de mi perro? <img src="assets/chevron-faq-dark.svg" alt=""></summary><div class="ans">Con su peso, edad y nivel de actividad calculamos la ración diaria exacta y te proponemos las recetas que mejor le encajan.</div></details>
     <details><summary>¿Cómo hago la transición a su nueva comida? <img src="assets/chevron-faq-dark.svg" alt=""></summary><div class="ans">Con tu primer pedido recibes un manual de transición para pasar de su comida actual a Dogfy, día a día, durante los primeros 14 días.</div></details>
@@ -1972,14 +1983,17 @@ const xFor=i=>{const c=cards()[i];if(!c)return 0;const host=el.parentElement.get
 const place=(i,animate)=>{el.classList.toggle('sliding',animate);el.style.transform='translateX('+xFor(i).toFixed(1)+'px)';const c=cards()[i];if(c)el.dispatchEvent(new CustomEvent('slide',{detail:c.dataset.key}));};
 const next=()=>{if(!isOn()||el.classList.contains('stopped')||el.classList.contains('paused')||document.hidden)return;idx+=1;place(idx,true);
   if(idx>=real()){const onEnd=()=>{el.removeEventListener('transitionend',onEnd);idx-=real();place(idx,false);};el.addEventListener('transitionend',onEnd);}};
-const start=()=>{clearInterval(timer);timer=setInterval(next,4500);};
+const start=()=>{clearInterval(timer);};  // sin avance automático: solo se mueve con el dedo, las flechas o las pestañas
 el.addEventListener('transitionend',()=>{if(!el.classList.contains('stopped'))return;const m=/translateX\((-?[\d.]+)px\)/.exec(el.style.transform||'');if(!m)return;const x=parseFloat(m[1]);let best=0,bd=1e9;cards().forEach((c,i)=>{const d=Math.abs(xFor(i)-x);if(d<bd){bd=d;best=i;}});idx=best;});  // tras elegir una pestaña, seguimos desde esa tarjeta
 if(matchMedia('(hover:hover)').matches){el.addEventListener('mouseenter',()=>el.classList.add('paused'));el.addEventListener('mouseleave',()=>el.classList.remove('paused'));}
 // deslizar con el dedo: pasa a la tarjeta anterior/siguiente y reinicia el avance automático
 let sx=null,sy=null;const host=el.parentElement;
 host.addEventListener('pointerdown',e=>{if(!isOn())return;sx=e.clientX;sy=e.clientY;},{passive:true});
-addEventListener('pointerup',e=>{if(sx===null||!isOn())return;const dx=e.clientX-sx,dy=e.clientY-sy;sx=null;if(Math.abs(dx)<36||Math.abs(dx)<Math.abs(dy))return;
-  el.classList.remove('stopped');const n=real();idx+=dx<0?1:-1;if(idx<0){idx+=n;place(idx+1,false);requestAnimationFrame(()=>place(idx,true));}else{place(idx,true);if(idx>=n){const onEnd=()=>{el.removeEventListener('transitionend',onEnd);idx-=n;place(idx,false);};el.addEventListener('transitionend',onEnd);}}start();},{passive:true});
+const go=dir=>{el.classList.remove('stopped');const n=real();idx+=dir;if(idx<0){idx+=n;place(idx+1,false);requestAnimationFrame(()=>requestAnimationFrame(()=>place(idx,true)));}else{place(idx,true);if(idx>=n){const onEnd=()=>{el.removeEventListener('transitionend',onEnd);idx-=n;place(idx,false);};el.addEventListener('transitionend',onEnd);}}};
+addEventListener('pointerup',e=>{if(sx===null||!isOn())return;const dx=e.clientX-sx,dy=e.clientY-sy;sx=null;if(Math.abs(dx)<36||Math.abs(dx)<Math.abs(dy))return;go(dx<0?1:-1);},{passive:true});
+// Tablet: flechas a los lados que pasan de tarjeta (en escritorio se ven las 4 y no hacen falta)
+const sec=el.closest('.s-recetas');if(sec){const mk=(dir,lab)=>{const b=document.createElement('button');b.type='button';b.className='rc-arrow rc-arrow--'+(dir<0?'prev':'next');b.setAttribute('aria-label',lab);b.innerHTML='<svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="'+(dir<0?'M15 5l-7 7 7 7':'M9 5l7 7-7 7')+'" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>';b.addEventListener('click',()=>{if(isOn())go(dir);});b.addEventListener('pointerdown',e=>e.stopPropagation());sec.appendChild(b);};mk(-1,'Receta anterior');mk(1,'Receta siguiente');
+  const pos=()=>{const im=el.querySelector('.rcm-img');sec.style.setProperty('--rc-y',(el.offsetTop+(im?8+im.offsetHeight/2:el.offsetHeight/2))+'px');};pos();addEventListener('resize',pos);addEventListener('load',pos);}
 const init=()=>{if(isOn()){idx=0;place(0,false);}else{el.style.transform='';el.classList.remove('sliding');}};init();addEventListener('resize',init);addEventListener('load',init);start();})();
 if(document.getElementById('reviews'))run(document.getElementById('reviews'),()=>true,34);})();
 // Stepper: reserva la altura del estado más alto (un paso abierto) para que el botón no baile al colapsar/expandir
