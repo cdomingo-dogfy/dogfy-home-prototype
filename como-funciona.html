@@ -2397,10 +2397,11 @@ tabs.forEach((b,i)=>b.addEventListener('click',()=>{const r=rows[i];if(!r)return
 
 // Cómo funciona: línea de pasos; la barra se rellena con el scroll y la foto de la izquierda cambia con el paso activo
 (()=>{const wrap=document.querySelector('.cf2-steps-wrap');if(!wrap)return;const steps=[...wrap.querySelectorAll('.cf2-step')],fill=wrap.querySelector('.cf2-fill'),imgs=[...document.querySelectorAll('.cf2-media-img')];let cur=-1;
+const track=wrap.querySelector('.cf2-track');const size=()=>{const wr=wrap.getBoundingClientRect(),n=steps[steps.length-1].querySelector('.cf2-n').getBoundingClientRect(),top=parseFloat(getComputedStyle(track).top)||0;track.style.bottom='auto';track.style.height=Math.max(0,n.top+n.height/2-wr.top-top)+'px'};
 const tick=()=>{const mid=innerHeight*.45,wr=wrap.getBoundingClientRect();let a=0;steps.forEach((s,i)=>{if(s.getBoundingClientRect().top<=mid)a=i});
-const dot=steps[a].querySelector('.cf2-n').getBoundingClientRect();fill.style.height=Math.max(0,Math.min(wr.height,dot.top+dot.height/2-wr.top))+'px';
+const dot=steps[a].querySelector('.cf2-n').getBoundingClientRect();fill.style.height=Math.max(0,Math.min(track.offsetHeight,dot.top+dot.height/2-track.getBoundingClientRect().top))+'px';
 if(a!==cur){cur=a;steps.forEach((s,i)=>{s.classList.toggle('is-on',i===a);s.classList.toggle('is-done',i<a)});imgs.forEach((im,i)=>im.classList.toggle('is-on',i===a))}};
-addEventListener('scroll',tick,{passive:true});addEventListener('resize',tick);tick();})();
+addEventListener('scroll',tick,{passive:true});addEventListener('resize',()=>{size();tick()});addEventListener('load',()=>{size();tick()});size();tick();})();
 // Cómo funciona: cabecera transparente sobre la foto del hero hasta que se hace scroll (como en la home)
 (()=>{if(!document.querySelector('.cf2-hero'))return;const h=document.querySelector('.header'),m=document.getElementById('mobileMenu');if(!h)return;const u=()=>h.classList.toggle('top',scrollY<40&&!(m&&m.classList.contains('open')));addEventListener('scroll',u,{passive:true});const b=document.getElementById('burger');if(b)b.addEventListener('click',()=>setTimeout(u,0));u();})();
 // Fichas: flechas anterior / siguiente. Con margen lateral (≥1360px) van fuera; si no, se colocan sobre los bordes de la foto principal
