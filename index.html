@@ -1409,6 +1409,26 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
 .ce3.is-anim .ce3-card{transition:opacity .2s linear}
 /* Caja de prueba: transición a blanco más marcada */
 .c14{background:linear-gradient(180deg,#fffae5 0%,#fffae5 22%,#fff 92%)}
+/* Recetas (home): por defecto el envase; al pasar el ratón o al destacar, el bol */
+.rcm-pack{opacity:1}
+@media (hover:hover){.recetas-grid .receta:hover .rcm-pack{opacity:0}}
+.recetas-grid .receta.is-hi .rcm-pack,.recetas-grid .receta:has(:focus-visible) .rcm-pack{opacity:0}
+/* SMS: la foto entra como tarjeta y se expande a todo el ancho con el scroll */
+.sms2 .bg{clip-path:inset(var(--smi,0px) var(--smx,0px) round var(--smr,0px))}
+/* SMS móvil: la foto en la parte de arriba (corgi visible) y el contenido debajo, fundido al verde del césped */
+@media (max-width:600px){
+  .sms2{background:#3d4a24;padding-top:300px;align-items:flex-end}
+  .sms2 .bg{bottom:auto;height:420px}
+  .sms2 .bg img{transform:none!important;object-position:34% 62%}
+  .sms2 .bg::after{background:linear-gradient(180deg,rgba(0,0,0,.15) 0%,rgba(0,0,0,.1) 45%,rgba(61,74,36,.85) 78%,#3d4a24 100%)}
+}
+/* Recetas: botón secundario (blanco con contorno), visible también en móvil */
+.btn-sec-rec{display:inline-flex;align-items:center;justify-content:center;height:48px;padding:0 28px;border-radius:999px;background:#fff;border:1px solid #d6cdc1;color:var(--text-hi);font-family:var(--font-display);font-weight:600;font-size:16px;text-decoration:none;transition:background .2s,border-color .2s}
+.btn-sec-rec:hover{background:#faf8f6;border-color:#b9ad9f}
+.btn-sec-rec:focus-visible{outline:3px solid #f2c94c;outline-offset:2px}
+@media (max-width:900px){.s-recetas .cta{display:flex!important;padding-top:24px}}
+/* Opiniones: puntos de carrusel en tablet y móvil */
+@media (max-width:900px){.op-dots{display:flex;margin-top:4px}}
 </style>
 </head>
 <body>
@@ -1454,8 +1474,8 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
   <div class="container hero-content">
     <div>
       <span class="hero-badge">Para perros llenos de vida</span>
-      <h1>Comida real. Pensada de verdad para perros.</h1>
-      <p>Con trocitos, jugosidad y olor a ingredientes reales. Completa y equilibrada. Para comer con ganas. Y vivir con ganas.</p>
+      <h1>La mejor comida natural directa al bol de tu perro</h1>
+      <p>Alimentación cocinada y saludable para perros, elaborada por nutricionistas caninos.</p>
     </div>
     <div class="hero-actions">
       <label class="select">
@@ -1549,7 +1569,7 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
     <article class="receta buey" data-key="buey"><div class="img rcm-img"><img src="assets/receta-buey.jpg" alt="Menú de buey de Dogfy Diet" loading="lazy" decoding="async"><img class="rcm-pack" src="assets/rc-pack-beef.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async"></div><div class="rcm-body"><h3>Menú de buey</h3><span class="rcm-sold"><b>139.972</b> vendidos/mes</span></div></article>
     <article class="receta pavo" data-key="pavo"><div class="img rcm-img"><img src="assets/receta-pavo.jpg" alt="Menú de pavo de Dogfy Diet" loading="lazy" decoding="async"><img class="rcm-pack" src="assets/rc-pack-turkey.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async"></div><div class="rcm-body"><h3>Menú de pavo</h3><span class="rcm-sold"><b>140.611</b> vendidos/mes</span></div></article>
   </div>
-  <div class="cta"><a class="btn btn-primary" href="recetas.html">Explorar recetas</a></div>
+  <div class="cta"><a class="btn btn-sec-rec" href="recetas.html">Ver recetas</a></div>
 </section>
 <img class="deco-precio" data-parallax="0.12" src="assets/precio-vector.svg" alt="" width="825" height="1291">
 <section class="s-precio" id="precio">
@@ -1692,7 +1712,7 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
   <div class="legal"><a href="#">Aviso legal</a><a href="#">Términos y condiciones</a><a href="#">Política de cookies</a><a href="#">Política de privacidad</a><a href="#">Canal de denuncias</a><a href="#">Mapa web</a></div>
 </footer>
 <div class="footer-space" aria-hidden="true"></div>
-<div class="cta-bar" id="ctaBar"><a class="btn btn-primary" href="#precio">¡Quiero probar!</a></div>
+<div class="cta-bar" id="ctaBar"><a class="btn btn-primary" href="#precio">Crea su menú</a></div>
 <script>
 // Móvil: velo blanco por sección; su opacidad crece a medida que la sección siguiente entra en pantalla (termina cuando la siguiente ocupa el 55 % del alto)
 (()=>{const mq=matchMedia('(max-width:600px)');// Solo hasta "¿Qué cambios notarás?": a partir de ahí las secciones ya tienen fondos de color y no hace falta la transición
@@ -1996,6 +2016,22 @@ addEventListener('resize',fit);if(document.fonts)document.fonts.ready.then(fit);
 (()=>{const st=document.querySelector('.hero-promo'),h1=document.querySelector('.hero h1'),hero=document.querySelector('.hero');if(!st||!h1||!hero)return;
 const place=()=>{if(innerWidth>600){st.style.removeProperty('--promo-t');return}const pp=h1.parentElement.querySelector('p')||h1;st.style.setProperty('--promo-t',(pp.getBoundingClientRect().bottom-hero.getBoundingClientRect().top+6)+'px');};
 addEventListener('resize',place);addEventListener('load',place);if(document.fonts)document.fonts.ready.then(place);place();})();
+</script>
+<script>
+// SMS: la foto empieza como tarjeta redondeada y se expande a todo el ancho al entrar en pantalla (como la escena de desktop)
+(()=>{const s=document.querySelector('.sms2'),bg=s&&s.querySelector('.bg');if(!bg||matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+let t=false;const upd=()=>{t=false;const r=s.getBoundingClientRect(),vh=innerHeight;const p=Math.max(0,Math.min(1,(vh-r.top)/(vh*.75)));const e=1-Math.pow(1-p,3);const mx=innerWidth<=600?16:innerWidth<=900?32:56;
+bg.style.setProperty('--smx',((1-e)*mx).toFixed(1)+'px');bg.style.setProperty('--smi',((1-e)*mx*.5).toFixed(1)+'px');bg.style.setProperty('--smr',((1-e)*28).toFixed(1)+'px');};
+addEventListener('scroll',()=>{if(!t){t=true;requestAnimationFrame(upd);}},{passive:true});addEventListener('resize',upd);upd();})();
+</script>
+<script>
+// Blog: en tablet/móvil las tarjetas van en fila deslizable con puntos de carrusel sincronizados
+(()=>{document.querySelectorAll('.op-grid').forEach(g=>{const cards=[...g.querySelectorAll('.op-card')];if(cards.length<2)return;
+const nav=document.createElement('div');nav.className='rv-dots bl-dots op-dots';nav.setAttribute('aria-label','Opiniones');
+const dots=cards.map((c,i)=>{const b=document.createElement('button');b.type='button';b.setAttribute('aria-label','Ver opinión '+(i+1));b.addEventListener('click',()=>g.scrollTo({left:c.offsetLeft-g.offsetLeft-(g.clientWidth-c.offsetWidth)/2,behavior:matchMedia('(prefers-reduced-motion:reduce)').matches?'auto':'smooth'}));nav.appendChild(b);return b;});
+g.after(nav);let t=false;const upd=()=>{t=false;const mid=g.scrollLeft+g.clientWidth/2;let k=0,best=1e9;cards.forEach((c,i)=>{const d=Math.abs(c.offsetLeft-g.offsetLeft+c.offsetWidth/2-mid);if(d<best){best=d;k=i;}});
+if(g.scrollLeft+g.clientWidth>=g.scrollWidth-4)k=cards.length-1;dots.forEach((b,i)=>{b.classList.toggle('active',i===k);b.setAttribute('aria-current',i===k?'true':'false');});};
+g.addEventListener('scroll',()=>{if(!t){t=true;requestAnimationFrame(upd);}},{passive:true});addEventListener('resize',upd);upd();});})();
 </script>
 </body>
 </html>

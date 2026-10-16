@@ -2326,6 +2326,16 @@ body:has(.rp-hero) .rp-crumbs{background:var(--blue-deco);max-width:none;padding
 .footer .legal{flex-wrap:nowrap!important;white-space:nowrap;max-width:100%!important;overflow-x:auto;scrollbar-width:none;gap:0 clamp(14px,2.4vw,32px)!important}
 .footer .legal::-webkit-scrollbar{display:none}
 @media (max-width:600px){.footer .legal a{font-size:11.5px}}
+/* Recetas: por defecto se ve el envase; al pasar el ratón, el bol */
+.rc-pack{opacity:1}
+.rc-card:hover .rc-pack,.rc-card:has(:focus-visible) .rc-pack{opacity:0}
+/* Cómo funciona móvil: foto a pantalla completa con sombra arriba y abajo para leer el texto */
+@media (max-width:600px){
+  .cf2-hero{min-height:calc(100svh - 48px);justify-content:flex-end;background:#2a2724}
+  .cf2-hero-bg{top:0;bottom:0;height:100%;width:100%;left:0;right:0;object-position:57% 50%}
+  .cf2-hero::before{background:linear-gradient(180deg,rgba(20,18,16,.7) 0%,rgba(20,18,16,.15) 22%,rgba(20,18,16,0) 36%,rgba(20,18,16,.55) 58%,rgba(20,18,16,.9) 100%)}
+  .cf2-hero-in{padding:40px var(--gutter) 40px}
+}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://cdomingo-dogfy.github.io/dogfy-home-prototype/index.html"}, {"@type": "ListItem", "position": 2, "name": "Cómo funciona", "item": "https://cdomingo-dogfy.github.io/dogfy-home-prototype/como-funciona.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "¿Qué formatos hay?", "acceptedAnswer": {"@type": "Answer", "text": "Cada menú llega en bolsitas individuales con la ración diaria de tu perro, ya calculada según su peso, edad y actividad. Puedes elegir una receta o combinar varias en el mismo pedido."}}, {"@type": "Question", "name": "¿Cómo llega el producto?", "acceptedAnswer": {"@type": "Answer", "text": "Te lo enviamos a casa congelado y dividido en bolsitas diarias, con envío gratis. Solo tienes que guardarlo en el congelador al recibirlo."}}, {"@type": "Question", "name": "¿Cómo se prepara, debo cocinar el alimento al perro?", "acceptedAnswer": {"@type": "Answer", "text": "No hace falta cocinar nada. Nuestras recetas ya vienen cocinadas a baja temperatura: descongela la bolsita en la nevera, ábrela y sirve."}}, {"@type": "Question", "name": "¿Cada cuánto llegan los menús?", "acceptedAnswer": {"@type": "Answer", "text": "Tu primera caja trae 14 días de comida. Después la suscripción continúa y puedes cambiar recetas, aplazar envíos o cancelar cuando quieras, sin permanencia."}}, {"@type": "Question", "name": "¿Puedo hablar con el equipo de nutrición?", "acceptedAnswer": {"@type": "Answer", "text": "Sí. Tu plan incluye seguimiento nutricional gratuito: puedes escribir a nuestro equipo de Nutrición canina siempre que lo necesites, en cualquier etapa de la vida de tu perro."}}]}</script>
