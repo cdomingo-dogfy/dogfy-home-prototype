@@ -968,6 +968,44 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
 @media (max-width:900px){.bl-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:600px){.bl-grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:16px;margin-inline:calc(-1 * var(--gutter));padding:4px var(--gutter) 20px;scrollbar-width:none}.bl-grid::-webkit-scrollbar{display:none}.bl-card{flex:0 0 82%;scroll-snap-align:center}.bl-head{margin-bottom:24px}}
 @media (max-width:600px){.rp-blog{padding:64px var(--gutter)}}
+/* Cómo empezar (Figma 729:61770): filas foto + texto, con entrada animada al hacer scroll */
+.ce2-list{list-style:none;display:flex;flex-direction:column;gap:32px;max-width:784px;margin:48px auto 0;padding:0}
+.ce2-step{display:grid;grid-template-columns:384px minmax(0,1fr);gap:16px;align-items:center}
+.ce2-img{position:relative;aspect-ratio:4/3;border-radius:20px;overflow:hidden;background:#f4f1ec}
+.ce2-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ce2-txt{display:flex;flex-direction:column;align-items:flex-start;gap:8px;max-width:384px}
+.ce2-n{display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:#2a2724;border:3px solid #fff;box-sizing:border-box;color:#fff;font-family:var(--font-display);font-weight:700;font-size:15px;line-height:18px}
+.ce2-txt h3{font-family:var(--font-display);font-weight:700;font-size:20px;line-height:24px;color:var(--text-hi)}
+.ce2-txt p{max-width:360px;font-size:15px;line-height:22px;color:var(--text)}
+@media (max-width:767px){.ce2-list{gap:40px;max-width:520px}.ce2-step{grid-template-columns:1fr;gap:16px}.ce2-txt{max-width:none}}
+@media (prefers-reduced-motion:no-preference){
+  .js-ce .ce2-img{clip-path:inset(0 100% 0 0 round 20px);transition:clip-path .9s cubic-bezier(.65,0,.35,1)}
+  .js-ce .ce2-img img{transform:scale(1.15);transition:transform 1.3s cubic-bezier(.2,.8,.2,1)}
+  .js-ce .ce2-n{transform:scale(0);transition:transform .5s cubic-bezier(.34,1.56,.64,1) .35s}
+  .js-ce .ce2-txt h3,.js-ce .ce2-txt p{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s cubic-bezier(.2,.8,.2,1)}
+  .js-ce .ce2-txt h3{transition-delay:.45s}.js-ce .ce2-txt p{transition-delay:.55s}
+  .js-ce .ce2-step.in .ce2-img{clip-path:inset(0 0 0 0 round 20px)}
+  .js-ce .ce2-step.in .ce2-img img{transform:none}
+  .js-ce .ce2-step.in .ce2-n{transform:none}
+  .js-ce .ce2-step.in .ce2-txt h3,.js-ce .ce2-step.in .ce2-txt p{opacity:1;transform:none}
+}
+/* Menús en blanco; el tramado amarillo sube en parallax y desemboca en «Tu caja de prueba» */
+.s-recetas{background:#fff}
+.s-precio{position:relative;overflow:clip;padding-bottom:calc(96px + 120px)}
+.s-precio > :not(.pr-trama){position:relative;z-index:1}
+.pr-trama{position:absolute;left:50%;bottom:-1px;width:max(1448px,100%);max-width:none;height:auto;transform:translate(-50%,var(--try,0px));pointer-events:none;z-index:0}
+@media (max-width:767px){.pr-trama{width:320vw}.s-precio{padding-bottom:calc(72px + 64px)}}
+/* FAQ en amarillo suave (Figma 636:329), mismo contenido */
+.s-faq{background:#fffae5;color:var(--text-hi);padding:80px var(--gutter) 112px}
+.s-faq .head{margin-bottom:24px;max-width:760px}
+.s-faq .eyebrow{color:#83807b}
+.s-faq h2{color:var(--text-hi);line-height:1.08}
+.s-faq .sub{color:var(--text-toned);margin-top:16px}
+.s-faq .faq{max-width:760px}
+.s-faq .faq details{border-bottom:1px solid rgba(33,27,23,.11)}
+.s-faq .faq summary{padding:20px 0;font-size:20px;line-height:26px;color:var(--text-hi)}
+.s-faq .faq .ans{padding:0 0 20px;color:var(--text);font-size:16px;line-height:24px}
+@media (max-width:600px){.s-faq{padding:64px var(--gutter) 80px}.s-faq .faq summary{font-size:17px;line-height:24px;padding:16px 0}}
 </style>
 </head>
 <body>
@@ -1045,7 +1083,7 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
     <p class="eyebrow">¡Darle lo mejor nunca ha sido tan fácil!</p>
     <h2 class="h2">¿Cómo empezar a darle una <span class="accent">buena alimentación</span> a tu perro?</h2>
   </div>
-  <ol class="ce-grid"><li class="ce-step"><div class="ce-img"><img src="assets/paso-perfil.jpg" alt="Un perro de pie sobre su humano, que duerme en la cama" loading="lazy" decoding="async"><span class="ce-n">1</span></div><h3>Nos presentas a tu perrete</h3><p>Cuéntanos cómo es tu peludo: su peso, tamaño, raza, preferencias… Te llevará 2 minutos y nos permitirá crear un plan hecho a su medida.</p></li><li class="ce-step"><div class="ce-img"><img src="assets/como-empieza-caja.png" alt="Un perro recibe su caja de Dogfy Diet en casa" loading="lazy" decoding="async"><span class="ce-n">2</span></div><h3>Marchando su menú personalizado</h3><p>Cocinamos a fuego lento los mejores ingredientes para elaborar el menú personalizado de tu perro, y te lo enviamos a casa congelado y dividido en bolsitas diarias.</p></li><li class="ce-step"><div class="ce-img"><img src="assets/paso-sirve.jpg" alt="Un perro se relame ante su bol de comida natural" loading="lazy" decoding="async"><span class="ce-n">3</span></div><h3>Tu perro disfruta como nunca</h3><p>Recibe sus menús y mira cómo salta de alegría cada día a la hora de comer.</p></li><li class="ce-step"><div class="ce-img"><img src="assets/cf-tu-perro-disfruta.webp" alt="Un perro disfruta de su comida natural" loading="lazy" decoding="async"><span class="ce-n">4</span></div><h3>Tu suscripción, a tu ritmo.</h3><p>Cambia de receta, aplaza un envío o cancela cuando quieras desde tu cuenta. Sin permanencia: quédate solo porque quieres hacerlo.</p></li></ol>
+  <ol class="ce2-list"><li class="ce2-step"><div class="ce2-img"><img src="assets/paso-perfil.jpg" alt="Un perro de pie sobre su humano, que duerme en la cama" loading="lazy" decoding="async"></div><div class="ce2-txt"><span class="ce2-n">1</span><h3>Nos presentas a tu perrete</h3><p>Cuéntanos cómo es tu peludo: su peso, tamaño, raza, preferencias… Te llevará 2 minutos y nos permitirá crear un plan hecho a su medida.</p></div></li><li class="ce2-step"><div class="ce2-img"><img src="assets/ce-caja-bolsitas.jpg" alt="Dos personas abren una caja de Dogfy Diet con las bolsitas de menú mientras un perro curiosea" loading="lazy" decoding="async"></div><div class="ce2-txt"><span class="ce2-n">2</span><h3>Marchando su menú personalizado</h3><p>Cocinamos a fuego lento los mejores ingredientes para elaborar el menú personalizado de tu perro, y te lo enviamos a casa congelado y dividido en bolsitas diarias.</p></div></li><li class="ce2-step"><div class="ce2-img"><img src="assets/paso-sirve.jpg" alt="Un perro se relame ante su bol de comida natural" loading="lazy" decoding="async"></div><div class="ce2-txt"><span class="ce2-n">3</span><h3>Tu perro disfruta como nunca</h3><p>Recibe sus menús y mira cómo salta de alegría cada día a la hora de comer. Pausa o cancela cuando quieras, y quédate solo porque quieres hacerlo.</p></div></li><li class="ce2-step"><div class="ce2-img"><img src="assets/como-empieza-caja.png" alt="Un perro recibe su caja de Dogfy Diet en casa" loading="lazy" decoding="async"></div><div class="ce2-txt"><span class="ce2-n">4</span><h3>Tu suscripción, a tu ritmo.</h3><p>Cambia de receta, aplaza un envío o cancela cuando quieras desde tu cuenta. Sin permanencia: quédate solo porque quieres hacerlo.</p></div></li></ol>
 </section>
 
 <!-- 04 · Por qué (bol con etiquetas) -->
@@ -1064,8 +1102,6 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
 
 <!-- 05 · Recetas -->
 <section class="s-recetas" id="recetas">
-  <img class="wave-top" src="assets/onda-05-top.svg" alt="" width="1440" height="75">
-  <img class="wave-bottom" src="assets/onda-05-bottom.svg" alt="" width="1601" height="49">
   <div class="container head center">
     <p class="eyebrow">¡Tu perro ya está moviendo la cola!</p>
     <h2 class="h2" style="margin-top:12px">Descubre <span class="accent">nuestras</span> recetas naturales</h2>
@@ -1089,6 +1125,7 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
 <div class="yellow-wrap">
 <img class="deco-precio" data-parallax="0.12" src="assets/precio-vector.svg" alt="" width="825" height="1291">
 <section class="s-precio" id="precio">
+  <img class="pr-trama" src="assets/tramado-c14.svg" alt="" aria-hidden="true" width="1448" height="256">
   <div class="head center">
     <h2 class="h2">Menús <span class="accent">hechos a su medida</span><br>y el precio hecho a la tuya</h2>
   </div>
@@ -1227,10 +1264,10 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
     <p class="sub">Si te queda alguna duda, nuestro equipo te responde de lunes a viernes.</p>
   </div>
   <div class="faq">
-    <details open><summary>¿Qué es Dogfy Diet? <img src="assets/chevron-faq.svg" alt=""></summary><div class="ans">Comida natural cocinada para perros, completa y equilibrada, formulada por veterinarios nutricionistas y enviada a casa congelada en raciones diarias.</div></details>
-    <details><summary>¿Qué cambia respecto al pienso seco? <img src="assets/chevron-faq.svg" alt=""></summary><div class="ans">Ingredientes reales cocinados a baja temperatura, sin harinas ni aditivos. Tu perro nota más vitalidad, mejor digestión y un pelaje más sano.</div></details>
-    <details><summary>¿Cómo creamos el menú de mi perro? <img src="assets/chevron-faq.svg" alt=""></summary><div class="ans">Con su peso, edad y nivel de actividad calculamos la ración diaria exacta y te proponemos las recetas que mejor le encajan.</div></details>
-    <details><summary>¿Cómo hago la transición a su nueva comida? <img src="assets/chevron-faq.svg" alt=""></summary><div class="ans">Con tu primer pedido recibes un manual de transición para pasar de su comida actual a Dogfy, día a día, durante los primeros 14 días.</div></details>
+    <details open><summary>¿Qué es Dogfy Diet? <img src="assets/chevron-faq-dark.svg" alt=""></summary><div class="ans">Comida natural cocinada para perros, completa y equilibrada, formulada por veterinarios nutricionistas y enviada a casa congelada en raciones diarias.</div></details>
+    <details><summary>¿Qué cambia respecto al pienso seco? <img src="assets/chevron-faq-dark.svg" alt=""></summary><div class="ans">Ingredientes reales cocinados a baja temperatura, sin harinas ni aditivos. Tu perro nota más vitalidad, mejor digestión y un pelaje más sano.</div></details>
+    <details><summary>¿Cómo creamos el menú de mi perro? <img src="assets/chevron-faq-dark.svg" alt=""></summary><div class="ans">Con su peso, edad y nivel de actividad calculamos la ración diaria exacta y te proponemos las recetas que mejor le encajan.</div></details>
+    <details><summary>¿Cómo hago la transición a su nueva comida? <img src="assets/chevron-faq-dark.svg" alt=""></summary><div class="ans">Con tu primer pedido recibes un manual de transición para pasar de su comida actual a Dogfy, día a día, durante los primeros 14 días.</div></details>
   </div>
 </section>
 
@@ -1495,6 +1532,13 @@ document.getElementById('smsForm').addEventListener('submit',e=>{e.preventDefaul
   const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){run(e.target);io.unobserve(e.target);}}),{threshold:.6});
   targets.forEach(t=>io.observe(t));
 })();
+</script>
+<script>
+// Cómo empezar: cada paso entra al llegar al viewport. Tramado de precios: parallax suave hasta quedar pegado a la caja de prueba.
+(()=>{const steps=document.querySelectorAll('.ce2-step');if(steps.length&&'IntersectionObserver' in window){document.documentElement.classList.add('js-ce');const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.35,rootMargin:'0px 0px -8% 0px'});steps.forEach(s=>io.observe(s));}
+const sec=document.querySelector('.s-precio'),tr=sec&&sec.querySelector('.pr-trama');if(!tr||matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+let t=false;const upd=()=>{t=false;const r=sec.getBoundingClientRect(),d=Math.max(0,Math.min(1,(r.bottom-innerHeight*.6)/(innerHeight*1.2)));tr.style.setProperty('--try',(d*140).toFixed(1)+'px');};
+addEventListener('scroll',()=>{if(!t){t=true;requestAnimationFrame(upd);}},{passive:true});addEventListener('resize',upd);upd();})();
 </script>
 </body>
 </html>
