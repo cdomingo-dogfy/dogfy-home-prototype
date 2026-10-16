@@ -2035,6 +2035,45 @@ body:has(.rp-hero) .rp-crumbs{background:var(--blue-deco);max-width:none;padding
 .cf2-rev-list{scroll-padding-inline:max(var(--gutter),calc((100vw - var(--container))/2))}
 @media (max-width:900px){.cf2-step-img{max-width:480px;aspect-ratio:16/10}.cf2-nutri-img{max-width:560px}}
 .nt-ctrl.cf2-ctrl{top:auto;bottom:16px;left:auto;right:16px;height:auto}  /* botón de pausa del vídeo: solo abajo a la derecha (el estilo de 1100px lo estiraba) */
+/* ===== Cómo funciona v3 (Figma 718:24893) ===== */
+/* vídeo de los pasos: póster + play; al pulsar se carga el vídeo de Vimeo con sonido */
+.cf3-video{aspect-ratio:409/473}
+.cf3-poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.cf3-video::after{content:"";position:absolute;inset:0;background:rgba(0,0,0,.12);pointer-events:none;transition:opacity .3s}
+.cf3-play{position:absolute;right:20px;bottom:20px;z-index:2;width:60px;height:60px;border-radius:50%;border:0;display:grid;place-items:center;background:#fff;color:var(--text-hi);box-shadow:0 8px 24px rgba(42,39,36,.25);cursor:pointer;transition:transform .2s}
+.cf3-play svg{margin-left:3px}
+.cf3-play:hover{transform:scale(1.06)}
+.cf3-play:focus-visible{outline:3px solid #f2c94c;outline-offset:3px}
+.cf3-video.is-playing::after,.cf3-video.is-playing .cf3-play,.cf3-video.is-playing .cf3-poster{opacity:0;pointer-events:none}
+.cf3-video iframe{position:absolute;top:50%;left:50%;width:calc(100% * 1.6);height:100%;transform:translate(-50%,-50%);border:0}
+.cf2-blob{left:-55%;top:-6%;width:150%;transform:rotate(-90deg)}
+/* apoyo más bajo: solo titular y CTA */
+.cf2-support-card{height:clamp(300px,24vw,340px)}
+.cf2-support-in{gap:24px;max-width:760px}
+.cf2-support-in .cf2-cta{margin-top:0}
+/* opiniones: 3 tarjetas centradas con inicial */
+.cf3-rev-list{list-style:none;display:flex;justify-content:center;align-items:center;gap:24px;max-width:var(--container);margin:0 auto;padding:4px var(--gutter) 8px}
+.cf3-rev{flex:0 1 380px;display:flex;flex-direction:column;gap:18px;padding:28px 24px 24px;border-radius:20px;background:#fff;border:1px solid #e8e8e8}
+.cf3-rev:first-child{box-shadow:0 16px 32px -18px rgba(42,39,36,.3)}
+.cf3-rev-top{display:flex;align-items:center;gap:16px}
+.cf3-av{flex:none;width:48px;height:48px;border-radius:50%;background:#ffee99;display:grid;place-items:center;font-family:var(--font-display);font-weight:700;font-size:18px;color:var(--text-hi)}
+.cf3-rev-top b{display:block;font-family:var(--font-display);font-weight:700;font-size:18px;line-height:24px;color:#191919}
+.cf3-stars{display:block;font-size:14px;line-height:16px;letter-spacing:1px;color:#191919;margin-top:2px}
+.cf3-rev p{font-size:17px;line-height:26px;color:var(--text-hi)}
+.cf3-when{font-size:15px;line-height:20px;color:#767066}
+@media (max-width:900px){.cf3-rev-list{flex-direction:column;align-items:stretch}.cf3-rev{flex-basis:auto}}
+@media (max-width:600px){.cf2-support-card{height:360px}.cf3-rev{padding:22px 20px 20px}.cf3-rev p{font-size:16px;line-height:24px}}
+@media (prefers-reduced-motion:reduce){.cf3-play{transition:none}}
+@media (max-width:900px){
+  .cf2-media{display:block;position:relative;top:auto;max-width:520px;margin:0 auto 48px}
+  .cf2-blob{display:none}
+  .cf3-video{aspect-ratio:4/3}
+  .cf3-video iframe{width:100%}
+  .cf2-step-img{display:none}
+}
+.cf3-apoyo-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 45%}
+.cf2-support-card::after{background:linear-gradient(0deg,rgba(20,18,16,.35),rgba(20,18,16,.25))}
+@media (max-width:900px){.cf2-media{width:100%;justify-self:center}}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://cdomingo-dogfy.github.io/dogfy-home-prototype/index.html"}, {"@type": "ListItem", "position": 2, "name": "Nuestras recetas", "item": "https://cdomingo-dogfy.github.io/dogfy-home-prototype/recetas.html"}, {"@type": "ListItem", "position": 3, "name": "Menú de pavo", "item": "https://cdomingo-dogfy.github.io/dogfy-home-prototype/receta-pavo.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "¿Qué formatos hay?", "acceptedAnswer": {"@type": "Answer", "text": "Cada menú llega en bolsitas individuales con la ración diaria de tu perro, ya calculada según su peso, edad y actividad. Puedes elegir una receta o combinar varias en el mismo pedido."}}, {"@type": "Question", "name": "¿Qué cantidad se le debe dar?", "acceptedAnswer": {"@type": "Answer", "text": "Depende de su peso, edad y nivel de actividad. Al crear su plan calculamos su ración diaria exacta y cada bolsita contiene justo esa cantidad, así que no tienes que pesar nada."}}, {"@type": "Question", "name": "¿Cómo llega el producto?", "acceptedAnswer": {"@type": "Answer", "text": "Te lo enviamos a casa congelado y dividido en bolsitas diarias, con envío gratis. Solo tienes que guardarlo en el congelador al recibirlo."}}]}</script>
@@ -2235,6 +2274,8 @@ const tick=()=>{const mid=innerHeight*.45,wr=wrap.getBoundingClientRect();let a=
 const dot=steps[a].querySelector('.cf2-dot').getBoundingClientRect();fill.style.height=Math.max(0,Math.min(wr.height,dot.top+dot.height/2-wr.top))+'px';
 if(a!==cur){cur=a;steps.forEach((s,i)=>{s.classList.toggle('is-on',i===a);s.classList.toggle('is-done',i<a)});imgs.forEach((im,i)=>im.classList.toggle('is-on',i===a))}};
 addEventListener('scroll',tick,{passive:true});addEventListener('resize',tick);tick();})();
+// Vídeo de los pasos: al pulsar play se sustituye el póster por el vídeo de Vimeo, con sonido y controles
+(()=>{const v=document.querySelector('.cf3-video');if(!v)return;const b=v.querySelector('.cf3-play');b.addEventListener('click',()=>{if(v.querySelector('iframe'))return;const f=document.createElement('iframe');f.src='https://player.vimeo.com/video/'+v.dataset.vimeo+'?autoplay=1&dnt=1&title=0&byline=0&portrait=0';f.allow='autoplay; fullscreen; picture-in-picture';f.title='Cómo funciona Dogfy Diet';f.setAttribute('allowfullscreen','');v.appendChild(f);v.classList.add('is-playing');f.focus()})})();
 
 (()=>{const l=document.querySelector('.rp-tabs-list'),a=l&&l.querySelector('.active');if(a&&l.scrollWidth>l.clientWidth)l.scrollLeft=a.offsetLeft-l.offsetLeft-(l.clientWidth-a.offsetWidth)/2;})();
 </script>
