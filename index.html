@@ -968,27 +968,6 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
 @media (max-width:900px){.bl-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:600px){.bl-grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:16px;margin-inline:calc(-1 * var(--gutter));padding:4px var(--gutter) 20px;scrollbar-width:none}.bl-grid::-webkit-scrollbar{display:none}.bl-card{flex:0 0 82%;scroll-snap-align:center}.bl-head{margin-bottom:24px}}
 @media (max-width:600px){.rp-blog{padding:64px var(--gutter)}}
-/* Cómo empezar (Figma 729:61770): filas foto + texto, con entrada animada al hacer scroll */
-.ce2-list{list-style:none;display:flex;flex-direction:column;gap:32px;max-width:784px;margin:48px auto 0;padding:0}
-.ce2-step{display:grid;grid-template-columns:384px minmax(0,1fr);gap:16px;align-items:center}
-.ce2-img{position:relative;aspect-ratio:4/3;border-radius:20px;overflow:hidden;background:#f4f1ec}
-.ce2-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.ce2-txt{display:flex;flex-direction:column;align-items:flex-start;gap:8px;max-width:384px}
-.ce2-n{display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:#2a2724;border:3px solid #fff;box-sizing:border-box;color:#fff;font-family:var(--font-display);font-weight:700;font-size:15px;line-height:18px}
-.ce2-txt h3{font-family:var(--font-display);font-weight:700;font-size:20px;line-height:24px;color:var(--text-hi)}
-.ce2-txt p{max-width:360px;font-size:15px;line-height:22px;color:var(--text)}
-@media (max-width:767px){.ce2-list{gap:40px;max-width:520px}.ce2-step{grid-template-columns:1fr;gap:16px}.ce2-txt{max-width:none}}
-@media (prefers-reduced-motion:no-preference){
-  .js-ce .ce2-img{clip-path:inset(0 100% 0 0 round 20px);transition:clip-path .9s cubic-bezier(.65,0,.35,1)}
-  .js-ce .ce2-img img{transform:scale(1.15);transition:transform 1.3s cubic-bezier(.2,.8,.2,1)}
-  .js-ce .ce2-n{transform:scale(0);transition:transform .5s cubic-bezier(.34,1.56,.64,1) .35s}
-  .js-ce .ce2-txt h3,.js-ce .ce2-txt p{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s cubic-bezier(.2,.8,.2,1)}
-  .js-ce .ce2-txt h3{transition-delay:.45s}.js-ce .ce2-txt p{transition-delay:.55s}
-  .js-ce .ce2-step.in .ce2-img{clip-path:inset(0 0 0 0 round 20px)}
-  .js-ce .ce2-step.in .ce2-img img{transform:none}
-  .js-ce .ce2-step.in .ce2-n{transform:none}
-  .js-ce .ce2-step.in .ce2-txt h3,.js-ce .ce2-step.in .ce2-txt p{opacity:1;transform:none}
-}
 /* FAQ en amarillo suave (Figma 636:329), mismo contenido */
 .s-faq{background:#fffae5;color:var(--text-hi);padding:80px var(--gutter) 112px}
 .s-faq .head{margin-bottom:24px;max-width:760px}
@@ -1037,6 +1016,55 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
   .pq-bol{width:100%;max-width:560px}
 }
 @media (max-width:1100px){.pq-bol{width:min(540px,100%)}}
+/* Cómo empezar (ref. Figma Landings 2254:19819): con el scroll cada tarjeta sube y tapa la anterior dejando ver su título; la foto cambia con un fundido */
+.ce3{padding:112px var(--gutter) 64px;background:#fff}
+.ce3 .ce-head .h2{max-width:780px;margin:10px auto 0}
+.ce3-track{position:relative;margin-top:40px}
+.ce3-stage{display:grid;grid-template-columns:minmax(0,400px) minmax(0,1fr);gap:40px;align-items:start;max-width:1100px;margin:0 auto}
+.ce3-cards{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:16px;position:relative}
+.ce3-card{position:relative;background:var(--bg);border-radius:20px;padding:0 20px 20px;box-shadow:0 0 0 1px rgba(42,39,36,.05),0 6px 18px -6px rgba(42,39,36,.22)}
+.ce3-top{display:flex;align-items:center;gap:12px;width:100%;min-height:64px;padding:14px 0 10px;background:none;border:0;text-align:left;cursor:default;color:inherit;font:inherit}
+.ce3-n{flex:none;display:grid;place-items:center;width:32px;height:32px;border-radius:50%;background:#2a2724;color:#fff;font-family:var(--font-display);font-weight:700;font-size:15px}
+.ce3-top h3{font-family:var(--font-display);font-weight:700;font-size:19px;line-height:24px;color:var(--text-hi)}
+.ce3-card p{font-size:16px;line-height:24px;color:var(--text);padding-left:44px}
+.ce3-media{position:relative;aspect-ratio:646/460;border-radius:20px;overflow:hidden;background:#f4f1ec}
+.ce3-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .8s ease-in-out}
+.ce3-media img.is-on{opacity:1}
+/* con JS: escenario fijo y tarjetas apiladas en absoluto */
+.ce3.is-anim .ce3-stage{position:sticky;top:calc(64px + var(--ce3-gap,24px))}
+.ce3.is-anim .ce3-cards{display:block;height:var(--ce3-h,auto)}
+.ce3.is-anim .ce3-card{position:absolute;left:0;right:0;top:0;transform:translateY(var(--y,0px));will-change:transform}
+.ce3.is-anim .ce3-card.is-past .ce3-top{cursor:pointer}
+.ce3.is-anim .ce3-card.is-past .ce3-top:hover h3{color:var(--primary)}
+.ce3-top:focus-visible{outline:3px solid #f2c94c;outline-offset:2px;border-radius:12px}
+@media (max-width:860px){
+  .ce3{padding:72px var(--gutter) 48px}
+  .ce3-track{margin-top:28px}
+  .ce3-stage{grid-template-columns:1fr;gap:16px;max-width:520px}
+  .ce3-media{order:-1;aspect-ratio:16/10}
+  .ce3-card{padding:0 16px 16px;border-radius:18px}
+  .ce3-top{min-height:56px;padding:12px 0 8px;gap:10px}
+  .ce3-n{width:28px;height:28px;font-size:14px}
+  .ce3-top h3{font-size:17px;line-height:22px}
+  .ce3-card p{font-size:15px;line-height:22px;padding-left:38px}
+}
+.ce3.is-anim .ce3-cards{overflow-x:visible;overflow-y:clip;overflow-clip-margin:24px}
+@media (max-width:860px){.ce3-media{aspect-ratio:auto;height:min(34vh,62vw)}}
+/* Sellos de confianza: franja compacta en blanco entre el bol y los menús */
+.s-sellos{position:relative;z-index:2;background:#fff;padding:48px var(--gutter)}
+.sl-in{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);align-items:center;gap:40px;padding:28px 36px;border:1px solid var(--border);border-radius:28px;background:#fff;box-shadow:0 1px 2px rgba(41,38,36,.04),0 12px 28px -18px rgba(41,38,36,.18)}
+.sl-txt h2{margin-top:4px;font-family:var(--font-display);font-weight:700;font-size:26px;line-height:30px;color:var(--text-hi)}
+.sl-txt .eyebrow{font-size:16px;line-height:22px}
+.sl-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.sl-list li{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:12px;text-align:center}
+.sl-list li+li{border-left:1px solid var(--border);padding-left:24px}
+.sl-list img{width:auto;max-width:100%;object-fit:contain;margin:auto 0 0}
+.sl-list span{font-size:14px;line-height:20px;color:var(--text);max-width:200px}
+.sl-list b{font-weight:600;color:var(--text-hi)}
+@media (max-width:900px){.sl-in{grid-template-columns:1fr;gap:24px;text-align:center;padding:28px 24px}}
+@media (max-width:600px){.s-sellos{padding:40px var(--gutter)}.sl-txt h2{font-size:22px;line-height:27px}.sl-list{gap:12px}.sl-list li+li{padding-left:12px}.sl-list span{font-size:12px;line-height:16px}.sl-list img[alt="FEDIAF"]{height:44px!important}.sl-list img[alt^="Univ"]{height:48px!important}.sl-list img[alt^="Gene"]{height:24px!important}}
+/* Tarjetas de pasos en blanco; la sombra hacia arriba separa cada tarjeta de la que tapa */
+.ce3-card{background:#fff;border:1px solid var(--border);box-shadow:0 -8px 20px -12px rgba(42,39,36,.28),0 8px 20px -14px rgba(42,39,36,.22)}
 </style>
 </head>
 <body>
@@ -1109,12 +1137,17 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
 </div>
 
 <!-- 02 · Intro + 03 · Cocina a tu casa (stepper): mismo bloque para que el titular quede dentro del sticky, junto a la imagen y los pasos -->
-<section class="s-cocina ce" id="como">
+<section class="ce ce3" id="como">
   <div class="container center ce-head">
     <p class="eyebrow">¡Darle lo mejor nunca ha sido tan fácil!</p>
     <h2 class="h2">¿Cómo empezar a darle una <span class="accent">buena alimentación</span> a tu perro?</h2>
   </div>
-  <ol class="ce2-list"><li class="ce2-step"><div class="ce2-img"><img src="assets/paso-perfil.jpg" alt="Un perro de pie sobre su humano, que duerme en la cama" loading="lazy" decoding="async"></div><div class="ce2-txt"><span class="ce2-n">1</span><h3>Nos presentas a tu perrete</h3><p>Cuéntanos cómo es tu peludo: su peso, tamaño, raza, preferencias… Te llevará 2 minutos y nos permitirá crear un plan hecho a su medida.</p></div></li><li class="ce2-step"><div class="ce2-img"><img src="assets/ce-caja-bolsitas.jpg" alt="Dos personas abren una caja de Dogfy Diet con las bolsitas de menú mientras un perro curiosea" loading="lazy" decoding="async"></div><div class="ce2-txt"><span class="ce2-n">2</span><h3>Marchando su menú personalizado</h3><p>Cocinamos a fuego lento los mejores ingredientes para elaborar el menú personalizado de tu perro, y te lo enviamos a casa congelado y dividido en bolsitas diarias.</p></div></li><li class="ce2-step"><div class="ce2-img"><img src="assets/paso-sirve.jpg" alt="Un perro se relame ante su bol de comida natural" loading="lazy" decoding="async"></div><div class="ce2-txt"><span class="ce2-n">3</span><h3>Tu perro disfruta como nunca</h3><p>Recibe sus menús y mira cómo salta de alegría cada día a la hora de comer. Pausa o cancela cuando quieras, y quédate solo porque quieres hacerlo.</p></div></li><li class="ce2-step"><div class="ce2-img"><img src="assets/como-empieza-caja.png" alt="Un perro recibe su caja de Dogfy Diet en casa" loading="lazy" decoding="async"></div><div class="ce2-txt"><span class="ce2-n">4</span><h3>Tu suscripción, a tu ritmo.</h3><p>Cambia de receta, aplaza un envío o cancela cuando quieras desde tu cuenta. Sin permanencia: quédate solo porque quieres hacerlo.</p></div></li></ol>
+  <div class="ce3-track">
+    <div class="ce3-stage">
+      <ol class="ce3-cards"><li class="ce3-card"><button type="button" class="ce3-top" aria-controls="ce3-p0"><span class="ce3-n">1</span><h3>Nos presentas a tu perrete</h3></button><p id="ce3-p0">Cuéntanos cómo es tu peludo: su peso, tamaño, raza, preferencias… Te llevará 2 minutos y nos permitirá crear un plan hecho a su medida.</p></li><li class="ce3-card"><button type="button" class="ce3-top" aria-controls="ce3-p1"><span class="ce3-n">2</span><h3>Marchando su menú personalizado</h3></button><p id="ce3-p1">Cocinamos a fuego lento los mejores ingredientes para elaborar su menú, y te lo enviamos a casa congelado y dividido en bolsitas diarias.</p></li><li class="ce3-card"><button type="button" class="ce3-top" aria-controls="ce3-p2"><span class="ce3-n">3</span><h3>Tu perro disfruta como nunca</h3></button><p id="ce3-p2">Recibe sus menús y mira cómo salta de alegría cada día a la hora de comer.</p></li><li class="ce3-card"><button type="button" class="ce3-top" aria-controls="ce3-p3"><span class="ce3-n">4</span><h3>Tu suscripción, a tu ritmo</h3></button><p id="ce3-p3">Cambia de receta, aplaza un envío o cancela cuando quieras desde tu cuenta. Sin permanencia: quédate solo porque quieres hacerlo.</p></li></ol>
+      <div class="ce3-media"><img src="assets/paso-perfil.jpg" alt="Un perro de pie sobre su humano, que duerme en la cama" class="is-on" decoding="async"><img src="assets/ce-caja-bolsitas.jpg" alt="Dos personas abren una caja de Dogfy Diet con las bolsitas de menú mientras un perro curiosea" decoding="async" loading="lazy"><img src="assets/paso-sirve.jpg" alt="Un perro se relame ante su bol de comida natural" decoding="async" loading="lazy"><img src="assets/como-empieza-caja.png" alt="Un perro recibe su caja de Dogfy Diet en casa" decoding="async" loading="lazy"></div>
+    </div>
+  </div>
 </section>
 
 <!-- 04 · Por qué (bol con etiquetas) -->
@@ -1130,6 +1163,22 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
     <ul class="pq-col"><li class="pq-card"><span class="pq-ico pq-ico-full"><img src="assets/pq-sin-harinas.svg" alt=""></span><div><h3>Cero harinas y aditivos</h3><p>Sin conservantes ni potenciadores.</p></div></li><li class="pq-card"><span class="pq-ico"><img src="assets/pq-premix.svg" alt=""></span><div><h3>Premix vitamínico</h3><p>Fórmula 100 % completa según FEDIAF.</p></div></li></ul>
   </div>
 </section>
+
+<!-- 04b · Sellos de confianza -->
+<section class="s-sellos" aria-labelledby="sellosT">
+  <div class="sl-in">
+    <div class="sl-txt">
+      <p class="eyebrow">Puedes estar tranquilo</p>
+      <h2 id="sellosT">Respaldados por quienes más saben</h2>
+    </div>
+    <ul class="sl-list">
+      <li><img src="assets/sello-fediaf.png" alt="FEDIAF" width="348" height="374" loading="lazy" decoding="async" style="height:56px"><span>Recetas según los estándares <b>FEDIAF</b></span></li>
+      <li><img src="assets/sello-unibo.png" alt="Università di Bologna" width="400" height="400" loading="lazy" decoding="async" style="height:60px"><span>Digestibilidad testada por la <b>Universidad de Bolonia</b></span></li>
+      <li><img src="assets/sello-generalitat.png" alt="Generalitat de Catalunya" width="640" height="186" loading="lazy" decoding="async" style="height:34px"><span>Calidad certificada por la <b>Generalitat de Catalunya</b></span></li>
+    </ul>
+  </div>
+</section>
+
 
 <!-- 05 · Recetas -->
 
@@ -1348,7 +1397,7 @@ addEventListener('scroll',()=>{if(!tick){tick=true;requestAnimationFrame(upd)}},
 // Móvil/tablet: el scroll nunca se queda a medias entre dos secciones. Si al parar hay un límite de sección en la franja central de la pantalla (25-75 %), se "ancla": sube hasta dejar la nueva sección arriba o baja para completar la anterior
 (()=>{const mq=matchMedia('(max-width:900px)');if(matchMedia('(prefers-reduced-motion:reduce)').matches)return;
 // Límites de sección; las secciones bajas (menos del 70 % de la pantalla, p. ej. la banda de estadísticas) no cuentan como destino: se pasa de largo hasta la siguiente
-const tops=()=>[...document.querySelectorAll('.page > section, .page > .stats-m, .page > .yellow-wrap, .yellow-wrap > .s-caja')].filter(e=>e.offsetHeight>=innerHeight*.7&&!e.classList.contains('s-porque')&&!e.classList.contains('s-recetas')).map(e=>e.getBoundingClientRect().top);  // el bol y las recetas no se anclan: sus propias animaciones ya guían el scroll y el anclaje las hacía bailar
+const tops=()=>[...document.querySelectorAll('.page > section, .page > .stats-m, .page > .yellow-wrap, .yellow-wrap > .s-caja')].filter(e=>e.offsetHeight>=innerHeight*.7&&!e.classList.contains('s-porque')&&!e.classList.contains('s-recetas')&&!e.classList.contains('ce3')).map(e=>e.getBoundingClientRect().top);  // el bol y las recetas no se anclan: sus propias animaciones ya guían el scroll y el anclaje las hacía bailar
 let idle=null,touching=false,snapping=false;const HEAD=64;
 // Rango amplio (8-95 % de la pantalla): cualquier límite de sección que quede a la vista se ancla; por encima del 55 % se completa la sección anterior, por debajo entra la nueva
 const settle=()=>{if(!mq.matches||touching||snapping)return;const vh=innerHeight;const cands=tops().filter(t=>t>vh*.12&&t<vh*.95);if(!cands.length)return;const b=cands.sort((p,q)=>Math.abs(p-vh*.5)-Math.abs(q-vh*.5))[0];const target=b<vh*.55?scrollY+b-HEAD:scrollY+b-vh;if(Math.abs(target-scrollY)<8)return;snapping=true;scrollTo({top:Math.max(0,target),behavior:'smooth'});
@@ -1567,8 +1616,7 @@ document.getElementById('smsForm').addEventListener('submit',e=>{e.preventDefaul
 </script>
 <script>
 // Cómo empezar: cada paso entra al llegar al viewport. Tramado de precios: parallax suave hasta quedar pegado a la caja de prueba.
-(()=>{const steps=document.querySelectorAll('.ce2-step');if(steps.length&&'IntersectionObserver' in window){document.documentElement.classList.add('js-ce');const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.35,rootMargin:'0px 0px -8% 0px'});steps.forEach(s=>io.observe(s));}
-const tr=document.querySelector('.ym-trama'),wrap=tr&&tr.parentElement,caja=wrap&&wrap.querySelector('.s-caja'),rec=wrap&&wrap.querySelector('.s-recetas');if(!tr||!caja)return;
+(()=>{const tr=document.querySelector('.ym-trama'),wrap=tr&&tr.parentElement,caja=wrap&&wrap.querySelector('.s-caja'),rec=wrap&&wrap.querySelector('.s-recetas');if(!tr||!caja)return;
 const place=()=>{const w=wrap.clientWidth,end=caja.offsetTop,start=rec?rec.offsetTop+(w<900?140:0):0;const H=w>=900?Math.min(w*1653/1440,end-start):end-start;tr.style.setProperty('--ymh',H+'px');tr.style.setProperty('--ymt',(end-H)+'px');};
 const red=matchMedia('(prefers-reduced-motion:reduce)').matches;let t=false;const upd=()=>{t=false;if(red)return;const r=caja.getBoundingClientRect(),d=Math.max(0,Math.min(1,(r.top-innerHeight*.5)/(innerHeight*1.5)));tr.style.setProperty('--ymy',(d*120).toFixed(1)+'px');};
 addEventListener('scroll',()=>{if(!t){t=true;requestAnimationFrame(upd);}},{passive:true});addEventListener('resize',()=>{place();upd();});addEventListener('load',()=>{place();upd();});if(window.ResizeObserver)new ResizeObserver(()=>{place();upd();}).observe(wrap);place();upd();})();
@@ -1581,6 +1629,28 @@ const dots=cards.map((c,i)=>{const b=document.createElement('button');b.type='bu
 g.after(nav);let t=false;const upd=()=>{t=false;const mid=g.scrollLeft+g.clientWidth/2;let k=0,best=1e9;cards.forEach((c,i)=>{const d=Math.abs(c.offsetLeft-g.offsetLeft+c.offsetWidth/2-mid);if(d<best){best=d;k=i;}});
 if(g.scrollLeft+g.clientWidth>=g.scrollWidth-4)k=cards.length-1;dots.forEach((b,i)=>{b.classList.toggle('active',i===k);b.setAttribute('aria-current',i===k?'true':'false');});};
 g.addEventListener('scroll',()=>{if(!t){t=true;requestAnimationFrame(upd);}},{passive:true});addEventListener('resize',upd);upd();});})();
+</script>
+<script>
+// Cómo empezar: pista de scroll; cada tarjeta sube hasta dejar ver solo el título de la anterior y la foto cambia (dissolve 800 ms). Funciona igual hacia arriba.
+(()=>{const sec=document.querySelector('.ce3');if(!sec||matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+const track=sec.querySelector('.ce3-track'),stage=sec.querySelector('.ce3-stage'),list=sec.querySelector('.ce3-cards'),cards=[...list.children],imgs=[...sec.querySelectorAll('.ce3-media img')],N=cards.length;
+sec.classList.add('is-anim');let hs=[],tops=[],gap=16,run=0,vh=innerHeight,stuck=64;
+const lerp=(a,b,t)=>a+(b-a)*t,ease=t=>t<.5?2*t*t:1-Math.pow(-2*t+2,2)/2;
+const media=sec.querySelector('.ce3-media'),bar=document.getElementById('ctaBar');
+const measure=()=>{vh=innerHeight;const mob=innerWidth<=860;gap=mob?12:16;hs=cards.map(c=>c.offsetHeight);tops=cards.map(c=>c.querySelector('.ce3-top').offsetHeight);
+  let full=0;hs.forEach((x,i)=>full+=x+(i?gap:0));let col=0;tops.forEach((x,i)=>{if(i<N-1)col+=x;});col+=hs[N-1];
+  const barH=bar&&getComputedStyle(bar).display!=='none'&&bar.offsetHeight?bar.offsetHeight+12:0,mh=media.offsetHeight;
+  const avail=mob?vh-64-16-mh-16-barH:vh-64-48;const lh=Math.max(col,Math.min(full,avail));list.style.setProperty('--ce3-h',lh+'px');
+  const sh=mob?mh+16+lh:Math.max(lh,mh);const g=mob?16:Math.max(24,(vh-64-sh)/2);sec.style.setProperty('--ce3-gap',g+'px');stuck=64+g;
+  run=Math.round(vh*.55)*(N-1);track.style.height=(sh+run)+'px';};
+let active=0;const setActive=k=>{if(k===active)return;active=k;imgs.forEach((im,i)=>im.classList.toggle('is-on',i===k));cards.forEach((c,i)=>{c.classList.toggle('is-past',i<k);c.classList.toggle('is-active',i===k);});};
+let tick=false;const upd=()=>{tick=false;const r=track.getBoundingClientRect(),p=Math.max(0,Math.min(N-1,(stuck-r.top)/(run/(N-1))));
+  let y=0;cards.forEach((c,i)=>{if(i){const t=ease(Math.max(0,Math.min(1,p-(i-1))));y+=lerp(hs[i-1]+gap,tops[i-1],t);}c.style.setProperty('--y',y.toFixed(1)+'px');});
+  setActive(Math.min(N-1,Math.floor(p+.5)));};
+cards.forEach((c,i)=>c.querySelector('.ce3-top').addEventListener('click',()=>{if(i>=active&&i!==0)return;const r=track.getBoundingClientRect();scrollTo({top:scrollY+r.top-stuck+i*(run/(N-1))+2,behavior:'smooth'});}));
+const on=()=>{if(!tick){tick=true;requestAnimationFrame(upd);}};addEventListener('scroll',on,{passive:true});
+const re=()=>{measure();upd();};addEventListener('resize',re);addEventListener('load',re);if(document.fonts)document.fonts.ready.then(re);
+imgs.forEach(im=>{if(!im.complete)im.addEventListener('load',re,{once:true});});cards[0].classList.add('is-active');re();})();
 </script>
 </body>
 </html>
