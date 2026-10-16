@@ -1269,6 +1269,43 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
 .hero-hw .hw-arc{font-size:12.5px;letter-spacing:0}
 @media (min-width:901px){.hero-hw{top:calc(64px + 56px + 136px);right:calc(var(--gutter) + 28px)}}
 .ym-trama{transform:translate(var(--ymx,0px),var(--ymy,0px))}
+/* Hero: stickers de la promo (Figma 744:19164): «-40 % para ti» + ticket «Donación 1 kg para ellos» */
+.hero-promo{position:absolute;z-index:3;top:calc(64px + 40px);right:calc(var(--gutter) - 12px);width:clamp(280px,25vw,420px);filter:drop-shadow(0 12px 18px rgba(0,0,0,.35));transform-origin:70% 40%;transition:transform .35s cubic-bezier(.34,1.56,.64,1)}
+.hero-promo img{display:block;width:100%;height:auto}
+.hero-promo:hover{transform:rotate(-2deg) scale(1.04)}
+.hero-promo:focus-visible{outline:3px solid #f2c94c;outline-offset:6px;border-radius:24px}
+@media (prefers-reduced-motion:no-preference){.hero-promo{animation:promoIn .9s cubic-bezier(.34,1.56,.64,1) .3s both}@keyframes promoIn{from{opacity:0;transform:scale(.7) rotate(-8deg)}to{opacity:1;transform:none}}}
+@media (max-width:900px){.hero-promo{top:auto;bottom:200px;right:8px;width:clamp(200px,40vw,300px)}}
+@media (max-width:600px){.hero-promo{bottom:190px;right:4px;width:min(56vw,230px)}}
+/* FEDIAF: anclado al borde superior derecho del bol (posición calculada por JS) */
+.pq-fediaf{left:var(--fx,auto)!important;top:var(--fy,auto)!important;right:auto!important;bottom:auto!important;translate:-50% -50%}
+/* Asesoramiento nutricional v2: iconos en mancha azul, sello flotante sobre la foto y titular con acento */
+.s-nutri2{padding:64px var(--gutter) 88px}
+.nu2-in{gap:clamp(40px,6vw,88px)}
+.nu2-media{position:relative;margin:0}
+.nu2-img{display:block}
+.nu2-badge{position:absolute;left:-20px;bottom:28px;display:flex;align-items:center;gap:12px;padding:10px 18px 10px 10px;background:#fff;border-radius:999px;box-shadow:0 14px 30px -12px rgba(42,39,36,.35),0 2px 6px rgba(42,39,36,.08);max-width:calc(100% - 20px)}
+.nu2-badge img{width:52px;height:52px;flex:none}
+.nu2-badge span{display:flex;flex-direction:column;font-size:13px;line-height:18px;color:var(--text)}
+.nu2-badge b{font-family:var(--font-display);font-weight:700;font-size:16px;line-height:20px;color:var(--text-hi)}
+.nu2-txt .h2{font-size:clamp(34px,3.6vw,48px)}
+.nu2-list{gap:0;margin-top:20px;border-top:1px solid var(--border)}
+.nu2-list li{display:flex;gap:16px;align-items:flex-start;padding:20px 0;border-bottom:1px solid var(--border)}
+.nu2-list li>img{flex:0 0 48px;width:48px;height:52px;padding:15px 13px 17px;margin-top:-6px;box-sizing:border-box;background:url("assets/blob-bg-1.svg") center/contain no-repeat}
+.nu2-list li:nth-child(2)>img{background-image:url("assets/blob-bg-2.svg")}
+.nu2-list li:nth-child(3)>img{background-image:url("assets/blob-bg-3.svg")}
+.nu2-list h3{font-size:20px;line-height:26px}
+.nu2-list p{margin-top:4px}
+@media (prefers-reduced-motion:no-preference){.nu2-badge{animation:nuFloat 6s ease-in-out infinite}@keyframes nuFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}}
+@media (max-width:900px){.nu2-badge{left:12px;bottom:12px}.s-nutri2{padding:48px var(--gutter) 64px}}
+@media (max-width:600px){.nu2-badge{padding:8px 14px 8px 8px;gap:10px}.nu2-badge img{width:42px;height:42px}.nu2-badge b{font-size:14px;line-height:18px}.nu2-badge span{font-size:12px;line-height:16px}.nu2-list li{padding:16px 0;gap:12px}.nu2-list h3{font-size:18px;line-height:24px}}
+/* Estrellas estilo Trustpilot: cuadrados verdes con estrella blanca */
+.tp-stars{display:inline-flex;gap:2px;letter-spacing:0;line-height:0}
+.tp-stars i{display:grid;place-items:center;width:18px;height:18px;background:#00b67a}
+.tp-stars i.half{background:linear-gradient(90deg,#00b67a 50%,#dcdce6 50%)}
+.tp-stars svg{width:14px;height:14px;fill:#fff}
+.op-stars.tp-stars{margin-top:4px}
+.op-tp-stars.tp-stars i{width:16px;height:16px}.op-tp-stars.tp-stars svg{width:12px;height:12px}
 </style>
 </head>
 <body>
@@ -1310,30 +1347,7 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
 <!-- Hero -->
 <section class="hero">
   <div class="hero-bg"><picture><source media="(max-width:600px)" srcset="assets/hero-mobile.jpg"><img src="assets/hero.jpg" srcset="assets/hero-900.jpg 900w, assets/hero.jpg 2048w" sizes="100vw" alt="" fetchpriority="high" decoding="async"></picture></div>
-  <a class="hero-hw" href="#descuento" aria-label="Promo extra de Halloween"><svg viewBox="0 0 200 200" aria-hidden="true">
-  <defs><path id="hwArc" d="M100 100m-70 0a70 70 0 1 1 140 0a70 70 0 1 1-140 0"/></defs>
-  <circle cx="100" cy="100" r="98" fill="#fff"/>
-  <circle cx="100" cy="100" r="90" fill="#2a2724"/>
-  <circle cx="100" cy="100" r="54" fill="none" stroke="#ffee99" stroke-width="1.4" stroke-dasharray="3 4" opacity=".45"/>
-  <g class="hw-spin"><text class="hw-arc"><textPath href="#hwArc" textLength="436" lengthAdjust="spacing">HALLOWEEN ✦ PROMO EXTRA ✦ HALLOWEEN ✦ PROMO EXTRA ✦</textPath></text></g>
-  <g class="hw-pk" transform="translate(100 104)">
-    <path d="M-3-30c2-8 8-12 14-12" fill="none" stroke="#6f8f3a" stroke-width="5" stroke-linecap="round"/>
-    <ellipse cx="-17" cy="2" rx="20" ry="27" fill="#e8662f"/>
-    <ellipse cx="17" cy="2" rx="20" ry="27" fill="#e8662f"/>
-    <ellipse cx="0" cy="2" rx="17" ry="29" fill="#f47b3c"/>
-    <path d="M-17-6l7-8 6 8zM4-6l7-8 6 8z" fill="#2a2724"/>
-    <path d="M-20 10c6 8 34 8 40 0l-6 3-4-3-5 4-5-4-5 4-5-4-4 3z" fill="#2a2724"/>
-  </g>
-</svg></a>
-  <a class="dto-st hero-dto" href="#descuento" aria-label="10 % de descuento extra: pide tu código por SMS"><svg viewBox="0 0 200 200" aria-hidden="true">
-  <defs><path id="dtoArcHero" d="M100 100m-66 0a66 66 0 1 1 132 0a66 66 0 1 1-132 0"/></defs>
-  <g class="dto-cut" transform="translate(-4 -4) scale(3.25)"><path d="M64 32c0 2.364-3.853 4.253-4.344 6.465-.507 2.284 2.151 5.694 1.18 7.754-.986 2.095-5.258 2.087-6.66 3.886-1.404 1.799-.457 6.068-2.223 7.512s-5.601-.458-7.646.553c-2.011.994-2.955 5.26-5.187 5.78-2.16.502-4.811-2.912-7.12-2.912s-4.961 3.414-7.121 2.911c-2.23-.518-3.174-4.785-5.186-5.78-2.046-1.01-5.889.883-7.646-.552s-.813-5.704-2.222-7.512-5.675-1.79-6.662-3.886c-.971-2.059 1.688-5.47 1.18-7.754C3.854 36.253 0 34.364 0 32s3.853-4.253 4.344-6.465c.507-2.284-2.152-5.694-1.181-7.754.987-2.095 5.259-2.087 6.662-3.886s.456-6.068 2.222-7.512 5.6.458 7.646-.553C21.704 4.836 22.648.57 24.88.05 27.039-.451 29.69 2.962 32 2.962s4.96-3.413 7.12-2.91c2.232.518 3.174 4.785 5.187 5.78 2.045 1.01 5.889-.883 7.646.552s.813 5.704 2.222 7.512 5.675 1.79 6.661 3.886c.971 2.059-1.687 5.47-1.18 7.754C60.146 27.747 64 29.636 64 32"/></g>
-  <g class="dto-face" transform="translate(6 6) scale(2.9375)"><path d="M64 32c0 2.364-3.853 4.253-4.344 6.465-.507 2.284 2.151 5.694 1.18 7.754-.986 2.095-5.258 2.087-6.66 3.886-1.404 1.799-.457 6.068-2.223 7.512s-5.601-.458-7.646.553c-2.011.994-2.955 5.26-5.187 5.78-2.16.502-4.811-2.912-7.12-2.912s-4.961 3.414-7.121 2.911c-2.23-.518-3.174-4.785-5.186-5.78-2.046-1.01-5.889.883-7.646-.552s-.813-5.704-2.222-7.512-5.675-1.79-6.662-3.886c-.971-2.059 1.688-5.47 1.18-7.754C3.854 36.253 0 34.364 0 32s3.853-4.253 4.344-6.465c.507-2.284-2.152-5.694-1.181-7.754.987-2.095 5.259-2.087 6.662-3.886s.456-6.068 2.222-7.512 5.6.458 7.646-.553C21.704 4.836 22.648.57 24.88.05 27.039-.451 29.69 2.962 32 2.962s4.96-3.413 7.12-2.91c2.232.518 3.174 4.785 5.187 5.78 2.045 1.01 5.889-.883 7.646.552s.813 5.704 2.222 7.512 5.675 1.79 6.661 3.886c.971 2.059-1.687 5.47-1.18 7.754C60.146 27.747 64 29.636 64 32"/></g>
-  <circle class="dto-ring" cx="100" cy="100" r="52"/>
-  <g class="dto-spin"><text class="dto-arc"><textPath href="#dtoArcHero" startOffset="0">DESCUENTO EXTRA ✦ DESCUENTO EXTRA ✦</textPath></text></g>
-  <text class="dto-big" x="100" y="106" text-anchor="middle">10%</text>
-  <text class="dto-sub" x="100" y="132" text-anchor="middle">DTO</text>
-</svg></a>
+  <a class="hero-promo" href="#descuento" aria-label="−40 % para ti y donamos 1 kg de comida para perros que lo necesitan"><img src="assets/promo-hero.svg" alt="" width="1732" height="1087" decoding="async"></a>
   <div class="container hero-content">
     <div>
       <span class="hero-badge">Para perros llenos de vida</span>
@@ -1471,14 +1485,17 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
 <!-- 08 · Receta formulada -->
 <section class="s-nutri2" id="nutricionistas">
   <div class="nu2-in">
-    <img class="nu2-img" src="assets/nutri-receta.jpg" alt="Un perro descansa en el regazo de su humana, que mira el móvil" width="1024" height="857" loading="lazy" decoding="async">
+    <figure class="nu2-media">
+      <img class="nu2-img" src="assets/nutri-receta.jpg" alt="Un perro descansa en el regazo de su humana, que mira el móvil" width="1024" height="857" loading="lazy" decoding="async">
+      <figcaption class="nu2-badge"><img src="assets/sticker-fediaf.svg" alt="" width="177" height="177"><span><b>Formulado por veterinarios</b>Según las guías nutricionales de la FEDIAF</span></figcaption>
+    </figure>
     <div class="nu2-txt">
       <p class="eyebrow">La ciencia detrás de su receta</p>
-      <h2 class="h2">Una receta empieza antes de cocinarla.</h2>
+      <h2 class="h2">Una receta empieza <span class="accent">antes de cocinarla.</span></h2>
       <ul class="nu2-list">
-        <li><h3>Elaborada por veterinarios</h3><p>Formulada por un equipo de veterinarios nutricionistas, siguiendo las recomendaciones europeas.</p></li>
-        <li><h3>Ingredientes aptos para humanos</h3><p>Carne y verduras frescas de proveedores de confianza, sin subproductos ni conservantes.</p></li>
-        <li><h3>Cocinada a baja temperatura</h3><p>Para conservar nutrientes, textura y sabor. Lista para descongelar y servir.</p></li>
+        <li><img src="assets/icon-stethoscope-azul.svg" alt="" width="20" height="20"><div><h3>Elaborada por veterinarios</h3><p>Formulada por un equipo de veterinarios nutricionistas, siguiendo las recomendaciones europeas.</p></div></li>
+        <li><img src="assets/icon-shield-check-azul.svg" alt="" width="20" height="20"><div><h3>Ingredientes aptos para humanos</h3><p>Carne y verduras frescas de proveedores de confianza, sin subproductos ni conservantes.</p></div></li>
+        <li><img src="assets/icon-olla-azul.svg" alt="" width="20" height="20"><div><h3>Cocinada a baja temperatura</h3><p>Para conservar nutrientes, textura y sabor. Lista para descongelar y servir.</p></div></li>
       </ul>
     </div>
   </div>
@@ -1492,8 +1509,8 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
     <h2 class="h2">Quienes ya abren nuestras cajas <span class="accent">te cuentan.</span></h2>
     <p class="op-sub">Cómo les va con la comida, con los pedidos y con nosotros. Lee sus experiencias.</p>
   </div>
-  <div class="op-grid"><article class="op-card"><div class="op-head"><span class="op-av" aria-hidden="true">M</span><div><b>Marta</b><span class="op-stars" aria-label="5 de 5 estrellas">★★★★★</span></div></div><p class="op-text">“Llevamos un año con Dogfy y Lola come con unas ganas que no había visto nunca. Las digestiones han mejorado muchísimo y el pelo le brilla más.”</p><p class="op-when">hace 2 meses</p></article><article class="op-card"><div class="op-head"><span class="op-av" aria-hidden="true">J</span><div><b>Jordi</b><span class="op-stars" aria-label="5 de 5 estrellas">★★★★★</span></div></div><p class="op-text">“Me daba pereza el cambio de pienso a comida real, pero la transición fue fácil con la guía de la caja.”</p><p class="op-when">hace 5 meses</p></article><article class="op-card"><div class="op-head"><span class="op-av" aria-hidden="true">A</span><div><b>Ana</b><span class="op-stars" aria-label="5 de 5 estrellas">★★★★★</span></div></div><p class="op-text">“Rocky es un perro sénior con el estómago delicado y la receta de pavo le va genial.”</p><p class="op-when">hace 1 mes</p></article></div>
-  <a class="op-tp" href="#"><b>4,5</b><span class="op-tp-stars" aria-label="4,5 de 5 estrellas">★★★★★</span><span>12.480 opiniones en Trustpilot</span></a>
+  <div class="op-grid"><article class="op-card"><div class="op-head"><span class="op-av" aria-hidden="true">M</span><div><b>Marta</b><span class="op-stars tp-stars" role="img" aria-label="5 de 5 estrellas"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.2l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.1-5.4 3.1 1.3-6-4.6-4.1 6.1-.6z"/></svg></i><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.2l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.1-5.4 3.1 1.3-6-4.6-4.1 6.1-.6z"/></svg></i><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.2l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.1-5.4 3.1 1.3-6-4.6-4.1 6.1-.6z"/></svg></i><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.2l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.1-5.4 3.1 1.3-6-4.6-4.1 6.1-.6z"/></svg></i><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.2l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.1-5.4 3.1 1.3-6-4.6-4.1 6.1-.6z"/></svg></i></span></div></div><p class="op-text">“Llevamos un año con Dogfy y Lola come con unas ganas que no había visto nunca. Las digestiones han mejorado muchísimo y el pelo le brilla más.”</p><p class="op-when">hace 2 meses</p></article><article class="op-card"><div class="op-head"><span class="op-av" aria-hidden="true">J</span><div><b>Jordi</b><span class="op-stars tp-stars" role="img" aria-label="5 de 5 estrellas"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.2l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.1-5.4 3.1 1.3-6-4.6-4.1 6.1-.6z"/></svg></i><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.2l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.1-5.4 3.1 1.3-6-4.6-4.1 6.1-.6z"/></svg></i><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.2l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.1-5.4 3.1 1.3-6-4.6-4.1 6.1-.6z"/></svg></i><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.2l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.1-5.4 3.1 1.3-6-4.6-4.1 6.1-.6z"/></svg></i><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.2l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.1-5.4 3.1 1.3-6-4.6-4.1 6.1-.6z"/></svg></i></span></div></div><p class="op-text">“Me daba pereza el cambio de pienso a comida real, pero la transición fue fácil con la guía de la caja.”</p><p class="op-when">hace 5 meses</p></article><article class="op-card"><div class="op-head"><span class="op-av" aria-hidden="true">A</span><div><b>Ana</b><span class="op-stars tp-stars" role="img" aria-label="5 de 5 estrellas"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.2l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.1-5.4 3.1 1.3-6-4.6-4.1 6.1-.6z"/></svg></i><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.2l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.1-5.4 3.1 1.3-6-4.6-4.1 6.1-.6z"/></svg></i><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.2l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.1-5.4 3.1 1.3-6-4.6-4.1 6.1-.6z"/></svg></i><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.2l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.1-5.4 3.1 1.3-6-4.6-4.1 6.1-.6z"/></svg></i><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.2l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.1-5.4 3.1 1.3-6-4.6-4.1 6.1-.6z"/></svg></i></span></div></div><p class="op-text">“Rocky es un perro sénior con el estómago delicado y la receta de pavo le va genial.”</p><p class="op-when">hace 1 mes</p></article></div>
+  <a class="op-tp" href="#"><b>4,5</b><span class="op-tp-stars tp-stars" role="img" aria-label="4,5 de 5 estrellas"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.2l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.1-5.4 3.1 1.3-6-4.6-4.1 6.1-.6z"/></svg></i><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.2l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.1-5.4 3.1 1.3-6-4.6-4.1 6.1-.6z"/></svg></i><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.2l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.1-5.4 3.1 1.3-6-4.6-4.1 6.1-.6z"/></svg></i><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.2l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.1-5.4 3.1 1.3-6-4.6-4.1 6.1-.6z"/></svg></i><i class="half"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.2l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.1-5.4 3.1 1.3-6-4.6-4.1 6.1-.6z"/></svg></i></span><span>12.480 opiniones en Trustpilot</span></a>
 </section>
 
 <!-- 11 · Descuento SMS -->
@@ -1858,6 +1875,12 @@ a.innerHTML='<svg viewBox="0 0 25 24" width="44" height="44" aria-hidden="true">
 a.addEventListener('click',e=>e.preventDefault());document.body.appendChild(a);
 const bar=document.getElementById('ctaBar');if(!bar)return;const upd=()=>{const on=getComputedStyle(bar).display!=='none'&&bar.getBoundingClientRect().top<innerHeight-4&&!bar.classList.contains('hide')&&getComputedStyle(bar).opacity!=='0';a.style.setProperty('--wa-b',on?(innerHeight-bar.getBoundingClientRect().top+12)+'px':'');};
 let t=false;addEventListener('scroll',()=>{if(!t){t=true;requestAnimationFrame(()=>{t=false;upd();});}},{passive:true});addEventListener('resize',upd);setInterval(upd,800);upd();})();
+</script>
+<script>
+// Sticker FEDIAF: se coloca sobre el borde superior derecho del bol, en cualquier ancho
+(()=>{const st=document.querySelector('.pq-fediaf'),bol=document.querySelector('.pq-bol');if(!st||!bol)return;
+const place=()=>{st.style.setProperty('--fx',(bol.offsetLeft+bol.offsetWidth*.84)+'px');st.style.setProperty('--fy',(bol.offsetTop+bol.offsetHeight*.15)+'px');};
+addEventListener('resize',place);addEventListener('load',place);if(!bol.complete)bol.addEventListener('load',place,{once:true});if(window.ResizeObserver)new ResizeObserver(place).observe(bol);place();})();
 </script>
 </body>
 </html>
