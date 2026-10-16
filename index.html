@@ -1454,6 +1454,27 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
 @media (max-width:900px){.pcard.c-med.is-photo .img img{object-position:48% 40%}}
 .pcard.c-minis.is-photo .img img{object-position:52% 35%!important}.pcard.c-med.is-photo .img img{object-position:62% 50%!important}.pcard.c-gra.is-photo .img img{object-position:55% 45%!important}
 .pcard.c-peq.is-photo .img img{object-position:52% 40%!important}
+/* SMS escena: right independiente y versión desktop */
+.sms2.is-manim .bg{right:var(--mr,var(--ml))}
+.sms2-intro-desc{display:none}
+@media (min-width:901px){
+  .sms2.is-manim{display:block;padding:0;min-height:0;background:#fff}
+  .sms2.is-manim .sms2-stk{position:sticky;top:64px;overflow:hidden}
+  .sms2.is-manim .bg{position:absolute;left:var(--ml);right:var(--mr);top:var(--mt);bottom:var(--mb);height:auto;border-radius:var(--r);overflow:hidden;clip-path:none!important}
+  .sms2.is-manim .bg::after{background:rgba(20,16,14,.4);opacity:var(--sh,0)}
+  .sms2.is-manim .sms2-intro{position:absolute;top:50%;left:var(--ix);width:var(--iw);text-align:left;opacity:var(--to,1);transform:translate(var(--ty,0px),-50%)}
+  .sms2.is-manim .sms2-intro .sms2-title{font-size:clamp(26px,2.4vw,34px);line-height:1.2}
+  .sms2.is-manim .sms2-intro-desc{display:block;margin-top:16px;color:var(--text);font-size:18px;line-height:28px;max-width:460px}
+  .sms2.is-manim .sms2-box{position:absolute;z-index:2;top:50%;right:clamp(24px,8vw,160px);left:auto;width:min(620px,48%);margin:0;padding:0;opacity:var(--fo,0);transform:translateY(calc(-50% + var(--fy,24px)));pointer-events:none}
+  .sms2.is-manim.is-done .sms2-box{pointer-events:auto}
+  .sms2.is-manim .sms2-dto{top:calc(var(--mt) - 40px);right:calc(var(--mr) - 40px);opacity:1}
+}
+/* Precios: eslogan */
+.pr-slogan{display:inline-block;margin-bottom:14px;padding:4px 14px;border-radius:999px;background:#ffee99;font-family:"Youth",var(--font-display);font-weight:700;font-size:16px;line-height:22px;color:var(--text-hi)}
+/* Grandes: cabeza del boyero entera */
+.pcard.c-gra.is-photo .img img{object-position:12% 45%!important}
+@media (min-width:901px){.sms2.is-manim .sms2-dto{top:max(12px,calc(var(--mt) - 40px));right:max(12px,calc(var(--mr) - 40px))}}
+@media (max-width:600px){.sl-list img[alt^="Gene"]{height:30px!important}}
 </style>
 </head>
 <body>
@@ -1565,7 +1586,7 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
     <ul class="sl-list">
       <li><img src="assets/sello-fediaf.png" alt="FEDIAF" width="348" height="374" loading="lazy" decoding="async" style="height:56px"><span>Recetas según los estándares <b>FEDIAF</b></span></li>
       <li><img src="assets/sello-unibo.png" alt="Università di Bologna" width="400" height="400" loading="lazy" decoding="async" style="height:60px"><span>Digestibilidad testada por la <b>Universidad de Bolonia</b></span></li>
-      <li><img src="assets/sello-generalitat.png" alt="Generalitat de Catalunya" width="640" height="186" loading="lazy" decoding="async" style="height:46px"><span>Calidad certificada por la <b>Generalitat de Catalunya</b></span></li>
+      <li><img src="assets/sello-generalitat.png" alt="Generalitat de Catalunya" width="640" height="186" loading="lazy" decoding="async" style="height:44px"><span>Calidad certificada por la <b>Generalitat de Catalunya</b></span></li>
     </ul>
   </div>
 </section>
@@ -1599,6 +1620,7 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
 <img class="deco-precio" data-parallax="0.12" src="assets/precio-vector.svg" alt="" width="825" height="1291">
 <section class="s-precio" id="precio">
   <div class="head center">
+    <span class="pr-slogan">Comida para perros llenos de vida</span>
     <h2 class="h2">Menús <span class="accent">hechos a su medida</span><br>y el precio hecho a la tuya</h2>
   </div>
   <div class="precio-grid">
@@ -2065,18 +2087,27 @@ g.addEventListener('scroll',()=>{if(!t){t=true;requestAnimationFrame(upd);}},{pa
 </script>
 <script>
 // SMS en tablet/móvil: escena con scroll equivalente a desktop
-(()=>{const s=document.querySelector('.sms2');if(!s)return;const mq=matchMedia('(max-width:900px) and (prefers-reduced-motion:no-preference)');
+(()=>{const s=document.querySelector('.sms2');if(!s)return;const mq=matchMedia('(prefers-reduced-motion:no-preference)');
 const cl=(v,a,b)=>Math.min(b,Math.max(a,v)),ease=t=>t<.5?2*t*t:1-Math.pow(-2*t+2,2)/2,set=(k,v)=>s.style.setProperty(k,v);
 let stk=null,intro=null;
 const build=()=>{if(stk)return;stk=document.createElement('div');stk.className='sms2-stk';while(s.firstChild)stk.appendChild(s.firstChild);s.appendChild(stk);
-  intro=document.createElement('div');intro.className='sms2-intro';intro.setAttribute('aria-hidden','true');const t=s.querySelector('.sms2-title');if(t)intro.appendChild(t.cloneNode(true));stk.insertBefore(intro,stk.firstChild);};
+  intro=document.createElement('div');intro.className='sms2-intro';intro.setAttribute('aria-hidden','true');const t=s.querySelector('.sms2-title');if(t)intro.appendChild(t.cloneNode(true));const dsc=s.querySelector('.sms2-desc');if(dsc){const c=dsc.cloneNode(true);c.classList.add('sms2-intro-desc');intro.appendChild(c);}stk.insertBefore(intro,stk.firstChild);};
 const unbuild=()=>{if(!stk)return;intro.remove();while(stk.firstChild)s.insertBefore(stk.firstChild,stk);stk.remove();stk=null;s.classList.remove('is-manim','is-done');s.removeAttribute('style');};
-const upd=()=>{if(!mq.matches){unbuild();return}build();s.classList.add('is-manim');
+const upd=()=>{if(!mq.matches){unbuild();return}build();s.classList.add('is-manim');const D=innerWidth>900;s.classList.toggle('is-dsk',D);
+  if(D){const SH=innerHeight-64;stk.style.height=SH+'px';s.style.height=Math.round(SH+innerHeight*1.2)+'px';
+    const vw=s.clientWidth,cw=Math.min(1216,vw-2*(parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--gutter'))||96)),cx=(vw-cw)/2;
+    const w0=Math.min(cw*.46,SH*.8),h0=w0*.9,t0=(SH-h0)/2;
+    const r=s.getBoundingClientRect(),p=cl((64-r.top)/Math.max(1,s.offsetHeight-SH),0,1),g=ease(cl((p-.1)/.6,0,1));
+    set('--ml',(cx*(1-g))+'px');set('--mr',((vw-cx-w0)*(1-g))+'px');set('--mt',(t0*(1-g))+'px');set('--mb',(t0*(1-g))+'px');set('--r',(24*(1-g))+'px');
+    set('--ix',(cx+w0+64)+'px');set('--iw',(cw-w0-64)+'px');
+    set('--to',1-cl(g/.4,0,1));set('--ty',(48*g)+'px');set('--sh',cl((g-.45)/.4,0,1));const fo=cl((g-.75)/.22,0,1);set('--fo',fo);set('--fy',(24*(1-fo))+'px');
+    s.classList.toggle('is-done',fo>.9);return;}
+
   const SH=Math.min(innerHeight-64,760);stk.style.height=SH+'px';s.style.height=Math.round(SH+innerHeight*1.1)+'px';
   const gx=parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--gutter'))||24,gut=Math.min(gx,24);
   const t0=intro.offsetHeight+28,h0=Math.min(400,SH-t0-60),b0=Math.max(0,SH-t0-h0);
   const r=s.getBoundingClientRect(),p=cl((64-r.top)/Math.max(1,s.offsetHeight-SH),0,1),g=ease(cl((p-.08)/.6,0,1));
-  set('--mt',(t0*(1-g))+'px');set('--mb',(b0*(1-g))+'px');set('--ml',(gut*(1-g))+'px');set('--r',(20*(1-g))+'px');
+  set('--mt',(t0*(1-g))+'px');set('--mb',(b0*(1-g))+'px');set('--ml',(gut*(1-g))+'px');set('--mr',(gut*(1-g))+'px');set('--r',(20*(1-g))+'px');
   set('--to',1-cl(g/.35,0,1));set('--ty',(-24*g)+'px');set('--sh',cl((g-.4)/.4,0,1));const fo=cl((g-.7)/.25,0,1);set('--fo',fo);set('--fy',(20*(1-fo))+'px');
   s.classList.toggle('is-done',fo>.9);};
 let tk=false;addEventListener('scroll',()=>{if(!tk){tk=true;requestAnimationFrame(()=>{tk=false;upd();});}},{passive:true});addEventListener('resize',upd);if(document.fonts)document.fonts.ready.then(upd);upd();})();
