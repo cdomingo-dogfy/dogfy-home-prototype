@@ -1065,6 +1065,21 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
 @media (max-width:600px){.s-sellos{padding:40px var(--gutter)}.sl-txt h2{font-size:22px;line-height:27px}.sl-list{gap:12px}.sl-list li+li{padding-left:12px}.sl-list span{font-size:12px;line-height:16px}.sl-list img[alt="FEDIAF"]{height:44px!important}.sl-list img[alt^="Univ"]{height:48px!important}.sl-list img[alt^="Gene"]{height:24px!important}}
 /* Tarjetas de pasos en blanco; la sombra hacia arriba separa cada tarjeta de la que tapa */
 .ce3-card{background:#fff;border:1px solid var(--border);box-shadow:0 -8px 20px -12px rgba(42,39,36,.28),0 8px 20px -14px rgba(42,39,36,.22)}
+/* Estadísticas (Figma 636:35): franja arena en desktop; titular en negrita sin resaltado */
+.stats-m{background:#f4f1ec;max-width:none;padding:56px var(--gutter);gap:24px 36px}
+.stats-m .trust-eyebrow{font-weight:700;font-size:40px;line-height:48px;letter-spacing:0}
+.stats-row{gap:16px}
+.stats-row .stat{width:200px;min-height:120px;justify-content:center;padding:20px 0;border-radius:18px}
+.stats-row .stat b{font-size:40px;line-height:44px;letter-spacing:0}
+.stats-row .stat span{white-space:normal;text-align:center}
+@media (max-width:1100px){
+  .stats-m{background:#fff;flex-direction:column;gap:24px;padding:48px var(--gutter)}
+  .stats-m .trust-eyebrow{text-align:center;font-size:clamp(26px,4vw,32px);line-height:1.2;max-width:22ch}
+  .stats-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;width:100%;max-width:640px}
+  .stats-row .stat{width:auto;min-height:104px;background:#f4f1ec;padding:16px 8px}
+  .stats-row .stat b{font-size:clamp(24px,3.4vw,32px);line-height:1.15}
+}
+@media (max-width:600px){.stats-m{padding:40px var(--gutter);gap:20px}.stats-row{gap:8px;max-width:480px}.stats-row .stat{min-height:92px;border-radius:16px;padding:12px 6px 10px}.stats-row .stat b{font-size:24px}.stats-row .stat span{font-size:12px;line-height:16px}}
 </style>
 </head>
 <body>
@@ -1128,7 +1143,7 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
 
 <!-- Estadísticas (Figma 437:37824 / 437:37770 / 437:37788): fila en escritorio y tablet, columna en móvil -->
 <div class="stats-m">
-  <p class="trust-eyebrow"><mark>+700.000</mark> perros ya lo notan</p>
+  <p class="trust-eyebrow">+700.000 perros ya lo notan</p>
   <div class="stats-row">
     <div class="stat"><b>87,4%</b><span>Mejores digestiones</span></div>
     <div class="stat"><b>74%</b><span>Pelaje sano y brillante</span></div>
