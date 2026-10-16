@@ -1369,6 +1369,8 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
   .hero-bg::after{background:linear-gradient(90deg,rgba(40,34,30,.7) 0%,rgba(40,34,30,.45) 45%,rgba(40,34,30,0) 70%),linear-gradient(180deg,rgba(40,34,30,.5) 0%,rgba(40,34,30,0) 40%)}
 }
 @media (min-width:601px) and (max-width:900px){.hero-actions{margin-left:0!important;margin-right:auto!important}.hero-actions>*{margin-left:0}}
+/* Hero desktop: la entradilla no supera el ancho del titular */
+@media (min-width:901px){.hero-content>div:first-child>p{max-width:var(--h1w,100%)}}
 </style>
 </head>
 <body>
@@ -1944,6 +1946,12 @@ let t=false;addEventListener('scroll',()=>{if(!t){t=true;requestAnimationFrame((
 (()=>{const st=document.querySelector('.pq-fediaf'),bol=document.querySelector('.pq-bol');if(!st||!bol)return;
 const place=()=>{st.style.setProperty('--fx',(bol.offsetLeft+bol.offsetWidth*.84)+'px');st.style.setProperty('--fy',(bol.offsetTop+bol.offsetHeight*.15)+'px');};
 addEventListener('resize',place);addEventListener('load',place);if(!bol.complete)bol.addEventListener('load',place,{once:true});if(window.ResizeObserver)new ResizeObserver(place).observe(bol);place();})();
+</script>
+<script>
+// Hero: la entradilla toma el ancho real del titular (sus líneas, no la caja)
+(()=>{const h1=document.querySelector('.hero h1'),p=document.querySelector('.hero-content>div:first-child>p');if(!h1||!p)return;
+const fit=()=>{const r=document.createRange();r.selectNodeContents(h1);const w=Math.max(...[...r.getClientRects()].map(x=>x.right))-h1.getBoundingClientRect().left;p.style.setProperty('--h1w',Math.ceil(w)+'px');};
+addEventListener('resize',fit);if(document.fonts)document.fonts.ready.then(fit);fit();})();
 </script>
 </body>
 </html>
