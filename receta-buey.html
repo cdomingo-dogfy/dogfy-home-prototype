@@ -2313,6 +2313,12 @@ body:has(.rp-hero) .rp-crumbs{background:var(--blue-deco);max-width:none;padding
 /* Más sabor en su cuenco: separadores entre puntos (como en nutricionistas) */
 .nb-list li+li{border-top:1px solid var(--border);padding-top:20px}
 .nb-list{gap:20px}
+/* Galería: miniaturas sin contorno de seleccionada; al pulsar se intercambian con la principal */
+.rp-thumb,.rp-thumb.is-on{border-color:transparent;opacity:1}
+.rp-thumb{transition:transform .25s cubic-bezier(.2,.8,.2,1),box-shadow .25s}
+.rp-thumb:hover{transform:translateY(-2px);box-shadow:0 8px 18px -10px rgba(42,39,36,.35)}
+.rp-thumb:focus-visible{outline:3px solid #f2c94c;outline-offset:2px}
+#galMain{transition:opacity .16s ease}#galMain.is-swap{opacity:0}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://cdomingo-dogfy.github.io/dogfy-home-prototype/index.html"}, {"@type": "ListItem", "position": 2, "name": "Nuestras recetas", "item": "https://cdomingo-dogfy.github.io/dogfy-home-prototype/recetas.html"}, {"@type": "ListItem", "position": 3, "name": "Menú de buey", "item": "https://cdomingo-dogfy.github.io/dogfy-home-prototype/receta-buey.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "¿Qué formatos hay?", "acceptedAnswer": {"@type": "Answer", "text": "Cada menú llega en bolsitas individuales con la ración diaria de tu perro, ya calculada según su peso, edad y actividad. Puedes elegir una receta o combinar varias en el mismo pedido."}}, {"@type": "Question", "name": "¿Qué cantidad se le debe dar?", "acceptedAnswer": {"@type": "Answer", "text": "Depende de su peso, edad y nivel de actividad. Al crear su plan calculamos su ración diaria exacta y cada bolsita contiene justo esa cantidad, así que no tienes que pesar nada."}}, {"@type": "Question", "name": "¿Cómo llega el producto?", "acceptedAnswer": {"@type": "Answer", "text": "Te lo enviamos a casa congelado y dividido en bolsitas diarias, con envío gratis. Solo tienes que guardarlo en el congelador al recibirlo."}}]}</script>
@@ -2354,7 +2360,7 @@ body:has(.rp-hero) .rp-crumbs{background:var(--blue-deco);max-width:none;padding
   <div class="rp-grid">
     <div class="rp-gallery">
       <div class="rp-media"><img class="photo" id="galMain" src="assets/receta-buey.jpg" alt="Bol del menú de buey" decoding="async"><span class="r-ico"><img src="assets/icon-receta-buey.svg" alt=""></span></div>
-      <div class="rp-thumbs"><button type="button" class="rp-thumb is-on" data-src="assets/receta-buey.jpg" data-alt="Bol del menú de buey" aria-label="Ver imagen: Bol del menú de buey"><img src="assets/receta-buey.jpg" alt="" loading="lazy"></button><button type="button" class="rp-thumb" data-src="assets/rc-pack-beef.jpg" data-alt="Envase del menú de buey" aria-label="Ver imagen: Envase del menú de buey"><img src="assets/rc-pack-beef.jpg" alt="" loading="lazy"></button><button type="button" class="rp-thumb" data-src="assets/caja-bolsitas.jpg" data-alt="Bolsitas diarias de Dogfy Diet en su caja" aria-label="Ver imagen: Bolsitas diarias de Dogfy Diet en su caja"><img src="assets/caja-bolsitas.jpg" alt="" loading="lazy"></button></div>
+      <div class="rp-thumbs"><button type="button" class="rp-thumb" data-src="assets/rc-pack-beef.jpg" data-alt="Envase del menú de buey" aria-label="Ver imagen: Envase del menú de buey"><img src="assets/rc-pack-beef.jpg" alt="" loading="lazy"></button><button type="button" class="rp-thumb" data-src="assets/caja-bolsitas.jpg" data-alt="Bolsitas diarias de Dogfy Diet en su caja" aria-label="Ver imagen: Bolsitas diarias de Dogfy Diet en su caja"><img src="assets/caja-bolsitas.jpg" alt="" loading="lazy"></button><button type="button" class="rp-thumb" data-src="assets/proteina-buey.jpg" data-alt="Buey fresco, la proteína del menú" aria-label="Ver imagen: Buey fresco, la proteína del menú"><img src="assets/proteina-buey.jpg" alt="" loading="lazy"></button></div>
     </div>
     <div class="rp-txt">
       <span class="rp-pill">139.972 menús vendidos este mes</span>
@@ -2480,7 +2486,10 @@ const all=[...document.querySelectorAll('.st-mad input,.st-mad select')];all.for
 addEventListener('resize',()=>all.forEach(fit));if(document.fonts)document.fonts.ready.then(()=>all.forEach(fit));})();
 
 // Ficha: galería (miniaturas que cambian la imagen principal)
-(()=>{const main=document.getElementById('galMain');if(!main)return;document.querySelectorAll('.rp-thumb').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.rp-thumb').forEach(x=>x.classList.toggle('is-on',x===b));main.src=b.dataset.src;main.alt=b.dataset.alt;}));})();
+(()=>{const main=document.getElementById('galMain');if(!main)return;document.querySelectorAll('.rp-thumb').forEach(b=>b.addEventListener('click',()=>{
+  // intercambio: la miniatura pasa a ser la principal y la principal ocupa su hueco (nunca hay dos iguales)
+  const ti=b.querySelector('img'),src=b.dataset.src,alt=b.dataset.alt,ms=main.getAttribute('src'),ma=main.alt;
+  main.classList.add('is-swap');setTimeout(()=>{main.src=src;main.alt=alt;ti.src=ms;b.dataset.src=ms;b.dataset.alt=ma;b.setAttribute('aria-label','Ver imagen: '+ma);main.classList.remove('is-swap');},matchMedia('(prefers-reduced-motion:reduce)').matches?0:160);}));})();
 
 // Vídeos de Vimeo en bucle y sin sonido ([data-vbox]), con botones propios de pausa y sonido
 (()=>{const boxes=[...document.querySelectorAll('[data-vbox]')];if(!boxes.length)return;const s=document.createElement('script');s.src='https://player.vimeo.com/api/player.js';s.onload=()=>boxes.forEach(b=>{const f=b.querySelector('iframe');if(!f)return;const p=new Vimeo.Player(f);const pb=b.querySelector('.ps-vplay'),mb=b.querySelector('.ps-vmute');
