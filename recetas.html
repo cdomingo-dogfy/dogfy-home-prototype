@@ -1880,6 +1880,9 @@ body:has(.rp-hero) .rp-crumbs{background:var(--blue-deco);max-width:none;padding
   .pg-sec .pf h3{font-size:15px;line-height:20px}
   .pg-sec .pf p{font-size:13px;line-height:18px}
 }
+/* La fila entera es clicable: al pasar por encima, el botón «Ver detalles» reacciona */
+.mx-row{cursor:pointer}
+@media (hover:hover){.mx-row:hover .mx-more{background:#faf8f6}.mx-row:hover .mx-more svg{transform:translateX(4px)}.mx-row:hover .mx-title{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:5px;text-decoration-color:#dcd2c5}}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://cdomingo-dogfy.github.io/dogfy-home-prototype/index.html"}, {"@type": "ListItem", "position": 2, "name": "Nuestras recetas", "item": "https://cdomingo-dogfy.github.io/dogfy-home-prototype/recetas.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "¿Qué formatos hay?", "acceptedAnswer": {"@type": "Answer", "text": "Cada menú llega en bolsitas individuales con la ración diaria de tu perro, ya calculada según su peso, edad y actividad. Puedes elegir una receta o combinar varias en el mismo pedido."}}, {"@type": "Question", "name": "¿Qué cantidad se le debe dar?", "acceptedAnswer": {"@type": "Answer", "text": "Depende de su peso, edad y nivel de actividad. Al crear su plan calculamos su ración diaria exacta y cada bolsita contiene justo esa cantidad, así que no tienes que pesar nada."}}, {"@type": "Question", "name": "¿Cómo llega el producto?", "acceptedAnswer": {"@type": "Answer", "text": "Te lo enviamos a casa congelado y dividido en bolsitas diarias, con envío gratis. Solo tienes que guardarlo en el congelador al recibirlo."}}, {"@type": "Question", "name": "¿Cómo se prepara, debo cocinar el alimento al perro?", "acceptedAnswer": {"@type": "Answer", "text": "No hace falta cocinar nada. Nuestras recetas ya vienen cocinadas a baja temperatura: descongela la bolsita en la nevera, ábrela y sirve."}}, {"@type": "Question", "name": "¿Cada cuánto llegan los menús?", "acceptedAnswer": {"@type": "Answer", "text": "Tu primera caja trae 14 días de comida. Después la suscripción continúa y puedes cambiar recetas, aplazar envíos o cancelar cuando quieras, sin permanencia."}}]}</script>
@@ -2118,7 +2121,8 @@ if(!fine.matches)open(rows[0]);
 rows.forEach(r=>{
   r.addEventListener('mouseenter',()=>{if(!fine.matches)return;clearTimeout(t);t=setTimeout(()=>{if(Date.now()<lock){t=setTimeout(()=>r.matches(':hover')&&open(r),lock-Date.now());return}open(r)},90)});
   r.addEventListener('focusin',()=>open(r));
-  r.addEventListener('click',e=>{if(!e.target.closest('a'))open(r)});
+  // toda la fila es clicable: lleva a la ficha (en táctil, el primer toque despliega una fila cerrada)
+  r.addEventListener('click',e=>{if(e.target.closest('a'))return;const l=r.querySelector('.mx-more');if(fine.matches||r.classList.contains('is-open')){if(e.metaKey||e.ctrlKey)window.open(l.href,'_blank');else location.href=l.href}else open(r)});
 });
 list.addEventListener('mouseleave',()=>{if(!fine.matches)return;clearTimeout(t);t=setTimeout(()=>{if(!list.matches(':hover')&&!list.contains(document.activeElement))open(null)},120)});
 list.addEventListener('focusout',e=>{if(fine.matches&&!list.contains(e.relatedTarget))open(null)});

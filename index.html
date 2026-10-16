@@ -145,6 +145,8 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
 .media-cap.in{animation:capIn .45s cubic-bezier(.22,.61,.36,1) both}
 @keyframes capIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){.media-steps img{transition:none}.media-cap.in{animation:none}}
+.media-cap{padding:4px 14px 4px 6px}.media-cap b,.media-cap b img{width:24px;height:26px}.media-cap b.check{width:24px;height:24px}  /* pills de los pasos con menos relleno arriba y abajo */
+@media (max-width:900px){.media-cap{padding:3px 10px 3px 4px}.media-cap b,.media-cap b img{width:22px;height:24px}.media-cap b.check{width:22px;height:22px}}
 .features{display:flex;flex-direction:column;gap:32px}
 .feature{display:flex;gap:10px;align-items:flex-start}
 .feature .ico{flex:0 0 auto;padding:2px}
@@ -626,8 +628,8 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
   .step .dot.badge-num img{width:34px;height:37px}
   .step h3{font-size:18px;line-height:1.2}
   .step .txt{font-size:14px;line-height:20px;padding-bottom:16px}
-  .media-cap{left:12px;bottom:12px;padding:6px 10px 6px 6px;gap:8px;font-size:13px;line-height:18px}
-  .media-cap b{width:24px;height:26px}.media-cap b img{width:24px;height:26px}.media-cap b.check{width:24px;height:24px}.media-cap b.check img{width:14px;height:14px}  /* logo un 20 % más pequeño en móvil */
+  .media-cap{left:12px;bottom:12px;padding:3px 10px 3px 4px;gap:8px;font-size:13px;line-height:18px}
+  .media-cap b{width:22px;height:24px}.media-cap b img{width:22px;height:24px}.media-cap b.check{width:22px;height:22px}.media-cap b.check img{width:14px;height:14px}  /* logo un 20 % más pequeño en móvil */
 .sticker.sticker-d{display:none}.sticker.sticker-m{display:grid;margin:0 auto 4px}}  /* móvil: el sello sobre el título, como en dogfydiet.com */
 .sms-form{display:flex;flex-direction:column;gap:16px;align-items:center;width:min(760px,100%)}
 .sms-row{display:flex;gap:16px;width:100%;align-items:center}
