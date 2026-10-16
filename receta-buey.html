@@ -1863,6 +1863,23 @@ body:has(.rp-hero) .rp-crumbs{background:var(--blue-deco);max-width:none;padding
   .rp-detail .ing-card .ing-note{font-size:11px;line-height:15px}
 }
 @media (min-width:601px){.rp-detail .ing-grid{grid-template-columns:repeat(auto-fill,minmax(125px,1fr))}}
+/* Cómo funciona · ventajas del plan como tarjetas (mismo lenguaje que las tarjetas de «Seguimiento nutricional») */
+.pg-sec .pg{gap:16px}
+.pg-sec .pf{gap:16px;padding:20px 22px 22px 20px;border-radius:20px;background:#fff;border:1px solid #ebe4da;transition:border-color .2s,box-shadow .2s,transform .2s}
+.pg-sec .pf:hover{border-color:#dcd2c5;box-shadow:0 10px 24px -16px rgba(42,39,36,.25);transform:translateY(-2px)}
+.pg-sec .pf>img{flex:0 0 40px;width:40px;height:40px;margin:0;padding:10px;box-sizing:border-box;border-radius:12px;background:#eef2fc}
+.pg-sec .pf h3{font-size:17px;line-height:24px}
+.pg-sec .pf p{font-size:15px;line-height:22px;margin-top:4px}
+@media (max-width:600px){.pg-sec .pg{gap:12px}.pg-sec .pf{padding:16px 18px 18px 16px}}
+@media (prefers-reduced-motion:reduce){.pg-sec .pf{transition:none}.pg-sec .pf:hover{transform:none}}
+.pg-sec{padding-bottom:8px}@media (max-width:600px){.pg-sec{padding-bottom:0}}
+@media (max-width:600px){
+  .pg-sec .pg{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .pg-sec .pf{flex-direction:column;gap:10px;padding:14px 14px 16px}
+  .pg-sec .pf>img{flex:none;width:36px;height:36px;padding:8px}
+  .pg-sec .pf h3{font-size:15px;line-height:20px}
+  .pg-sec .pf p{font-size:13px;line-height:18px}
+}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://cdomingo-dogfy.github.io/dogfy-home-prototype/index.html"}, {"@type": "ListItem", "position": 2, "name": "Nuestras recetas", "item": "https://cdomingo-dogfy.github.io/dogfy-home-prototype/recetas.html"}, {"@type": "ListItem", "position": 3, "name": "Menú de buey", "item": "https://cdomingo-dogfy.github.io/dogfy-home-prototype/receta-buey.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "¿Qué formatos hay?", "acceptedAnswer": {"@type": "Answer", "text": "Cada menú llega en bolsitas individuales con la ración diaria de tu perro, ya calculada según su peso, edad y actividad. Puedes elegir una receta o combinar varias en el mismo pedido."}}, {"@type": "Question", "name": "¿Qué cantidad se le debe dar?", "acceptedAnswer": {"@type": "Answer", "text": "Depende de su peso, edad y nivel de actividad. Al crear su plan calculamos su ración diaria exacta y cada bolsita contiene justo esa cantidad, así que no tienes que pesar nada."}}, {"@type": "Question", "name": "¿Cómo llega el producto?", "acceptedAnswer": {"@type": "Answer", "text": "Te lo enviamos a casa congelado y dividido en bolsitas diarias, con envío gratis. Solo tienes que guardarlo en el congelador al recibirlo."}}]}</script>
