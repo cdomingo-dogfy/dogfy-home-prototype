@@ -1897,6 +1897,12 @@ body:has(.rp-hero) .rp-crumbs{background:var(--blue-deco);max-width:none;padding
   .rp-tabs.has-back .tab,.rp-tabs.has-back .tab:not(.active){flex:1 1 auto;justify-content:center;height:32px;padding:0 8px 0 4px;gap:6px;font-size:14px}
   .rp-tabs.has-back .tab img{width:22px;height:22px}
 }
+/* Icono de las ventajas sobre las manchas de marca (Figma 710:24265), alternando las tres formas */
+.pg-sec .pf>img,.nt-ico{width:44px;height:48px;flex:0 0 44px;padding:14px 12px;border-radius:0;background:url("assets/blob-bg-1.svg") center/contain no-repeat}
+.nt-ico{display:grid;place-items:center;padding:0}
+.pg-sec .pf:nth-child(3n+2)>img,.nt-list li:nth-child(3n+2) .nt-ico{background-image:url("assets/blob-bg-2.svg")}
+.pg-sec .pf:nth-child(3n)>img,.nt-list li:nth-child(3n) .nt-ico{background-image:url("assets/blob-bg-3.svg")}
+@media (max-width:600px){.pg-sec .pf>img{width:40px;height:44px;flex:none;padding:12px 10px}}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://cdomingo-dogfy.github.io/dogfy-home-prototype/index.html"}, {"@type": "ListItem", "position": 2, "name": "Nuestras recetas", "item": "https://cdomingo-dogfy.github.io/dogfy-home-prototype/recetas.html"}, {"@type": "ListItem", "position": 3, "name": "Menú de salmón", "item": "https://cdomingo-dogfy.github.io/dogfy-home-prototype/receta-salmon.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "¿Qué formatos hay?", "acceptedAnswer": {"@type": "Answer", "text": "Cada menú llega en bolsitas individuales con la ración diaria de tu perro, ya calculada según su peso, edad y actividad. Puedes elegir una receta o combinar varias en el mismo pedido."}}, {"@type": "Question", "name": "¿Qué cantidad se le debe dar?", "acceptedAnswer": {"@type": "Answer", "text": "Depende de su peso, edad y nivel de actividad. Al crear su plan calculamos su ración diaria exacta y cada bolsita contiene justo esa cantidad, así que no tienes que pesar nada."}}, {"@type": "Question", "name": "¿Cómo llega el producto?", "acceptedAnswer": {"@type": "Answer", "text": "Te lo enviamos a casa congelado y dividido en bolsitas diarias, con envío gratis. Solo tienes que guardarlo en el congelador al recibirlo."}}]}</script>
