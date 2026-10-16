@@ -1213,6 +1213,31 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
 }
 @media (max-width:900px){.sms2-dto{width:124px;height:124px;top:-44px;right:var(--gutter)}}
 @media (max-width:600px){.sms2-dto{width:104px;height:104px;top:-40px}}
+/* Sticker 10 % DTO (compartido: SMS y hero) */
+.dto-st .dto-big{font-family:"Youth",var(--font-display);font-weight:700;font-size:50px;letter-spacing:-1.5px;fill:#2a2724}
+.dto-st .dto-sub{font-family:var(--font-display);font-weight:800;font-size:19px;letter-spacing:4px;fill:var(--primary)}
+.dto-st .dto-ul{display:none}
+.hero-dto{position:absolute;z-index:3;top:calc(64px + 56px);right:var(--gutter);width:150px;height:150px;transform:rotate(12deg);filter:drop-shadow(0 10px 14px rgba(0,0,0,.35)) drop-shadow(0 2px 3px rgba(0,0,0,.2));transition:transform .35s cubic-bezier(.34,1.56,.64,1)}
+.hero-dto svg{width:100%;height:100%;overflow:visible}
+.hero-dto .dto-cut path{fill:#fff}.hero-dto .dto-face path{fill:#ffee99}
+.hero-dto .dto-ring{fill:none;stroke:#2a2724;stroke-width:1.4;stroke-dasharray:3 4;opacity:.35}
+.hero-dto .dto-arc{font-family:var(--font-display);font-weight:800;font-size:14.5px;letter-spacing:2.6px;fill:#2a2724}
+.hero-dto .dto-spin{transform-origin:100px 100px}
+.hero-dto:hover{transform:rotate(4deg) scale(1.06)}
+.hero-dto:focus-visible{outline:3px solid #f2c94c;outline-offset:6px;border-radius:50%}
+@media (prefers-reduced-motion:no-preference){.hero-dto .dto-spin{animation:dtoSpin 22s linear infinite}}
+@media (max-width:900px){.hero-dto{width:104px;height:104px;top:calc(64px + 20px)}}
+@media (max-width:600px){.hero-dto{width:88px;height:88px;top:calc(64px + 12px);right:16px}}
+/* SMS: en tablet el sticker no pisa el titular */
+@media (min-width:901px) and (max-width:1200px){.sms2{padding-top:150px}.sms2-dto{top:-40px}}
+/* Sticker FEDIAF en Conoce más: troquelado, girado y junto al bol */
+.pq-fediaf{position:absolute;z-index:3;left:calc(50% + clamp(110px,12vw,190px));top:clamp(20px,6%,60px);width:clamp(104px,9vw,136px);height:auto;transform:rotate(-10deg);filter:drop-shadow(0 0 0 #fff) drop-shadow(0 8px 14px rgba(42,39,36,.28));transition:transform .35s cubic-bezier(.34,1.56,.64,1);pointer-events:auto}
+.pq-fediaf{border-radius:50%;background:#fff;padding:5px;box-sizing:content-box}
+.pq-fediaf:hover{transform:rotate(-2deg) scale(1.05)}
+@media (max-width:1100px){.pq-fediaf{left:auto;right:6%;top:auto;bottom:clamp(160px,30vw,300px);width:110px}}
+@media (max-width:600px){.pq-fediaf{width:84px;right:4%;bottom:clamp(140px,48vw,220px)}}
+@media (max-width:1200px){.sms2-row{flex-wrap:wrap}.sms2-input{flex:1 1 100%;min-width:0}.sms2-row .btn{flex:1 1 auto}}
+@media (min-width:601px) and (max-width:1200px){.sms2-row .btn{flex:0 0 auto}}
 </style>
 </head>
 <body>
@@ -1254,6 +1279,15 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
 <!-- Hero -->
 <section class="hero">
   <div class="hero-bg"><picture><source media="(max-width:600px)" srcset="assets/hero-mobile.jpg"><img src="assets/hero.jpg" srcset="assets/hero-900.jpg 900w, assets/hero.jpg 2048w" sizes="100vw" alt="" fetchpriority="high" decoding="async"></picture></div>
+  <a class="dto-st hero-dto" href="#descuento" aria-label="10 % de descuento extra: pide tu código por SMS"><svg viewBox="0 0 200 200" aria-hidden="true">
+  <defs><path id="dtoArcHero" d="M100 100m-66 0a66 66 0 1 1 132 0a66 66 0 1 1-132 0"/></defs>
+  <g class="dto-cut" transform="translate(-4 -4) scale(3.25)"><path d="M64 32c0 2.364-3.853 4.253-4.344 6.465-.507 2.284 2.151 5.694 1.18 7.754-.986 2.095-5.258 2.087-6.66 3.886-1.404 1.799-.457 6.068-2.223 7.512s-5.601-.458-7.646.553c-2.011.994-2.955 5.26-5.187 5.78-2.16.502-4.811-2.912-7.12-2.912s-4.961 3.414-7.121 2.911c-2.23-.518-3.174-4.785-5.186-5.78-2.046-1.01-5.889.883-7.646-.552s-.813-5.704-2.222-7.512-5.675-1.79-6.662-3.886c-.971-2.059 1.688-5.47 1.18-7.754C3.854 36.253 0 34.364 0 32s3.853-4.253 4.344-6.465c.507-2.284-2.152-5.694-1.181-7.754.987-2.095 5.259-2.087 6.662-3.886s.456-6.068 2.222-7.512 5.6.458 7.646-.553C21.704 4.836 22.648.57 24.88.05 27.039-.451 29.69 2.962 32 2.962s4.96-3.413 7.12-2.91c2.232.518 3.174 4.785 5.187 5.78 2.045 1.01 5.889-.883 7.646.552s.813 5.704 2.222 7.512 5.675 1.79 6.661 3.886c.971 2.059-1.687 5.47-1.18 7.754C60.146 27.747 64 29.636 64 32"/></g>
+  <g class="dto-face" transform="translate(6 6) scale(2.9375)"><path d="M64 32c0 2.364-3.853 4.253-4.344 6.465-.507 2.284 2.151 5.694 1.18 7.754-.986 2.095-5.258 2.087-6.66 3.886-1.404 1.799-.457 6.068-2.223 7.512s-5.601-.458-7.646.553c-2.011.994-2.955 5.26-5.187 5.78-2.16.502-4.811-2.912-7.12-2.912s-4.961 3.414-7.121 2.911c-2.23-.518-3.174-4.785-5.186-5.78-2.046-1.01-5.889.883-7.646-.552s-.813-5.704-2.222-7.512-5.675-1.79-6.662-3.886c-.971-2.059 1.688-5.47 1.18-7.754C3.854 36.253 0 34.364 0 32s3.853-4.253 4.344-6.465c.507-2.284-2.152-5.694-1.181-7.754.987-2.095 5.259-2.087 6.662-3.886s.456-6.068 2.222-7.512 5.6.458 7.646-.553C21.704 4.836 22.648.57 24.88.05 27.039-.451 29.69 2.962 32 2.962s4.96-3.413 7.12-2.91c2.232.518 3.174 4.785 5.187 5.78 2.045 1.01 5.889-.883 7.646.552s.813 5.704 2.222 7.512 5.675 1.79 6.661 3.886c.971 2.059-1.687 5.47-1.18 7.754C60.146 27.747 64 29.636 64 32"/></g>
+  <circle class="dto-ring" cx="100" cy="100" r="52"/>
+  <g class="dto-spin"><text class="dto-arc"><textPath href="#dtoArcHero" startOffset="0">DESCUENTO EXTRA ✦ DESCUENTO EXTRA ✦</textPath></text></g>
+  <text class="dto-big" x="100" y="106" text-anchor="middle">10%</text>
+  <text class="dto-sub" x="100" y="132" text-anchor="middle">DTO</text>
+</svg></a>
   <div class="container hero-content">
     <div>
       <span class="hero-badge">Para perros llenos de vida</span>
@@ -1307,6 +1341,7 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
   </div>
   <div class="pq-body">
     <ul class="pq-col"><li class="pq-card"><span class="pq-ico"><img src="assets/pq-proteina.svg" alt=""></span><div><h3>Proteína reconocible</h3><p>Carne de calidad humana, visible en el bol.</p></div></li><li class="pq-card"><span class="pq-ico"><img src="assets/pq-verduras.svg" alt=""></span><div><h3>Verduras frescas</h3><p>Cortadas y cocinadas a fuego lento.</p></div></li></ul>
+    <img class="pq-fediaf" src="assets/sticker-fediaf.svg" alt="Formulado según las guías de la FEDIAF" width="177" height="177" loading="lazy" decoding="async">
     <img class="pq-bol" src="assets/pq-bol.webp" alt="Un beagle come de su bol de comida natural Dogfy Diet" width="820" height="1024" loading="lazy" decoding="async">
     <ul class="pq-col"><li class="pq-card"><span class="pq-ico pq-ico-full"><img src="assets/pq-sin-harinas.svg" alt=""></span><div><h3>Cero harinas y aditivos</h3><p>Sin conservantes ni potenciadores.</p></div></li><li class="pq-card"><span class="pq-ico"><img src="assets/pq-premix.svg" alt=""></span><div><h3>Premix vitamínico</h3><p>Fórmula 100 % completa según FEDIAF.</p></div></li></ul>
   </div>
@@ -1316,7 +1351,7 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
 <section class="s-sellos" aria-labelledby="sellosT">
   <div class="sl-in">
     <div class="sl-txt">
-      <p class="eyebrow">Puedes estar tranquilo</p>
+      <p class="eyebrow">Con aval científico</p>
       <h2 id="sellosT">Respaldados por quienes más saben</h2>
     </div>
     <ul class="sl-list">
@@ -1416,16 +1451,16 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
 </section>
 
 <!-- 11 · Descuento SMS -->
-<section class="s-sms sms2">
+<section class="s-sms sms2" id="descuento">
   <div class="bg"><img src="assets/sms-corgi.jpg" alt="" loading="lazy" decoding="async"></div>
-  <span class="sms2-dto" aria-hidden="true"><svg viewBox="0 0 200 200">
-  <defs><path id="dtoArc" d="M100 100m-66 0a66 66 0 1 1 132 0a66 66 0 1 1-132 0"/></defs>
+  <span class="dto-st sms2-dto" aria-hidden="true"><svg viewBox="0 0 200 200" aria-hidden="true">
+  <defs><path id="dtoArcSms" d="M100 100m-66 0a66 66 0 1 1 132 0a66 66 0 1 1-132 0"/></defs>
   <g class="dto-cut" transform="translate(-4 -4) scale(3.25)"><path d="M64 32c0 2.364-3.853 4.253-4.344 6.465-.507 2.284 2.151 5.694 1.18 7.754-.986 2.095-5.258 2.087-6.66 3.886-1.404 1.799-.457 6.068-2.223 7.512s-5.601-.458-7.646.553c-2.011.994-2.955 5.26-5.187 5.78-2.16.502-4.811-2.912-7.12-2.912s-4.961 3.414-7.121 2.911c-2.23-.518-3.174-4.785-5.186-5.78-2.046-1.01-5.889.883-7.646-.552s-.813-5.704-2.222-7.512-5.675-1.79-6.662-3.886c-.971-2.059 1.688-5.47 1.18-7.754C3.854 36.253 0 34.364 0 32s3.853-4.253 4.344-6.465c.507-2.284-2.152-5.694-1.181-7.754.987-2.095 5.259-2.087 6.662-3.886s.456-6.068 2.222-7.512 5.6.458 7.646-.553C21.704 4.836 22.648.57 24.88.05 27.039-.451 29.69 2.962 32 2.962s4.96-3.413 7.12-2.91c2.232.518 3.174 4.785 5.187 5.78 2.045 1.01 5.889-.883 7.646.552s.813 5.704 2.222 7.512 5.675 1.79 6.661 3.886c.971 2.059-1.687 5.47-1.18 7.754C60.146 27.747 64 29.636 64 32"/></g>
   <g class="dto-face" transform="translate(6 6) scale(2.9375)"><path d="M64 32c0 2.364-3.853 4.253-4.344 6.465-.507 2.284 2.151 5.694 1.18 7.754-.986 2.095-5.258 2.087-6.66 3.886-1.404 1.799-.457 6.068-2.223 7.512s-5.601-.458-7.646.553c-2.011.994-2.955 5.26-5.187 5.78-2.16.502-4.811-2.912-7.12-2.912s-4.961 3.414-7.121 2.911c-2.23-.518-3.174-4.785-5.186-5.78-2.046-1.01-5.889.883-7.646-.552s-.813-5.704-2.222-7.512-5.675-1.79-6.662-3.886c-.971-2.059 1.688-5.47 1.18-7.754C3.854 36.253 0 34.364 0 32s3.853-4.253 4.344-6.465c.507-2.284-2.152-5.694-1.181-7.754.987-2.095 5.259-2.087 6.662-3.886s.456-6.068 2.222-7.512 5.6.458 7.646-.553C21.704 4.836 22.648.57 24.88.05 27.039-.451 29.69 2.962 32 2.962s4.96-3.413 7.12-2.91c2.232.518 3.174 4.785 5.187 5.78 2.045 1.01 5.889-.883 7.646.552s.813 5.704 2.222 7.512 5.675 1.79 6.661 3.886c.971 2.059-1.687 5.47-1.18 7.754C60.146 27.747 64 29.636 64 32"/></g>
   <circle class="dto-ring" cx="100" cy="100" r="52"/>
-  <g class="dto-spin"><text class="dto-arc"><textPath href="#dtoArc" startOffset="0">DESCUENTO EXTRA ✦ SOLO POR SMS ✦</textPath></text></g>
-  <text class="dto-big" x="100" y="112" text-anchor="middle">DTO</text>
-  <path class="dto-ul" d="M70 122c18 6 42 6 60 0"/>
+  <g class="dto-spin"><text class="dto-arc"><textPath href="#dtoArcSms" startOffset="0">DESCUENTO EXTRA ✦ DESCUENTO EXTRA ✦</textPath></text></g>
+  <text class="dto-big" x="100" y="106" text-anchor="middle">10%</text>
+  <text class="dto-sub" x="100" y="132" text-anchor="middle">DTO</text>
 </svg></span>
   <div class="sms2-box">
     <p class="sms2-title">Un <span class="accent">descuento extra</span> para empezar.</p>
@@ -1763,6 +1798,12 @@ cards.forEach((c,i)=>c.querySelector('.ce3-top').addEventListener('click',()=>{c
 const on=()=>{if(!tick){tick=true;requestAnimationFrame(upd);}};addEventListener('scroll',on,{passive:true});
 const re=()=>{measure();upd();};addEventListener('resize',re);addEventListener('load',re);if(document.fonts)document.fonts.ready.then(re);
 imgs.forEach(im=>{if(!im.complete)im.addEventListener('load',re,{once:true});});cards[0].classList.add('is-active');re();})();
+</script>
+<script>
+// SMS: si el placeholder del móvil no cabe entero en el campo, se oculta
+(()=>{const inp=document.querySelector('.sms2-input input');if(!inp)return;const ph=inp.getAttribute('placeholder')||'';const cv=document.createElement('canvas').getContext('2d');
+const fit=()=>{const cs=getComputedStyle(inp);cv.font=cs.fontWeight+' '+cs.fontSize+' '+cs.fontFamily;inp.setAttribute('placeholder',cv.measureText(ph).width<=inp.clientWidth-2?ph:'');};
+addEventListener('resize',fit);if(document.fonts)document.fonts.ready.then(fit);addEventListener('load',fit);fit();})();
 </script>
 </body>
 </html>
