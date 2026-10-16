@@ -2291,6 +2291,20 @@ body:has(.rp-hero) .rp-crumbs{background:var(--blue-deco);max-width:none;padding
 .bl-dots{display:none}
 @media (max-width:900px){.bl-grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:20px;margin-inline:calc(-1 * var(--gutter));padding:4px var(--gutter) 20px;scroll-padding-inline:var(--gutter);scrollbar-width:none}.bl-grid::-webkit-scrollbar{display:none}.bl-card{flex:0 0 min(46%,380px);scroll-snap-align:start}.bl-dots{display:flex;margin-top:4px}}
 @media (max-width:600px){.bl-card{flex-basis:82%;scroll-snap-align:center}.bl-grid{gap:16px}}
+/* Footer: enlaces sin subrayado; jerarquía (títulos atenuados, enlaces en blanco puro) + flecha › siempre visible */
+.footer .col b{font-family:var(--font-display);font-size:14px;font-weight:700;line-height:20px;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.65);margin-bottom:2px}
+.footer .col p{color:rgba(255,255,255,.65)}
+.footer .col{gap:4px}.footer .col[style]{gap:12px!important}
+.footer .col > a{display:inline-flex;align-items:center;gap:6px;align-self:flex-start;min-height:36px;margin-left:-10px;padding:6px 10px;border-radius:999px;text-decoration:none;font-family:var(--font-display);font-weight:500;font-size:17px;line-height:24px;color:#fff;transition:background .2s ease}
+.footer .col > a::after{content:"";flex:0 0 16px;width:16px;height:16px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9 6l6 6-6 6'/%3E%3C/svg%3E") center/16px no-repeat;transition:transform .25s cubic-bezier(.2,.8,.2,1)}
+.footer .col > a:hover{background:rgba(255,255,255,.14)}
+.footer .col > a:hover::after{transform:translateX(4px)}
+.footer .col > p{margin-top:8px}
+.footer .legal a{text-decoration:none;color:rgba(255,255,255,.85);font-size:13px;padding:6px 0;transition:color .2s}
+.footer .legal a:hover{color:#fff;text-decoration:underline;text-underline-offset:3px}
+.footer a:focus-visible{outline:3px solid #f2c94c;outline-offset:2px;border-radius:999px}
+@media (max-width:600px){.footer .col b{font-size:11px;line-height:16px}.footer .col > a{font-size:14px;line-height:20px;min-height:32px;padding:6px 8px;margin-left:-8px;gap:4px}.footer .col > a::after{flex-basis:13px;width:13px;height:13px;background-size:13px}.footer .col p{font-size:12px}}
+@media (prefers-reduced-motion:reduce){.footer .col > a::after{transition:none}}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://cdomingo-dogfy.github.io/dogfy-home-prototype/index.html"}, {"@type": "ListItem", "position": 2, "name": "Nuestras recetas", "item": "https://cdomingo-dogfy.github.io/dogfy-home-prototype/recetas.html"}, {"@type": "ListItem", "position": 3, "name": "Menú de pavo", "item": "https://cdomingo-dogfy.github.io/dogfy-home-prototype/receta-pavo.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "¿Qué formatos hay?", "acceptedAnswer": {"@type": "Answer", "text": "Cada menú llega en bolsitas individuales con la ración diaria de tu perro, ya calculada según su peso, edad y actividad. Puedes elegir una receta o combinar varias en el mismo pedido."}}, {"@type": "Question", "name": "¿Qué cantidad se le debe dar?", "acceptedAnswer": {"@type": "Answer", "text": "Depende de su peso, edad y nivel de actividad. Al crear su plan calculamos su ración diaria exacta y cada bolsita contiene justo esa cantidad, así que no tienes que pesar nada."}}, {"@type": "Question", "name": "¿Cómo llega el producto?", "acceptedAnswer": {"@type": "Answer", "text": "Te lo enviamos a casa congelado y dividido en bolsitas diarias, con envío gratis. Solo tienes que guardarlo en el congelador al recibirlo."}}]}</script>
