@@ -1334,6 +1334,10 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
 .c14-list li>img{background-image:url("assets/blob-bg-1-crema.svg")}
 .c14-list li:nth-child(3n+2)>img{background-image:url("assets/blob-bg-2-crema.svg")}
 .c14-list li:nth-child(3n)>img{background-image:url("assets/blob-bg-3-crema.svg")}
+/* Sticker 10 % del SMS: sin borde blanco troquelado y giro del texto más lento */
+.sms2-dto .dto-cut path{fill:none}
+@media (prefers-reduced-motion:no-preference){.sms2-dto .dto-spin{animation-duration:48s}}
+@media (min-width:901px) and (max-width:1300px){.sms2{padding-top:170px}}
 </style>
 </head>
 <body>
