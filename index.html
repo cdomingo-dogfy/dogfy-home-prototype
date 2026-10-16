@@ -1511,6 +1511,12 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
 /* Cómo empezar: la columna recorta; las siguientes tarjetas suben desde su borde inferior */
 .ce3.is-anim .ce3-cards{overflow:hidden!important;overflow-clip-margin:0;padding:0 14px;margin:0 -14px}
 .ce3.is-anim .ce3-card{left:14px;right:14px}
+/* Precios móvil (Figma 782:2): solo el peso, en una pastilla pequeña abajo a la izquierda de la foto */
+@media (max-width:600px){
+  .pcard .badge{top:auto!important;right:auto!important;left:16px!important;bottom:auto;top:calc(8px + var(--img-h,165px) - 40px)!important;width:auto!important;min-width:84px;height:32px!important;padding:0 10px!important;display:flex!important;align-items:center;justify-content:center;border-radius:8px!important;background:rgba(255,255,255,.88)!important}
+  .pcard .badge span{display:none!important}
+  .pcard .badge b{font-family:var(--font-display);font-weight:700;font-size:18px!important;line-height:20px!important;color:var(--primary)}
+}
 </style>
 </head>
 <body>
@@ -1660,9 +1666,9 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
     <p class="pr-desc">Comida para perros llenos de vida</p>
   </div>
   <div class="precio-grid">
-    <article class="pcard c-minis is-photo"><div class="img"><img src="assets/precio-minis-foto.jpg?v=4" alt="Chihuahua entre tulipanes amarillos" loading="lazy" decoding="async"></div><div class="badge"><b>0-2 kg.</b><span>Minis</span></div><div class="body"><div class="desde">Desde <s>1,56 €/día</s></div><div class="price"><b>1,09 €</b><span>/día*</span></div></div></article>
-    <article class="pcard c-peq is-photo"><div class="img"><img src="assets/precio-pequenos-foto.jpg?v=5" alt="Un perro pequeño juega a morder el agua de una manguera" loading="lazy" decoding="async"></div><div class="badge"><b>3-9 kg.</b><span>Pequeños</span></div><div class="body"><div class="desde">Desde <s>1,84 €/día</s></div><div class="price"><b>1,29 €</b><span>/día*</span></div></div></article>
-    <article class="pcard c-med is-photo"><div class="img"><img src="assets/precio-medianos-foto.jpg?v=6" alt="Un perro pastor tira de un aro naranja jugando con su humano" loading="lazy" decoding="async"></div><div class="badge"><b>10-25 kg.</b><span>Medianos</span></div><div class="body"><div class="desde">Desde <s>2,75 €/día</s></div><div class="price"><b>1,92 €</b><span>/día*</span></div></div></article>
+    <article class="pcard c-minis is-photo"><div class="img"><img src="assets/precio-minis-foto.jpg?v=4" alt="Chihuahua entre tulipanes amarillos" loading="lazy" decoding="async"></div><div class="badge"><b>0-2 kg</b><span>Minis</span></div><div class="body"><div class="desde">Desde <s>1,56 €/día</s></div><div class="price"><b>1,09 €</b><span>/día*</span></div></div></article>
+    <article class="pcard c-peq is-photo"><div class="img"><img src="assets/precio-pequenos-foto.jpg?v=5" alt="Un perro pequeño juega a morder el agua de una manguera" loading="lazy" decoding="async"></div><div class="badge"><b>3-9 kg</b><span>Pequeños</span></div><div class="body"><div class="desde">Desde <s>1,84 €/día</s></div><div class="price"><b>1,29 €</b><span>/día*</span></div></div></article>
+    <article class="pcard c-med is-photo"><div class="img"><img src="assets/precio-medianos-foto.jpg?v=6" alt="Un perro pastor tira de un aro naranja jugando con su humano" loading="lazy" decoding="async"></div><div class="badge"><b>10-25 kg</b><span>Medianos</span></div><div class="body"><div class="desde">Desde <s>2,75 €/día</s></div><div class="price"><b>1,92 €</b><span>/día*</span></div></div></article>
     <article class="pcard c-gra is-photo"><div class="img"><img src="assets/precio-grandes-foto.jpg?v=6" alt="Un golden retriever mojado sonríe con los ojos cerrados en la playa" loading="lazy" decoding="async"></div><div class="badge"><b>+25 kg</b><span>Grandes</span></div><div class="body"><div class="desde">Desde <s>3,93 €/día</s></div><div class="price"><b>2,75 €</b><span>/día*</span></div></div></article>
   </div>
   <div class="precio-foot">
@@ -2147,6 +2153,10 @@ const upd=()=>{if(!mq.matches){unbuild();return}build();s.classList.add('is-mani
   set('--to',1-cl(g/.35,0,1));set('--ty',(-24*g)+'px');set('--sh',cl((g-.4)/.4,0,1));const fo=cl((g-.7)/.25,0,1);set('--fo',fo);set('--fy',(20*(1-fo))+'px');
   s.classList.toggle('is-done',fo>.9);};
 let tk=false;addEventListener('scroll',()=>{if(!tk){tk=true;requestAnimationFrame(()=>{tk=false;upd();});}},{passive:true});addEventListener('resize',upd);if(document.fonts)document.fonts.ready.then(upd);upd();})();
+</script>
+<script>
+// Precios móvil: coloca la pastilla de peso en el borde inferior de la foto
+(()=>{const cards=[...document.querySelectorAll('.pcard')];const fit=()=>cards.forEach(c=>{const im=c.querySelector('.img');if(im)c.style.setProperty('--img-h',im.offsetHeight+'px');});addEventListener('resize',fit);addEventListener('load',fit);fit();})();
 </script>
 </body>
 </html>
