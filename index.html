@@ -1517,6 +1517,13 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
   .pcard .badge span{display:none!important}
   .pcard .badge b{font-family:var(--font-display);font-weight:700;font-size:18px!important;line-height:20px!important;color:var(--primary)}
 }
+/* Recetas sin hover (móvil/tablet): la tarjeta centrada pasa sola del envase al bol; un toque alterna */
+@media (hover:none){
+  .recetas-grid .receta .rcm-pack{transition:opacity .6s ease}
+  .recetas-grid .receta.is-center .rcm-pack{opacity:0;transition-delay:.9s}
+  .recetas-grid .receta.is-flip .rcm-pack{opacity:0;transition-delay:0s}
+  .recetas-grid .receta.is-center.is-flip .rcm-pack{opacity:1}
+}
 </style>
 </head>
 <body>
@@ -2157,6 +2164,13 @@ let tk=false;addEventListener('scroll',()=>{if(!tk){tk=true;requestAnimationFram
 <script>
 // Precios móvil: coloca la pastilla de peso en el borde inferior de la foto
 (()=>{const cards=[...document.querySelectorAll('.pcard')];const fit=()=>cards.forEach(c=>{const im=c.querySelector('.img');if(im)c.style.setProperty('--img-h',im.offsetHeight+'px');});addEventListener('resize',fit);addEventListener('load',fit);fit();})();
+</script>
+<script>
+// Recetas en táctil: marca la tarjeta centrada (muestra el bol tras un momento) y alterna envase/bol al tocar
+(()=>{const g=document.getElementById('recetasGrid');if(!g||matchMedia('(hover:hover)').matches)return;
+const center=()=>{const host=g.parentElement.getBoundingClientRect(),mid=host.left+host.width/2;let best=null,bd=1e9;[...g.children].forEach(c=>{const r=c.getBoundingClientRect(),d=Math.abs(r.left+r.width/2-mid);if(d<bd){bd=d;best=c;}});[...g.children].forEach(c=>{const on=c===best;if(!on)c.classList.remove('is-flip');c.classList.toggle('is-center',on);});};
+g.addEventListener('slide',()=>setTimeout(center,650));g.addEventListener('transitionend',center);addEventListener('resize',center);setTimeout(center,800);
+g.addEventListener('click',e=>{const c=e.target.closest('.receta');if(c)c.classList.toggle('is-flip');});})();
 </script>
 </body>
 </html>
