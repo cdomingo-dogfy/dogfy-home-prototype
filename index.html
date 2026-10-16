@@ -1404,6 +1404,11 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
 .c14{background:linear-gradient(180deg,#fffae5 0%,#fffae5 55%,#fff 100%)}
 /* SMS en tablet/móvil: foto espejada para que el corgi quede a la derecha, libre del texto */
 @media (max-width:900px){.sms2 .bg img{transform:scaleX(-1) scale(1.32) translateX(-10%);transform-origin:50% 70%;object-position:92% 60%}}
+/* Pasos: las tarjetas van apareciendo; la columna solo ocupa lo visible y no recorta */
+.ce3.is-anim .ce3-cards{overflow:visible}
+.ce3.is-anim .ce3-card{transition:opacity .2s linear}
+/* Caja de prueba: transición a blanco más marcada */
+.c14{background:linear-gradient(180deg,#fffae5 0%,#fffae5 22%,#fff 92%)}
 </style>
 </head>
 <body>
@@ -1953,7 +1958,7 @@ const measure=()=>{vh=innerHeight;const mob=innerWidth<=860;gap=mob?12:16;const 
   run=Math.round(vh*.55)*(N-1);LH=lh;const shC=mob?mh+16+col:Math.max(col,mh);track.style.height=(shC+run)+'px';};
 let active=0;const setActive=k=>{if(k===active)return;active=k;imgs.forEach((im,i)=>im.classList.toggle('is-on',i===k));cards.forEach((c,i)=>{c.classList.toggle('is-past',i<k);c.classList.toggle('is-active',i===k);});};
 let tick=false;const upd=()=>{tick=false;const r=track.getBoundingClientRect(),p=Math.max(0,Math.min(N-1,(stuck-r.top)/(run/(N-1))));
-  let y=0;cards.forEach((c,i)=>{if(i){const t=ease(Math.max(0,Math.min(1,p-(i-1))));y+=lerp(hs[i-1]+gap,tops[i-1],t);}c.style.setProperty('--y',y.toFixed(1)+'px');});list.style.setProperty('--ce3-h',Math.min(LH,y+hs[N-1]).toFixed(1)+'px');
+  let y=0,bot=0;cards.forEach((c,i)=>{if(i){const t=ease(Math.max(0,Math.min(1,p-(i-1))));y+=lerp(hs[i-1]+gap,tops[i-1],t);}const o=i<2?1:Math.max(0,Math.min(1,(p-(i-1.6))/0.6));c.style.setProperty('--y',(y+(1-o)*28).toFixed(1)+'px');c.style.opacity=o.toFixed(3);if(o>0.02)bot=Math.max(bot,y+hs[i]);});list.style.setProperty('--ce3-h',bot.toFixed(1)+'px');
   setActive(Math.min(N-1,Math.floor(p+.5)));};
 cards.forEach((c,i)=>c.querySelector('.ce3-top').addEventListener('click',()=>{const r=track.getBoundingClientRect();scrollTo({top:scrollY+r.top-stuck+i*(run/(N-1))+2,behavior:'smooth'});}));
 const on=()=>{if(!tick){tick=true;requestAnimationFrame(upd);}};addEventListener('scroll',on,{passive:true});
