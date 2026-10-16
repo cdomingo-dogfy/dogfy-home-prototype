@@ -1117,6 +1117,83 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
 /* Menos aire entre las estadísticas y «Cómo empezar» */
 .ce3{padding-top:72px}
 @media (max-width:860px){.ce3{padding-top:36px}}
+/* Asesoramiento nutricional (Figma 729:62349) */
+.s-nutri2{background:#fff;padding:40px var(--gutter) 72px}
+.nu2-in{max-width:1216px;margin:0 auto;display:grid;grid-template-columns:minmax(0,568px) minmax(0,1fr);gap:80px;align-items:center}
+.nu2-img{width:100%;aspect-ratio:568/475;height:auto;object-fit:cover;border-radius:24px;box-shadow:0 24px 48px -24px rgba(42,39,36,.35)}
+.nu2-txt{display:flex;flex-direction:column;gap:16px;align-items:flex-start}
+.nu2-txt .h2{margin:0;max-width:568px;line-height:1.04}
+.nu2-list{list-style:none;margin:16px 0 0;padding:0;display:flex;flex-direction:column;gap:32px}
+.nu2-list h3{font-family:var(--font-display);font-weight:700;font-size:22px;line-height:26px;color:var(--text-hi)}
+.nu2-list p{margin-top:6px;font-size:15px;line-height:22px;color:var(--text);max-width:520px}
+@media (max-width:900px){.nu2-in{grid-template-columns:1fr;gap:32px;max-width:640px}.nu2-list{gap:24px;margin-top:8px}.nu2-list h3{font-size:19px;line-height:24px}}
+@media (max-width:600px){.s-nutri2{padding:24px var(--gutter) 48px}}
+/* Opiniones (Figma 729:62379) */
+.op2{position:relative;overflow:hidden;background:#fff;padding:24px var(--gutter) 120px;margin:0;transform:none!important;z-index:auto}
+.op2 .op-onda{position:absolute;left:50%;bottom:-30px;width:max(1484px,103%);max-width:none;height:auto;transform:translateX(-50%);pointer-events:none;z-index:0}
+.op2>:not(.op-onda){position:relative;z-index:1}
+.op-head-sec{text-align:center;max-width:760px;margin:0 auto}
+.op-head-sec .h2{margin:0;line-height:1.04}
+.op-sub{margin-top:14px;font-size:18px;line-height:27px;color:var(--text)}
+.op-grid{display:grid;grid-template-columns:repeat(3,minmax(0,380px));justify-content:center;gap:24px;margin-top:48px}
+.op-card{display:flex;flex-direction:column;gap:18px;min-height:281px;box-sizing:border-box;padding:28px 24px 24px;background:#fff;border:1px solid #e8e8e8;border-radius:20px;box-shadow:0 16px 32px -18px rgba(42,39,36,.3)}
+.op-head{display:flex;align-items:center;gap:16px}
+.op-av{display:grid;place-items:center;width:48px;height:48px;border-radius:50%;background:#ffee99;font-family:var(--font-display);font-weight:700;font-size:18px;color:var(--text-hi)}
+.op-head b{display:block;font-family:var(--font-display);font-weight:700;font-size:18px;line-height:24px;color:#191919}
+.op-stars{display:block;font-size:14px;line-height:16px;letter-spacing:.07em;color:#191919}
+.op-text{font-size:17px;line-height:26px;color:var(--text-hi)}
+.op-when{margin-top:auto;font-size:15px;line-height:20px;color:#767066}
+.op-tp{display:flex;width:max-content;margin:24px auto 0;align-items:center;gap:8px;padding:6px 14px;border-radius:999px;background:#f4f1ec;font-size:14px;line-height:20px;color:var(--text-hi);text-decoration:none}
+.op-tp b{font-weight:700}.op-tp-stars{color:#00b67a;letter-spacing:.1em}
+.op-tp:hover{background:#ebe5dc}
+@media (max-width:900px){.op-grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:16px;margin:32px calc(-1 * var(--gutter)) 0;padding:4px var(--gutter) 16px;scroll-padding-inline:var(--gutter);scrollbar-width:none}.op-grid::-webkit-scrollbar{display:none}.op-card{flex:0 0 min(78%,340px);scroll-snap-align:start;min-height:240px}.op2{padding-bottom:96px}.op-sub{font-size:16px;line-height:24px}}
+/* Descuento por SMS (Figma 636:318) */
+.sms2{min-height:412px;display:flex;align-items:center;justify-content:flex-end;padding:72px var(--gutter);overflow:visible}
+.sms2 .bg{overflow:hidden}
+.sms2 .bg img{object-position:30% 60%}
+.sms2 .bg::after{background:rgba(0,0,0,.3)}
+.sms2-box{position:relative;z-index:1;width:min(724px,52%);padding:17px 27px 17px 23px;color:#fff;text-align:left;margin-right:clamp(0px,2vw,40px)}
+.sms2-title{display:inline-block;margin:0;padding:4px 6px;border-radius:4px;background:#ffee99;box-shadow:0 2px 1px rgba(0,0,0,.25);font-family:var(--font-display);font-weight:700;font-size:22px;line-height:25px;color:#191919}
+.sms2-title .accent{color:var(--primary)}
+.sms2-desc{margin-top:12px;max-width:560px;font-size:16px;line-height:24px;color:#fff}
+.sms2-row{display:flex;gap:16px;align-items:center;margin-top:12px;flex-wrap:wrap}
+.sms2-input{display:flex;align-items:center;gap:8px;width:320px;max-width:100%;height:56px;box-sizing:border-box;padding:0 16px;background:#fff;border:1px solid #e8e8e8;border-radius:12px;color:var(--text-hi)}
+.sms2-input .prefix{display:inline-flex;align-items:center;gap:2px;position:relative;font-weight:500}
+.sms2-input .prefix select{appearance:none;-webkit-appearance:none;background:none;border:0;font:inherit;color:inherit;padding-right:16px;cursor:pointer}
+.sms2-input .prefix svg{position:absolute;right:0;width:14px;height:14px;pointer-events:none}
+.sms2-input input{flex:1;min-width:0;border:0;outline:0;background:none;font:inherit;font-size:16px;color:var(--text-hi)}
+.sms2-input input::placeholder{color:#767066}
+.sms2-input:focus-within{outline:3px solid #f2c94c;outline-offset:2px}
+.sms2-row .btn{width:280px;max-width:100%;justify-content:center}
+.sms2-check{display:flex;align-items:center;gap:8px;margin-top:6px;font-size:13px;line-height:18px;color:#d9d6d1;cursor:pointer}
+.sms2-check input{width:16px;height:16px;accent-color:var(--primary)}
+.sms2-dto{position:absolute;z-index:2;top:-46px;right:clamp(16px,13vw,200px);display:grid;place-items:center;width:151px;height:151px;border-radius:50%;background:#ffee99;font-family:var(--font-display);font-weight:700;font-size:56px;line-height:1;color:var(--text-hi);pointer-events:none}
+@media (max-width:900px){.sms2{justify-content:center;padding:96px var(--gutter) 56px}.sms2-box{width:100%;max-width:640px;margin:0;padding:0}.sms2-dto{width:104px;height:104px;font-size:38px;top:-36px;right:var(--gutter)}}
+@media (max-width:600px){.sms2-row{flex-direction:column;align-items:stretch}.sms2-input,.sms2-row .btn{width:100%}.sms2-title{font-size:19px;line-height:23px}.sms2-dto{width:84px;height:84px;font-size:30px;top:-28px}}
+/* Estadísticas: menos padding vertical */
+.stats-m{padding-top:20px;padding-bottom:20px}
+@media (max-width:1100px){.stats-m{padding-top:28px;padding-bottom:28px}}
+@media (max-width:600px){.stats-m{padding-top:24px;padding-bottom:24px}}
+/* Opiniones ya no se superpone a la sección anterior (era parte de la escena antigua) */
+.page .s-opiniones.op2{margin-top:0;z-index:auto;transform:none}
+/* Sticker DTO: sello festoneado amarillo, ligeramente girado, con anillo punteado */
+.sms2-dto{width:150px;height:150px;background:none;border-radius:0;transform:rotate(-10deg);filter:drop-shadow(0 6px 10px rgba(0,0,0,.28))}
+.sms2-dto svg{position:absolute;inset:0;width:100%;height:100%}
+.sms2-dto svg path{fill:#ffee99}
+.sms2-dto svg circle{fill:none;stroke:#2a2724;stroke-width:.9;stroke-dasharray:2.2 2;opacity:.55}
+.sms2-dto .dto-txt{position:relative;display:flex;flex-direction:column;align-items:center;line-height:1}
+.sms2-dto b{font-family:var(--font-display);font-weight:800;font-size:44px;letter-spacing:-.02em;color:var(--primary)}
+.sms2-dto small{font-family:var(--font-display);font-weight:700;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-hi);margin:3px 0}
+@media (prefers-reduced-motion:no-preference){.sms2-dto{animation:dtoWob 5s ease-in-out infinite}@keyframes dtoWob{0%,100%{transform:rotate(-10deg)}50%{transform:rotate(-4deg) translateY(-4px)}}}
+@media (max-width:900px){.sms2-dto{width:110px;height:110px}.sms2-dto b{font-size:32px}.sms2-dto small{font-size:9.5px}}
+@media (max-width:600px){.sms2-dto{width:92px;height:92px}.sms2-dto b{font-size:27px}.sms2-dto small{font-size:8px;margin:2px 0}}
+/* Campo de móvil: crece para que el placeholder no se corte */
+.sms2-row{flex-wrap:nowrap}.sms2-input{flex:1 1 320px;width:auto;min-width:240px}.sms2-row .btn{flex:0 0 auto;width:auto;padding-inline:28px}
+@media (max-width:600px){.sms2-row{flex-wrap:wrap}.sms2-input{min-width:0}}
+/* Pasos: todos los títulos son clicables y se ponen en naranja al pasar el ratón */
+.ce3.is-anim .ce3-top{cursor:pointer}
+.ce3.is-anim .ce3-top h3{transition:color .2s}
+@media (hover:hover){.ce3.is-anim .ce3-top:hover h3{color:var(--primary)}}
 </style>
 </head>
 <body>
@@ -1292,90 +1369,46 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
 </section>
 
 <!-- 08 · Receta formulada -->
-<section class="s-receta" id="nutricionistas">
- <div class="scene-scroll" id="scene"><div class="scene-sticky"><div class="scene-stage" id="sceneStage">
-  <div class="scene-title" id="sceneTitle">
-    <p class="eyebrow">La ciencia detrás de su receta</p>
-    <h2 class="h2" style="margin-top:12px">Una <span class="accent">receta</span> empieza antes de cocinarla.</h2>
-  </div>
-  <div class="scene-panel" id="scenePanel">
-    <img class="scene-img" src="assets/nutricionistas.jpg" srcset="assets/nutricionistas-1000.jpg 1000w, assets/nutricionistas.jpg 1869w" sizes="100vw" alt="Una persona juega con su perro en la hierba" loading="lazy" decoding="async">
-    <img class="scene-img scene-img-banner" src="assets/si-es-real.jpg" alt="">
-    <div class="scene-banner" id="sceneBanner">
-      <p class="scene-claim"><span>Sí, es</span> <em>real.</em></p>
-      <p class="trust-eyebrow">+700.000 perros ya lo notan</p>
-      <div class="scene-pills">
-        <div class="sello"><img src="assets/trust-fediaf.png" alt="FEDIAF" loading="lazy" decoding="async"><p>Recetas con estándares de calidad FEDIAF</p></div>
-        <div class="sello"><img src="assets/trust-generalitat.png" alt="Generalitat de Catalunya" loading="lazy" decoding="async"><p>Supervisión y calidad certificada</p></div>
-        <div class="sello"><img src="assets/trust-bologna.png" alt="Università di Bologna" loading="lazy" decoding="async"><p>Digestibilidad testeada in Vitro</p></div>
-      </div>
+<section class="s-nutri2" id="nutricionistas">
+  <div class="nu2-in">
+    <img class="nu2-img" src="assets/nutri-receta.jpg" alt="Un perro descansa en el regazo de su humana, que mira el móvil" width="1024" height="857" loading="lazy" decoding="async">
+    <div class="nu2-txt">
+      <p class="eyebrow">La ciencia detrás de su receta</p>
+      <h2 class="h2">Una receta empieza antes de cocinarla.</h2>
+      <ul class="nu2-list">
+        <li><h3>Elaborada por veterinarios</h3><p>Formulada por un equipo de veterinarios nutricionistas, siguiendo las recomendaciones europeas.</p></li>
+        <li><h3>Ingredientes aptos para humanos</h3><p>Carne y verduras frescas de proveedores de confianza, sin subproductos ni conservantes.</p></li>
+        <li><h3>Cocinada a baja temperatura</h3><p>Para conservar nutrientes, textura y sabor. Lista para descongelar y servir.</p></li>
+      </ul>
     </div>
   </div>
-  <div class="scene-text right-col" id="sceneText">
-    <div class="features">
-      <div class="feature"><div class="ico"><img src="assets/icon-stethoscope.svg" alt=""></div><div><h3>Elaborada por veterinarios</h3><p>Formulada por un equipo de veterinarios nutricionistas, siguiendo las recomendaciones europeas.</p></div></div>
-      <div class="feature"><div class="ico"><img src="assets/icon-shield-check.svg" alt=""></div><div><h3>Completa y equilibrada</h3><p>Con la suplementación precisa de vitaminas y minerales.</p></div></div>
-      <div class="feature"><div class="ico"><img src="assets/icon-paw.svg" alt=""></div><div><h3>Adaptada a cada etapa</h3><p>De cachorro a sénior, ajustamos su ración.</p></div></div>
-    </div>
-  </div>
-  <div class="scene-static-banner" id="sceneStaticBanner" hidden>
-    <img src="assets/si-es-real.jpg" alt="" loading="lazy" decoding="async">
-    <p class="scene-claim"><span>Sí, es</span> <em>real.</em></p>
-    <p class="trust-eyebrow">+700.000 perros ya lo notan</p>
-    <div class="scene-pills">
-      <div class="sello"><img src="assets/trust-fediaf.png" alt="FEDIAF" loading="lazy" decoding="async"><p>Recetas con estándares de calidad FEDIAF</p></div>
-      <div class="sello"><img src="assets/trust-generalitat.png" alt="Generalitat de Catalunya" loading="lazy" decoding="async"><p>Supervisión y calidad certificada</p></div>
-      <div class="sello"><img src="assets/trust-bologna.png" alt="Università di Bologna" loading="lazy" decoding="async"><p>Digestibilidad testeada in Vitro</p></div>
-    </div>
-  </div>
- </div></div></div>
 </section>
 </div>
 
 <!-- 09 · Opiniones -->
-<section class="s-opiniones" id="opiniones">
-  <div class="trust">
-    <p class="trust-eyebrow">+700.000 perros ya lo notan</p>
-    <div class="metrics">
-      <div class="metric"><img src="assets/trust-fediaf.png" alt="FEDIAF" style="width:174px;height:187px" loading="lazy" decoding="async"><p>Recetas con estándares de calidad FEDIAF</p></div>
-      <span class="div"></span>
-      <div class="metric"><img src="assets/trust-generalitat.png" alt="Generalitat de Catalunya" style="width:233px;height:68px" loading="lazy" decoding="async"><p>Supervisión y calidad certificada</p></div>
-      <span class="div"></span>
-      <div class="metric"><img src="assets/trust-bologna.png" alt="Alma Mater Studiorum · Università di Bologna" style="width:152px;height:152px" loading="lazy" decoding="async"><p>Digestibilidad testeada in Vitro</p></div>
-    </div>
+<section class="s-opiniones op2" id="opiniones">
+  <img class="op-onda" src="assets/op-onda.svg" alt="" aria-hidden="true">
+  <div class="op-head-sec">
+    <h2 class="h2">Quienes ya abren nuestras cajas <span class="accent">te cuentan.</span></h2>
+    <p class="op-sub">Cómo les va con la comida, con los pedidos y con nosotros. Lee sus experiencias.</p>
   </div>
-  <div class="head center">
-    <p class="eyebrow">Opiniones</p>
-    <h2 class="h2" style="margin-top:12px">Quienes ya abren nuestras cajas <span class="accent">te cuentan</span>.</h2>
-  </div>
-  <div class="rv-trust"><span class="rv-tp"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#00b67a" d="M12 2l2.9 6.5 7.1.6-5.4 4.7 1.7 7-6.3-3.8-6.3 3.8 1.7-7L2 9.1l7.1-.6z"/><path fill="#005128" d="M12 16.9l3.3-.9.9 3.7z"/></svg>Trustpilot</span><span class="rv-tpstars" aria-label="4,5 de 5"><i></i><i></i><i></i><i></i><i class="half"></i></span><p class="rv-score"><b>TrustScore 4,5</b> <span>|</span> <a href="#">12.480 opiniones</a></p></div>
-  <div class="reviews" id="reviews">
-    <article class="rv-card"><div class="rv-head"><span class="rv-avatar">M</span><div><b>Marta</b><span class="rv-stars"><i class="on"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.2 6.8.8-5 4.6 1.3 6.7L12 17.5l-6 3.3 1.3-6.7-5-4.6 6.8-.8z"/></svg></i><i class="on"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.2 6.8.8-5 4.6 1.3 6.7L12 17.5l-6 3.3 1.3-6.7-5-4.6 6.8-.8z"/></svg></i><i class="on"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.2 6.8.8-5 4.6 1.3 6.7L12 17.5l-6 3.3 1.3-6.7-5-4.6 6.8-.8z"/></svg></i><i class="on"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.2 6.8.8-5 4.6 1.3 6.7L12 17.5l-6 3.3 1.3-6.7-5-4.6 6.8-.8z"/></svg></i><i class="on"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.2 6.8.8-5 4.6 1.3 6.7L12 17.5l-6 3.3 1.3-6.7-5-4.6 6.8-.8z"/></svg></i></span></div></div><p class="rv-text">“Llevamos un año con Dogfy y Lola come con unas ganas que no había visto nunca. Las digestiones han mejorado muchísimo y el pelo le brilla más.”</p><p class="rv-when">hace 2 meses</p></article>
-    <article class="rv-card"><div class="rv-head"><span class="rv-avatar">J</span><div><b>Jordi</b><span class="rv-stars"><i class="on"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.2 6.8.8-5 4.6 1.3 6.7L12 17.5l-6 3.3 1.3-6.7-5-4.6 6.8-.8z"/></svg></i><i class="on"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.2 6.8.8-5 4.6 1.3 6.7L12 17.5l-6 3.3 1.3-6.7-5-4.6 6.8-.8z"/></svg></i><i class="on"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.2 6.8.8-5 4.6 1.3 6.7L12 17.5l-6 3.3 1.3-6.7-5-4.6 6.8-.8z"/></svg></i><i class="on"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.2 6.8.8-5 4.6 1.3 6.7L12 17.5l-6 3.3 1.3-6.7-5-4.6 6.8-.8z"/></svg></i><i class="on"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.2 6.8.8-5 4.6 1.3 6.7L12 17.5l-6 3.3 1.3-6.7-5-4.6 6.8-.8z"/></svg></i></span></div></div><p class="rv-text">“Me daba pereza el cambio de pienso a comida real, pero la transición fue facilísima con la guía de la caja. Thor no deja ni una bolsita.”</p><p class="rv-when">hace 5 meses</p></article>
-    <article class="rv-card"><div class="rv-head"><span class="rv-avatar">A</span><div><b>Ana</b><span class="rv-stars"><i class="on"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.2 6.8.8-5 4.6 1.3 6.7L12 17.5l-6 3.3 1.3-6.7-5-4.6 6.8-.8z"/></svg></i><i class="on"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.2 6.8.8-5 4.6 1.3 6.7L12 17.5l-6 3.3 1.3-6.7-5-4.6 6.8-.8z"/></svg></i><i class="on"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.2 6.8.8-5 4.6 1.3 6.7L12 17.5l-6 3.3 1.3-6.7-5-4.6 6.8-.8z"/></svg></i><i class="on"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.2 6.8.8-5 4.6 1.3 6.7L12 17.5l-6 3.3 1.3-6.7-5-4.6 6.8-.8z"/></svg></i><i class="on"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.2 6.8.8-5 4.6 1.3 6.7L12 17.5l-6 3.3 1.3-6.7-5-4.6 6.8-.8z"/></svg></i></span></div></div><p class="rv-text">“Las nutricionistas me ajustaron la ración cuando Nala empezó a ganar peso. Se nota que hay personas detrás, no solo una app.”</p><p class="rv-when">hace 3 meses</p></article>
-    <article class="rv-card"><div class="rv-head"><span class="rv-avatar">C</span><div><b>Carlos</b><span class="rv-stars"><i class="on"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.2 6.8.8-5 4.6 1.3 6.7L12 17.5l-6 3.3 1.3-6.7-5-4.6 6.8-.8z"/></svg></i><i class="on"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.2 6.8.8-5 4.6 1.3 6.7L12 17.5l-6 3.3 1.3-6.7-5-4.6 6.8-.8z"/></svg></i><i class="on"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.2 6.8.8-5 4.6 1.3 6.7L12 17.5l-6 3.3 1.3-6.7-5-4.6 6.8-.8z"/></svg></i><i class="on"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.2 6.8.8-5 4.6 1.3 6.7L12 17.5l-6 3.3 1.3-6.7-5-4.6 6.8-.8z"/></svg></i><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.2 6.8.8-5 4.6 1.3 6.7L12 17.5l-6 3.3 1.3-6.7-5-4.6 6.8-.8z"/></svg></i></span></div></div><p class="rv-text">“Buena calidad y entrega puntual. Mi único pero es que ocupa bastante congelador, pero el perro está encantado.”</p><p class="rv-when">hace 7 meses</p></article>
-    <article class="rv-card"><div class="rv-head"><span class="rv-avatar">L</span><div><b>Lucía</b><span class="rv-stars"><i class="on"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.2 6.8.8-5 4.6 1.3 6.7L12 17.5l-6 3.3 1.3-6.7-5-4.6 6.8-.8z"/></svg></i><i class="on"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.2 6.8.8-5 4.6 1.3 6.7L12 17.5l-6 3.3 1.3-6.7-5-4.6 6.8-.8z"/></svg></i><i class="on"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.2 6.8.8-5 4.6 1.3 6.7L12 17.5l-6 3.3 1.3-6.7-5-4.6 6.8-.8z"/></svg></i><i class="on"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.2 6.8.8-5 4.6 1.3 6.7L12 17.5l-6 3.3 1.3-6.7-5-4.6 6.8-.8z"/></svg></i><i class="on"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.2 6.8.8-5 4.6 1.3 6.7L12 17.5l-6 3.3 1.3-6.7-5-4.6 6.8-.8z"/></svg></i></span></div></div><p class="rv-text">“Rocky es un perro sénior con el estómago delicado y la receta de pavo le va genial. Cero problemas desde que la tomamos.”</p><p class="rv-when">hace 1 mes</p></article>
-  </div>
-  <div class="rv-dots" id="rvDots" role="tablist" aria-label="Opiniones"></div>
-  <img class="tramado" src="assets/tramado.svg" alt="" aria-hidden="true">
+  <div class="op-grid"><article class="op-card"><div class="op-head"><span class="op-av" aria-hidden="true">M</span><div><b>Marta</b><span class="op-stars" aria-label="5 de 5 estrellas">★★★★★</span></div></div><p class="op-text">“Llevamos un año con Dogfy y Lola come con unas ganas que no había visto nunca. Las digestiones han mejorado muchísimo y el pelo le brilla más.”</p><p class="op-when">hace 2 meses</p></article><article class="op-card"><div class="op-head"><span class="op-av" aria-hidden="true">J</span><div><b>Jordi</b><span class="op-stars" aria-label="5 de 5 estrellas">★★★★★</span></div></div><p class="op-text">“Me daba pereza el cambio de pienso a comida real, pero la transición fue fácil con la guía de la caja.”</p><p class="op-when">hace 5 meses</p></article><article class="op-card"><div class="op-head"><span class="op-av" aria-hidden="true">A</span><div><b>Ana</b><span class="op-stars" aria-label="5 de 5 estrellas">★★★★★</span></div></div><p class="op-text">“Rocky es un perro sénior con el estómago delicado y la receta de pavo le va genial.”</p><p class="op-when">hace 1 mes</p></article></div>
+  <a class="op-tp" href="#"><b>4,5</b><span class="op-tp-stars" aria-label="4,5 de 5 estrellas">★★★★★</span><span>12.480 opiniones en Trustpilot</span></a>
 </section>
 
 <!-- 11 · Descuento SMS -->
-<section class="s-sms">
-  <div class="bg"><img src="assets/sms-bg.jpg" alt="" loading="lazy" decoding="async"></div>
-  <div class="inner">
-    <span class="sticker sticker-m" aria-hidden="true"><svg class="sticker-shape" viewBox="0 0 64 64" width="64" height="64"><path fill="currentColor" d="M64 32c0 2.364-3.853 4.253-4.344 6.465-.507 2.284 2.151 5.694 1.18 7.754-.986 2.095-5.258 2.087-6.66 3.886-1.404 1.799-.457 6.068-2.223 7.512s-5.601-.458-7.646.553c-2.011.994-2.955 5.26-5.187 5.78-2.16.502-4.811-2.912-7.12-2.912s-4.961 3.414-7.121 2.911c-2.23-.518-3.174-4.785-5.186-5.78-2.046-1.01-5.889.883-7.646-.552s-.813-5.704-2.222-7.512-5.675-1.79-6.662-3.886c-.971-2.059 1.688-5.47 1.18-7.754C3.854 36.253 0 34.364 0 32s3.853-4.253 4.344-6.465c.507-2.284-2.152-5.694-1.181-7.754.987-2.095 5.259-2.087 6.662-3.886s.456-6.068 2.222-7.512 5.6.458 7.646-.553C21.704 4.836 22.648.57 24.88.05 27.039-.451 29.69 2.962 32 2.962s4.96-3.413 7.12-2.91c2.232.518 3.174 4.785 5.187 5.78 2.045 1.01 5.889-.883 7.646.552s.813 5.704 2.222 7.512 5.675 1.79 6.661 3.886c.971 2.059-1.687 5.47-1.18 7.754C60.146 27.747 64 29.636 64 32"/></svg><span class="sticker-emoji">📞</span></span>
-    <div class="sms-title-wrap"><span class="sms-title">Un <span class="accent">descuento extra</span> para empezar.</span></div>
-    <div class="sms-lead"><p class="desc">Déjanos tu móvil y te enviaremos por SMS un código de descuento para tu primer pedido, junto con sus condiciones.</p></div>
-    <form class="sms-form" id="smsForm">
-      <div class="sms-row">
-        <div class="sms-field">
-          <span class="sticker sticker-d" aria-hidden="true"><svg class="sticker-shape" viewBox="0 0 64 64" width="64" height="64"><path fill="currentColor" d="M64 32c0 2.364-3.853 4.253-4.344 6.465-.507 2.284 2.151 5.694 1.18 7.754-.986 2.095-5.258 2.087-6.66 3.886-1.404 1.799-.457 6.068-2.223 7.512s-5.601-.458-7.646.553c-2.011.994-2.955 5.26-5.187 5.78-2.16.502-4.811-2.912-7.12-2.912s-4.961 3.414-7.121 2.911c-2.23-.518-3.174-4.785-5.186-5.78-2.046-1.01-5.889.883-7.646-.552s-.813-5.704-2.222-7.512-5.675-1.79-6.662-3.886c-.971-2.059 1.688-5.47 1.18-7.754C3.854 36.253 0 34.364 0 32s3.853-4.253 4.344-6.465c.507-2.284-2.152-5.694-1.181-7.754.987-2.095 5.259-2.087 6.662-3.886s.456-6.068 2.222-7.512 5.6.458 7.646-.553C21.704 4.836 22.648.57 24.88.05 27.039-.451 29.69 2.962 32 2.962s4.96-3.413 7.12-2.91c2.232.518 3.174 4.785 5.187 5.78 2.045 1.01 5.889-.883 7.646.552s.813 5.704 2.222 7.512 5.675 1.79 6.661 3.886c.971 2.059-1.687 5.47-1.18 7.754C60.146 27.747 64 29.636 64 32"/></svg><span class="sticker-emoji">📞</span></span>
-          <label class="input"><span class="prefix"><select aria-label="País" name="prefix"><option value="+34" selected>🇪🇸 +34</option><option value="+33">🇫🇷 +33</option><option value="+39">🇮🇹 +39</option><option value="+49">🇩🇪 +49</option></select><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span><input type="tel" placeholder="Número de móvil" inputmode="tel" maxlength="9" required></label>
-        </div>
+<section class="s-sms sms2">
+  <div class="bg"><img src="assets/sms-corgi.jpg" alt="" loading="lazy" decoding="async"></div>
+  <span class="sms2-dto" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="M64 32c0 2.364-3.853 4.253-4.344 6.465-.507 2.284 2.151 5.694 1.18 7.754-.986 2.095-5.258 2.087-6.66 3.886-1.404 1.799-.457 6.068-2.223 7.512s-5.601-.458-7.646.553c-2.011.994-2.955 5.26-5.187 5.78-2.16.502-4.811-2.912-7.12-2.912s-4.961 3.414-7.121 2.911c-2.23-.518-3.174-4.785-5.186-5.78-2.046-1.01-5.889.883-7.646-.552s-.813-5.704-2.222-7.512-5.675-1.79-6.662-3.886c-.971-2.059 1.688-5.47 1.18-7.754C3.854 36.253 0 34.364 0 32s3.853-4.253 4.344-6.465c.507-2.284-2.152-5.694-1.181-7.754.987-2.095 5.259-2.087 6.662-3.886s.456-6.068 2.222-7.512 5.6.458 7.646-.553C21.704 4.836 22.648.57 24.88.05 27.039-.451 29.69 2.962 32 2.962s4.96-3.413 7.12-2.91c2.232.518 3.174 4.785 5.187 5.78 2.045 1.01 5.889-.883 7.646.552s.813 5.704 2.222 7.512 5.675 1.79 6.661 3.886c.971 2.059-1.687 5.47-1.18 7.754C60.146 27.747 64 29.636 64 32"/><circle cx="32" cy="32" r="24.5"/></svg><span class="dto-txt"><small>Extra</small><b>DTO</b><small>por SMS</small></span></span>
+  <div class="sms2-box">
+    <p class="sms2-title">Un <span class="accent">descuento extra</span> para empezar.</p>
+    <p class="sms2-desc">Déjanos tu móvil y te enviaremos por SMS un código de descuento para tu primer pedido, junto con sus condiciones.</p>
+    <form class="sms2-form" id="smsForm">
+      <div class="sms2-row">
+        <label class="input sms2-input"><span class="prefix"><select aria-label="País" name="prefix"><option value="+34" selected>🇪🇸 +34</option><option value="+33">🇫🇷 +33</option><option value="+39">🇮🇹 +39</option><option value="+49">🇩🇪 +49</option></select><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span><input type="tel" placeholder="Tu número de móvil" aria-label="Tu número de móvil" inputmode="tel" maxlength="9" required></label>
         <button type="submit" class="btn btn-primary">Recibe tu código por SMS</button><p class="sr-only" id="smsStatus" role="status" aria-live="polite"></p>
       </div>
-      <label class="check"><input type="checkbox" required> <span>He leído y acepto la Política de privacidad y las Condiciones de uso.</span></label>
+      <label class="sms2-check"><input type="checkbox" required> <span>Acepto recibir comunicaciones comerciales por SMS.</span></label>
     </form>
   </div>
 </section>
@@ -1548,7 +1581,7 @@ size();update();if(document.fonts)document.fonts.ready.then(()=>{size();update()
     grid.dataset.userTab='1';const card=cards.find(c=>c.dataset.key===t.dataset.key);if(!card)return;if(marquee()){tabs.forEach(x=>{x.classList.toggle('active',x===t);x.setAttribute('aria-selected',x===t);});[...grid.children].forEach(c=>c.classList.toggle('is-hi',c.dataset.key===t.dataset.key));t.blur();
       // la cinta se detiene y se desplaza hasta centrar la tarjeta elegida
       grid.classList.add('stopped');const host=grid.parentElement.getBoundingClientRect();const x=card.offsetLeft-(host.width-card.offsetWidth)/2;grid.style.transform='translateX('+(-x).toFixed(1)+'px)';}else{tabs.forEach(x=>{x.classList.toggle('active',x===t);x.setAttribute('aria-selected',x===t);});cards.forEach(c=>c.classList.toggle('is-hi',c===card));card.scrollIntoView({block:'nearest',behavior:'smooth'});}}));
-  const rev=document.getElementById('reviews'),rvCards=[...rev.children],rvDots=document.getElementById('rvDots');
+  const rev=document.getElementById('reviews')||document.createElement('div'),rvCards=[...rev.children],rvDots=document.getElementById('rvDots');
   const rvLoop=()=>true;/* cinta en bucle en todos los breakpoints */if(rvLoop()&&!rev.dataset.looped){rev.dataset.looped='1';rvCards.forEach(c=>{const k=c.cloneNode(true);k.setAttribute('aria-hidden','true');k.dataset.clone='1';rev.appendChild(k);});}
   // Solo se pausa con ratón (hover). En táctil un toque disparaba mouseenter/pointerdown y la cinta se quedaba parada
   if(matchMedia('(hover:hover)').matches){['pointerdown','mouseenter'].forEach(ev=>rev.addEventListener(ev,()=>rev.classList.add('paused'),{passive:true}));['pointerup','pointercancel','mouseleave'].forEach(ev=>rev.addEventListener(ev,()=>setTimeout(()=>rev.classList.remove('paused'),1200),{passive:true}));}
@@ -1594,7 +1627,7 @@ const start=()=>{clearInterval(timer);timer=setInterval(next,4500);};
 el.addEventListener('transitionend',()=>{if(!el.classList.contains('stopped'))return;const m=/translateX\((-?[\d.]+)px\)/.exec(el.style.transform||'');if(!m)return;const x=parseFloat(m[1]);let best=0,bd=1e9;cards().forEach((c,i)=>{const d=Math.abs(xFor(i)-x);if(d<bd){bd=d;best=i;}});idx=best;});  // tras elegir una pestaña, seguimos desde esa tarjeta
 if(matchMedia('(hover:hover)').matches){el.addEventListener('mouseenter',()=>el.classList.add('paused'));el.addEventListener('mouseleave',()=>el.classList.remove('paused'));}
 const init=()=>{if(isOn()){idx=0;place(0,false);}else{el.style.transform='';el.classList.remove('sliding');}};init();addEventListener('resize',init);addEventListener('load',init);start();})();
-run(document.getElementById('reviews'),()=>true,34);})();
+if(document.getElementById('reviews'))run(document.getElementById('reviews'),()=>true,34);})();
 // Stepper: reserva la altura del estado más alto (un paso abierto) para que el botón no baile al colapsar/expandir
 (()=>{const st=document.querySelector('.stepper');if(!st)return;const fit=()=>{const bodies=[...st.querySelectorAll('.step-body p')];const open=Math.max(0,...bodies.map(p=>p.scrollHeight+8));const act=st.querySelector('.step.active .step-body p');st.style.minHeight='';const base=st.getBoundingClientRect().height-(act?act.scrollHeight+8:0);st.style.minHeight=Math.ceil(base+open)+'px';};fit();addEventListener('resize',fit);addEventListener('load',fit);if(document.fonts)document.fonts.ready.then(fit);})();
 // Stepper: el bloque queda fijo (como la caja de prueba) y cada 100vh de scroll activa un paso. En escritorio la pista es la sección entera (imagen + pasos fijos juntos); en tablet/móvil es solo el split (la imagen se desplaza normal y únicamente los pasos quedan fijos)
@@ -1689,7 +1722,7 @@ const track=sec.querySelector('.ce3-track'),stage=sec.querySelector('.ce3-stage'
 sec.classList.add('is-anim');let hs=[],tops=[],gap=16,run=0,vh=innerHeight,stuck=64,LH=0;
 const lerp=(a,b,t)=>a+(b-a)*t,ease=t=>t<.5?2*t*t:1-Math.pow(-2*t+2,2)/2;
 const media=sec.querySelector('.ce3-media'),bar=document.getElementById('ctaBar');
-const measure=()=>{vh=innerHeight;const mob=innerWidth<=860;gap=mob?12:16;hs=cards.map(c=>c.offsetHeight);tops=cards.map(c=>c.querySelector('.ce3-top').offsetHeight);
+const measure=()=>{vh=innerHeight;const mob=innerWidth<=860;gap=mob?12:16;const last=cards[N-1];last.style.minHeight='';if(!mob){let ts=0;cards.forEach((c,i)=>{if(i<N-1)ts+=c.querySelector('.ce3-top').offsetHeight;});last.style.minHeight=Math.max(0,media.offsetHeight-ts)+'px';}hs=cards.map(c=>c.offsetHeight);tops=cards.map(c=>c.querySelector('.ce3-top').offsetHeight);
   let full=0;hs.forEach((x,i)=>full+=x+(i?gap:0));let col=0;tops.forEach((x,i)=>{if(i<N-1)col+=x;});col+=hs[N-1];
   const barH=bar&&getComputedStyle(bar).display!=='none'&&bar.offsetHeight?bar.offsetHeight+12:0,mh=media.offsetHeight;
   const avail=mob?vh-64-16-mh-16-barH:vh-64-48;const lh=Math.max(col,Math.min(full,avail));list.style.setProperty('--ce3-h',lh+'px');
@@ -1699,7 +1732,7 @@ let active=0;const setActive=k=>{if(k===active)return;active=k;imgs.forEach((im,
 let tick=false;const upd=()=>{tick=false;const r=track.getBoundingClientRect(),p=Math.max(0,Math.min(N-1,(stuck-r.top)/(run/(N-1))));
   let y=0;cards.forEach((c,i)=>{if(i){const t=ease(Math.max(0,Math.min(1,p-(i-1))));y+=lerp(hs[i-1]+gap,tops[i-1],t);}c.style.setProperty('--y',y.toFixed(1)+'px');});list.style.setProperty('--ce3-h',Math.min(LH,y+hs[N-1]).toFixed(1)+'px');
   setActive(Math.min(N-1,Math.floor(p+.5)));};
-cards.forEach((c,i)=>c.querySelector('.ce3-top').addEventListener('click',()=>{if(i>=active&&i!==0)return;const r=track.getBoundingClientRect();scrollTo({top:scrollY+r.top-stuck+i*(run/(N-1))+2,behavior:'smooth'});}));
+cards.forEach((c,i)=>c.querySelector('.ce3-top').addEventListener('click',()=>{const r=track.getBoundingClientRect();scrollTo({top:scrollY+r.top-stuck+i*(run/(N-1))+2,behavior:'smooth'});}));
 const on=()=>{if(!tick){tick=true;requestAnimationFrame(upd);}};addEventListener('scroll',on,{passive:true});
 const re=()=>{measure();upd();};addEventListener('resize',re);addEventListener('load',re);if(document.fonts)document.fonts.ready.then(re);
 imgs.forEach(im=>{if(!im.complete)im.addEventListener('load',re,{once:true});});cards[0].classList.add('is-active');re();})();
