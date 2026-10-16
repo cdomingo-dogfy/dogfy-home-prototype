@@ -2336,6 +2336,21 @@ body:has(.rp-hero) .rp-crumbs{background:var(--blue-deco);max-width:none;padding
   .cf2-hero::before{background:linear-gradient(180deg,rgba(20,18,16,.7) 0%,rgba(20,18,16,.15) 22%,rgba(20,18,16,0) 36%,rgba(20,18,16,.55) 58%,rgba(20,18,16,.9) 100%)}
   .cf2-hero-in{padding:40px var(--gutter) 40px}
 }
+/* Cómo funciona (tablet/móvil): el vídeo se queda fijo arriba y los pasos pasan por debajo, fundiéndose en blanco */
+@media (max-width:900px){
+  .cf2-how-grid{align-items:start}
+  .cf2-media{position:sticky;top:64px;z-index:4;background:#fff;padding:12px 0 0;margin-top:-12px}
+  .cf2-media::after{content:"";position:absolute;left:-40px;right:-40px;top:100%;height:56px;background:linear-gradient(180deg,#fff 0%,rgba(255,255,255,.85) 40%,rgba(255,255,255,0) 100%);pointer-events:none}
+  .cf2-media::before{content:"";position:absolute;left:-40px;right:-40px;top:0;bottom:0;background:#fff;z-index:-1}
+  .cf2-steps-wrap{position:relative;z-index:1;padding-top:24px}
+}
+/* «Para perros llenos de vida» en móvil: primer plano de la chica y el perro, como en desktop */
+@media (max-width:767px){
+  .cf2-support-card:has(.cf6-vida) .cf6-vida{transform:scale(1.85);transform-origin:57% 78%;object-position:50% 50%}
+}
+@media (max-width:767px){.cf2-support-card:has(.cf6-vida) .cf6-vida{transform:scale(1.4);transform-origin:57% 72%}}
+/* Nutrición (móvil/tablet): la foto llena su caja redondeada, sin hueco abajo */
+@media (max-width:900px){.cf2-nutri-img{display:block;width:100%;height:auto!important;aspect-ratio:4/5;max-height:none;object-fit:cover;object-position:40% 45%;border-radius:24px;box-shadow:0 24px 48px -24px rgba(42,39,36,.35)}}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://cdomingo-dogfy.github.io/dogfy-home-prototype/index.html"}, {"@type": "ListItem", "position": 2, "name": "Nuestras recetas", "item": "https://cdomingo-dogfy.github.io/dogfy-home-prototype/recetas.html"}, {"@type": "ListItem", "position": 3, "name": "Menú de salmón", "item": "https://cdomingo-dogfy.github.io/dogfy-home-prototype/receta-salmon.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "¿Qué formatos hay?", "acceptedAnswer": {"@type": "Answer", "text": "Cada menú llega en bolsitas individuales con la ración diaria de tu perro, ya calculada según su peso, edad y actividad. Puedes elegir una receta o combinar varias en el mismo pedido."}}, {"@type": "Question", "name": "¿Qué cantidad se le debe dar?", "acceptedAnswer": {"@type": "Answer", "text": "Depende de su peso, edad y nivel de actividad. Al crear su plan calculamos su ración diaria exacta y cada bolsita contiene justo esa cantidad, así que no tienes que pesar nada."}}, {"@type": "Question", "name": "¿Cómo llega el producto?", "acceptedAnswer": {"@type": "Answer", "text": "Te lo enviamos a casa congelado y dividido en bolsitas diarias, con envío gratis. Solo tienes que guardarlo en el congelador al recibirlo."}}]}</script>
