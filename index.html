@@ -1338,6 +1338,15 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
 .sms2-dto .dto-cut path{fill:none}
 @media (prefers-reduced-motion:no-preference){.sms2-dto .dto-spin{animation-duration:48s}}
 @media (min-width:901px) and (max-width:1300px){.sms2{padding-top:170px}}
+/* Tablet/móvil: los stickers de la promo suben arriba a la derecha y el texto del hero baja para dejarles sitio */
+@media (max-width:900px){
+  .hero-promo{top:calc(64px + 10px);bottom:auto;right:10px;width:clamp(200px,38vw,290px)}
+  .hero .hero-content>div:first-child{margin-top:calc(clamp(200px,38vw,290px) * .63 + 4px)}
+}
+@media (max-width:600px){
+  .hero-promo{top:calc(64px + 6px);right:6px;width:min(58vw,232px)}
+  .hero .hero-content>div:first-child{margin-top:calc(min(58vw,232px) * .63 + 2px)}
+}
 </style>
 </head>
 <body>
