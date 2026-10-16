@@ -2074,6 +2074,45 @@ body:has(.rp-hero) .rp-crumbs{background:var(--blue-deco);max-width:none;padding
 .cf3-apoyo-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 45%}
 .cf2-support-card::after{background:linear-gradient(0deg,rgba(20,18,16,.35),rgba(20,18,16,.25))}
 @media (max-width:900px){.cf2-media{width:100%;justify-self:center}}
+/* vídeo de los pasos en reproducción automática (sin sonido, en bucle) */
+.cf3-video iframe{pointer-events:none}
+.cf3-video .cf3-poster{transition:opacity .4s}
+.cf3-video.is-playing .cf3-poster{opacity:0}
+.cf3-video::after{display:none}
+.nt-ctrl.cf3-ctrl{top:auto;left:auto;right:16px;bottom:16px;height:auto;z-index:2}
+/* Fichas: sin submenú de pestañas; flechas a los lados para pasar al menú anterior / siguiente */
+.rp-detail{position:relative}
+.rp-pn-btn{position:absolute;top:clamp(220px,calc(40svh - 40px),380px);z-index:5;width:52px;height:52px;border-radius:50%;display:grid;place-items:center;background:#fff;color:var(--text-hi);border:1px solid #dcd2c5;box-shadow:0 8px 24px -10px rgba(42,39,36,.35);text-decoration:none;transition:transform .2s,box-shadow .2s,background .2s}
+.rp-pn-prev{left:max(12px,calc((100vw - var(--container))/2 - 84px))}
+.rp-pn-next{right:max(12px,calc((100vw - var(--container))/2 - 84px))}
+.rp-pn-btn:hover{background:#faf8f6;box-shadow:0 12px 28px -10px rgba(42,39,36,.4)}
+.rp-pn-prev:hover{transform:translateX(-3px)}.rp-pn-next:hover{transform:translateX(3px)}
+.rp-pn-btn:focus-visible{outline:3px solid #f2c94c;outline-offset:3px}
+.rp-pn-tip{position:absolute;top:calc(100% + 8px);left:50%;transform:translateX(-50%);padding:4px 10px;border-radius:999px;background:#2a2724;color:#fff;font-family:var(--font-display);font-weight:600;font-size:13px;line-height:18px;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .2s}
+.rp-pn-btn:hover .rp-pn-tip,.rp-pn-btn:focus-visible .rp-pn-tip{opacity:1}
+/* sin la barra de pestañas, la galería se fija justo bajo la cabecera */
+@media (min-width:901px){.rp-detail .rp-gallery{top:88px;max-width:max(320px,calc(80svh - 150px))}}
+/* sin margen lateral (<1360px) el script las coloca sobre la foto */
+@media (max-width:1359px){.rp-pn-btn{width:44px;height:44px;background:rgba(255,255,255,.94)}.rp-pn-tip{display:none}}
+@media (prefers-reduced-motion:reduce){.rp-pn-btn,.rp-pn-tip{transition:none}}
+/* Cómo funciona: la foto del hero sube bajo la cabecera transparente */
+.cf2-hero{margin-top:-64px;padding-top:64px;min-height:min(704px,calc(100svh - 48px))}
+.cf2-hero::after{content:"";position:absolute;left:0;right:0;top:0;height:160px;z-index:1;background:linear-gradient(180deg,rgba(20,18,16,.45),rgba(20,18,16,0));pointer-events:none}
+@media (max-width:900px){.cf2-hero{min-height:624px}}
+/* Pasos: insignias numeradas sobre las manchas de marca (Figma 710:24265) y línea en azul */
+.cf2-track{background:#e6ecfb}
+.cf2-fill{background:#5b78d6}
+.cf2-step{grid-template-columns:minmax(0,1fr)}
+.cf2-n{position:absolute;left:-68px;top:-10px;z-index:1;width:44px;height:48px;display:grid;place-items:center;padding-top:2px;box-sizing:border-box;background:url("assets/blob-bg-1-gris.svg") center/contain no-repeat;font-family:var(--font-display);font-weight:700;font-size:19px;line-height:1;color:#968d82;transition:color .3s,transform .3s}
+.cf2-step:nth-child(3n+2) .cf2-n{background-image:url("assets/blob-bg-2-gris.svg")}
+.cf2-step:nth-child(3n) .cf2-n{background-image:url("assets/blob-bg-3-gris.svg")}
+.cf2-step.is-on .cf2-n,.cf2-step.is-done .cf2-n{background-image:url("assets/blob-bg-1.svg");color:#5a5049}
+.cf2-step.is-on:nth-child(3n+2) .cf2-n,.cf2-step.is-done:nth-child(3n+2) .cf2-n{background-image:url("assets/blob-bg-2.svg")}
+.cf2-step.is-on:nth-child(3n) .cf2-n,.cf2-step.is-done:nth-child(3n) .cf2-n{background-image:url("assets/blob-bg-3.svg")}
+.cf2-step.is-on .cf2-n{transform:scale(1.15)}
+@media (max-width:900px){.cf2-n{left:-54px;top:-8px;width:40px;height:44px;font-size:17px}.cf2-step{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){.cf2-n{transition:none}}
+.cf2-n{left:-72px;top:-14px;width:52px;height:57px;font-size:22px;font-weight:800}@media (max-width:900px){.cf2-n{left:-56px;top:-10px;width:44px;height:48px;font-size:19px}}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://cdomingo-dogfy.github.io/dogfy-home-prototype/index.html"}, {"@type": "ListItem", "position": 2, "name": "Cómo funciona", "item": "https://cdomingo-dogfy.github.io/dogfy-home-prototype/como-funciona.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "¿Qué formatos hay?", "acceptedAnswer": {"@type": "Answer", "text": "Cada menú llega en bolsitas individuales con la ración diaria de tu perro, ya calculada según su peso, edad y actividad. Puedes elegir una receta o combinar varias en el mismo pedido."}}, {"@type": "Question", "name": "¿Cómo llega el producto?", "acceptedAnswer": {"@type": "Answer", "text": "Te lo enviamos a casa congelado y dividido en bolsitas diarias, con envío gratis. Solo tienes que guardarlo en el congelador al recibirlo."}}, {"@type": "Question", "name": "¿Cómo se prepara, debo cocinar el alimento al perro?", "acceptedAnswer": {"@type": "Answer", "text": "No hace falta cocinar nada. Nuestras recetas ya vienen cocinadas a baja temperatura: descongela la bolsita en la nevera, ábrela y sirve."}}, {"@type": "Question", "name": "¿Cada cuánto llegan los menús?", "acceptedAnswer": {"@type": "Answer", "text": "Tu primera caja trae 14 días de comida. Después la suscripción continúa y puedes cambiar recetas, aplazar envíos o cancelar cuando quieras, sin permanencia."}}, {"@type": "Question", "name": "¿Puedo hablar con el equipo de nutrición?", "acceptedAnswer": {"@type": "Answer", "text": "Sí. Tu plan incluye seguimiento nutricional gratuito: puedes escribir a nuestro equipo de Nutrición canina siempre que lo necesites, en cualquier etapa de la vida de tu perro."}}]}</script>
@@ -2127,13 +2166,13 @@ body:has(.rp-hero) .rp-crumbs{background:var(--blue-deco);max-width:none;padding
     <p>Así empieza Dogfy. Y así sigue formando parte de vuestro día a día.</p>
   </div>
   <div class="cf2-how-grid">
-    <div class="cf2-media"><img class="cf2-blob" src="assets/cf2-blob.svg" alt="" aria-hidden="true"><div class="cf2-media-frame cf3-video" data-vimeo="1201334960"><img class="cf3-poster" src="assets/cf3-video-poster.jpg" alt="" width="1000" height="1005" loading="lazy" decoding="async"><button class="cf3-play" type="button" aria-label="Ver el vídeo de cómo funciona Dogfy Diet"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z"/></svg></button></div></div>
+    <div class="cf2-media"><img class="cf2-blob" src="assets/cf2-blob.svg" alt="" aria-hidden="true"><div class="cf2-media-frame cf3-video" data-vbox><img class="cf3-poster" src="assets/cf3-video-poster.jpg" alt="" width="1000" height="1005" decoding="async"><iframe src="https://player.vimeo.com/video/1201334960?background=1&amp;muted=1&amp;loop=1&amp;autoplay=1&amp;autopause=0&amp;dnt=1" title="Cómo funciona Dogfy Diet" allow="autoplay; fullscreen; picture-in-picture"></iframe><div class="nt-ctrl cf3-ctrl"><button class="ps-vbtn ps-vplay" type="button" aria-label="Pausar el vídeo" data-state="playing"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path class="i-pause" d="M7 5h3v14H7zM14 5h3v14h-3z"/><path class="i-play" d="M8 5v14l11-7z"/></svg></button></div></div></div>
     <div class="cf2-steps-wrap">
       <span class="cf2-track" aria-hidden="true"><span class="cf2-fill"></span></span>
       <ol class="cf2-steps">
       <li class="cf2-step is-on" data-step="0">
-        <span class="cf2-dot" aria-hidden="true"></span>
-        <p class="cf2-num">Paso 1</p>
+        <span class="cf2-n" aria-hidden="true">1</span>
+        <p class="sr-only">Paso 1</p>
         <div class="cf2-body">
           <h3 class="cf2-title">Cuéntanos cómo es tu perro.</h3>
           <img class="cf2-step-img" src="assets/cf-presenta-tu-perro.webp" alt="" width="800" height="588" loading="lazy" decoding="async">
@@ -2141,8 +2180,8 @@ body:has(.rp-hero) .rp-crumbs{background:var(--blue-deco);max-width:none;padding
         </div>
       </li>
       <li class="cf2-step" data-step="1">
-        <span class="cf2-dot" aria-hidden="true"></span>
-        <p class="cf2-num">Paso 2</p>
+        <span class="cf2-n" aria-hidden="true">2</span>
+        <p class="sr-only">Paso 2</p>
         <div class="cf2-body">
           <h3 class="cf2-title">Cocinamos, congelamos y te la enviamos a casa.</h3>
           <img class="cf2-step-img" src="assets/cf-como-funciona-election.webp" alt="" width="800" height="588" loading="lazy" decoding="async">
@@ -2150,8 +2189,8 @@ body:has(.rp-hero) .rp-crumbs{background:var(--blue-deco);max-width:none;padding
         </div>
       </li>
       <li class="cf2-step" data-step="2">
-        <span class="cf2-dot" aria-hidden="true"></span>
-        <p class="cf2-num">Paso 3</p>
+        <span class="cf2-n" aria-hidden="true">3</span>
+        <p class="sr-only">Paso 3</p>
         <div class="cf2-body">
           <h3 class="cf2-title">Descongelas, abres y sirves.</h3>
           <img class="cf2-step-img" src="assets/cf-obten-tu-pedido.webp" alt="" width="800" height="588" loading="lazy" decoding="async">
@@ -2159,8 +2198,8 @@ body:has(.rp-hero) .rp-crumbs{background:var(--blue-deco);max-width:none;padding
         </div>
       </li>
       <li class="cf2-step" data-step="3">
-        <span class="cf2-dot" aria-hidden="true"></span>
-        <p class="cf2-num">Paso 4</p>
+        <span class="cf2-n" aria-hidden="true">4</span>
+        <p class="sr-only">Paso 4</p>
         <div class="cf2-body">
           <h3 class="cf2-title">Su comida sigue llegando. Tú gestionas los próximos pedidos.</h3>
           <img class="cf2-step-img" src="assets/cf-tu-perro-disfruta.webp" alt="" width="800" height="588" loading="lazy" decoding="async">
@@ -2321,11 +2360,15 @@ tabs.forEach((b,i)=>b.addEventListener('click',()=>{const r=rows[i];if(!r)return
 // Cómo funciona: línea de pasos; la barra se rellena con el scroll y la foto de la izquierda cambia con el paso activo
 (()=>{const wrap=document.querySelector('.cf2-steps-wrap');if(!wrap)return;const steps=[...wrap.querySelectorAll('.cf2-step')],fill=wrap.querySelector('.cf2-fill'),imgs=[...document.querySelectorAll('.cf2-media-img')];let cur=-1;
 const tick=()=>{const mid=innerHeight*.45,wr=wrap.getBoundingClientRect();let a=0;steps.forEach((s,i)=>{if(s.getBoundingClientRect().top<=mid)a=i});
-const dot=steps[a].querySelector('.cf2-dot').getBoundingClientRect();fill.style.height=Math.max(0,Math.min(wr.height,dot.top+dot.height/2-wr.top))+'px';
+const dot=steps[a].querySelector('.cf2-n').getBoundingClientRect();fill.style.height=Math.max(0,Math.min(wr.height,dot.top+dot.height/2-wr.top))+'px';
 if(a!==cur){cur=a;steps.forEach((s,i)=>{s.classList.toggle('is-on',i===a);s.classList.toggle('is-done',i<a)});imgs.forEach((im,i)=>im.classList.toggle('is-on',i===a))}};
 addEventListener('scroll',tick,{passive:true});addEventListener('resize',tick);tick();})();
-// Vídeo de los pasos: al pulsar play se sustituye el póster por el vídeo de Vimeo, con sonido y controles
-(()=>{const v=document.querySelector('.cf3-video');if(!v)return;const b=v.querySelector('.cf3-play');b.addEventListener('click',()=>{if(v.querySelector('iframe'))return;const f=document.createElement('iframe');f.src='https://player.vimeo.com/video/'+v.dataset.vimeo+'?autoplay=1&dnt=1&title=0&byline=0&portrait=0';f.allow='autoplay; fullscreen; picture-in-picture';f.title='Cómo funciona Dogfy Diet';f.setAttribute('allowfullscreen','');v.appendChild(f);v.classList.add('is-playing');f.focus()})})();
+// Cómo funciona: cabecera transparente sobre la foto del hero hasta que se hace scroll (como en la home)
+(()=>{if(!document.querySelector('.cf2-hero'))return;const h=document.querySelector('.header'),m=document.getElementById('mobileMenu');if(!h)return;const u=()=>h.classList.toggle('top',scrollY<40&&!(m&&m.classList.contains('open')));addEventListener('scroll',u,{passive:true});const b=document.getElementById('burger');if(b)b.addEventListener('click',()=>setTimeout(u,0));u();})();
+// Fichas: flechas anterior / siguiente. Con margen lateral (≥1360px) van fuera; si no, se colocan sobre los bordes de la foto principal
+(()=>{const sec=document.querySelector('.rp-detail'),pv=document.querySelector('.rp-pn-prev'),nx=document.querySelector('.rp-pn-next'),media=document.querySelector('.rp-detail .rp-media');if(!sec||!pv||!nx||!media)return;
+const place=()=>{if(innerWidth>=1360){[pv,nx].forEach(b=>b.removeAttribute('style'));return}const s=sec.getBoundingClientRect(),m=media.getBoundingClientRect(),top=m.top-s.top+m.height/2-pv.offsetHeight/2;pv.style.cssText=`top:${top}px;left:${m.left-s.left+12}px;right:auto`;nx.style.cssText=`top:${top}px;left:${m.right-s.left-nx.offsetWidth-12}px;right:auto`};
+addEventListener('resize',place);addEventListener('load',place);place();})();
 
 (()=>{const l=document.querySelector('.rp-tabs-list'),a=l&&l.querySelector('.active');if(a&&l.scrollWidth>l.clientWidth)l.scrollLeft=a.offsetLeft-l.offsetLeft-(l.clientWidth-a.offsetWidth)/2;})();
 </script>
