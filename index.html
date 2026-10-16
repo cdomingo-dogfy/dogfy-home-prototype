@@ -944,6 +944,30 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
 .pq + .s-recetas .wave-top{display:none}
 /* Precio: fondo de las fotos en crema como en el Figma */
 .pcard .img{background:#fffae5}
+/* Blog (mismo bloque que en las fichas de receta) */
+.rp-blog{padding:96px var(--gutter);background:var(--bg-elev)}
+.bl-head{max-width:var(--container);margin:0 auto 40px;display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.bl-head .h2{margin-top:8px;max-width:640px}
+.bl-all{display:inline-flex;align-items:center;gap:6px;height:44px;padding:0 18px;border-radius:999px;background:#fff;border:1px solid var(--border);font-family:var(--font-display);font-weight:600;font-size:15px;color:var(--text-hi);transition:background .2s}
+.bl-all:hover{background:var(--sand)}
+.bl-grid{max-width:var(--container);margin:0 auto;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.bl-card{position:relative;display:flex;flex-direction:column;background:#fff;border-radius:24px;overflow:hidden;box-shadow:0 1px 2px rgba(41,38,36,.06),0 16px 32px -18px rgba(41,38,36,.22);transition:transform .3s,box-shadow .3s}
+.bl-card:hover{transform:translateY(-4px);box-shadow:0 14px 36px rgba(41,38,36,.14),0 3px 8px rgba(41,38,36,.06)}
+.bl-img{display:block;aspect-ratio:16/10;overflow:hidden}
+.bl-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.bl-card:hover .bl-img img{transform:scale(1.04)}
+.bl-body{display:flex;flex-direction:column;gap:10px;padding:20px 22px 22px;flex:1}
+.bl-meta{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--text-toned)}
+.bl-tag{padding:3px 10px;border-radius:999px;background:var(--blue);color:#3c55a8;font-weight:600}
+.bl-card h3{font-size:20px;line-height:1.2}
+.bl-card h3 a::after{content:"";position:absolute;inset:0}
+.bl-card p{font-size:15px;line-height:22px;color:var(--text)}
+.bl-more{margin-top:auto;padding-top:6px;display:inline-flex;align-items:center;gap:6px;font-family:var(--font-display);font-weight:600;font-size:15px;color:var(--text-hi)}
+.bl-more svg{transition:transform .25s cubic-bezier(.2,.8,.2,1)}
+.bl-card:hover .bl-more svg{transform:translateX(4px)}
+@media (max-width:900px){.bl-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:600px){.bl-grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:16px;margin-inline:calc(-1 * var(--gutter));padding:4px var(--gutter) 20px;scrollbar-width:none}.bl-grid::-webkit-scrollbar{display:none}.bl-card{flex:0 0 82%;scroll-snap-align:center}.bl-head{margin-bottom:24px}}
+@media (max-width:600px){.rp-blog{padding:64px var(--gutter)}}
 </style>
 </head>
 <body>
@@ -1053,10 +1077,10 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
     <button class="tab" data-key="salmon" role="tab" aria-selected="false"><img src="assets/tab-salmon.svg" alt="">Salmón</button>
   </div>
   <div class="recetas-grid" id="recetasGrid">
-    <article class="receta pollo" data-key="pollo"><div class="img rcm-img"><img src="assets/receta-pollo.jpg" alt="Menú de pollo de Dogfy Diet" loading="lazy" decoding="async"><img class="rcm-pack" src="assets/rc-pack-chicken.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async"></div><div class="rcm-body"><h3><a class="rcm-link" href="receta-pollo.html">Pollo</a></h3><span class="rcm-sold"><b>139.571</b> vendidos/mes</span></div></article>
-    <article class="receta salmon" data-key="salmon"><div class="img rcm-img"><img src="assets/receta-salmon.jpg" alt="Menú de salmón de Dogfy Diet" loading="lazy" decoding="async"><img class="rcm-pack" src="assets/rc-pack-salmon.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async"></div><div class="rcm-body"><h3><a class="rcm-link" href="receta-salmon.html">Salmón</a></h3><span class="rcm-sold"><b>139.312</b> vendidos/mes</span></div></article>
-    <article class="receta buey" data-key="buey"><div class="img rcm-img"><img src="assets/receta-buey.jpg" alt="Menú de buey de Dogfy Diet" loading="lazy" decoding="async"><img class="rcm-pack" src="assets/rc-pack-beef.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async"></div><div class="rcm-body"><h3><a class="rcm-link" href="receta-buey.html">Buey</a></h3><span class="rcm-sold"><b>139.972</b> vendidos/mes</span></div></article>
-    <article class="receta pavo" data-key="pavo"><div class="img rcm-img"><img src="assets/receta-pavo.jpg" alt="Menú de pavo de Dogfy Diet" loading="lazy" decoding="async"><img class="rcm-pack" src="assets/rc-pack-turkey.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async"></div><div class="rcm-body"><h3><a class="rcm-link" href="receta-pavo.html">Pavo</a></h3><span class="rcm-sold"><b>140.611</b> vendidos/mes</span></div></article>
+    <article class="receta pollo" data-key="pollo"><div class="img rcm-img"><img src="assets/receta-pollo.jpg" alt="Menú de pollo de Dogfy Diet" loading="lazy" decoding="async"><img class="rcm-pack" src="assets/rc-pack-chicken.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async"></div><div class="rcm-body"><h3>Pollo</h3><span class="rcm-sold"><b>139.571</b> vendidos/mes</span></div></article>
+    <article class="receta salmon" data-key="salmon"><div class="img rcm-img"><img src="assets/receta-salmon.jpg" alt="Menú de salmón de Dogfy Diet" loading="lazy" decoding="async"><img class="rcm-pack" src="assets/rc-pack-salmon.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async"></div><div class="rcm-body"><h3>Salmón</h3><span class="rcm-sold"><b>139.312</b> vendidos/mes</span></div></article>
+    <article class="receta buey" data-key="buey"><div class="img rcm-img"><img src="assets/receta-buey.jpg" alt="Menú de buey de Dogfy Diet" loading="lazy" decoding="async"><img class="rcm-pack" src="assets/rc-pack-beef.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async"></div><div class="rcm-body"><h3>Buey</h3><span class="rcm-sold"><b>139.972</b> vendidos/mes</span></div></article>
+    <article class="receta pavo" data-key="pavo"><div class="img rcm-img"><img src="assets/receta-pavo.jpg" alt="Menú de pavo de Dogfy Diet" loading="lazy" decoding="async"><img class="rcm-pack" src="assets/rc-pack-turkey.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async"></div><div class="rcm-body"><h3>Pavo</h3><span class="rcm-sold"><b>140.611</b> vendidos/mes</span></div></article>
   </div>
   <div class="cta"><a class="btn btn-primary" href="recetas.html">Explorar recetas</a></div>
 </section>
@@ -1184,6 +1208,15 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
       <label class="check"><input type="checkbox" required> <span>He leído y acepto la Política de privacidad y las Condiciones de uso.</span></label>
     </form>
   </div>
+</section>
+
+<!-- 9b · Blog -->
+<section class="rp-blog">
+  <div class="bl-head">
+    <div><p class="eyebrow">Blog Dogfy</p><h2 class="h2">No te pierdas <span class="accent">nada</span> sobre su alimentación</h2></div>
+    <a class="bl-all" href="#">Ver todos los artículos <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+  </div>
+  <div class="bl-grid"><article class="bl-card"><a class="bl-img" href="#" tabindex="-1" aria-hidden="true"><img src="assets/nutricionistas.jpg" alt="" loading="lazy" decoding="async"></a><div class="bl-body"><div class="bl-meta"><span class="bl-tag">Nutrición</span><span>5 min de lectura</span></div><h3><a href="#">Una alimentación inadecuada puede afectar a tu perro</a></h3><p>Los perros, al igual que los humanos, necesitan un equilibrio adecuado de nutrientes para mantener su salud. Su dieta debe incluir proteínas, grasas, vitaminas y minerales.</p><span class="bl-more">Leer artículo <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div></article><article class="bl-card"><a class="bl-img" href="#" tabindex="-1" aria-hidden="true"><img src="assets/paso-sirve.jpg" alt="" loading="lazy" decoding="async"></a><div class="bl-body"><div class="bl-meta"><span class="bl-tag">Transición</span><span>4 min de lectura</span></div><h3><a href="#">Cómo pasar del pienso a la comida natural</a></h3><p>Hacer el cambio poco a poco ayuda a que su estómago se adapte. Con el primer pedido recibes una guía de transición para los primeros días.</p><span class="bl-more">Leer artículo <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div></article><article class="bl-card"><a class="bl-img" href="#" tabindex="-1" aria-hidden="true"><img src="assets/paso-perfil.jpg" alt="" loading="lazy" decoding="async"></a><div class="bl-body"><div class="bl-meta"><span class="bl-tag">Raciones</span><span>3 min de lectura</span></div><h3><a href="#">¿Cuánta comida necesita tu perro al día?</a></h3><p>La ración depende de su peso, su edad y su actividad. Te explicamos cómo calcularla y por qué cada perro necesita una cantidad distinta.</p><span class="bl-more">Leer artículo <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div></article></div>
 </section>
 
 <!-- 10 · FAQ -->
