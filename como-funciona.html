@@ -2141,6 +2141,16 @@ body:has(.rp-hero) .rp-crumbs{background:var(--blue-deco);max-width:none;padding
   .cf2-hero-in>p{max-width:480px}
 }
 .rp-hero3{padding-top:72px}@media (max-width:600px){.rp-hero3{padding-top:40px}}
+/* Hero: encuadre del Figma 720:25827 (foto ampliada, perro y caja a la derecha) */
+@media (min-width:901px){.cf2-hero-bg{width:124%;object-position:0% 50%}}
+/* Botón secundario de los pasos: ButtonNeutral · Outline · xl de la librería Nuxt */
+.cf2-btn-sec{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-width:200px;height:40px;padding:8px 12px;margin-top:8px;border-radius:999px;border:1px solid #dcd2c5;background:#fff;color:#565049;font-family:var(--font-display);font-weight:500;font-size:16px;line-height:24px;text-decoration:none;transition:background .2s}
+.cf2-btn-sec:hover{background:#faf8f6}
+.cf2-btn-sec:focus-visible{outline:3px solid #f2c94c;outline-offset:2px}
+@media (min-width:901px){.cf2-hero-bg{max-width:none;right:auto}}
+/* Pattern azul (Figma 718:25131, versión «sol»): fijo junto al vídeo, pegado al borde izquierdo */
+.cf2-media .cf3-pattern{width:min(26vw,340px);top:50%}
+.cf2-how{overflow:clip}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://cdomingo-dogfy.github.io/dogfy-home-prototype/index.html"}, {"@type": "ListItem", "position": 2, "name": "Cómo funciona", "item": "https://cdomingo-dogfy.github.io/dogfy-home-prototype/como-funciona.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "¿Qué formatos hay?", "acceptedAnswer": {"@type": "Answer", "text": "Cada menú llega en bolsitas individuales con la ración diaria de tu perro, ya calculada según su peso, edad y actividad. Puedes elegir una receta o combinar varias en el mismo pedido."}}, {"@type": "Question", "name": "¿Cómo llega el producto?", "acceptedAnswer": {"@type": "Answer", "text": "Te lo enviamos a casa congelado y dividido en bolsitas diarias, con envío gratis. Solo tienes que guardarlo en el congelador al recibirlo."}}, {"@type": "Question", "name": "¿Cómo se prepara, debo cocinar el alimento al perro?", "acceptedAnswer": {"@type": "Answer", "text": "No hace falta cocinar nada. Nuestras recetas ya vienen cocinadas a baja temperatura: descongela la bolsita en la nevera, ábrela y sirve."}}, {"@type": "Question", "name": "¿Cada cuánto llegan los menús?", "acceptedAnswer": {"@type": "Answer", "text": "Tu primera caja trae 14 días de comida. Después la suscripción continúa y puedes cambiar recetas, aplazar envíos o cancelar cuando quieras, sin permanencia."}}, {"@type": "Question", "name": "¿Puedo hablar con el equipo de nutrición?", "acceptedAnswer": {"@type": "Answer", "text": "Sí. Tu plan incluye seguimiento nutricional gratuito: puedes escribir a nuestro equipo de Nutrición canina siempre que lo necesites, en cualquier etapa de la vida de tu perro."}}]}</script>
@@ -2177,7 +2187,7 @@ body:has(.rp-hero) .rp-crumbs{background:var(--blue-deco);max-width:none;padding
 </nav>
 
 <section class="cf2-hero" aria-labelledby="cfTitle">
-  <img class="cf2-hero-bg" src="assets/cf4-hero.jpg" alt="" width="1644" height="913" fetchpriority="high" decoding="async">
+  <img class="cf2-hero-bg" src="assets/cf5-hero.jpg" alt="" width="1858" height="1057" fetchpriority="high" decoding="async">
   <div class="cf2-hero-in">
     
     <span class="cf2-badge">Cómo funciona</span>
@@ -2194,7 +2204,7 @@ body:has(.rp-hero) .rp-crumbs{background:var(--blue-deco);max-width:none;padding
     <p>Así empieza Dogfy. Y así sigue formando parte de vuestro día a día.</p>
   </div>
   <div class="cf2-how-grid">
-    <div class="cf2-media"><img class="cf3-pattern" src="assets/cf3-pattern-1.svg" alt="" aria-hidden="true" width="488" height="671"><div class="cf2-media-frame cf3-video" data-vbox><img class="cf3-poster" src="assets/cf3-video-poster.jpg" alt="" width="1000" height="1005" decoding="async"><iframe src="https://player.vimeo.com/video/1201334960?background=1&amp;muted=1&amp;loop=1&amp;autoplay=1&amp;autopause=0&amp;dnt=1" title="Cómo funciona Dogfy Diet" allow="autoplay; fullscreen; picture-in-picture"></iframe><div class="nt-ctrl cf3-ctrl"><button class="ps-vbtn ps-vplay" type="button" aria-label="Pausar el vídeo" data-state="playing"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path class="i-pause" d="M7 5h3v14H7zM14 5h3v14h-3z"/><path class="i-play" d="M8 5v14l11-7z"/></svg></button></div></div></div>
+    <div class="cf2-media"><img class="cf3-pattern" src="assets/cf5-pattern.svg" alt="" aria-hidden="true" width="488" height="1340"><div class="cf2-media-frame cf3-video" data-vbox><img class="cf3-poster" src="assets/cf3-video-poster.jpg" alt="" width="1000" height="1005" decoding="async"><iframe src="https://player.vimeo.com/video/1201334960?background=1&amp;muted=1&amp;loop=1&amp;autoplay=1&amp;autopause=0&amp;dnt=1" title="Cómo funciona Dogfy Diet" allow="autoplay; fullscreen; picture-in-picture"></iframe><div class="nt-ctrl cf3-ctrl"><button class="ps-vbtn ps-vplay" type="button" aria-label="Pausar el vídeo" data-state="playing"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path class="i-pause" d="M7 5h3v14H7zM14 5h3v14h-3z"/><path class="i-play" d="M8 5v14l11-7z"/></svg></button></div></div></div>
     <div class="cf2-steps-wrap">
       <span class="cf2-track" aria-hidden="true"><span class="cf2-fill"></span></span>
       <ol class="cf2-steps">
@@ -2204,7 +2214,7 @@ body:has(.rp-hero) .rp-crumbs{background:var(--blue-deco);max-width:none;padding
         <div class="cf2-body">
           <h3 class="cf2-title">Cuéntanos cómo es tu perro.</h3>
           <img class="cf2-step-img" src="assets/cf-presenta-tu-perro.webp" alt="" width="800" height="588" loading="lazy" decoding="async">
-          <div class="cf2-text"><p>Su peso, edad y nivel de actividad nos ayudan a calcular cuánta comida necesita cada día. Tú eliges entre nuestras recetas de pollo, pavo, salmón y buey: una sola o varias.</p><p><b>Te mostramos su ración y el precio antes de contratar.</b></p><a class="btn btn-primary cf2-cta" href="index.html#precio">Calcula su ración</a></div>
+          <div class="cf2-text"><p>Su peso, edad y nivel de actividad nos ayudan a calcular cuánta comida necesita cada día. Tú eliges entre nuestras recetas de pollo, pavo, salmón y buey: una sola o varias.</p><p><b>Te mostramos su ración y el precio antes de contratar.</b></p><a class="cf2-btn-sec" href="index.html#precio">Calcula su ración</a></div>
         </div>
       </li>
       <li class="cf2-step" data-step="1">
