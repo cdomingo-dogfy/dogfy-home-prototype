@@ -2570,7 +2570,11 @@ addEventListener('scroll',tick,{passive:true});addEventListener('resize',()=>{si
 (()=>{if(!document.querySelector('.cf2-hero'))return;const h=document.querySelector('.header'),m=document.getElementById('mobileMenu');if(!h)return;const u=()=>h.classList.toggle('top',scrollY<40&&!(m&&m.classList.contains('open')));addEventListener('scroll',u,{passive:true});const b=document.getElementById('burger');if(b)b.addEventListener('click',()=>setTimeout(u,0));u();})();
 // Fichas: flechas anterior / siguiente. Con margen lateral (≥1360px) van fuera; si no, se colocan sobre los bordes de la foto principal
 (()=>{const sec=document.querySelector('.rp-detail'),pv=document.querySelector('.rp-pn-prev'),nx=document.querySelector('.rp-pn-next'),media=document.querySelector('.rp-detail .rp-media');if(!sec||!pv||!nx||!media)return;
-const place=()=>{if(innerWidth>=1360){[pv,nx].forEach(b=>b.removeAttribute('style'));return}const s=sec.getBoundingClientRect(),m=media.getBoundingClientRect(),top=m.top-s.top+m.height/2-pv.offsetHeight/2;pv.style.cssText=`top:${top}px;left:${m.left-s.left+12}px;right:auto`;nx.style.cssText=`top:${top}px;left:${m.right-s.left-nx.offsetWidth-12}px;right:auto`};
+const place=()=>{const s=sec.getBoundingClientRect(),m=media.getBoundingClientRect(),h=pv.offsetHeight;let top=m.top-s.top+m.height/2-h/2;top=Math.max(0,Math.min(top,s.height-h));
+  if(innerWidth>=1360){pv.style.cssText=nx.style.cssText=`top:${top}px`;return}
+  pv.style.cssText=`top:${top}px;left:${m.left-s.left+12}px;right:auto`;nx.style.cssText=`top:${top}px;left:${m.right-s.left-nx.offsetWidth-12}px;right:auto`};
+// las flechas acompañan a la galería fija mientras dura la sección
+let tk=false;addEventListener('scroll',()=>{if(!tk){tk=true;requestAnimationFrame(()=>{tk=false;place();});}},{passive:true});
 addEventListener('resize',place);addEventListener('load',place);place();})();
 // «Empecemos por tu perro»: escena con scroll (como la de la home). La foto pasa de tarjeta a la izquierda a banda a todo el ancho; el texto se va y aparece el formulario
 (()=>{const sec=document.getElementById('emp2');if(!sec)return;const stick=sec.querySelector('.emp2-sticky'),stage=sec.querySelector('.emp2-stage'),ref=document.querySelector('.cf2-how-grid');
