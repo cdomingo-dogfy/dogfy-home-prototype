@@ -2351,6 +2351,20 @@ body:has(.rp-hero) .rp-crumbs{background:var(--blue-deco);max-width:none;padding
 @media (max-width:767px){.cf2-support-card:has(.cf6-vida) .cf6-vida{transform:scale(1.4);transform-origin:57% 72%}}
 /* Nutrición (móvil/tablet): la foto llena su caja redondeada, sin hueco abajo */
 @media (max-width:900px){.cf2-nutri-img{display:block;width:100%;height:auto!important;aspect-ratio:4/5;max-height:none;object-fit:cover;object-position:40% 45%;border-radius:24px;box-shadow:0 24px 48px -24px rgba(42,39,36,.35)}}
+/* «Empecemos por tu perro» (tablet/móvil): escena equivalente a desktop */
+@media (max-width:900px){
+  .emp2:has(.is-manim){padding:0}
+  .emp2:has(.is-manim) .emp2-sticky{position:sticky;top:64px;overflow:hidden}
+  .emp2-stage.is-manim{display:block;position:relative;height:100%;max-width:none;margin:0}
+  .emp2-stage.is-manim .emp2-text{position:absolute;top:0;left:var(--gutter);right:var(--gutter);padding-top:8px;opacity:var(--to,1);transform:translateY(var(--ty,0px))}
+  .emp2-stage.is-manim .emp2-panel{position:absolute;left:var(--ml);right:var(--ml);top:var(--mt);bottom:var(--mb);height:auto;margin:0;border-radius:var(--r);aspect-ratio:auto}
+  .emp2-stage.is-manim .emp2-shade{opacity:var(--sh,0)}
+  .emp2-stage.is-manim .emp2-box{opacity:var(--fo,0);transform:translateY(var(--fy,20px));pointer-events:none}
+  .emp2-stage.is-manim.is-done .emp2-box{pointer-events:auto}
+}
+/* Cómo funciona: titular del hero más largo, algo más pequeño */
+.cf2-hero h1{font-size:clamp(32px,3.6vw,52px);max-width:720px}
+@media (max-width:600px){.cf2-hero h1{font-size:30px;line-height:1.08}}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://cdomingo-dogfy.github.io/dogfy-home-prototype/index.html"}, {"@type": "ListItem", "position": 2, "name": "Nuestras recetas", "item": "https://cdomingo-dogfy.github.io/dogfy-home-prototype/recetas.html"}, {"@type": "ListItem", "position": 3, "name": "Menú de pollo", "item": "https://cdomingo-dogfy.github.io/dogfy-home-prototype/receta-pollo.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "¿Qué formatos hay?", "acceptedAnswer": {"@type": "Answer", "text": "Cada menú llega en bolsitas individuales con la ración diaria de tu perro, ya calculada según su peso, edad y actividad. Puedes elegir una receta o combinar varias en el mismo pedido."}}, {"@type": "Question", "name": "¿Qué cantidad se le debe dar?", "acceptedAnswer": {"@type": "Answer", "text": "Depende de su peso, edad y nivel de actividad. Al crear su plan calculamos su ración diaria exacta y cada bolsita contiene justo esa cantidad, así que no tienes que pesar nada."}}, {"@type": "Question", "name": "¿Cómo llega el producto?", "acceptedAnswer": {"@type": "Answer", "text": "Te lo enviamos a casa congelado y dividido en bolsitas diarias, con envío gratis. Solo tienes que guardarlo en el congelador al recibirlo."}}]}</script>
@@ -2569,7 +2583,19 @@ addEventListener('resize',place);addEventListener('load',place);place();})();
 (()=>{const sec=document.getElementById('emp2');if(!sec)return;const stick=sec.querySelector('.emp2-sticky'),stage=sec.querySelector('.emp2-stage'),ref=document.querySelector('.cf2-how-grid');
 const mq=matchMedia('(min-width: 901px) and (prefers-reduced-motion: no-preference)');const cl=(v,a,b)=>Math.min(b,Math.max(a,v)),ease=t=>t<.5?2*t*t:1-Math.pow(-2*t+2,2)/2;
 const set=(k,v)=>stage.style.setProperty(k,v);
-const upd=()=>{if(!mq.matches){stage.removeAttribute('style');stick.removeAttribute('style');sec.style.height='';stage.classList.remove('is-anim','is-done');return}stage.classList.add('is-anim');
+const mmq=matchMedia('(max-width: 900px) and (prefers-reduced-motion: no-preference)'),txt=sec.querySelector('.emp2-text');
+// Tablet/móvil: equivalente vertical. Tarjeta bajo el titular que crece hasta ocupar toda la pantalla; el titular se va y aparece el formulario
+const mob=()=>{if(!mmq.matches){stage.classList.remove('is-manim','is-done');stage.removeAttribute('style');stick.removeAttribute('style');sec.style.height='';return}
+  stage.classList.remove('is-anim');stage.classList.add('is-manim');
+  const H=innerHeight-64,SH=Math.min(H,760),gut=parseFloat(getComputedStyle(sec).getPropertyValue('--gutter'))||parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--gutter'))||24;
+  stick.style.height=SH+'px';sec.style.height=Math.round(SH+innerHeight*1.1)+'px';
+  const tH=txt?txt.offsetHeight:0,t0=tH+28,h0=Math.min(360,SH-t0),b0=Math.max(0,SH-t0-h0);
+  const r=sec.getBoundingClientRect(),total=Math.max(1,sec.offsetHeight-SH),p=cl((64-r.top)/total,0,1),g=ease(cl((p-.08)/.6,0,1));
+  const gx=Math.min(gut,24);
+  set('--mt',(t0*(1-g))+'px');set('--mb',(b0*(1-g))+'px');set('--ml',(gx*(1-g))+'px');set('--r',(20*(1-g))+'px');
+  set('--to',1-cl(g/.35,0,1));set('--ty',(-24*g)+'px');set('--sh',cl((g-.4)/.4,0,1));const fo=cl((g-.7)/.25,0,1);set('--fo',fo);set('--fy',(20*(1-fo))+'px');
+  stage.classList.toggle('is-done',fo>.9)};
+const upd=()=>{if(!mq.matches){stage.classList.remove('is-anim');mob();return}stage.classList.remove('is-manim');stage.classList.add('is-anim');
   const H=innerHeight-64,vw=stage.clientWidth;
   const cw0=ref?ref.getBoundingClientRect().width:Math.min(1216,vw-96),hh=Math.round(Math.min(cw0*.46,H*.88));
   set('--sh0',hh+'px');stick.style.top=Math.max(64,Math.round(64+(H-hh)/2))+'px';sec.style.height=Math.round(hh+innerHeight*1.4)+'px';
@@ -2580,7 +2606,7 @@ const upd=()=>{if(!mq.matches){stage.removeAttribute('style');stick.removeAttrib
   set('--cx',cx+'px');set('--cw',cw+'px');set('--to',1-cl(g/.4,0,1));set('--tx',(64*g)+'px');
   set('--sh',cl((g-.45)/.45,0,1));const fo=cl((g-.78)/.2,0,1);set('--fo',fo);set('--fy',(24*(1-fo))+'px');
   stage.classList.toggle('is-done',fo>.9)};
-addEventListener('scroll',upd,{passive:true});addEventListener('resize',upd);mq.addEventListener?mq.addEventListener('change',upd):0;upd();})();
+addEventListener('scroll',upd,{passive:true});addEventListener('resize',upd);mq.addEventListener?mq.addEventListener('change',upd):0;mmq.addEventListener?mmq.addEventListener('change',upd):0;upd();})();
 // Blog: en tablet/móvil las tarjetas van en fila deslizable con puntos de carrusel sincronizados
 (()=>{document.querySelectorAll('.bl-grid').forEach(g=>{const cards=[...g.querySelectorAll('.bl-card')];if(cards.length<2)return;
 const nav=document.createElement('div');nav.className='rv-dots bl-dots';nav.setAttribute('aria-label','Artículos');
