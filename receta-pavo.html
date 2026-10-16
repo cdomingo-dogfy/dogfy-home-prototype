@@ -2238,6 +2238,25 @@ body:has(.rp-hero) .rp-crumbs{background:var(--blue-deco);max-width:none;padding
 .rp-steps3 li:nth-child(3n+2) .rp-step-n{background-image:url("assets/blob-bg-2.svg")}
 .rp-steps3 li:nth-child(3n) .rp-step-n{background-image:url("assets/blob-bg-3.svg")}
 .rp-step-n{bottom:-28px}
+/* Snacks (Figma 729:25944): titular centrado, 3 tarjetas de producto, checks en fila y CTA */
+.sn2-in{max-width:1048px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center}
+.sn2 .h2{margin-top:0}
+.sn-grid{list-style:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;width:100%;max-width:998px;margin-top:20px}
+.sn-card{display:flex;flex-direction:column;gap:4px;padding:12px;border-radius:8px;background:#fff;text-align:left}
+.sn-card img{width:100%;height:240px;object-fit:cover;border-radius:8px;margin-bottom:12px}
+.sn-card h3{font-family:var(--font-display);font-weight:600;font-size:21px;line-height:1.45;color:var(--text-hi)}
+.sn-card p{font-size:14px;line-height:1.45;color:var(--text-hi)}
+.sn2-checks{flex-direction:row;flex-wrap:wrap;justify-content:center;gap:10px 24px;margin:12px 0 8px}
+.sn2-checks li{font-size:17px;line-height:24px}
+@media (max-width:900px){.sn-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.sn-card img{height:180px}.sn-card h3{font-size:18px}}
+@media (max-width:600px){
+  .sn-grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;margin-inline:calc(-1 * var(--gutter));padding:0 var(--gutter) 8px;width:auto;scrollbar-width:none}
+  .sn-grid::-webkit-scrollbar{display:none}
+  .sn-card{flex:0 0 78%;scroll-snap-align:start}
+  .sn-card img{height:200px}
+  .sn2-checks{flex-direction:column;align-items:flex-start;align-self:stretch}
+  .sn2-checks li{font-size:16px}
+}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://cdomingo-dogfy.github.io/dogfy-home-prototype/index.html"}, {"@type": "ListItem", "position": 2, "name": "Nuestras recetas", "item": "https://cdomingo-dogfy.github.io/dogfy-home-prototype/recetas.html"}, {"@type": "ListItem", "position": 3, "name": "Menú de pavo", "item": "https://cdomingo-dogfy.github.io/dogfy-home-prototype/receta-pavo.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "¿Qué formatos hay?", "acceptedAnswer": {"@type": "Answer", "text": "Cada menú llega en bolsitas individuales con la ración diaria de tu perro, ya calculada según su peso, edad y actividad. Puedes elegir una receta o combinar varias en el mismo pedido."}}, {"@type": "Question", "name": "¿Qué cantidad se le debe dar?", "acceptedAnswer": {"@type": "Answer", "text": "Depende de su peso, edad y nivel de actividad. Al crear su plan calculamos su ración diaria exacta y cada bolsita contiene justo esa cantidad, así que no tienes que pesar nada."}}, {"@type": "Question", "name": "¿Cómo llega el producto?", "acceptedAnswer": {"@type": "Answer", "text": "Te lo enviamos a casa congelado y dividido en bolsitas diarias, con envío gratis. Solo tienes que guardarlo en el congelador al recibirlo."}}]}</script>
