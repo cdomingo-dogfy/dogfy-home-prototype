@@ -1524,6 +1524,11 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
   .recetas-grid .receta.is-flip .rcm-pack{opacity:0;transition-delay:0s}
   .recetas-grid .receta.is-center.is-flip .rcm-pack{opacity:1}
 }
+/* Cómo empezar: sin interacción en hover/clic (solo la animación de scroll) */
+.ce3 .ce3-top{cursor:default!important;pointer-events:none}
+.ce3 .ce3-top h3{transition:none!important;color:var(--text-hi)!important}
+.ce3-card,.ce3-card:hover{transform:translateY(var(--y,0px))!important;box-shadow:0 -8px 20px -12px rgba(42,39,36,.28),0 8px 20px -14px rgba(42,39,36,.22)!important}
+.ce3:not(.is-anim) .ce3-card,.ce3:not(.is-anim) .ce3-card:hover{transform:none!important}
 </style>
 </head>
 <body>
@@ -2081,7 +2086,7 @@ let active=0;const setActive=k=>{if(k===active)return;active=k;imgs.forEach((im,
 let tick=false;const upd=()=>{tick=false;const r=track.getBoundingClientRect(),p=Math.max(0,Math.min(N-1,(stuck-r.top)/(run/(N-1))));
   let y=0;cards.forEach((c,i)=>{if(i){const t=ease(Math.max(0,Math.min(1,p-(i-1))));y+=lerp(hs[i-1]+gap,tops[i-1],t);}c.style.setProperty('--y',y.toFixed(1)+'px');c.style.opacity='';c.style.zIndex='';});list.style.setProperty('--ce3-h',Math.min(LH,y+hs[N-1]).toFixed(1)+'px');
   setActive(Math.min(N-1,Math.floor(p+.5)));};
-cards.forEach((c,i)=>c.querySelector('.ce3-top').addEventListener('click',()=>{const r=track.getBoundingClientRect();scrollTo({top:scrollY+r.top-stuck+i*(run/(N-1))+2,behavior:'smooth'});}));
+
 const on=()=>{if(!tick){tick=true;requestAnimationFrame(upd);}};addEventListener('scroll',on,{passive:true});
 const re=()=>{measure();upd();};addEventListener('resize',re);addEventListener('load',re);if(document.fonts)document.fonts.ready.then(re);
 imgs.forEach(im=>{if(!im.complete)im.addEventListener('load',re,{once:true});});cards[0].classList.add('is-active');re();})();
