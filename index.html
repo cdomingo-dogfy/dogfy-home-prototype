@@ -1381,6 +1381,14 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
 }
 @media (max-width:600px){.hero-promo{width:132px;right:0}}
 @media (max-width:600px){.hero-promo{width:168px;right:4px}}
+/* Banner: sin emojis, Urbanist en negrita */
+.banner{font-family:var(--font-display);font-weight:700;letter-spacing:.02em}
+.banner-sep{margin:0 12px;opacity:.6}
+/* Estadísticas: nunca se desvanecen con el velo de scroll */
+.stats-m>.sec-veil{display:none!important}
+/* Pasos: sin hover en título ni tarjeta (siguen siendo clicables) */
+.ce3.is-anim .ce3-top:hover h3,.ce3.is-anim .ce3-card.is-past .ce3-top:hover h3{color:var(--text-hi)!important}
+.ce3-card:hover{transform:none!important}
 </style>
 </head>
 <body>
@@ -1388,7 +1396,7 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
 <div class="page">
 <!-- Banner -->
 <a class="skip-link" href="#como">Saltar al contenido</a>
-<div class="banner">🔥 -30 % descuento &nbsp;🔥&nbsp; ENVÍO GRATIS &nbsp;🔥</div>
+<div class="banner">-30 % descuento<span class="banner-sep" aria-hidden="true">·</span>ENVÍO GRATIS</div>
 
 <!-- Header -->
 <header class="header">
