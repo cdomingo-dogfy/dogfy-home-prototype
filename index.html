@@ -1025,6 +1025,8 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
 /* Conoce más: mismo espacio entre todas las tarjetas (también entre las dos columnas apiladas) */
 @media (max-width:1100px){.pq-body{column-gap:16px}}
 @media (max-width:600px){.pq-body{row-gap:0}.pq-body>.pq-col:last-child{margin-top:12px}.pq-bol{margin-top:24px}}
+/* «Menú de …» (SEO): título y ventas apilados para que el nombre largo quepa */
+.rcm-body{flex-direction:column;align-items:flex-start;justify-content:flex-start;gap:2px}
 </style>
 </head>
 <body>
@@ -1137,10 +1139,10 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
     <button class="tab" data-key="salmon" role="tab" aria-selected="false"><img src="assets/tab-salmon.svg" alt="">Salmón</button>
   </div>
   <div class="recetas-grid" id="recetasGrid">
-    <article class="receta pollo" data-key="pollo"><div class="img rcm-img"><img src="assets/receta-pollo.jpg" alt="Menú de pollo de Dogfy Diet" loading="lazy" decoding="async"><img class="rcm-pack" src="assets/rc-pack-chicken.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async"></div><div class="rcm-body"><h3>Pollo</h3><span class="rcm-sold"><b>139.571</b> vendidos/mes</span></div></article>
-    <article class="receta salmon" data-key="salmon"><div class="img rcm-img"><img src="assets/receta-salmon.jpg" alt="Menú de salmón de Dogfy Diet" loading="lazy" decoding="async"><img class="rcm-pack" src="assets/rc-pack-salmon.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async"></div><div class="rcm-body"><h3>Salmón</h3><span class="rcm-sold"><b>139.312</b> vendidos/mes</span></div></article>
-    <article class="receta buey" data-key="buey"><div class="img rcm-img"><img src="assets/receta-buey.jpg" alt="Menú de buey de Dogfy Diet" loading="lazy" decoding="async"><img class="rcm-pack" src="assets/rc-pack-beef.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async"></div><div class="rcm-body"><h3>Buey</h3><span class="rcm-sold"><b>139.972</b> vendidos/mes</span></div></article>
-    <article class="receta pavo" data-key="pavo"><div class="img rcm-img"><img src="assets/receta-pavo.jpg" alt="Menú de pavo de Dogfy Diet" loading="lazy" decoding="async"><img class="rcm-pack" src="assets/rc-pack-turkey.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async"></div><div class="rcm-body"><h3>Pavo</h3><span class="rcm-sold"><b>140.611</b> vendidos/mes</span></div></article>
+    <article class="receta pollo" data-key="pollo"><div class="img rcm-img"><img src="assets/receta-pollo.jpg" alt="Menú de pollo de Dogfy Diet" loading="lazy" decoding="async"><img class="rcm-pack" src="assets/rc-pack-chicken.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async"></div><div class="rcm-body"><h3>Menú de pollo</h3><span class="rcm-sold"><b>139.571</b> vendidos/mes</span></div></article>
+    <article class="receta salmon" data-key="salmon"><div class="img rcm-img"><img src="assets/receta-salmon.jpg" alt="Menú de salmón de Dogfy Diet" loading="lazy" decoding="async"><img class="rcm-pack" src="assets/rc-pack-salmon.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async"></div><div class="rcm-body"><h3>Menú de salmón</h3><span class="rcm-sold"><b>139.312</b> vendidos/mes</span></div></article>
+    <article class="receta buey" data-key="buey"><div class="img rcm-img"><img src="assets/receta-buey.jpg" alt="Menú de buey de Dogfy Diet" loading="lazy" decoding="async"><img class="rcm-pack" src="assets/rc-pack-beef.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async"></div><div class="rcm-body"><h3>Menú de buey</h3><span class="rcm-sold"><b>139.972</b> vendidos/mes</span></div></article>
+    <article class="receta pavo" data-key="pavo"><div class="img rcm-img"><img src="assets/receta-pavo.jpg" alt="Menú de pavo de Dogfy Diet" loading="lazy" decoding="async"><img class="rcm-pack" src="assets/rc-pack-turkey.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async"></div><div class="rcm-body"><h3>Menú de pavo</h3><span class="rcm-sold"><b>140.611</b> vendidos/mes</span></div></article>
   </div>
   <div class="cta"><a class="btn btn-primary" href="recetas.html">Explorar recetas</a></div>
 </section>
