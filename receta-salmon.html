@@ -2257,6 +2257,15 @@ body:has(.rp-hero) .rp-crumbs{background:var(--blue-deco);max-width:none;padding
   .sn2-checks{flex-direction:column;align-items:flex-start;align-self:stretch}
   .sn2-checks li{font-size:16px}
 }
+/* Tipografía de marca Youth (Bold) para el titular de «Para perros llenos de vida» */
+@font-face{font-family:"Youth";src:url("assets/fonts/Youth-Bold.woff2") format("woff2");font-weight:700;font-display:swap}
+.cf2-support-card:has(.cf6-vida) h2{font-family:"Youth",var(--font-display);font-weight:700;font-size:clamp(40px,5vw,72px);line-height:.94;letter-spacing:-.055em}
+/* «Empecemos»: la escena fija mide lo que la banda; sin hueco blanco al soltarse */
+@media (min-width:901px){
+  .emp2-sticky{height:auto;overflow:visible}
+  .emp2-stage.is-anim{height:var(--sh0,560px)}
+}
+.cf2-support-card:has(.cf6-vida) .cf2-support-in{max-width:none}.cf2-support-card:has(.cf6-vida) h2{white-space:nowrap}@media (max-width:600px){.cf2-support-card:has(.cf6-vida) h2{white-space:normal;font-size:44px}}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://cdomingo-dogfy.github.io/dogfy-home-prototype/index.html"}, {"@type": "ListItem", "position": 2, "name": "Nuestras recetas", "item": "https://cdomingo-dogfy.github.io/dogfy-home-prototype/recetas.html"}, {"@type": "ListItem", "position": 3, "name": "Menú de salmón", "item": "https://cdomingo-dogfy.github.io/dogfy-home-prototype/receta-salmon.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "¿Qué formatos hay?", "acceptedAnswer": {"@type": "Answer", "text": "Cada menú llega en bolsitas individuales con la ración diaria de tu perro, ya calculada según su peso, edad y actividad. Puedes elegir una receta o combinar varias en el mismo pedido."}}, {"@type": "Question", "name": "¿Qué cantidad se le debe dar?", "acceptedAnswer": {"@type": "Answer", "text": "Depende de su peso, edad y nivel de actividad. Al crear su plan calculamos su ración diaria exacta y cada bolsita contiene justo esa cantidad, así que no tienes que pesar nada."}}, {"@type": "Question", "name": "¿Cómo llega el producto?", "acceptedAnswer": {"@type": "Answer", "text": "Te lo enviamos a casa congelado y dividido en bolsitas diarias, con envío gratis. Solo tienes que guardarlo en el congelador al recibirlo."}}]}</script>
@@ -2468,9 +2477,12 @@ addEventListener('resize',place);addEventListener('load',place);place();})();
 (()=>{const sec=document.getElementById('emp2');if(!sec)return;const stick=sec.querySelector('.emp2-sticky'),stage=sec.querySelector('.emp2-stage'),ref=document.querySelector('.cf2-how-grid');
 const mq=matchMedia('(min-width: 901px) and (prefers-reduced-motion: no-preference)');const cl=(v,a,b)=>Math.min(b,Math.max(a,v)),ease=t=>t<.5?2*t*t:1-Math.pow(-2*t+2,2)/2;
 const set=(k,v)=>stage.style.setProperty(k,v);
-const upd=()=>{if(!mq.matches){stage.removeAttribute('style');stage.classList.remove('is-anim','is-done');return}stage.classList.add('is-anim');
-  const r=sec.getBoundingClientRect(),total=Math.max(1,sec.offsetHeight-stick.offsetHeight),p=cl(-r.top/total,0,1),g=ease(cl((p-.12)/.62,0,1));
-  const vw=stage.clientWidth,H=stage.clientHeight,rr=ref?ref.getBoundingClientRect():null,cw=rr?rr.width:Math.min(1216,vw-96),cx=rr?rr.left:(vw-cw)/2;
+const upd=()=>{if(!mq.matches){stage.removeAttribute('style');stick.removeAttribute('style');sec.style.height='';stage.classList.remove('is-anim','is-done');return}stage.classList.add('is-anim');
+  const H=innerHeight-64,vw=stage.clientWidth;
+  const cw0=ref?ref.getBoundingClientRect().width:Math.min(1216,vw-96),hh=Math.round(Math.min(cw0*.46,H*.88));
+  set('--sh0',hh+'px');stick.style.top=Math.max(64,Math.round(64+(H-hh)/2))+'px';sec.style.height=Math.round(hh+innerHeight*1.4)+'px';
+  const r=sec.getBoundingClientRect(),total=Math.max(1,sec.offsetHeight-stick.offsetHeight),p=cl((Math.max(64,64+(H-hh)/2)-r.top)/total,0,1),g=ease(cl((p-.12)/.62,0,1));
+  const rr=ref?ref.getBoundingClientRect():null,cw=rr?rr.width:Math.min(1216,vw-96),cx=rr?rr.left:(vw-cw)/2;
   const w0=Math.min(cw*.46,H*.88),h0=w0,w1=vw,h1=h0;
   set('--x',(cx*(1-g))+'px');set('--w',(w0+(w1-w0)*g)+'px');set('--h',(h0+(h1-h0)*g)+'px');set('--r',(24*(1-g))+'px');
   set('--cx',cx+'px');set('--cw',cw+'px');set('--to',1-cl(g/.4,0,1));set('--tx',(64*g)+'px');
