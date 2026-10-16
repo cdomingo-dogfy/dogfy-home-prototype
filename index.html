@@ -1080,6 +1080,15 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
   .stats-row .stat b{font-size:clamp(24px,3.4vw,32px);line-height:1.15}
 }
 @media (max-width:600px){.stats-m{padding:40px var(--gutter);gap:20px}.stats-row{gap:8px;max-width:480px}.stats-row .stat{min-height:92px;border-radius:16px;padding:12px 6px 10px}.stats-row .stat b{font-size:24px}.stats-row .stat span{font-size:12px;line-height:16px}}
+/* Números de los pasos con nuestras manchas (blob): azul en el paso activo, gris en el resto */
+.ce3-n{width:44px;height:48px;border-radius:0;background:url("assets/blob-bg-1.svg") center/contain no-repeat;color:#2a2724;font-weight:800;font-size:19px;padding-top:2px;box-sizing:border-box;transition:background-image .3s}
+.ce3-card:nth-child(3n+2) .ce3-n{background-image:url("assets/blob-bg-2.svg")}
+.ce3-card:nth-child(3n) .ce3-n{background-image:url("assets/blob-bg-3.svg")}
+.ce3.is-anim .ce3-card:not(.is-active) .ce3-n{background-image:url("assets/blob-bg-1-gris.svg")}
+.ce3.is-anim .ce3-card:nth-child(3n+2):not(.is-active) .ce3-n{background-image:url("assets/blob-bg-2-gris.svg")}
+.ce3.is-anim .ce3-card:nth-child(3n):not(.is-active) .ce3-n{background-image:url("assets/blob-bg-3-gris.svg")}
+.ce3-card p{padding-left:56px}
+@media (max-width:860px){.ce3-n{width:38px;height:42px;font-size:17px}.ce3-card p{padding-left:48px}}
 </style>
 </head>
 <body>
@@ -1649,7 +1658,7 @@ g.addEventListener('scroll',()=>{if(!t){t=true;requestAnimationFrame(upd);}},{pa
 // Cómo empezar: pista de scroll; cada tarjeta sube hasta dejar ver solo el título de la anterior y la foto cambia (dissolve 800 ms). Funciona igual hacia arriba.
 (()=>{const sec=document.querySelector('.ce3');if(!sec||matchMedia('(prefers-reduced-motion:reduce)').matches)return;
 const track=sec.querySelector('.ce3-track'),stage=sec.querySelector('.ce3-stage'),list=sec.querySelector('.ce3-cards'),cards=[...list.children],imgs=[...sec.querySelectorAll('.ce3-media img')],N=cards.length;
-sec.classList.add('is-anim');let hs=[],tops=[],gap=16,run=0,vh=innerHeight,stuck=64;
+sec.classList.add('is-anim');let hs=[],tops=[],gap=16,run=0,vh=innerHeight,stuck=64,LH=0;
 const lerp=(a,b,t)=>a+(b-a)*t,ease=t=>t<.5?2*t*t:1-Math.pow(-2*t+2,2)/2;
 const media=sec.querySelector('.ce3-media'),bar=document.getElementById('ctaBar');
 const measure=()=>{vh=innerHeight;const mob=innerWidth<=860;gap=mob?12:16;hs=cards.map(c=>c.offsetHeight);tops=cards.map(c=>c.querySelector('.ce3-top').offsetHeight);
@@ -1657,10 +1666,10 @@ const measure=()=>{vh=innerHeight;const mob=innerWidth<=860;gap=mob?12:16;hs=car
   const barH=bar&&getComputedStyle(bar).display!=='none'&&bar.offsetHeight?bar.offsetHeight+12:0,mh=media.offsetHeight;
   const avail=mob?vh-64-16-mh-16-barH:vh-64-48;const lh=Math.max(col,Math.min(full,avail));list.style.setProperty('--ce3-h',lh+'px');
   const sh=mob?mh+16+lh:Math.max(lh,mh);const g=mob?16:Math.max(24,(vh-64-sh)/2);sec.style.setProperty('--ce3-gap',g+'px');stuck=64+g;
-  run=Math.round(vh*.55)*(N-1);track.style.height=(sh+run)+'px';};
+  run=Math.round(vh*.55)*(N-1);LH=lh;const shC=mob?mh+16+col:Math.max(col,mh);track.style.height=(shC+run)+'px';};
 let active=0;const setActive=k=>{if(k===active)return;active=k;imgs.forEach((im,i)=>im.classList.toggle('is-on',i===k));cards.forEach((c,i)=>{c.classList.toggle('is-past',i<k);c.classList.toggle('is-active',i===k);});};
 let tick=false;const upd=()=>{tick=false;const r=track.getBoundingClientRect(),p=Math.max(0,Math.min(N-1,(stuck-r.top)/(run/(N-1))));
-  let y=0;cards.forEach((c,i)=>{if(i){const t=ease(Math.max(0,Math.min(1,p-(i-1))));y+=lerp(hs[i-1]+gap,tops[i-1],t);}c.style.setProperty('--y',y.toFixed(1)+'px');});
+  let y=0;cards.forEach((c,i)=>{if(i){const t=ease(Math.max(0,Math.min(1,p-(i-1))));y+=lerp(hs[i-1]+gap,tops[i-1],t);}c.style.setProperty('--y',y.toFixed(1)+'px');});list.style.setProperty('--ce3-h',Math.min(LH,y+hs[N-1]).toFixed(1)+'px');
   setActive(Math.min(N-1,Math.floor(p+.5)));};
 cards.forEach((c,i)=>c.querySelector('.ce3-top').addEventListener('click',()=>{if(i>=active&&i!==0)return;const r=track.getBoundingClientRect();scrollTo({top:scrollY+r.top-stuck+i*(run/(N-1))+2,behavior:'smooth'});}));
 const on=()=>{if(!tick){tick=true;requestAnimationFrame(upd);}};addEventListener('scroll',on,{passive:true});
