@@ -2383,6 +2383,16 @@ body:has(.rp-hero) .rp-crumbs{background:var(--blue-deco);max-width:none;padding
   .emp2-stage.is-manim .emp2-box{transform:translateY(calc(-50% + var(--fy,20px)))}
   .emp2-stage:not(.is-manim) .emp2-box{transform:translateY(-50%)}
 }
+/* Pasos (tablet/móvil): el vídeo fijo nunca ocupa más de ~40 % de la pantalla, así se ve el texto que avanza */
+@media (max-width:900px){
+  .cf2-media{max-width:none}
+  .cf2-media .cf2-media-frame{width:auto;height:min(40vh,calc((100vw - 2 * var(--gutter)) * .75));aspect-ratio:4/3;margin-inline:auto;max-width:100%}
+}
+/* «Para perros llenos de vida»: encuadre del perro y la chica (Figma) y texto translúcido que se funde con la foto */
+.cf2-support-card:has(.cf6-vida) .cf6-vida{object-position:50% 88%}
+.cf2-support-card:has(.cf6-vida) h2{opacity:.4;mix-blend-mode:plus-lighter;text-shadow:none;color:#fff}
+@media (max-width:900px){.cf2-steps-wrap,.cf2-steps,.cf2-step,.cf2-body,.cf2-text,.cf2-text p,.cf2-title{max-width:none!important;width:auto}.cf2-steps-wrap{width:100%}}
+.cf2-fill{transition:height .12s linear!important}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://cdomingo-dogfy.github.io/dogfy-home-prototype/index.html"}, {"@type": "ListItem", "position": 2, "name": "Cómo funciona", "item": "https://cdomingo-dogfy.github.io/dogfy-home-prototype/como-funciona.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "¿Qué formatos hay?", "acceptedAnswer": {"@type": "Answer", "text": "Cada menú llega en bolsitas individuales con la ración diaria de tu perro, ya calculada según su peso, edad y actividad. Puedes elegir una receta o combinar varias en el mismo pedido."}}, {"@type": "Question", "name": "¿Cómo llega el producto?", "acceptedAnswer": {"@type": "Answer", "text": "Te lo enviamos a casa congelado y dividido en bolsitas diarias, con envío gratis. Solo tienes que guardarlo en el congelador al recibirlo."}}, {"@type": "Question", "name": "¿Cómo se prepara, debo cocinar el alimento al perro?", "acceptedAnswer": {"@type": "Answer", "text": "No hace falta cocinar nada. Nuestras recetas ya vienen cocinadas a baja temperatura: descongela la bolsita en la nevera, ábrela y sirve."}}, {"@type": "Question", "name": "¿Cada cuánto llegan los menús?", "acceptedAnswer": {"@type": "Answer", "text": "Tu primera caja trae 14 días de comida. Después la suscripción continúa y puedes cambiar recetas, aplazar envíos o cancelar cuando quieras, sin permanencia."}}, {"@type": "Question", "name": "¿Puedo hablar con el equipo de nutrición?", "acceptedAnswer": {"@type": "Answer", "text": "Sí. Tu plan incluye seguimiento nutricional gratuito: puedes escribir a nuestro equipo de Nutrición canina siempre que lo necesites, en cualquier etapa de la vida de tu perro."}}]}</script>
@@ -2641,7 +2651,10 @@ tabs.forEach((b,i)=>b.addEventListener('click',()=>{const r=rows[i];if(!r)return
 (()=>{const wrap=document.querySelector('.cf2-steps-wrap');if(!wrap)return;const steps=[...wrap.querySelectorAll('.cf2-step')],fill=wrap.querySelector('.cf2-fill'),imgs=[...document.querySelectorAll('.cf2-media-img')];let cur=-1;
 const track=wrap.querySelector('.cf2-track');const size=()=>{const wr=wrap.getBoundingClientRect(),n=steps[steps.length-1].querySelector('.cf2-n').getBoundingClientRect(),top=parseFloat(getComputedStyle(track).top)||0;track.style.bottom='auto';track.style.height=Math.max(0,n.top+n.height/2-wr.top-top)+'px'};
 const tick=()=>{const mid=innerHeight*.45,wr=wrap.getBoundingClientRect();let a=0;steps.forEach((s,i)=>{if(s.getBoundingClientRect().top<=mid)a=i});
-const dot=steps[a].querySelector('.cf2-n').getBoundingClientRect();fill.style.height=Math.max(0,Math.min(track.offsetHeight,dot.top+dot.height/2-track.getBoundingClientRect().top))+'px';
+// la barra avanza con el scroll: entre el número activo y el siguiente, llegando al siguiente justo cuando entra
+const dot=steps[a].querySelector('.cf2-n').getBoundingClientRect(),tt=track.getBoundingClientRect().top,y0=dot.top+dot.height/2-tt;let fh=y0;
+if(a<steps.length-1){const nx=steps[a+1].querySelector('.cf2-n').getBoundingClientRect(),y1=nx.top+nx.height/2-tt,startT=steps[a].getBoundingClientRect().top,endT=steps[a+1].getBoundingClientRect().top,k=Math.max(0,Math.min(1,(mid-startT)/Math.max(1,endT-startT)));fh=y0+(y1-y0)*Math.min(1,k*1.15);}
+fill.style.height=Math.max(0,Math.min(track.offsetHeight,fh))+'px';
 if(a!==cur){cur=a;steps.forEach((s,i)=>{s.classList.toggle('is-on',i===a);s.classList.toggle('is-done',i<a)});imgs.forEach((im,i)=>im.classList.toggle('is-on',i===a))}};
 addEventListener('scroll',tick,{passive:true});addEventListener('resize',()=>{size();tick()});addEventListener('load',()=>{size();tick()});size();tick();})();
 // Cómo funciona: cabecera transparente sobre la foto del hero hasta que se hace scroll (como en la home)
