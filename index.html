@@ -1429,6 +1429,20 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
 @media (max-width:900px){.s-recetas .cta{display:flex!important;padding-top:24px}}
 /* Opiniones: puntos de carrusel en tablet y móvil */
 @media (max-width:900px){.op-dots{display:flex;margin-top:4px}}
+/* SMS (tablet/móvil): escena como «Empecemos por tu perro»: tarjeta bajo el titular que crece a pantalla completa y aparece el formulario */
+@media (max-width:900px){
+  .sms2.is-manim{display:block;padding:0;min-height:0;background:#fff}
+  .sms2-stk{position:sticky;top:64px;overflow:hidden}
+  .sms2.is-manim .bg{position:absolute;left:var(--ml);right:var(--ml);top:var(--mt);bottom:var(--mb);height:auto;border-radius:var(--r);overflow:hidden;clip-path:none!important}
+  .sms2.is-manim .bg img{transform:none!important;object-position:40% 55%}
+  .sms2.is-manim .bg::after{background:rgba(20,16,14,.5);opacity:var(--sh,0)}
+  .sms2-intro{position:absolute;top:8px;left:var(--gutter);right:var(--gutter);text-align:center;opacity:var(--to,1);transform:translateY(var(--ty,0px))}
+  .sms2.is-manim .sms2-box{position:absolute;z-index:2;left:var(--gutter);right:var(--gutter);top:50%;width:auto;max-width:none;margin:0;padding:0;opacity:var(--fo,0);transform:translateY(calc(-50% + var(--fy,20px)));pointer-events:none}
+  .sms2.is-manim.is-done .sms2-box{pointer-events:auto}
+  .sms2.is-manim .sms2-dto{top:calc(var(--mt) - 34px);right:calc(var(--ml) + 4px)}
+}
+@media (max-width:1074px){.s-recetas .recetas-grid{touch-action:pan-y}}
+@media (max-width:860px){.ce3.is-anim .ce3-cards{overflow:clip;overflow-clip-margin:12px}}
 </style>
 </head>
 <body>
@@ -1569,7 +1583,7 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
     <article class="receta buey" data-key="buey"><div class="img rcm-img"><img src="assets/receta-buey.jpg" alt="Menú de buey de Dogfy Diet" loading="lazy" decoding="async"><img class="rcm-pack" src="assets/rc-pack-beef.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async"></div><div class="rcm-body"><h3>Menú de buey</h3><span class="rcm-sold"><b>139.972</b> vendidos/mes</span></div></article>
     <article class="receta pavo" data-key="pavo"><div class="img rcm-img"><img src="assets/receta-pavo.jpg" alt="Menú de pavo de Dogfy Diet" loading="lazy" decoding="async"><img class="rcm-pack" src="assets/rc-pack-turkey.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async"></div><div class="rcm-body"><h3>Menú de pavo</h3><span class="rcm-sold"><b>140.611</b> vendidos/mes</span></div></article>
   </div>
-  <div class="cta"><a class="btn btn-sec-rec" href="recetas.html">Ver recetas</a></div>
+  <div class="cta"><a class="btn btn-sec-rec" href="recetas.html">Ver todos los menús</a></div>
 </section>
 <img class="deco-precio" data-parallax="0.12" src="assets/precio-vector.svg" alt="" width="825" height="1291">
 <section class="s-precio" id="precio">
@@ -1733,7 +1747,7 @@ addEventListener('scroll',()=>{if(!tick){tick=true;requestAnimationFrame(upd)}},
 const tops=()=>[...document.querySelectorAll('.page > section, .page > .stats-m, .page > .yellow-wrap, .yellow-wrap > .s-caja')].filter(e=>e.offsetHeight>=innerHeight*.7&&!e.classList.contains('s-porque')&&!e.classList.contains('s-recetas')&&!e.classList.contains('ce3')).map(e=>e.getBoundingClientRect().top);  // el bol y las recetas no se anclan: sus propias animaciones ya guían el scroll y el anclaje las hacía bailar
 let idle=null,touching=false,snapping=false;const HEAD=64;
 // Rango amplio (8-95 % de la pantalla): cualquier límite de sección que quede a la vista se ancla; por encima del 55 % se completa la sección anterior, por debajo entra la nueva
-const settle=()=>{if(!mq.matches||touching||snapping)return;const vh=innerHeight;const cands=tops().filter(t=>t>vh*.12&&t<vh*.95);if(!cands.length)return;const b=cands.sort((p,q)=>Math.abs(p-vh*.5)-Math.abs(q-vh*.5))[0];const target=b<vh*.55?scrollY+b-HEAD:scrollY+b-vh;if(Math.abs(target-scrollY)<8)return;snapping=true;scrollTo({top:Math.max(0,target),behavior:'smooth'});
+const settle=()=>{return;const vh=innerHeight;const cands=tops().filter(t=>t>vh*.12&&t<vh*.95);if(!cands.length)return;const b=cands.sort((p,q)=>Math.abs(p-vh*.5)-Math.abs(q-vh*.5))[0];const target=b<vh*.55?scrollY+b-HEAD:scrollY+b-vh;if(Math.abs(target-scrollY)<8)return;snapping=true;scrollTo({top:Math.max(0,target),behavior:'smooth'});
   // si el desplazamiento suave se interrumpe o no llega, se vuelve a intentar
   clearTimeout(snapping._t);snapping._t=setTimeout(()=>{snapping=false;clearTimeout(idle);idle=setTimeout(settle,120);},1000);};
 addEventListener('scroll',()=>{clearTimeout(idle);idle=setTimeout(settle,160);},{passive:true});
@@ -1794,7 +1808,7 @@ breed.addEventListener('change',()=>{breedLabel.textContent=breed.value||'¿Cuá
   };
   addEventListener('scroll',()=>{if(!tick){tick=true;requestAnimationFrame(upd)}},{passive:true});addEventListener('resize',upd);mq.addEventListener('change',upd);upd();
   // Si el scroll se detiene a medias de una transición, se completa sola hacia delante: 3-52 % (el texto sale y la foto crece a sangre) salta al 54 %; 80-100 % (entrada de Opiniones) salta al final
-  let idle,snapping=false;const settle=()=>{if(!mq.matches||snapping)return;const r=wrap.getBoundingClientRect(),total=r.height-innerHeight;if(total<=0)return;const p=-r.top/total;let target=null;if(p>.03&&p<.52)target=.54;else if(p>.8&&p<.995)target=1;if(target==null)return;snapping=true;scrollTo({top:scrollY+total*(target-p),behavior:'smooth'});setTimeout(()=>snapping=false,900);};
+  let idle,snapping=false;const settle=()=>{return;const r=wrap.getBoundingClientRect(),total=r.height-innerHeight;if(total<=0)return;const p=-r.top/total;let target=null;if(p>.03&&p<.52)target=.54;else if(p>.8&&p<.995)target=1;if(target==null)return;snapping=true;scrollTo({top:scrollY+total*(target-p),behavior:'smooth'});setTimeout(()=>snapping=false,900);};
   addEventListener('scroll',()=>{clearTimeout(idle);idle=setTimeout(settle,160);},{passive:true});
 })();
 // Parallax: [data-parallax="velocidad"] se desplaza en Y según la posición del contenedor en el viewport
@@ -1874,6 +1888,11 @@ const next=()=>{if(!isOn()||el.classList.contains('stopped')||el.classList.conta
 const start=()=>{clearInterval(timer);timer=setInterval(next,4500);};
 el.addEventListener('transitionend',()=>{if(!el.classList.contains('stopped'))return;const m=/translateX\((-?[\d.]+)px\)/.exec(el.style.transform||'');if(!m)return;const x=parseFloat(m[1]);let best=0,bd=1e9;cards().forEach((c,i)=>{const d=Math.abs(xFor(i)-x);if(d<bd){bd=d;best=i;}});idx=best;});  // tras elegir una pestaña, seguimos desde esa tarjeta
 if(matchMedia('(hover:hover)').matches){el.addEventListener('mouseenter',()=>el.classList.add('paused'));el.addEventListener('mouseleave',()=>el.classList.remove('paused'));}
+// deslizar con el dedo: pasa a la tarjeta anterior/siguiente y reinicia el avance automático
+let sx=null,sy=null;const host=el.parentElement;
+host.addEventListener('touchstart',e=>{if(!isOn())return;sx=e.touches[0].clientX;sy=e.touches[0].clientY;},{passive:true});
+host.addEventListener('touchend',e=>{if(sx===null||!isOn())return;const dx=e.changedTouches[0].clientX-sx,dy=e.changedTouches[0].clientY-sy;sx=null;if(Math.abs(dx)<36||Math.abs(dx)<Math.abs(dy))return;
+  el.classList.remove('stopped');const n=real();idx+=dx<0?1:-1;if(idx<0){idx+=n;place(idx+1,false);requestAnimationFrame(()=>place(idx,true));}else{place(idx,true);if(idx>=n){const onEnd=()=>{el.removeEventListener('transitionend',onEnd);idx-=n;place(idx,false);};el.addEventListener('transitionend',onEnd);}}start();},{passive:true});
 const init=()=>{if(isOn()){idx=0;place(0,false);}else{el.style.transform='';el.classList.remove('sliding');}};init();addEventListener('resize',init);addEventListener('load',init);start();})();
 if(document.getElementById('reviews'))run(document.getElementById('reviews'),()=>true,34);})();
 // Stepper: reserva la altura del estado más alto (un paso abierto) para que el botón no baile al colapsar/expandir
@@ -1978,7 +1997,7 @@ const measure=()=>{vh=innerHeight;const mob=innerWidth<=860;gap=mob?12:16;const 
   run=Math.round(vh*.55)*(N-1);LH=lh;const shC=mob?mh+16+col:Math.max(col,mh);track.style.height=(shC+run)+'px';};
 let active=0;const setActive=k=>{if(k===active)return;active=k;imgs.forEach((im,i)=>im.classList.toggle('is-on',i===k));cards.forEach((c,i)=>{c.classList.toggle('is-past',i<k);c.classList.toggle('is-active',i===k);});};
 let tick=false;const upd=()=>{tick=false;const r=track.getBoundingClientRect(),p=Math.max(0,Math.min(N-1,(stuck-r.top)/(run/(N-1))));
-  let y=0,bot=0;cards.forEach((c,i)=>{if(i){const t=ease(Math.max(0,Math.min(1,p-(i-1))));y+=lerp(hs[i-1]+gap,tops[i-1],t);}const o=i<2?1:Math.max(0,Math.min(1,(p-(i-1.6))/0.6));c.style.setProperty('--y',(y+(1-o)*28).toFixed(1)+'px');c.style.opacity=o.toFixed(3);if(o>0.02)bot=Math.max(bot,y+hs[i]);});list.style.setProperty('--ce3-h',bot.toFixed(1)+'px');
+  let y=0,bot=0;cards.forEach((c,i)=>{if(i){const t=ease(Math.max(0,Math.min(1,p-(i-1))));y+=lerp(hs[i-1]+gap,tops[i-1],t);}const MOB=innerWidth<=860;const o=MOB?(i<1?1:Math.max(0,Math.min(1,(p-(i-1))/0.55))):(i<2?1:Math.max(0,Math.min(1,(p-(i-1.6))/0.6)));c.style.setProperty('--y',(y+(1-o)*28).toFixed(1)+'px');c.style.opacity=o.toFixed(3);if(o>0.02)bot=Math.max(bot,y+hs[i]);});list.style.setProperty('--ce3-h',(innerWidth<=860?LH:bot).toFixed(1)+'px');
   setActive(Math.min(N-1,Math.floor(p+.5)));};
 cards.forEach((c,i)=>c.querySelector('.ce3-top').addEventListener('click',()=>{const r=track.getBoundingClientRect();scrollTo({top:scrollY+r.top-stuck+i*(run/(N-1))+2,behavior:'smooth'});}));
 const on=()=>{if(!tick){tick=true;requestAnimationFrame(upd);}};addEventListener('scroll',on,{passive:true});
@@ -2032,6 +2051,24 @@ const dots=cards.map((c,i)=>{const b=document.createElement('button');b.type='bu
 g.after(nav);let t=false;const upd=()=>{t=false;const mid=g.scrollLeft+g.clientWidth/2;let k=0,best=1e9;cards.forEach((c,i)=>{const d=Math.abs(c.offsetLeft-g.offsetLeft+c.offsetWidth/2-mid);if(d<best){best=d;k=i;}});
 if(g.scrollLeft+g.clientWidth>=g.scrollWidth-4)k=cards.length-1;dots.forEach((b,i)=>{b.classList.toggle('active',i===k);b.setAttribute('aria-current',i===k?'true':'false');});};
 g.addEventListener('scroll',()=>{if(!t){t=true;requestAnimationFrame(upd);}},{passive:true});addEventListener('resize',upd);upd();});})();
+</script>
+<script>
+// SMS en tablet/móvil: escena con scroll equivalente a desktop
+(()=>{const s=document.querySelector('.sms2');if(!s)return;const mq=matchMedia('(max-width:900px) and (prefers-reduced-motion:no-preference)');
+const cl=(v,a,b)=>Math.min(b,Math.max(a,v)),ease=t=>t<.5?2*t*t:1-Math.pow(-2*t+2,2)/2,set=(k,v)=>s.style.setProperty(k,v);
+let stk=null,intro=null;
+const build=()=>{if(stk)return;stk=document.createElement('div');stk.className='sms2-stk';while(s.firstChild)stk.appendChild(s.firstChild);s.appendChild(stk);
+  intro=document.createElement('div');intro.className='sms2-intro';intro.setAttribute('aria-hidden','true');const t=s.querySelector('.sms2-title');if(t)intro.appendChild(t.cloneNode(true));stk.insertBefore(intro,stk.firstChild);};
+const unbuild=()=>{if(!stk)return;intro.remove();while(stk.firstChild)s.insertBefore(stk.firstChild,stk);stk.remove();stk=null;s.classList.remove('is-manim','is-done');s.removeAttribute('style');};
+const upd=()=>{if(!mq.matches){unbuild();return}build();s.classList.add('is-manim');
+  const SH=Math.min(innerHeight-64,760);stk.style.height=SH+'px';s.style.height=Math.round(SH+innerHeight*1.1)+'px';
+  const gx=parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--gutter'))||24,gut=Math.min(gx,24);
+  const t0=intro.offsetHeight+28,h0=Math.min(400,SH-t0-60),b0=Math.max(0,SH-t0-h0);
+  const r=s.getBoundingClientRect(),p=cl((64-r.top)/Math.max(1,s.offsetHeight-SH),0,1),g=ease(cl((p-.08)/.6,0,1));
+  set('--mt',(t0*(1-g))+'px');set('--mb',(b0*(1-g))+'px');set('--ml',(gut*(1-g))+'px');set('--r',(20*(1-g))+'px');
+  set('--to',1-cl(g/.35,0,1));set('--ty',(-24*g)+'px');set('--sh',cl((g-.4)/.4,0,1));const fo=cl((g-.7)/.25,0,1);set('--fo',fo);set('--fy',(20*(1-fo))+'px');
+  s.classList.toggle('is-done',fo>.9);};
+let tk=false;addEventListener('scroll',()=>{if(!tk){tk=true;requestAnimationFrame(()=>{tk=false;upd();});}},{passive:true});addEventListener('resize',upd);if(document.fonts)document.fonts.ready.then(upd);upd();})();
 </script>
 </body>
 </html>
