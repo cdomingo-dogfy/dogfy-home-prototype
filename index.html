@@ -1006,6 +1006,10 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
 .s-faq .faq summary{padding:20px 0;font-size:20px;line-height:26px;color:var(--text-hi)}
 .s-faq .faq .ans{padding:0 0 20px;color:var(--text);font-size:16px;line-height:24px}
 @media (max-width:600px){.s-faq{padding:64px var(--gutter) 80px}.s-faq .faq summary{font-size:17px;line-height:24px;padding:16px 0}}
+/* Blog: fila deslizable con puntos en tablet y móvil */
+.bl-dots{display:none}
+@media (max-width:900px){.bl-grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:20px;margin-inline:calc(-1 * var(--gutter));padding:4px var(--gutter) 20px;scroll-padding-inline:var(--gutter);scrollbar-width:none}.bl-grid::-webkit-scrollbar{display:none}.bl-card{flex:0 0 min(46%,380px);scroll-snap-align:start}.bl-dots{display:flex;margin-top:4px}}
+@media (max-width:600px){.bl-card{flex-basis:82%;scroll-snap-align:center}.bl-grid{gap:16px}}
 </style>
 </head>
 <body>
@@ -1539,6 +1543,15 @@ document.getElementById('smsForm').addEventListener('submit',e=>{e.preventDefaul
 const sec=document.querySelector('.s-precio'),tr=sec&&sec.querySelector('.pr-trama');if(!tr||matchMedia('(prefers-reduced-motion:reduce)').matches)return;
 let t=false;const upd=()=>{t=false;const r=sec.getBoundingClientRect(),d=Math.max(0,Math.min(1,(r.bottom-innerHeight*.6)/(innerHeight*1.2)));tr.style.setProperty('--try',(d*140).toFixed(1)+'px');};
 addEventListener('scroll',()=>{if(!t){t=true;requestAnimationFrame(upd);}},{passive:true});addEventListener('resize',upd);upd();})();
+</script>
+<script>
+// Blog: en tablet/móvil las tarjetas van en fila deslizable con puntos de carrusel sincronizados
+(()=>{document.querySelectorAll('.bl-grid').forEach(g=>{const cards=[...g.querySelectorAll('.bl-card')];if(cards.length<2)return;
+const nav=document.createElement('div');nav.className='rv-dots bl-dots';nav.setAttribute('aria-label','Artículos');
+const dots=cards.map((c,i)=>{const b=document.createElement('button');b.type='button';b.setAttribute('aria-label','Ver artículo '+(i+1));b.addEventListener('click',()=>g.scrollTo({left:c.offsetLeft-g.offsetLeft-(g.clientWidth-c.offsetWidth)/2,behavior:matchMedia('(prefers-reduced-motion:reduce)').matches?'auto':'smooth'}));nav.appendChild(b);return b;});
+g.after(nav);let t=false;const upd=()=>{t=false;const mid=g.scrollLeft+g.clientWidth/2;let k=0,best=1e9;cards.forEach((c,i)=>{const d=Math.abs(c.offsetLeft-g.offsetLeft+c.offsetWidth/2-mid);if(d<best){best=d;k=i;}});
+if(g.scrollLeft+g.clientWidth>=g.scrollWidth-4)k=cards.length-1;dots.forEach((b,i)=>{b.classList.toggle('active',i===k);b.setAttribute('aria-current',i===k?'true':'false');});};
+g.addEventListener('scroll',()=>{if(!t){t=true;requestAnimationFrame(upd);}},{passive:true});addEventListener('resize',upd);upd();});})();
 </script>
 </body>
 </html>
