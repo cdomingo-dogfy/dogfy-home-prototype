@@ -1371,6 +1371,16 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
 @media (min-width:601px) and (max-width:900px){.hero-actions{margin-left:0!important;margin-right:auto!important}.hero-actions>*{margin-left:0}}
 /* Hero desktop: la entradilla no supera el ancho del titular */
 @media (min-width:901px){.hero-content>div:first-child>p{max-width:var(--h1w,100%)}}
+/* Menos aire bajo la caja de prueba */
+.c14{padding-bottom:20px}.c14-in{padding-bottom:56px}.s-nutri2{padding-top:40px}
+@media (max-width:600px){.c14-in{padding-bottom:28px}}
+/* Móvil: sin hueco sobre el texto; stickers pequeños a la derecha del titular */
+@media (max-width:600px){
+  .hero .hero-content>div:first-child{margin-top:0}
+  .hero-promo{width:150px;top:var(--promo-t,170px);right:2px;z-index:4}
+}
+@media (max-width:600px){.hero-promo{width:132px;right:0}}
+@media (max-width:600px){.hero-promo{width:168px;right:4px}}
 </style>
 </head>
 <body>
@@ -1952,6 +1962,12 @@ addEventListener('resize',place);addEventListener('load',place);if(!bol.complete
 (()=>{const h1=document.querySelector('.hero h1'),p=document.querySelector('.hero-content>div:first-child>p');if(!h1||!p)return;
 const fit=()=>{const r=document.createRange();r.selectNodeContents(h1);const w=Math.max(...[...r.getClientRects()].map(x=>x.right))-h1.getBoundingClientRect().left;p.style.setProperty('--h1w',Math.ceil(w)+'px');};
 addEventListener('resize',fit);if(document.fonts)document.fonts.ready.then(fit);fit();})();
+</script>
+<script>
+// Móvil: el sticker de la promo se ancla a la derecha, a la altura del titular
+(()=>{const st=document.querySelector('.hero-promo'),h1=document.querySelector('.hero h1'),hero=document.querySelector('.hero');if(!st||!h1||!hero)return;
+const place=()=>{if(innerWidth>600){st.style.removeProperty('--promo-t');return}const pp=h1.parentElement.querySelector('p')||h1;st.style.setProperty('--promo-t',(pp.getBoundingClientRect().bottom-hero.getBoundingClientRect().top+6)+'px');};
+addEventListener('resize',place);addEventListener('load',place);if(document.fonts)document.fonts.ready.then(place);place();})();
 </script>
 </body>
 </html>
