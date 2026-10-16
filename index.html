@@ -1540,6 +1540,18 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
 }
 /* Cómo empezar: 4px de aire bajo la pila para que se vea entero el borde de la última tarjeta */
 .ce3.is-anim .ce3-cards{box-sizing:content-box!important;padding-bottom:4px!important}
+
+/* Opiniones (Figma 754:297): onda azul arriba, volteada, detrás del titular; fecha centrada; sombra de tarjeta más marcada */
+.op2 .op-onda{top:8px;bottom:auto;transform:translateX(-50%) scaleY(-1)}
+.op2 .op-head-sec,.op2 .op-grid,.op2 .op-tp{position:relative;z-index:1}
+.op2 .op-when{text-align:center;margin-top:auto}
+.op2 .op-card{box-shadow:0 16px 16px rgba(42,39,36,.3)}
+@media (max-width:900px){.op2 .op-grid{padding-bottom:36px}}
+
+/* Banner: texto amarillo que aparece y desaparece suavemente para llamar la atención */
+.banner{color:#f2c94c;animation:bannerBlink 3.2s ease-in-out infinite}
+@keyframes bannerBlink{0%,62%,100%{color:#f2c94c}78%,84%{color:rgba(242,201,76,0)}}
+@media (prefers-reduced-motion:reduce){.banner{animation:none}}
 </style>
 </head>
 <body>
