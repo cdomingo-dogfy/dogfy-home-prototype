@@ -1268,6 +1268,7 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
 .hero-hw .hw-spin{animation:none!important}
 .hero-hw .hw-arc{font-size:12.5px;letter-spacing:0}
 @media (min-width:901px){.hero-hw{top:calc(64px + 56px + 136px);right:calc(var(--gutter) + 28px)}}
+.ym-trama{transform:translate(var(--ymx,0px),var(--ymy,0px))}
 </style>
 </head>
 <body>
@@ -1810,7 +1811,7 @@ document.getElementById('smsForm').addEventListener('submit',e=>{e.preventDefaul
 // Cómo empezar: cada paso entra al llegar al viewport. Tramado de precios: parallax suave hasta quedar pegado a la caja de prueba.
 (()=>{const tr=document.querySelector('.ym-trama'),wrap=tr&&tr.parentElement,caja=wrap&&wrap.querySelector('.s-caja'),rec=wrap&&wrap.querySelector('.s-recetas');if(!tr||!caja)return;
 const place=()=>{const w=wrap.clientWidth,end=caja.offsetTop,start=rec?rec.offsetTop+(w<900?140:0):0;const H=w>=900?Math.min(w*1653/1440,end-start):end-start;tr.style.setProperty('--ymh',H+'px');tr.style.setProperty('--ymt',(end-H)+'px');};
-const red=matchMedia('(prefers-reduced-motion:reduce)').matches;let t=false;const upd=()=>{t=false;if(red)return;const r=caja.getBoundingClientRect(),d=Math.max(0,Math.min(1,(r.top-innerHeight*.5)/(innerHeight*1.5)));tr.style.setProperty('--ymy',(d*120).toFixed(1)+'px');};
+const red=matchMedia('(prefers-reduced-motion:reduce)').matches;let t=false;const upd=()=>{t=false;if(red)return;const r=caja.getBoundingClientRect(),d=Math.max(0,Math.min(1,(r.top-innerHeight*.35)/(innerHeight*2.2))),k=innerWidth<900?.55:1;tr.style.setProperty('--ymy',(d*340*k).toFixed(1)+'px');tr.style.setProperty('--ymx',(d*60*k).toFixed(1)+'px');};
 addEventListener('scroll',()=>{if(!t){t=true;requestAnimationFrame(upd);}},{passive:true});addEventListener('resize',()=>{place();upd();});addEventListener('load',()=>{place();upd();});if(window.ResizeObserver)new ResizeObserver(()=>{place();upd();}).observe(wrap);place();upd();})();
 </script>
 <script>
