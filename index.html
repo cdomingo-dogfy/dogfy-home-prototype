@@ -1246,6 +1246,28 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
 .pq-fediaf{width:clamp(120px,10.5vw,150px);top:auto;bottom:22%;left:calc(50% + clamp(120px,13vw,210px))}
 @media (max-width:1100px){.pq-fediaf{left:auto;right:6%;bottom:clamp(160px,30vw,300px);width:120px}}
 @media (max-width:600px){.pq-fediaf{width:92px;right:3%}}
+/* Hero: pareja de stickers (10 % DTO + promo extra de Halloween) */
+.hero-hw{position:absolute;z-index:2;top:calc(64px + 56px + 112px);right:calc(var(--gutter) + 112px);width:124px;height:124px;transform:rotate(-14deg);filter:drop-shadow(0 10px 14px rgba(0,0,0,.35)) drop-shadow(0 2px 3px rgba(0,0,0,.2));transition:transform .35s cubic-bezier(.34,1.56,.64,1)}
+.hero-hw svg{width:100%;height:100%;overflow:visible}
+.hero-hw .hw-arc{font-family:var(--font-display);font-weight:800;font-size:13.5px;letter-spacing:2.2px;fill:#ffee99}
+.hero-hw .hw-spin{transform-origin:100px 100px}
+.hero-hw:hover{transform:rotate(-6deg) scale(1.06)}
+.hero-hw:focus-visible{outline:3px solid #f2c94c;outline-offset:6px;border-radius:50%}
+@media (prefers-reduced-motion:no-preference){.hero-hw .hw-spin{animation:dtoSpin 26s linear infinite reverse}.hero-hw .hw-pk{animation:hwBob 2.6s ease-in-out infinite}@keyframes hwBob{0%,100%{transform:translate(100px,104px) rotate(-4deg)}50%{transform:translate(100px,100px) rotate(4deg)}}}
+@media (max-width:900px){.hero-hw{width:88px;height:88px;top:calc(64px + 20px + 80px);right:calc(var(--gutter) + 70px)}}
+@media (max-width:600px){.hero-hw{width:74px;height:74px;top:calc(64px + 12px + 68px);right:76px}}
+/* Tablet/móvil: los stickers bajan a la zona del perro para no pisar el titular centrado */
+@media (max-width:900px){.hero-dto{top:auto;bottom:calc(var(--hs-b,190px) + 56px);right:var(--gutter)}.hero-hw{top:auto;bottom:var(--hs-b,190px);right:calc(var(--gutter) + 80px)}}
+@media (min-width:601px) and (max-width:900px){.hero-dto{right:16px;bottom:calc(190px + 84px)}.hero-hw{right:28px;bottom:190px}}
+/* Widget de WhatsApp (maqueta) */
+.wa-bubble{position:fixed;z-index:60;right:24px;bottom:var(--wa-b,24px);display:grid;place-items:center;width:64px;height:64px;border-radius:50%;background:#fff;border:2px solid #fff;box-shadow:0 8px 24px rgba(42,39,36,.22),0 2px 6px rgba(42,39,36,.12);transition:transform .25s cubic-bezier(.34,1.56,.64,1),bottom .3s ease}
+.wa-bubble:hover{transform:scale(1.08)}
+.wa-bubble:focus-visible{outline:3px solid #f2c94c;outline-offset:3px}
+@media (max-width:600px){.wa-bubble{right:16px;width:56px;height:56px;bottom:var(--wa-b,16px)}.wa-bubble svg{width:38px;height:38px}}
+/* Halloween: el texto no gira (solo gira el del 10 %) y los dos stickers se apilan en el borde derecho para no pisar el titular */
+.hero-hw .hw-spin{animation:none!important}
+.hero-hw .hw-arc{font-size:12.5px;letter-spacing:0}
+@media (min-width:901px){.hero-hw{top:calc(64px + 56px + 136px);right:calc(var(--gutter) + 28px)}}
 </style>
 </head>
 <body>
@@ -1287,6 +1309,21 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
 <!-- Hero -->
 <section class="hero">
   <div class="hero-bg"><picture><source media="(max-width:600px)" srcset="assets/hero-mobile.jpg"><img src="assets/hero.jpg" srcset="assets/hero-900.jpg 900w, assets/hero.jpg 2048w" sizes="100vw" alt="" fetchpriority="high" decoding="async"></picture></div>
+  <a class="hero-hw" href="#descuento" aria-label="Promo extra de Halloween"><svg viewBox="0 0 200 200" aria-hidden="true">
+  <defs><path id="hwArc" d="M100 100m-70 0a70 70 0 1 1 140 0a70 70 0 1 1-140 0"/></defs>
+  <circle cx="100" cy="100" r="98" fill="#fff"/>
+  <circle cx="100" cy="100" r="90" fill="#2a2724"/>
+  <circle cx="100" cy="100" r="54" fill="none" stroke="#ffee99" stroke-width="1.4" stroke-dasharray="3 4" opacity=".45"/>
+  <g class="hw-spin"><text class="hw-arc"><textPath href="#hwArc" textLength="436" lengthAdjust="spacing">HALLOWEEN ✦ PROMO EXTRA ✦ HALLOWEEN ✦ PROMO EXTRA ✦</textPath></text></g>
+  <g class="hw-pk" transform="translate(100 104)">
+    <path d="M-3-30c2-8 8-12 14-12" fill="none" stroke="#6f8f3a" stroke-width="5" stroke-linecap="round"/>
+    <ellipse cx="-17" cy="2" rx="20" ry="27" fill="#e8662f"/>
+    <ellipse cx="17" cy="2" rx="20" ry="27" fill="#e8662f"/>
+    <ellipse cx="0" cy="2" rx="17" ry="29" fill="#f47b3c"/>
+    <path d="M-17-6l7-8 6 8zM4-6l7-8 6 8z" fill="#2a2724"/>
+    <path d="M-20 10c6 8 34 8 40 0l-6 3-4-3-5 4-5-4-5 4-5-4-4 3z" fill="#2a2724"/>
+  </g>
+</svg></a>
   <a class="dto-st hero-dto" href="#descuento" aria-label="10 % de descuento extra: pide tu código por SMS"><svg viewBox="0 0 200 200" aria-hidden="true">
   <defs><path id="dtoArcHero" d="M100 100m-66 0a66 66 0 1 1 132 0a66 66 0 1 1-132 0"/></defs>
   <g class="dto-cut" transform="translate(-4 -4) scale(3.25)"><path d="M64 32c0 2.364-3.853 4.253-4.344 6.465-.507 2.284 2.151 5.694 1.18 7.754-.986 2.095-5.258 2.087-6.66 3.886-1.404 1.799-.457 6.068-2.223 7.512s-5.601-.458-7.646.553c-2.011.994-2.955 5.26-5.187 5.78-2.16.502-4.811-2.912-7.12-2.912s-4.961 3.414-7.121 2.911c-2.23-.518-3.174-4.785-5.186-5.78-2.046-1.01-5.889.883-7.646-.552s-.813-5.704-2.222-7.512-5.675-1.79-6.662-3.886c-.971-2.059 1.688-5.47 1.18-7.754C3.854 36.253 0 34.364 0 32s3.853-4.253 4.344-6.465c.507-2.284-2.152-5.694-1.181-7.754.987-2.095 5.259-2.087 6.662-3.886s.456-6.068 2.222-7.512 5.6.458 7.646-.553C21.704 4.836 22.648.57 24.88.05 27.039-.451 29.69 2.962 32 2.962s4.96-3.413 7.12-2.91c2.232.518 3.174 4.785 5.187 5.78 2.045 1.01 5.889-.883 7.646.552s.813 5.704 2.222 7.512 5.675 1.79 6.661 3.886c.971 2.059-1.687 5.47-1.18 7.754C60.146 27.747 64 29.636 64 32"/></g>
@@ -1812,6 +1849,14 @@ imgs.forEach(im=>{if(!im.complete)im.addEventListener('load',re,{once:true});});
 (()=>{const inp=document.querySelector('.sms2-input input');if(!inp)return;const ph=inp.getAttribute('placeholder')||'';const cv=document.createElement('canvas').getContext('2d');
 const fit=()=>{const cs=getComputedStyle(inp);cv.font=cs.fontWeight+' '+cs.fontSize+' '+cs.fontFamily;inp.setAttribute('placeholder',cv.measureText(ph).width<=inp.clientWidth-2?ph:'');};
 addEventListener('resize',fit);if(document.fonts)document.fonts.ready.then(fit);addEventListener('load',fit);fit();})();
+</script>
+<script>
+// Widget de WhatsApp (maqueta): burbuja fija abajo a la derecha; en la home sube por encima de la barra de CTA móvil
+(()=>{if(document.querySelector('.wa-bubble'))return;const a=document.createElement('a');a.className='wa-bubble';a.href='#';a.setAttribute('aria-label','Escríbenos por WhatsApp');
+a.innerHTML='<svg viewBox="0 0 25 24" width="44" height="44" aria-hidden="true"><path fill="#4CAF50" fill-rule="evenodd" clip-rule="evenodd" d="M12.498 1.5h.005C18.293 1.5 23 6.21 23 12s-4.708 10.5-10.497 10.5a10.4 10.4 0 0 1-5.777-1.735l-4.035 1.29 1.308-3.9A10.42 10.42 0 0 1 2 12C2 6.21 6.708 1.5 12.497 1.5m3.8 16.428c.773-.18 1.743-.795 1.988-1.537s.244-1.375.173-1.51c-.057-.107-.192-.177-.395-.281l-.171-.09c-.298-.16-1.745-.928-2.019-1.03-.268-.109-.524-.07-.727.237l-.115.174c-.245.369-.48.725-.677.952-.178.204-.47.23-.714.121l-.091-.04c-.387-.168-1.246-.54-2.285-1.534-.876-.838-1.472-1.881-1.644-2.194-.17-.314-.023-.498.112-.668l.007-.01c.087-.115.171-.212.256-.308q.091-.103.185-.217l.027-.033c.133-.164.212-.262.3-.466.102-.211.03-.429-.042-.59-.05-.112-.357-.911-.62-1.598l-.29-.756c-.197-.505-.347-.524-.644-.538l-.028-.001A6 6 0 0 0 8.572 6c-.387 0-.791.122-1.036.39l-.026.03C7.197 6.76 6.5 7.522 6.5 9.04c0 1.52 1.004 2.99 1.19 3.263l.013.02q.018.024.063.095c.38.59 2.227 3.464 4.982 4.69 2.328 1.037 3.02.94 3.55.82"/></svg>';
+a.addEventListener('click',e=>e.preventDefault());document.body.appendChild(a);
+const bar=document.getElementById('ctaBar');if(!bar)return;const upd=()=>{const on=getComputedStyle(bar).display!=='none'&&bar.getBoundingClientRect().top<innerHeight-4&&!bar.classList.contains('hide')&&getComputedStyle(bar).opacity!=='0';a.style.setProperty('--wa-b',on?(innerHeight-bar.getBoundingClientRect().top+12)+'px':'');};
+let t=false;addEventListener('scroll',()=>{if(!t){t=true;requestAnimationFrame(()=>{t=false;upd();});}},{passive:true});addEventListener('resize',upd);setInterval(upd,800);upd();})();
 </script>
 </body>
 </html>
