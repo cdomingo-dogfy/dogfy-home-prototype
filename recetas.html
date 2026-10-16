@@ -2455,7 +2455,7 @@ const set=(k,v)=>stage.style.setProperty(k,v);
 const upd=()=>{if(!mq.matches){stage.removeAttribute('style');stage.classList.remove('is-anim','is-done');return}stage.classList.add('is-anim');
   const r=sec.getBoundingClientRect(),total=Math.max(1,sec.offsetHeight-stick.offsetHeight),p=cl(-r.top/total,0,1),g=ease(cl((p-.12)/.62,0,1));
   const vw=stage.clientWidth,H=stage.clientHeight,rr=ref?ref.getBoundingClientRect():null,cw=rr?rr.width:Math.min(1216,vw-96),cx=rr?rr.left:(vw-cw)/2;
-  const w0=Math.min(cw*.46,H*.88),h0=w0,w1=vw,h1=Math.min(H*.74,Math.max(420,vw*.34));
+  const w0=Math.min(cw*.46,H*.88),h0=w0,w1=vw,h1=H;
   set('--x',(cx*(1-g))+'px');set('--w',(w0+(w1-w0)*g)+'px');set('--h',(h0+(h1-h0)*g)+'px');set('--r',(24*(1-g))+'px');
   set('--cx',cx+'px');set('--cw',cw+'px');set('--to',1-cl(g/.4,0,1));set('--tx',(64*g)+'px');
   set('--sh',cl((g-.45)/.45,0,1));const fo=cl((g-.78)/.2,0,1);set('--fo',fo);set('--fy',(24*(1-fo))+'px');
