@@ -2157,6 +2157,37 @@ body:has(.rp-hero) .rp-crumbs{background:var(--blue-deco);max-width:none;padding
 .cf3-video iframe{width:100%;height:100%}
 @media (max-width:1100px){.cf2-how-grid{gap:40px}}
 @media (max-width:900px){.cf2-how-grid{grid-template-columns:1fr}.cf2-media{max-width:640px}}
+/* ===== «Empecemos por tu perro» con escena de scroll (como «Sí, es real» de la home) ===== */
+.emp2{position:relative;background:#dbeafe;padding:72px var(--gutter)}
+.emp2-stage{position:relative;display:flex;flex-direction:column;gap:28px;max-width:var(--container);margin:0 auto}
+.emp2-text h2{font-family:var(--font-display);font-weight:700;font-size:clamp(28px,3vw,40px);line-height:1.1;color:var(--text-hi)}
+.emp2-text p{margin-top:14px;font-size:clamp(16px,1.4vw,18px);line-height:1.55;color:var(--text)}
+.emp2-panel{position:relative;overflow:hidden;border-radius:24px;aspect-ratio:4/3;background:#2a2724}
+.emp2-panel>img{position:absolute;inset:0;width:100%;height:100%;max-width:none;object-fit:cover;object-position:58% 45%}
+.emp2-shade{position:absolute;inset:0;background:rgba(20,18,16,.4);pointer-events:none}
+.emp2-form{position:absolute;left:16px;right:16px;bottom:16px;z-index:2;display:flex;flex-direction:column;gap:10px}
+.emp2-form .emp-col{width:100%}
+.emp2-form .emp-msg{color:#fff;text-shadow:0 1px 6px rgba(0,0,0,.4)}
+@media (min-width:901px){
+  .emp2-form{left:50%;right:auto;bottom:auto;top:50%;transform:translate(-50%,-50%);flex-direction:row;align-items:flex-start;gap:16px;width:max-content}
+  .emp2-form .emp-col{width:340px}
+  .emp2-panel{aspect-ratio:auto;height:440px}
+  .emp2-stage{flex-direction:row-reverse;align-items:center;gap:64px}
+  .emp2-stage>*{flex:1}
+  /* animación activa (desktop sin reducción de movimiento) */
+  .emp2:has(.is-anim){height:260vh;padding:0}
+  .emp2-sticky{position:sticky;top:64px;height:calc(100vh - 64px);overflow:hidden}
+  .emp2-stage.is-anim{display:block;max-width:none;height:100%;margin:0}
+  .emp2-stage.is-anim .emp2-panel{position:absolute;top:50%;left:var(--x);width:var(--w);height:var(--h);transform:translateY(-50%);border-radius:var(--r);aspect-ratio:auto;will-change:width,height,left}
+  .emp2-stage.is-anim .emp2-shade{opacity:var(--sh,0)}
+  .emp2-stage.is-anim .emp2-form{opacity:var(--fo,0);transform:translate(-50%,calc(-50% + var(--fy,24px)));pointer-events:none}
+  .emp2-stage.is-anim.is-done .emp2-form{pointer-events:auto}
+  .emp2-stage.is-anim .emp2-text{position:absolute;top:50%;left:calc(var(--cx) + var(--cw) * .54);width:calc(var(--cw) * .42);transform:translateY(-50%) translateX(var(--tx,0px));opacity:var(--to,1)}
+  .emp2-stage.is-anim .emp2-text h2{font-size:clamp(32px,3.2vw,46px)}
+}
+@media (max-width:900px){.emp2-panel{aspect-ratio:auto;height:440px}.emp2-form .emp-cta{width:100%;justify-content:center}}
+@media (max-width:600px){.emp2{padding:56px var(--gutter)}.emp2-panel{height:400px;border-radius:20px}}
+@media (max-width:900px){.emp2 .emp2-form{width:auto;left:16px;right:16px}.emp2-text{order:-1}}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://cdomingo-dogfy.github.io/dogfy-home-prototype/index.html"}, {"@type": "ListItem", "position": 2, "name": "Cómo funciona", "item": "https://cdomingo-dogfy.github.io/dogfy-home-prototype/como-funciona.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "¿Qué formatos hay?", "acceptedAnswer": {"@type": "Answer", "text": "Cada menú llega en bolsitas individuales con la ración diaria de tu perro, ya calculada según su peso, edad y actividad. Puedes elegir una receta o combinar varias en el mismo pedido."}}, {"@type": "Question", "name": "¿Cómo llega el producto?", "acceptedAnswer": {"@type": "Answer", "text": "Te lo enviamos a casa congelado y dividido en bolsitas diarias, con envío gratis. Solo tienes que guardarlo en el congelador al recibirlo."}}, {"@type": "Question", "name": "¿Cómo se prepara, debo cocinar el alimento al perro?", "acceptedAnswer": {"@type": "Answer", "text": "No hace falta cocinar nada. Nuestras recetas ya vienen cocinadas a baja temperatura: descongela la bolsita en la nevera, ábrela y sirve."}}, {"@type": "Question", "name": "¿Cada cuánto llegan los menús?", "acceptedAnswer": {"@type": "Answer", "text": "Tu primera caja trae 14 días de comida. Después la suscripción continúa y puedes cambiar recetas, aplazar envíos o cancelar cuando quieras, sin permanencia."}}, {"@type": "Question", "name": "¿Puedo hablar con el equipo de nutrición?", "acceptedAnswer": {"@type": "Answer", "text": "Sí. Tu plan incluye seguimiento nutricional gratuito: puedes escribir a nuestro equipo de Nutrición canina siempre que lo necesites, en cualquier etapa de la vida de tu perro."}}]}</script>
@@ -2286,15 +2317,13 @@ body:has(.rp-hero) .rp-crumbs{background:var(--blue-deco);max-width:none;padding
   <a class="bk2-tp cf2-tp" href="https://es.trustpilot.com/review/dogfydiet.com" target="_blank" rel="noopener"><b>4,5</b><span class="rp-tp-stars" aria-hidden="true">★★★★★</span><span>12.480 opiniones en Trustpilot</span></a>
 </section>
 
-<section class="emp" aria-labelledby="empTitle">
-  <div class="emp-card">
-    <div class="emp-photo"><img src="assets/empecemos-setters.jpg" alt="Dos setters irlandeses junto a una caja de Dogfy Diet" width="2000" height="719" loading="lazy" decoding="async"></div>
-    <div class="emp-in">
-      <div class="emp-txt">
-        <h2 id="empTitle">Empecemos por tu perro.</h2>
-        <p>Cuéntanos cómo es. Calculamos su ración <br>y te mostramos el precio. Tú eliges las recetas.</p>
-      </div>
-      <form class="emp-form" novalidate onsubmit="event.preventDefault();var s=this.raza,m=this.querySelector('.emp-msg');if(!s.value){m.hidden=false;s.focus();return}location.href='index.html#precio'">
+<section class="emp2" id="emp2" aria-labelledby="empTitle">
+  <div class="emp2-sticky">
+    <div class="emp2-stage">
+      <div class="emp2-panel">
+        <img src="assets/empecemos-setters.jpg" alt="Dos setters irlandeses junto a una caja de Dogfy Diet" width="2000" height="719" loading="lazy" decoding="async">
+        <span class="emp2-shade" aria-hidden="true"></span>
+        <form class="emp-form emp2-form" novalidate onsubmit="event.preventDefault();var s=this.raza,m=this.querySelector('.emp-msg');if(!s.value){m.hidden=false;s.focus();return}location.href='index.html#precio'">
         <div class="emp-col">
           <div class="emp-field">
             <label for="empRaza" class="sr-only">¿Cuál es la raza de tu perro?</label>
@@ -2305,6 +2334,11 @@ body:has(.rp-hero) .rp-crumbs{background:var(--blue-deco);max-width:none;padding
         </div>
         <button class="btn btn-primary emp-cta" type="submit">Crear su Menú</button>
       </form>
+      </div>
+      <div class="emp2-text">
+        <h2 id="empTitle">Empecemos por tu perro.</h2>
+        <p>Cuéntanos cómo es. Calculamos su ración <br>y te mostramos el precio. Tú eliges las recetas.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -2414,6 +2448,19 @@ addEventListener('scroll',tick,{passive:true});addEventListener('resize',()=>{si
 (()=>{const sec=document.querySelector('.rp-detail'),pv=document.querySelector('.rp-pn-prev'),nx=document.querySelector('.rp-pn-next'),media=document.querySelector('.rp-detail .rp-media');if(!sec||!pv||!nx||!media)return;
 const place=()=>{if(innerWidth>=1360){[pv,nx].forEach(b=>b.removeAttribute('style'));return}const s=sec.getBoundingClientRect(),m=media.getBoundingClientRect(),top=m.top-s.top+m.height/2-pv.offsetHeight/2;pv.style.cssText=`top:${top}px;left:${m.left-s.left+12}px;right:auto`;nx.style.cssText=`top:${top}px;left:${m.right-s.left-nx.offsetWidth-12}px;right:auto`};
 addEventListener('resize',place);addEventListener('load',place);place();})();
+// «Empecemos por tu perro»: escena con scroll (como la de la home). La foto pasa de tarjeta a la izquierda a banda a todo el ancho; el texto se va y aparece el formulario
+(()=>{const sec=document.getElementById('emp2');if(!sec)return;const stick=sec.querySelector('.emp2-sticky'),stage=sec.querySelector('.emp2-stage'),ref=document.querySelector('.cf2-how-grid');
+const mq=matchMedia('(min-width: 901px) and (prefers-reduced-motion: no-preference)');const cl=(v,a,b)=>Math.min(b,Math.max(a,v)),ease=t=>t<.5?2*t*t:1-Math.pow(-2*t+2,2)/2;
+const set=(k,v)=>stage.style.setProperty(k,v);
+const upd=()=>{if(!mq.matches){stage.removeAttribute('style');stage.classList.remove('is-anim','is-done');return}stage.classList.add('is-anim');
+  const r=sec.getBoundingClientRect(),total=Math.max(1,sec.offsetHeight-stick.offsetHeight),p=cl(-r.top/total,0,1),g=ease(cl((p-.12)/.62,0,1));
+  const vw=stage.clientWidth,H=stage.clientHeight,rr=ref?ref.getBoundingClientRect():null,cw=rr?rr.width:Math.min(1216,vw-96),cx=rr?rr.left:(vw-cw)/2;
+  const w0=Math.min(cw*.46,H*.88),h0=w0,w1=vw,h1=Math.min(H*.74,Math.max(420,vw*.34));
+  set('--x',(cx*(1-g))+'px');set('--w',(w0+(w1-w0)*g)+'px');set('--h',(h0+(h1-h0)*g)+'px');set('--r',(24*(1-g))+'px');
+  set('--cx',cx+'px');set('--cw',cw+'px');set('--to',1-cl(g/.4,0,1));set('--tx',(64*g)+'px');
+  set('--sh',cl((g-.45)/.45,0,1));const fo=cl((g-.78)/.2,0,1);set('--fo',fo);set('--fy',(24*(1-fo))+'px');
+  stage.classList.toggle('is-done',fo>.9)};
+addEventListener('scroll',upd,{passive:true});addEventListener('resize',upd);mq.addEventListener?mq.addEventListener('change',upd):0;upd();})();
 
 (()=>{const l=document.querySelector('.rp-tabs-list'),a=l&&l.querySelector('.active');if(a&&l.scrollWidth>l.clientWidth)l.scrollLeft=a.offsetLeft-l.offsetLeft-(l.clientWidth-a.offsetWidth)/2;})();
 </script>
