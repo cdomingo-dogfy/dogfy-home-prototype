@@ -1925,6 +1925,115 @@ body:has(.rp-hero) .rp-crumbs{background:var(--blue-deco);max-width:none;padding
   .rp-detail .ing-card{align-items:start;align-content:start;grid-template-rows:auto auto 1fr}
   .rp-detail .ing-card>img{align-self:start}
 }
+/* ===== Cómo funciona v2 (Figma 217:26305) ===== */
+.cf2-badge{display:inline-flex;align-self:flex-start;background:#ffea7c;color:#2a2724;font-family:var(--font-display);font-weight:600;font-size:18px;line-height:24px;padding:4px 14px;border-radius:7px}
+.cf2-badge-sm{font-size:16px;line-height:22px;padding:4px 12px}
+.cf2-cta{justify-content:center}
+.cf2-cta-lg{height:56px;padding:0 32px;font-size:17px;border-radius:999px}
+/* hero a sangre */
+.cf2-hero{position:relative;min-height:min(640px,calc(100svh - 112px));display:flex;align-items:center;overflow:hidden;background:#2f3a22;color:#fff}
+.cf2-hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:62% 40%}
+.cf2-hero::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(20,18,16,.62) 0%,rgba(20,18,16,.38) 42%,rgba(20,18,16,0) 70%)}
+.cf2-hero-in{position:relative;z-index:2;width:100%;max-width:var(--container);margin:0 auto;padding:72px var(--gutter);box-sizing:content-box;display:flex;flex-direction:column;align-items:flex-start;gap:16px}
+.cf2-hero .rp-crumbs{padding:0;margin:0 0 24px;max-width:none}
+.cf2-hero .rp-crumbs,.cf2-hero .rp-crumbs a,.cf2-hero .rp-crumbs span{color:rgba(255,255,255,.88)}
+.cf2-hero h1{color:#fff;font-size:clamp(36px,4.6vw,60px);line-height:1.02;letter-spacing:-.01em;max-width:760px}
+.cf2-hero-in>p{color:#fff;font-size:clamp(17px,1.5vw,20px);line-height:1.5;max-width:560px;opacity:.95}
+.cf2-hero .cf2-cta{margin-top:16px}
+/* cinta de claims: pills amarillas */
+.rp-marquee.cf2-claims{background:#fff;padding:14px 0}
+.rp-marquee.cf2-claims li{background:#fff7c9;box-shadow:none;border:1px solid #f6e7a0;padding:6px 16px;font-size:15px;line-height:20px}
+.rp-marquee.cf2-claims li::before{display:none}
+/* cabeceras centradas */
+.cf2-head{text-align:center;max-width:760px;margin:0 auto 64px}
+.cf2-head>p{font-size:18px;line-height:1.5;color:var(--text);margin-top:14px}
+/* pasos con línea de progreso */
+.cf2-how{padding:96px var(--gutter) 112px;overflow-x:clip}
+.cf2-how-grid{max-width:var(--container);margin:0 auto;display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:64px;align-items:start}
+.cf2-media{position:sticky;top:96px}
+.cf2-blob{position:absolute;left:-30%;top:12%;width:120%;max-width:none;transform:rotate(-90deg);pointer-events:none;z-index:0}
+.cf2-media-frame{position:relative;z-index:1;aspect-ratio:409/473;border-radius:24px;overflow:hidden;background:#f4f1ec;box-shadow:0 24px 48px -24px rgba(42,39,36,.35)}
+.cf2-media-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.04);transition:opacity .5s ease,transform .8s ease}
+.cf2-media-img.is-on{opacity:1;transform:none}
+.cf2-steps-wrap{position:relative;padding-left:64px}
+.cf2-track{position:absolute;left:14px;top:12px;bottom:12px;width:8px;border-radius:30px;background:#ffefea}
+.cf2-fill{position:absolute;left:0;top:0;width:100%;height:0;border-radius:30px;background:#fa592d;transition:height .25s ease-out}
+.cf2-steps{list-style:none;display:flex;flex-direction:column;gap:88px}
+.cf2-step{position:relative;display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:20px;align-items:baseline}
+.cf2-dot{position:absolute;left:-58px;top:6px;width:24px;height:24px;border-radius:50%;background:#fff;border:6px solid #ffefea;box-sizing:border-box;transition:border-color .3s,transform .3s}
+.cf2-step.is-done .cf2-dot{border-color:#fa592d}
+.cf2-step.is-on .cf2-dot{border-color:#fa592d;transform:scale(1.4)}
+.cf2-num{font-family:var(--font-display);font-weight:700;font-size:clamp(24px,2.3vw,32px);line-height:1.15;color:#fa592d;white-space:nowrap}
+.cf2-title{font-family:var(--font-display);font-weight:700;font-size:clamp(24px,2.3vw,32px);line-height:1.15;color:var(--text-hi);max-width:460px}
+.cf2-step-img{display:none}
+.cf2-text{margin-top:16px;max-width:440px;display:flex;flex-direction:column;align-items:flex-start;gap:12px}
+.cf2-text p{font-size:16px;line-height:1.55;color:var(--text)}
+.cf2-text b{color:var(--text-hi)}
+.cf2-text .cf2-cta{margin-top:8px}
+.cf2-link{font-family:var(--font-display);font-weight:600;color:#fa592d;text-decoration:underline;text-underline-offset:4px}
+.cf2-step:not(.is-on) .cf2-title,.cf2-step:not(.is-on) .cf2-text{opacity:.55;transition:opacity .3s}
+.cf2-step.is-on .cf2-title,.cf2-step.is-on .cf2-text{opacity:1;transition:opacity .3s}
+/* apoyo: vídeo de fondo */
+.cf2-support{padding:0 var(--gutter) 112px}
+.cf2-support-card{position:relative;max-width:var(--container);margin:0 auto;height:clamp(460px,38vw,540px);border-radius:30px;overflow:hidden;background:#3a332e;container-type:size;display:grid;place-items:center;text-align:center}
+.cf2-support-card iframe{position:absolute;top:50%;left:50%;width:max(100cqw,177.78cqh);height:max(100cqh,56.25cqw);transform:translate(-50%,-50%);border:0;pointer-events:none}
+.cf2-support-card::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(20,18,16,.55) 0%,rgba(20,18,16,.32) 60%,rgba(20,18,16,.2) 100%);pointer-events:none}
+.cf2-support-in{position:relative;z-index:1;max-width:620px;padding:0 24px;display:flex;flex-direction:column;align-items:center;gap:20px;color:#fff}
+.cf2-support-in h2{color:#fff;font-family:var(--font-display);font-weight:700;font-size:clamp(30px,3.4vw,46px);line-height:1.08}
+.cf2-support-in p{color:#fff;font-size:17px;line-height:1.5;opacity:.95}
+.cf2-support-in .cf2-cta{margin-top:12px}
+.cf2-ctrl{z-index:2;left:auto;right:16px;bottom:16px}
+/* nutrición */
+.cf2-nutri{padding:0 var(--gutter) 112px}
+.cf2-nutri-grid{max-width:var(--container);margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:80px;align-items:center}
+.cf2-nutri-img{width:100%;height:auto;aspect-ratio:632/529;object-fit:cover;border-radius:24px;box-shadow:0 24px 48px -24px rgba(42,39,36,.35)}
+.cf2-nutri-txt{display:flex;flex-direction:column;align-items:flex-start;gap:16px}
+.cf2-nutri-txt p{font-size:17px;line-height:1.55;color:var(--text);max-width:480px}
+.cf2-nutri-txt .cf2-cta{margin-top:12px}
+/* opiniones */
+.cf2-revs{position:relative;padding:0 0 96px;overflow-x:clip}
+.cf2-revs .cf2-head{padding:0 var(--gutter);margin-bottom:48px}
+.cf2-rev-list{list-style:none;display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px max(var(--gutter),calc((100vw - var(--container))/2)) 20px;scrollbar-width:none}
+.cf2-rev-list::-webkit-scrollbar{display:none}
+.cf2-rev{flex:0 0 316px;scroll-snap-align:start;display:flex;flex-direction:column;gap:4px;padding:28px;border-radius:16px;background:#fff;border:1px solid rgba(250,89,45,.45)}
+.cf2-rev b{font-family:var(--font-display);font-size:19px;line-height:1.2;color:var(--text-hi)}
+.cf2-rev-meta{font-size:13px;color:var(--ui-muted)}
+.cf2-rev-stars{color:#fa592d;letter-spacing:2px;font-size:17px;margin:4px 0 8px}
+.cf2-rev p{font-size:15px;line-height:1.5;color:var(--text-hi)}
+.cf2-tp{display:flex;width:max-content;margin:16px auto 0}
+/* móvil y tablet */
+@media (max-width:900px){
+  .cf2-hero{min-height:560px;align-items:flex-end}
+  .cf2-hero::before{background:linear-gradient(0deg,rgba(20,18,16,.72) 0%,rgba(20,18,16,.45) 55%,rgba(20,18,16,.1) 100%)}
+  .cf2-hero-in{padding:48px var(--gutter)}
+  .cf2-hero .rp-crumbs{position:absolute;top:16px;left:var(--gutter)}
+  .cf2-how-grid{grid-template-columns:1fr}
+  .cf2-media{display:none}
+  .cf2-step-img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;border-radius:18px;margin-top:16px}
+  .cf2-steps-wrap{padding-left:44px}
+  .cf2-track{left:8px}
+  .cf2-dot{left:-42px}
+  .cf2-step{grid-template-columns:1fr;row-gap:4px}
+  .cf2-num{font-size:20px}
+  .cf2-steps{gap:56px}
+  .cf2-step:not(.is-on) .cf2-title,.cf2-step:not(.is-on) .cf2-text{opacity:1}
+  .cf2-nutri-grid{grid-template-columns:1fr;gap:32px}
+}
+@media (max-width:600px){
+  .cf2-how{padding:64px var(--gutter) 72px}
+  .cf2-head{margin-bottom:40px}
+  .cf2-head>p{font-size:16px}
+  .cf2-cta-lg{width:100%;height:52px;padding:0 20px;font-size:16px}
+  .cf2-support{padding-bottom:72px}
+  .cf2-support-card{height:520px;border-radius:24px}
+  .cf2-nutri{padding-bottom:72px}
+  .cf2-rev{flex-basis:82vw;padding:22px}
+  .cf2-revs{padding-bottom:72px}
+}
+@media (prefers-reduced-motion:reduce){.cf2-media-img,.cf2-fill,.cf2-dot{transition:none}}
+.cf2-step{grid-template-columns:clamp(104px,9.5vw,136px) minmax(0,1fr)}@media (max-width:900px){.cf2-step{grid-template-columns:1fr}}
+.cf2-rev-list{scroll-padding-inline:max(var(--gutter),calc((100vw - var(--container))/2))}
+@media (max-width:900px){.cf2-step-img{max-width:480px;aspect-ratio:16/10}.cf2-nutri-img{max-width:560px}}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://cdomingo-dogfy.github.io/dogfy-home-prototype/index.html"}, {"@type": "ListItem", "position": 2, "name": "Cómo funciona", "item": "https://cdomingo-dogfy.github.io/dogfy-home-prototype/como-funciona.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "¿Qué formatos hay?", "acceptedAnswer": {"@type": "Answer", "text": "Cada menú llega en bolsitas individuales con la ración diaria de tu perro, ya calculada según su peso, edad y actividad. Puedes elegir una receta o combinar varias en el mismo pedido."}}, {"@type": "Question", "name": "¿Cómo llega el producto?", "acceptedAnswer": {"@type": "Answer", "text": "Te lo enviamos a casa congelado y dividido en bolsitas diarias, con envío gratis. Solo tienes que guardarlo en el congelador al recibirlo."}}, {"@type": "Question", "name": "¿Cómo se prepara, debo cocinar el alimento al perro?", "acceptedAnswer": {"@type": "Answer", "text": "No hace falta cocinar nada. Nuestras recetas ya vienen cocinadas a baja temperatura: descongela la bolsita en la nevera, ábrela y sirve."}}, {"@type": "Question", "name": "¿Cada cuánto llegan los menús?", "acceptedAnswer": {"@type": "Answer", "text": "Tu primera caja trae 14 días de comida. Después la suscripción continúa y puedes cambiar recetas, aplazar envíos o cancelar cuando quieras, sin permanencia."}}, {"@type": "Question", "name": "¿Puedo hablar con el equipo de nutrición?", "acceptedAnswer": {"@type": "Answer", "text": "Sí. Tu plan incluye seguimiento nutricional gratuito: puedes escribir a nuestro equipo de Nutrición canina siempre que lo necesites, en cualquier etapa de la vida de tu perro."}}]}</script>
@@ -1960,91 +2069,101 @@ body:has(.rp-hero) .rp-crumbs{background:var(--blue-deco);max-width:none;padding
   <a class="btn btn-primary" href="index.html#precio">Crea tu menú</a>
 </nav>
 
-<nav class="rp-crumbs" aria-label="Ruta de navegación"><ol><li><a href="index.html">Inicio</a></li><li><span aria-current="page">Cómo funciona</span></li></ol></nav>
-<section class="ph" aria-labelledby="cfTitle">
-  <div class="ph-top">
-    <span class="ph-badge">Cómo funciona</span>
-    <h1 id="cfTitle" class="ph-title">No hay dos ladridos iguales en el mundo</h1>
-    <p class="ph-desc">Por eso elaboramos un plan personalizado para tu peludo en función de sus características: su edad, su peso, su actividad y lo que más le gusta.</p>
-    <div class="ph-links"><a class="btn btn-primary ph-btn" href="index.html#precio">Empieza con un -30 %</a><a class="btn ph-btn ph-btn-neutral" href="recetas.html">Ver nuestras recetas</a></div>
-  </div>
-  <div class="ph-slot ph-video" data-vbox><img class="ph-poster" src="assets/como-empieza.jpg" alt="" decoding="async"><iframe src="https://player.vimeo.com/video/1201334960?background=1&amp;muted=1&amp;loop=1&amp;autoplay=1&amp;autopause=0&amp;dnt=1" title="Cómo funciona Dogfy Diet: del plan personalizado a su cuenco" allow="autoplay; fullscreen; picture-in-picture"></iframe>
-    <div class="nt-ctrl ph-ctrl"><button class="ps-vbtn ps-vplay" type="button" aria-label="Pausar el vídeo" data-state="playing"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path class="i-pause" d="M7 5h3v14H7zM14 5h3v14h-3z"/><path class="i-play" d="M8 5v14l11-7z"/></svg></button></div></div>
-</section>
-
-<section class="pg-sec" aria-label="Qué incluye tu plan">
-  <ul class="pg"><li class="pf"><img src="assets/icon-stethoscope-azul.svg" alt="" width="20" height="20"><div><h3>Asesoramiento nutricional</h3><p>Un equipo de nutrición canina te acompaña siempre que lo necesites.</p></div></li><li class="pf"><img src="assets/icon-package-azul.svg" alt="" width="20" height="20"><div><h3>Envío gratis</h3><p>Lo recibes en casa en 72 h, congelado y dividido en bolsitas diarias.</p></div></li><li class="pf"><img src="assets/icon-clipboard-azul.svg" alt="" width="20" height="20"><div><h3>Plan personalizado</h3><p>Un menú hecho a su medida según su edad, su peso y su actividad.</p></div></li><li class="pf"><img src="assets/icon-paw-azul.svg" alt="" width="20" height="20"><div><h3>Flexibilidad</h3><p>Cambia de receta o aplaza un envío cuando lo necesites.</p></div></li><li class="pf"><img src="assets/icon-shield-check-azul.svg" alt="" width="20" height="20"><div><h3>Sin compromiso</h3><p>Pausa o cancela cuando quieras, sin permanencia.</p></div></li><li class="pf"><img src="assets/icon-gift-azul.svg" alt="" width="20" height="20"><div><h3>14 días de prueba</h3><p>Tu primer pedido trae 14 días de comida y una guía de transición.</p></div></li></ul>
-</section>
-
-<section class="ps-sec" id="pasos">
-  <div class="ps-head">
-    <p class="ps-headline">4 pasos</p>
-    <h2 class="h2">Estás a 4 pasos de <span class="accent">cambiar la vida</span> de tu peludo</h2>
-  </div>
-  
-  <div class="ps">
-    <div class="ps-txt">
-      <p class="ps-headline">Paso 1</p>
-      <h3 class="ps-title">Nos presentas a tu perrete</h3>
-      <p class="ps-desc">Cuéntanos cómo es tu perro para que podamos prepararle un plan perriperfecto, hecho a su medida, y que se ajuste a sus necesidades. ¿Es muy juguetón? ¿Es un cachorrito o es adulto? ¡Te llevará solo 2 minutos!</p>
-      <a class="btn ps-btn-dark" href="index.html#precio">Empezar formulario</a>
-    </div>
-    <div class="ps-slot"><img src="assets/cf-presenta-tu-perro.webp" alt="Mujer y perro mirando la web de Dogfy Diet" width="800" height="588" loading="lazy" decoding="async"><span class="ps-num" aria-hidden="true">1</span></div>
-  </div>
-  <div class="ps ps-rev">
-    <div class="ps-txt">
-      <p class="ps-headline">Paso 2</p>
-      <h3 class="ps-title">¡Marchando su menú personalizado!</h3>
-      <p class="ps-desc">Cocinamos a baja temperatura los mejores ingredientes naturales (carne o pescado y verduras) para elaborar un menú completo y equilibrado que se ajuste a las necesidades de tu perrito. Disfruta de nuestros envíos gratuitos y recíbelo en casa en 72 h, congelado y dividido en bolsitas diarias.</p>
-      
-    </div>
-    <div class="ps-slot"><img src="assets/cf-como-funciona-election.webp" alt="Eligiendo comida natural para perros" width="800" height="588" loading="lazy" decoding="async"><span class="ps-num" aria-hidden="true">2</span></div>
-  </div>
-  <div class="ps">
-    <div class="ps-txt">
-      <p class="ps-headline">Paso 3</p>
-      <h3 class="ps-title">Tu perro salta de alegría al recibir el paquete en casa</h3>
-      <p class="ps-desc">Tu pedido de prueba de 14 días llega con toda la información necesaria para hacer una correcta transición a la comida natural. Guarda una parte de las bolsitas en el congelador y la otra en la nevera. Descongela, sirve y disfruta. Ah, y procura que tu perro no se coma hasta la caja. Aún no la hemos hecho comestible.</p>
-      
-    </div>
-    <div class="ps-slot"><img src="assets/cf-obten-tu-pedido.webp" alt="Leyendo las instrucciones de la caja de Dogfy Diet" width="800" height="588" loading="lazy" decoding="async"><span class="ps-num" aria-hidden="true">3</span></div>
-  </div>
-  <div class="ps ps-rev">
-    <div class="ps-txt">
-      <p class="ps-headline">Paso 4</p>
-      <h3 class="ps-title">Tú y tu perro mandáis: disfruta de una suscripción flexible</h3>
-      <p class="ps-desc">Recibe su comida mensualmente y mira cómo salta de alegría a la hora de comer. Pausa o cancela cuando quieras. Quédate solo porque quieres hacerlo.</p>
-      
-    </div>
-    <div class="ps-slot"><img src="assets/cf-tu-perro-disfruta.webp" alt="Un dogo comiendo comida natural para perros" width="800" height="588" loading="lazy" decoding="async"><span class="ps-num" aria-hidden="true">4</span></div>
+<section class="cf2-hero" aria-labelledby="cfTitle">
+  <img class="cf2-hero-bg" src="assets/cf2-hero.jpg" alt="" width="1200" height="650" fetchpriority="high" decoding="async">
+  <div class="cf2-hero-in">
+    <nav class="rp-crumbs" aria-label="Ruta de navegación"><ol><li><a href="index.html">Inicio</a></li><li><span aria-current="page">Cómo funciona</span></li></ol></nav>
+    <span class="cf2-badge">Cómo funciona</span>
+    <h1 id="cfTitle">Comida pensada para perros. Fácil para ti.</h1>
+    <p>Tú eliges sus recetas. Nosotros calculamos su ración, cocinamos y te enviamos la comida a casa. Después, descongelas, abres y sirves.</p>
+    <a class="btn btn-primary cf2-cta cf2-cta-lg" href="index.html#precio">Calcula su ración</a>
   </div>
 </section>
+<div class="rp-marquee cf2-claims" aria-label="Primer pedido de 14 días · Ración calculada para tu perro · Recetas a tu elección · Envío incluido · Asesoramiento nutricional incluido · Suscripción sin permanencia"><ul><li>Primer pedido de 14 días</li><li>Ración calculada para tu perro</li><li>Recetas a tu elección</li><li>Envío incluido</li><li>Asesoramiento nutricional incluido</li><li>Suscripción sin permanencia</li></ul><ul aria-hidden="true"><li>Primer pedido de 14 días</li><li>Ración calculada para tu perro</li><li>Recetas a tu elección</li><li>Envío incluido</li><li>Asesoramiento nutricional incluido</li><li>Suscripción sin permanencia</li></ul></div>
 
-
-<section class="ps-sec ps-sec-cream nt-sec" aria-labelledby="ntTitle">
-  <div class="nt">
-    <div class="nt-media">
-      <div class="ps-slot ps-video nt-video" data-vbox><iframe id="cfVideo" src="https://player.vimeo.com/video/917818734?background=1&amp;muted=1&amp;loop=1&amp;autoplay=1&amp;autopause=0&amp;dnt=1" title="Dogfy Diet: únete a la revolución" allow="autoplay; fullscreen; picture-in-picture" loading="lazy"></iframe>
-        <div class="nt-ctrl" role="group" aria-label="Controles del vídeo">
-          <button class="ps-vbtn ps-vplay" type="button" aria-label="Pausar el vídeo" data-state="playing"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path class="i-pause" d="M7 5h3v14H7zM14 5h3v14h-3z"/><path class="i-play" d="M8 5v14l11-7z"/></svg></button>
-          <span class="nt-ctrl-sep" aria-hidden="true"></span>
-          <button class="ps-vbtn ps-vmute" type="button" aria-label="Activar el sonido" data-muted="1"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z" fill="currentColor"/><path class="i-off" d="m16 9 5 6M21 9l-5 6"/><path class="i-on" d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg></button>
+<section class="cf2-how" id="pasos" aria-labelledby="howTitle">
+  <div class="cf2-head">
+    <h2 id="howTitle" class="h2">De conocernos a <span class="accent">llenar su plato</span>.</h2>
+    <p>Así empieza Dogfy. Y así sigue formando parte de vuestro día a día.</p>
+  </div>
+  <div class="cf2-how-grid">
+    <div class="cf2-media" aria-hidden="true"><img class="cf2-blob" src="assets/cf2-blob.svg" alt=""><div class="cf2-media-frame"><img class="cf2-media-img is-on" src="assets/cf-presenta-tu-perro.webp" alt="Mujer y perro mirando la web de Dogfy Diet" width="800" height="588" loading="eager" decoding="async"><img class="cf2-media-img" src="assets/cf-como-funciona-election.webp" alt="Eligiendo comida natural para perros" width="800" height="588" loading="lazy" decoding="async"><img class="cf2-media-img" src="assets/cf-obten-tu-pedido.webp" alt="Leyendo las instrucciones de la caja de Dogfy Diet" width="800" height="588" loading="lazy" decoding="async"><img class="cf2-media-img" src="assets/cf-tu-perro-disfruta.webp" alt="Un perro disfrutando de su comida natural" width="800" height="588" loading="lazy" decoding="async"></div></div>
+    <div class="cf2-steps-wrap">
+      <span class="cf2-track" aria-hidden="true"><span class="cf2-fill"></span></span>
+      <ol class="cf2-steps">
+      <li class="cf2-step is-on" data-step="0">
+        <span class="cf2-dot" aria-hidden="true"></span>
+        <p class="cf2-num">Paso 1</p>
+        <div class="cf2-body">
+          <h3 class="cf2-title">Cuéntanos cómo es tu perro.</h3>
+          <img class="cf2-step-img" src="assets/cf-presenta-tu-perro.webp" alt="" width="800" height="588" loading="lazy" decoding="async">
+          <div class="cf2-text"><p>Su peso, edad y nivel de actividad nos ayudan a calcular cuánta comida necesita cada día. Tú eliges entre nuestras recetas de pollo, pavo, salmón y buey: una sola o varias.</p><p><b>Te mostramos su ración y el precio antes de contratar.</b></p><a class="btn btn-primary cf2-cta" href="index.html#precio">Calcula su ración</a></div>
         </div>
-      </div>
-      <div class="nt-badge"><img src="assets/cf-nutri-avatar.webp" alt="" width="48" height="48" loading="lazy"><div><b>Equipo de Nutrición canina</b><span>Incluido gratis en tu plan</span></div></div>
-    </div>
-    <div class="nt-txt">
-      <p class="ps-headline">Incluido en tu plan</p>
-      <h2 id="ntTitle" class="ps-title ps-title-lg">Seguimiento nutricional <span class="accent">gratuito</span></h2>
-      <p class="ps-desc">¿Dudas con su alimentación o con su peso? Nuestro equipo de Nutrición canina acompaña a tu peludo en todas sus etapas, con un seguimiento sin coste y adaptado a su caso.</p>
-      <ul class="nt-list">
-        <li><span class="nt-ico"><img src="assets/icon-stethoscope-azul.svg" alt="" width="20" height="20"></span><div><h3>Resuelve tus dudas</h3><p>Sobre su alimentación, sus raciones o la transición desde el pienso.</p></div></li>
-        <li><span class="nt-ico"><img src="assets/icon-clipboard-azul.svg" alt="" width="20" height="20"></span><div><h3>Su peso ideal</h3><p>Ajustamos su plan para que llegue a su peso ideal y se mantenga.</p></div></li>
-        <li><span class="nt-ico"><img src="assets/icon-paw-azul.svg" alt="" width="20" height="20"></span><div><h3>En todas sus etapas</h3><p>De cachorro a sénior, adaptamos su menú a cada momento.</p></div></li>
-      </ul>
-      <a class="btn btn-primary ph-btn nt-cta" href="index.html#precio">Crea su plan personalizado</a>
+      </li>
+      <li class="cf2-step" data-step="1">
+        <span class="cf2-dot" aria-hidden="true"></span>
+        <p class="cf2-num">Paso 2</p>
+        <div class="cf2-body">
+          <h3 class="cf2-title">Cocinamos, congelamos y te la enviamos a casa.</h3>
+          <img class="cf2-step-img" src="assets/cf-como-funciona-election.webp" alt="" width="800" height="588" loading="lazy" decoding="async">
+          <div class="cf2-text"><p>Nuestras recetas están formuladas por veterinarios nutricionistas para ser completas y equilibradas. Las cocinamos a baja temperatura y, después de cocinarlas, las congelamos.</p><p>Recibirás su comida en bolsitas, con las indicaciones para conservarla y servir la cantidad que le corresponde.</p><a class="cf2-link" href="recetas.html">Conoce nuestras recetas</a></div>
+        </div>
+      </li>
+      <li class="cf2-step" data-step="2">
+        <span class="cf2-dot" aria-hidden="true"></span>
+        <p class="cf2-num">Paso 3</p>
+        <div class="cf2-body">
+          <h3 class="cf2-title">Descongelas, abres y sirves.</h3>
+          <img class="cf2-step-img" src="assets/cf-obten-tu-pedido.webp" alt="" width="800" height="588" loading="lazy" decoding="async">
+          <div class="cf2-text"><p>Tu primera caja incluye 14 días de comida y una guía para introducirla de forma gradual.</p><p>Al recibirla, guarda las bolsitas siguiendo las indicaciones de conservación. Descongela la comida en la nevera y sirve su ración.</p><p>Si tienes dudas durante la transición, nuestro equipo de Nutrición te ayuda.</p></div>
+        </div>
+      </li>
+      <li class="cf2-step" data-step="3">
+        <span class="cf2-dot" aria-hidden="true"></span>
+        <p class="cf2-num">Paso 4</p>
+        <div class="cf2-body">
+          <h3 class="cf2-title">Su comida sigue llegando. Tú gestionas los próximos pedidos.</h3>
+          <img class="cf2-step-img" src="assets/cf-tu-perro-disfruta.webp" alt="" width="800" height="588" loading="lazy" decoding="async">
+          <div class="cf2-text"><p>Después de los primeros 14 días, la suscripción continúa automáticamente.</p><p>Desde tu cuenta puedes cambiar las recetas, actualizar los datos de tu perro o aplazar el próximo envío. Y, si no quieres continuar, puedes cancelar tu cuenta. Sin permanencia.</p></div>
+        </div>
+      </li>
+      </ol>
     </div>
   </div>
+</section>
+
+<section class="cf2-support" aria-labelledby="supTitle">
+  <div class="cf2-support-card" data-vbox>
+    <iframe src="https://player.vimeo.com/video/917818734?background=1&amp;muted=1&amp;loop=1&amp;autoplay=1&amp;autopause=0&amp;dnt=1" title="Un perro disfrutando de Dogfy Diet" allow="autoplay; fullscreen; picture-in-picture" loading="lazy"></iframe>
+    <div class="cf2-support-in">
+      <h2 id="supTitle">Con su comida, también llega nuestro apoyo.</h2>
+      <p>La transición, la ración o una duda sobre sus recetas. Nuestro equipo de Nutrición te acompaña desde el primer pedido. Asesoramiento incluido en tu suscripción.</p>
+      <a class="btn btn-primary cf2-cta cf2-cta-lg" href="index.html#precio">Prueba Dogfy con un 30&nbsp;% de descuento</a>
+    </div>
+    <div class="nt-ctrl cf2-ctrl"><button class="ps-vbtn ps-vplay" type="button" aria-label="Pausar el vídeo" data-state="playing"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path class="i-pause" d="M7 5h3v14H7zM14 5h3v14h-3z"/><path class="i-play" d="M8 5v14l11-7z"/></svg></button></div>
+  </div>
+</section>
+
+<section class="cf2-nutri" aria-labelledby="nutTitle">
+  <div class="cf2-nutri-grid">
+    <img class="cf2-nutri-img" src="assets/cf2-nutri.jpg" alt="Una persona consulta el móvil con su perro en el regazo" width="1024" height="934" loading="lazy" decoding="async">
+    <div class="cf2-nutri-txt">
+      <span class="cf2-badge cf2-badge-sm">Incluido en tu suscripción</span>
+      <h2 id="nutTitle" class="h2">Su ración puede cambiar. Te ayudamos a revisarla.</h2>
+      <p>Tu perro crece, cambia de peso o tiene otro ritmo de actividad. Y la cantidad de comida que necesita puede cambiar también.</p>
+      <p>Nuestro equipo de Nutrición te ayuda a revisar su ración y resolver tus dudas sobre la alimentación con Dogfy. Desde cómo introducir sus recetas hasta cómo adaptar la cantidad a sus necesidades.</p>
+      <a class="btn btn-primary cf2-cta cf2-cta-lg" href="index.html#nutricionistas">Conoce nuestro asesoramiento nutricional</a>
+    </div>
+  </div>
+</section>
+
+<section class="cf2-revs" aria-labelledby="revTitle">
+  <div class="cf2-head">
+    <h2 id="revTitle" class="h2">Quienes ya abren nuestras cajas <span class="accent">te cuentan.</span></h2>
+    <p>Cómo les va con la comida, con los pedidos y con nosotros. Lee sus experiencias.</p>
+  </div>
+  <ul class="cf2-rev-list"><li class="cf2-rev"><b>Raúl Granero</b><span class="cf2-rev-meta">Dogfyer</span><span class="cf2-rev-stars" aria-label="5 estrellas">★★★★★</span><p>Me gusta esta empresa porque fomentan mucho la salud y el bienestar del perro, que es lo principal, y lo hacen notar a sus clientes. Estoy muy feliz con ellos.</p></li><li class="cf2-rev"><b>Carlos Muñoz</b><span class="cf2-rev-meta">Dogfyer</span><span class="cf2-rev-stars" aria-label="5 estrellas">★★★★★</span><p>Ninguna comida le gustaba a mi perro (es un poco quisquilloso, sí) hasta que ha probado esta comida. ¡Parece otro! Me deja el plato limpio y me pide más, por si cuela.</p></li><li class="cf2-rev"><b>Paola Romero</b><span class="cf2-rev-meta">Dogfyer</span><span class="cf2-rev-stars" aria-label="5 estrellas">★★★★★</span><p>Le ha mejorado y mucho la calidad de vida a mi perrita Nube. ¡Ya no volveremos al pienso nunca!</p></li><li class="cf2-rev"><b>Marc Reus</b><span class="cf2-rev-meta">Dogfyer</span><span class="cf2-rev-stars" aria-label="5 estrellas">★★★★★</span><p>Es su momento favorito del día: saben cuándo es la hora y van a la cocina a por su ración. Uno siempre ha tenido problemas digestivos y desde que estamos con esta comida le va fenomenal.</p></li><li class="cf2-rev"><b>Maribel Sánchez</b><span class="cf2-rev-meta">Dogfyer</span><span class="cf2-rev-stars" aria-label="5 estrellas">★★★★★</span><p>Estoy muy satisfecha. A mi perrita Suri le encanta, se lo come en un pispás, y cualquier duda enseguida te la solucionan.</p></li><li class="cf2-rev"><b>Lore</b><span class="cf2-rev-meta">Dogfyer</span><span class="cf2-rev-stars" aria-label="5 estrellas">★★★★★</span><p>Llevamos meses con Dogfy y se nota en su energía y en su pelo. La transición fue muy sencilla con la guía de la caja.</p></li></ul>
+  <a class="bk2-tp cf2-tp" href="https://es.trustpilot.com/review/dogfydiet.com" target="_blank" rel="noopener"><b>4,5</b><span class="rp-tp-stars" aria-hidden="true">★★★★★</span><span>12.480 opiniones en Trustpilot</span></a>
 </section>
 
 <section class="emp" aria-labelledby="empTitle">
@@ -2068,15 +2187,6 @@ body:has(.rp-hero) .rp-crumbs{background:var(--blue-deco);max-width:none;padding
       </form>
     </div>
   </div>
-</section>
-
-<section class="pr-sec">
-  <div class="pr-head">
-    <div><p class="ps-headline">Opiniones</p><h2 class="h2">Algunos <span class="accent">ladridos de felicidad</span></h2></div>
-    <a class="bk2-tp" href="https://es.trustpilot.com/review/dogfydiet.com" target="_blank" rel="noopener"><b>4,5</b><span class="rp-tp-stars" aria-hidden="true">★★★★★</span><span>12.480 opiniones en Trustpilot</span></a>
-  </div>
-  <ul class="pr-grid"><li class="pc pc-outline"><span class="pc-stars" aria-label="5 estrellas">★★★★★</span><p>«Me gusta esta empresa porque fomentan mucho la salud y el bienestar del perro, que es lo principal, y lo hacen notar a sus clientes. Estoy muy feliz con ellos.»</p><b>Raúl Granero</b></li><li class="pc pc-outline"><span class="pc-stars" aria-label="5 estrellas">★★★★★</span><p>«Ninguna comida le gustaba a mi perro (es un poco quisquilloso, sí) hasta que ha probado esta comida. ¡Parece otro! Me deja el plato limpio y me pide más, por si cuela.»</p><b>Carlos Muñoz</b></li><li class="pc pc-outline"><span class="pc-stars" aria-label="5 estrellas">★★★★★</span><p>«Le ha mejorado y mucho la calidad de vida a mi perrita Nube. ¡Ya no volveremos al pienso nunca!»</p><b>Paola Romero</b></li><li class="pc pc-outline"><span class="pc-stars" aria-label="5 estrellas">★★★★★</span><p>«Es su momento favorito del día: saben cuándo es la hora y van a la cocina a por su ración. Uno siempre ha tenido problemas digestivos y desde que estamos con esta comida le va fenomenal.»</p><b>Marc Reus</b></li><li class="pc pc-outline"><span class="pc-stars" aria-label="5 estrellas">★★★★★</span><p>«Estoy muy satisfecha. A mi perrita Suri le encanta, se lo come en un pispás, y cualquier duda enseguida te la solucionan.»</p><b>Maribel Sánchez</b></li></ul>
-  <div class="cf-join"><p>Únete a la revolución que lo está cambiando todo</p><a class="btn ph-btn ps-btn-dark" href="index.html#precio">Unirme</a></div>
 </section>
 
 <section class="s-faq rp-faq" id="faq">
@@ -2170,6 +2280,13 @@ list.addEventListener('mouseleave',()=>{if(!fine.matches)return;clearTimeout(t);
 list.addEventListener('focusout',e=>{if(fine.matches&&!list.contains(e.relatedTarget))open(null)});
 tabs.forEach((b,i)=>b.addEventListener('click',()=>{const r=rows[i];if(!r)return;open(r);const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;setTimeout(()=>{scrollTo({top:r.getBoundingClientRect().top+scrollY-140,behavior:reduce?'auto':'smooth'})},reduce?0:120)}));
 })();
+
+// Cómo funciona: línea de pasos; la barra se rellena con el scroll y la foto de la izquierda cambia con el paso activo
+(()=>{const wrap=document.querySelector('.cf2-steps-wrap');if(!wrap)return;const steps=[...wrap.querySelectorAll('.cf2-step')],fill=wrap.querySelector('.cf2-fill'),imgs=[...document.querySelectorAll('.cf2-media-img')];let cur=-1;
+const tick=()=>{const mid=innerHeight*.45,wr=wrap.getBoundingClientRect();let a=0;steps.forEach((s,i)=>{if(s.getBoundingClientRect().top<=mid)a=i});
+const dot=steps[a].querySelector('.cf2-dot').getBoundingClientRect();fill.style.height=Math.max(0,Math.min(wr.height,dot.top+dot.height/2-wr.top))+'px';
+if(a!==cur){cur=a;steps.forEach((s,i)=>{s.classList.toggle('is-on',i===a);s.classList.toggle('is-done',i<a)});imgs.forEach((im,i)=>im.classList.toggle('is-on',i===a))}};
+addEventListener('scroll',tick,{passive:true});addEventListener('resize',tick);tick();})();
 
 (()=>{const l=document.querySelector('.rp-tabs-list'),a=l&&l.querySelector('.active');if(a&&l.scrollWidth>l.clientWidth)l.scrollLeft=a.offsetLeft-l.offsetLeft-(l.clientWidth-a.offsetWidth)/2;})();
 </script>

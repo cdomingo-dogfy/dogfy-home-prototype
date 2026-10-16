@@ -1925,6 +1925,115 @@ body:has(.rp-hero) .rp-crumbs{background:var(--blue-deco);max-width:none;padding
   .rp-detail .ing-card{align-items:start;align-content:start;grid-template-rows:auto auto 1fr}
   .rp-detail .ing-card>img{align-self:start}
 }
+/* ===== Cómo funciona v2 (Figma 217:26305) ===== */
+.cf2-badge{display:inline-flex;align-self:flex-start;background:#ffea7c;color:#2a2724;font-family:var(--font-display);font-weight:600;font-size:18px;line-height:24px;padding:4px 14px;border-radius:7px}
+.cf2-badge-sm{font-size:16px;line-height:22px;padding:4px 12px}
+.cf2-cta{justify-content:center}
+.cf2-cta-lg{height:56px;padding:0 32px;font-size:17px;border-radius:999px}
+/* hero a sangre */
+.cf2-hero{position:relative;min-height:min(640px,calc(100svh - 112px));display:flex;align-items:center;overflow:hidden;background:#2f3a22;color:#fff}
+.cf2-hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:62% 40%}
+.cf2-hero::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(20,18,16,.62) 0%,rgba(20,18,16,.38) 42%,rgba(20,18,16,0) 70%)}
+.cf2-hero-in{position:relative;z-index:2;width:100%;max-width:var(--container);margin:0 auto;padding:72px var(--gutter);box-sizing:content-box;display:flex;flex-direction:column;align-items:flex-start;gap:16px}
+.cf2-hero .rp-crumbs{padding:0;margin:0 0 24px;max-width:none}
+.cf2-hero .rp-crumbs,.cf2-hero .rp-crumbs a,.cf2-hero .rp-crumbs span{color:rgba(255,255,255,.88)}
+.cf2-hero h1{color:#fff;font-size:clamp(36px,4.6vw,60px);line-height:1.02;letter-spacing:-.01em;max-width:760px}
+.cf2-hero-in>p{color:#fff;font-size:clamp(17px,1.5vw,20px);line-height:1.5;max-width:560px;opacity:.95}
+.cf2-hero .cf2-cta{margin-top:16px}
+/* cinta de claims: pills amarillas */
+.rp-marquee.cf2-claims{background:#fff;padding:14px 0}
+.rp-marquee.cf2-claims li{background:#fff7c9;box-shadow:none;border:1px solid #f6e7a0;padding:6px 16px;font-size:15px;line-height:20px}
+.rp-marquee.cf2-claims li::before{display:none}
+/* cabeceras centradas */
+.cf2-head{text-align:center;max-width:760px;margin:0 auto 64px}
+.cf2-head>p{font-size:18px;line-height:1.5;color:var(--text);margin-top:14px}
+/* pasos con línea de progreso */
+.cf2-how{padding:96px var(--gutter) 112px;overflow-x:clip}
+.cf2-how-grid{max-width:var(--container);margin:0 auto;display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:64px;align-items:start}
+.cf2-media{position:sticky;top:96px}
+.cf2-blob{position:absolute;left:-30%;top:12%;width:120%;max-width:none;transform:rotate(-90deg);pointer-events:none;z-index:0}
+.cf2-media-frame{position:relative;z-index:1;aspect-ratio:409/473;border-radius:24px;overflow:hidden;background:#f4f1ec;box-shadow:0 24px 48px -24px rgba(42,39,36,.35)}
+.cf2-media-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.04);transition:opacity .5s ease,transform .8s ease}
+.cf2-media-img.is-on{opacity:1;transform:none}
+.cf2-steps-wrap{position:relative;padding-left:64px}
+.cf2-track{position:absolute;left:14px;top:12px;bottom:12px;width:8px;border-radius:30px;background:#ffefea}
+.cf2-fill{position:absolute;left:0;top:0;width:100%;height:0;border-radius:30px;background:#fa592d;transition:height .25s ease-out}
+.cf2-steps{list-style:none;display:flex;flex-direction:column;gap:88px}
+.cf2-step{position:relative;display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:20px;align-items:baseline}
+.cf2-dot{position:absolute;left:-58px;top:6px;width:24px;height:24px;border-radius:50%;background:#fff;border:6px solid #ffefea;box-sizing:border-box;transition:border-color .3s,transform .3s}
+.cf2-step.is-done .cf2-dot{border-color:#fa592d}
+.cf2-step.is-on .cf2-dot{border-color:#fa592d;transform:scale(1.4)}
+.cf2-num{font-family:var(--font-display);font-weight:700;font-size:clamp(24px,2.3vw,32px);line-height:1.15;color:#fa592d;white-space:nowrap}
+.cf2-title{font-family:var(--font-display);font-weight:700;font-size:clamp(24px,2.3vw,32px);line-height:1.15;color:var(--text-hi);max-width:460px}
+.cf2-step-img{display:none}
+.cf2-text{margin-top:16px;max-width:440px;display:flex;flex-direction:column;align-items:flex-start;gap:12px}
+.cf2-text p{font-size:16px;line-height:1.55;color:var(--text)}
+.cf2-text b{color:var(--text-hi)}
+.cf2-text .cf2-cta{margin-top:8px}
+.cf2-link{font-family:var(--font-display);font-weight:600;color:#fa592d;text-decoration:underline;text-underline-offset:4px}
+.cf2-step:not(.is-on) .cf2-title,.cf2-step:not(.is-on) .cf2-text{opacity:.55;transition:opacity .3s}
+.cf2-step.is-on .cf2-title,.cf2-step.is-on .cf2-text{opacity:1;transition:opacity .3s}
+/* apoyo: vídeo de fondo */
+.cf2-support{padding:0 var(--gutter) 112px}
+.cf2-support-card{position:relative;max-width:var(--container);margin:0 auto;height:clamp(460px,38vw,540px);border-radius:30px;overflow:hidden;background:#3a332e;container-type:size;display:grid;place-items:center;text-align:center}
+.cf2-support-card iframe{position:absolute;top:50%;left:50%;width:max(100cqw,177.78cqh);height:max(100cqh,56.25cqw);transform:translate(-50%,-50%);border:0;pointer-events:none}
+.cf2-support-card::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(20,18,16,.55) 0%,rgba(20,18,16,.32) 60%,rgba(20,18,16,.2) 100%);pointer-events:none}
+.cf2-support-in{position:relative;z-index:1;max-width:620px;padding:0 24px;display:flex;flex-direction:column;align-items:center;gap:20px;color:#fff}
+.cf2-support-in h2{color:#fff;font-family:var(--font-display);font-weight:700;font-size:clamp(30px,3.4vw,46px);line-height:1.08}
+.cf2-support-in p{color:#fff;font-size:17px;line-height:1.5;opacity:.95}
+.cf2-support-in .cf2-cta{margin-top:12px}
+.cf2-ctrl{z-index:2;left:auto;right:16px;bottom:16px}
+/* nutrición */
+.cf2-nutri{padding:0 var(--gutter) 112px}
+.cf2-nutri-grid{max-width:var(--container);margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:80px;align-items:center}
+.cf2-nutri-img{width:100%;height:auto;aspect-ratio:632/529;object-fit:cover;border-radius:24px;box-shadow:0 24px 48px -24px rgba(42,39,36,.35)}
+.cf2-nutri-txt{display:flex;flex-direction:column;align-items:flex-start;gap:16px}
+.cf2-nutri-txt p{font-size:17px;line-height:1.55;color:var(--text);max-width:480px}
+.cf2-nutri-txt .cf2-cta{margin-top:12px}
+/* opiniones */
+.cf2-revs{position:relative;padding:0 0 96px;overflow-x:clip}
+.cf2-revs .cf2-head{padding:0 var(--gutter);margin-bottom:48px}
+.cf2-rev-list{list-style:none;display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px max(var(--gutter),calc((100vw - var(--container))/2)) 20px;scrollbar-width:none}
+.cf2-rev-list::-webkit-scrollbar{display:none}
+.cf2-rev{flex:0 0 316px;scroll-snap-align:start;display:flex;flex-direction:column;gap:4px;padding:28px;border-radius:16px;background:#fff;border:1px solid rgba(250,89,45,.45)}
+.cf2-rev b{font-family:var(--font-display);font-size:19px;line-height:1.2;color:var(--text-hi)}
+.cf2-rev-meta{font-size:13px;color:var(--ui-muted)}
+.cf2-rev-stars{color:#fa592d;letter-spacing:2px;font-size:17px;margin:4px 0 8px}
+.cf2-rev p{font-size:15px;line-height:1.5;color:var(--text-hi)}
+.cf2-tp{display:flex;width:max-content;margin:16px auto 0}
+/* móvil y tablet */
+@media (max-width:900px){
+  .cf2-hero{min-height:560px;align-items:flex-end}
+  .cf2-hero::before{background:linear-gradient(0deg,rgba(20,18,16,.72) 0%,rgba(20,18,16,.45) 55%,rgba(20,18,16,.1) 100%)}
+  .cf2-hero-in{padding:48px var(--gutter)}
+  .cf2-hero .rp-crumbs{position:absolute;top:16px;left:var(--gutter)}
+  .cf2-how-grid{grid-template-columns:1fr}
+  .cf2-media{display:none}
+  .cf2-step-img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;border-radius:18px;margin-top:16px}
+  .cf2-steps-wrap{padding-left:44px}
+  .cf2-track{left:8px}
+  .cf2-dot{left:-42px}
+  .cf2-step{grid-template-columns:1fr;row-gap:4px}
+  .cf2-num{font-size:20px}
+  .cf2-steps{gap:56px}
+  .cf2-step:not(.is-on) .cf2-title,.cf2-step:not(.is-on) .cf2-text{opacity:1}
+  .cf2-nutri-grid{grid-template-columns:1fr;gap:32px}
+}
+@media (max-width:600px){
+  .cf2-how{padding:64px var(--gutter) 72px}
+  .cf2-head{margin-bottom:40px}
+  .cf2-head>p{font-size:16px}
+  .cf2-cta-lg{width:100%;height:52px;padding:0 20px;font-size:16px}
+  .cf2-support{padding-bottom:72px}
+  .cf2-support-card{height:520px;border-radius:24px}
+  .cf2-nutri{padding-bottom:72px}
+  .cf2-rev{flex-basis:82vw;padding:22px}
+  .cf2-revs{padding-bottom:72px}
+}
+@media (prefers-reduced-motion:reduce){.cf2-media-img,.cf2-fill,.cf2-dot{transition:none}}
+.cf2-step{grid-template-columns:clamp(104px,9.5vw,136px) minmax(0,1fr)}@media (max-width:900px){.cf2-step{grid-template-columns:1fr}}
+.cf2-rev-list{scroll-padding-inline:max(var(--gutter),calc((100vw - var(--container))/2))}
+@media (max-width:900px){.cf2-step-img{max-width:480px;aspect-ratio:16/10}.cf2-nutri-img{max-width:560px}}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://cdomingo-dogfy.github.io/dogfy-home-prototype/index.html"}, {"@type": "ListItem", "position": 2, "name": "Nuestras recetas", "item": "https://cdomingo-dogfy.github.io/dogfy-home-prototype/recetas.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "¿Qué formatos hay?", "acceptedAnswer": {"@type": "Answer", "text": "Cada menú llega en bolsitas individuales con la ración diaria de tu perro, ya calculada según su peso, edad y actividad. Puedes elegir una receta o combinar varias en el mismo pedido."}}, {"@type": "Question", "name": "¿Qué cantidad se le debe dar?", "acceptedAnswer": {"@type": "Answer", "text": "Depende de su peso, edad y nivel de actividad. Al crear su plan calculamos su ración diaria exacta y cada bolsita contiene justo esa cantidad, así que no tienes que pesar nada."}}, {"@type": "Question", "name": "¿Cómo llega el producto?", "acceptedAnswer": {"@type": "Answer", "text": "Te lo enviamos a casa congelado y dividido en bolsitas diarias, con envío gratis. Solo tienes que guardarlo en el congelador al recibirlo."}}, {"@type": "Question", "name": "¿Cómo se prepara, debo cocinar el alimento al perro?", "acceptedAnswer": {"@type": "Answer", "text": "No hace falta cocinar nada. Nuestras recetas ya vienen cocinadas a baja temperatura: descongela la bolsita en la nevera, ábrela y sirve."}}, {"@type": "Question", "name": "¿Cada cuánto llegan los menús?", "acceptedAnswer": {"@type": "Answer", "text": "Tu primera caja trae 14 días de comida. Después la suscripción continúa y puedes cambiar recetas, aplazar envíos o cancelar cuando quieras, sin permanencia."}}]}</script>
@@ -2170,6 +2279,13 @@ list.addEventListener('mouseleave',()=>{if(!fine.matches)return;clearTimeout(t);
 list.addEventListener('focusout',e=>{if(fine.matches&&!list.contains(e.relatedTarget))open(null)});
 tabs.forEach((b,i)=>b.addEventListener('click',()=>{const r=rows[i];if(!r)return;open(r);const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;setTimeout(()=>{scrollTo({top:r.getBoundingClientRect().top+scrollY-140,behavior:reduce?'auto':'smooth'})},reduce?0:120)}));
 })();
+
+// Cómo funciona: línea de pasos; la barra se rellena con el scroll y la foto de la izquierda cambia con el paso activo
+(()=>{const wrap=document.querySelector('.cf2-steps-wrap');if(!wrap)return;const steps=[...wrap.querySelectorAll('.cf2-step')],fill=wrap.querySelector('.cf2-fill'),imgs=[...document.querySelectorAll('.cf2-media-img')];let cur=-1;
+const tick=()=>{const mid=innerHeight*.45,wr=wrap.getBoundingClientRect();let a=0;steps.forEach((s,i)=>{if(s.getBoundingClientRect().top<=mid)a=i});
+const dot=steps[a].querySelector('.cf2-dot').getBoundingClientRect();fill.style.height=Math.max(0,Math.min(wr.height,dot.top+dot.height/2-wr.top))+'px';
+if(a!==cur){cur=a;steps.forEach((s,i)=>{s.classList.toggle('is-on',i===a);s.classList.toggle('is-done',i<a)});imgs.forEach((im,i)=>im.classList.toggle('is-on',i===a))}};
+addEventListener('scroll',tick,{passive:true});addEventListener('resize',tick);tick();})();
 
 (()=>{const l=document.querySelector('.rp-tabs-list'),a=l&&l.querySelector('.active');if(a&&l.scrollWidth>l.clientWidth)l.scrollLeft=a.offsetLeft-l.offsetLeft-(l.clientWidth-a.offsetWidth)/2;})();
 </script>
