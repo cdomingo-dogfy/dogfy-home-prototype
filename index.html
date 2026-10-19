@@ -1932,7 +1932,7 @@ document.documentElement.classList.add('reveal');
 const faq=document.querySelector('.s-faq');
 const size=()=>{document.documentElement.style.setProperty('--fh',footer.offsetHeight+'px');if(faq)document.querySelector('.page').style.setProperty('--faqh',faq.offsetHeight+'px');};
 let tick=false;const update=()=>{tick=false;const vh=innerHeight,H=footer.offsetHeight,top=space.getBoundingClientRect().top;
-const p=Math.min(1,Math.max(0,(vh-top)/H));footer.style.transform='translateY('+(-Math.max(0,H-vh)*p).toFixed(1)+'px)';};  // destape alineado al pie: si el footer es más alto que la ventana, se desliza durante el destape para acabar completo
+const p=Math.min(1,Math.max(0,(vh-top)/H));footer.style.transform='translateY('+(-Math.max(0,H-vh)*p).toFixed(1)+'px)';const near=top<vh*1.5;footer.style.visibility=near?'':'hidden';document.documentElement.style.backgroundColor=near?'#ff6d45':'#2a2724';};  // el footer fijo solo existe cerca del final: arriba (rebote del scroll en Safari) se ve negro, no el naranja del footer  // destape alineado al pie: si el footer es más alto que la ventana, se desliza durante el destape para acabar completo
 const onScroll=()=>{if(!tick){tick=true;requestAnimationFrame(update)}};
 addEventListener('scroll',onScroll,{passive:true});addEventListener('resize',()=>{size();update()});
 size();update();if(document.fonts)document.fonts.ready.then(()=>{size();update()});addEventListener('load',()=>{size();update()});})();
