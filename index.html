@@ -1559,6 +1559,12 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
 
 /* Tagline del hero en amarillo pálido, como el banner */
 .hero-badge{background:#fff1a8!important}
+
+/* Recetas: vuelve la descripción de cada menú bajo el nombre */
+.recetas-grid .receta .rcm-body{flex:1}
+.recetas-grid .receta .rcm-desc{margin:6px 0 10px;padding:0;font-size:15px;line-height:22px;color:#565049}
+.recetas-grid .receta .rcm-sold{margin-top:auto}
+@media (max-width:640px){.recetas-grid .receta .rcm-desc{font-size:14px;line-height:21px}}
 </style>
 </head>
 <body>
@@ -1694,10 +1700,10 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
     <button class="tab" data-key="salmon" role="tab" aria-selected="false"><img src="assets/tab-salmon.svg" alt="">Salmón</button>
   </div>
   <div class="recetas-grid" id="recetasGrid">
-    <article class="receta pollo" data-key="pollo"><div class="img rcm-img"><img src="assets/receta-pollo.jpg" alt="Menú de pollo de Dogfy Diet" loading="lazy" decoding="async"><img class="rcm-pack" src="assets/rc-pack-chicken.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async"></div><div class="rcm-body"><h3>Menú de pollo</h3><span class="rcm-sold"><b>139.571</b> vendidos/mes</span></div></article>
-    <article class="receta salmon" data-key="salmon"><div class="img rcm-img"><img src="assets/receta-salmon.jpg" alt="Menú de salmón de Dogfy Diet" loading="lazy" decoding="async"><img class="rcm-pack" src="assets/rc-pack-salmon.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async"></div><div class="rcm-body"><h3>Menú de salmón</h3><span class="rcm-sold"><b>139.312</b> vendidos/mes</span></div></article>
-    <article class="receta buey" data-key="buey"><div class="img rcm-img"><img src="assets/receta-buey.jpg" alt="Menú de buey de Dogfy Diet" loading="lazy" decoding="async"><img class="rcm-pack" src="assets/rc-pack-beef.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async"></div><div class="rcm-body"><h3>Menú de buey</h3><span class="rcm-sold"><b>139.972</b> vendidos/mes</span></div></article>
-    <article class="receta pavo" data-key="pavo"><div class="img rcm-img"><img src="assets/receta-pavo.jpg" alt="Menú de pavo de Dogfy Diet" loading="lazy" decoding="async"><img class="rcm-pack" src="assets/rc-pack-turkey.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async"></div><div class="rcm-body"><h3>Menú de pavo</h3><span class="rcm-sold"><b>140.611</b> vendidos/mes</span></div></article>
+    <article class="receta pollo" data-key="pollo"><div class="img rcm-img"><img src="assets/receta-pollo.jpg" alt="Menú de pollo de Dogfy Diet" loading="lazy" decoding="async"><img class="rcm-pack" src="assets/rc-pack-chicken.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async"></div><div class="rcm-body"><h3>Menú de pollo</h3><p class="rcm-desc">Con un 60 % de pollo y un 40 % de zanahoria, calabaza y otras verduras. Mantiene los músculos fuertes y contiene una sola fuente de proteína.</p><span class="rcm-sold"><b>139.571</b> vendidos/mes</span></div></article>
+    <article class="receta salmon" data-key="salmon"><div class="img rcm-img"><img src="assets/receta-salmon.jpg" alt="Menú de salmón de Dogfy Diet" loading="lazy" decoding="async"><img class="rcm-pack" src="assets/rc-pack-salmon.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async"></div><div class="rcm-body"><h3>Menú de salmón</h3><p class="rcm-desc">Con un 60 % de salmón y un 40 % de verduras. Favorece un pelaje sano y brillante y minimiza el riesgo de alergias.</p><span class="rcm-sold"><b>139.312</b> vendidos/mes</span></div></article>
+    <article class="receta buey" data-key="buey"><div class="img rcm-img"><img src="assets/receta-buey.jpg" alt="Menú de buey de Dogfy Diet" loading="lazy" decoding="async"><img class="rcm-pack" src="assets/rc-pack-beef.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async"></div><div class="rcm-body"><h3>Menú de buey</h3><p class="rcm-desc">Con un 60 % de buey y un 40 % de verduras. Proteína de calidad para perros activos, en una sola fuente.</p><span class="rcm-sold"><b>139.972</b> vendidos/mes</span></div></article>
+    <article class="receta pavo" data-key="pavo"><div class="img rcm-img"><img src="assets/receta-pavo.jpg" alt="Menú de pavo de Dogfy Diet" loading="lazy" decoding="async"><img class="rcm-pack" src="assets/rc-pack-turkey.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async"></div><div class="rcm-body"><h3>Menú de pavo</h3><p class="rcm-desc">Con un 60 % de pavo y un 40 % de verduras. Ligera y fácil de digerir, ideal para estómagos sensibles.</p><span class="rcm-sold"><b>140.611</b> vendidos/mes</span></div></article>
   </div>
   <div class="cta"><a class="btn btn-sec-rec" href="recetas.html">Ver todos los menús</a></div>
 </section>
