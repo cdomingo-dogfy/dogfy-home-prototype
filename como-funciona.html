@@ -2675,7 +2675,7 @@ tabs.forEach((b,i)=>b.addEventListener('click',()=>{const r=rows[i];if(!r)return
 // Cómo funciona: línea de pasos; la barra se rellena con el scroll y la foto de la izquierda cambia con el paso activo
 (()=>{const wrap=document.querySelector('.cf2-steps-wrap');if(!wrap)return;const steps=[...wrap.querySelectorAll('.cf2-step')],fill=wrap.querySelector('.cf2-fill'),imgs=[...document.querySelectorAll('.cf2-media-img')];let cur=-1;
 const track=wrap.querySelector('.cf2-track');const size=()=>{const wr=wrap.getBoundingClientRect(),n=steps[steps.length-1].querySelector('.cf2-n').getBoundingClientRect(),top=parseFloat(getComputedStyle(track).top)||0;track.style.bottom='auto';track.style.height=Math.max(0,n.top+n.height/2-wr.top-top)+'px'};
-const tick=()=>{const mid=innerHeight*.5,wr=wrap.getBoundingClientRect();let a=0;steps.forEach((s,i)=>{if(s.querySelector('.cf2-n').getBoundingClientRect().top<=mid)a=i});
+const tick=()=>{const mid=innerHeight*.62,wr=wrap.getBoundingClientRect();let a=0;steps.forEach((s,i)=>{if(s.querySelector('.cf2-n').getBoundingClientRect().top<=mid)a=i});
 // la barra avanza con el scroll: entre el número activo y el siguiente, llegando al siguiente justo cuando entra
 const dot=steps[a].querySelector('.cf2-n').getBoundingClientRect(),tt=track.getBoundingClientRect().top,y0=dot.top+dot.height/2-tt;let fh=y0;
 if(a<steps.length-1){const nx=steps[a+1].querySelector('.cf2-n').getBoundingClientRect(),y1=nx.top+nx.height/2-tt,startT=steps[a].getBoundingClientRect().top,endT=steps[a+1].getBoundingClientRect().top,k=Math.max(0,Math.min(1,(mid-startT)/Math.max(1,endT-startT)));fh=y0+(y1-y0)*Math.min(1,k*1.045);}
