@@ -1550,6 +1550,12 @@ h1,h2,h3{font-family:var(--font-display);color:var(--text-hi);font-weight:700;li
 
 /* Banner: fondo amarillo pálido y texto negro, sin animación */
 .banner{background:#fff1a8;color:#2a2724}
+
+/* Hero escritorio/tablet: la foto se amplía hacia la derecha para que el perro y el bol queden a la derecha del titular, no detrás */
+@media (min-width:1075px){.hero-bg{overflow:hidden}.hero-bg img{left:0;right:auto;width:122%;max-width:none;object-position:min(0px,max(calc(122vw - 1788px),calc(80vw - 1171px))) 58%}}  /* la cara del perro cae al ~80% del ancho en cualquier escritorio (foto 1875×839, hero de 800px) */
+
+/* Cómo empezar: el hueco bajo las tarjetas ya es el azul de la sección siguiente (la altura la calcula JS, --ce3-blue) */
+.ce3{background:linear-gradient(#fff,#fff) top/100% calc(100% - var(--ce3-blue,0px)) no-repeat,#e2e8fb!important}
 </style>
 </head>
 <body>
@@ -2203,5 +2209,10 @@ g.addEventListener('slide',()=>setTimeout(center,650));g.addEventListener('trans
 g.addEventListener('click',e=>{const c=e.target.closest('.receta');if(c)c.classList.toggle('is-flip');});})();
 </script>
 <script src="assets/promo.js" defer></script>
+<script>
+// Cómo empezar: el azul de «Conoce más» sube hasta 32px por debajo del contenido (tarjetas/foto), así no queda una franja blanca vacía
+(()=>{const c=document.querySelector('.ce3');if(!c)return;let t=false;const upd=()=>{t=false;const cb=c.getBoundingClientRect();if(cb.bottom>innerHeight+800||cb.bottom<0)return;const els=[...c.querySelectorAll('.ce3-cards,.ce3-media,.btn')].filter(e=>e.offsetParent);if(!els.length)return;const bot=Math.max(...els.map(e=>e.getBoundingClientRect().bottom));c.style.setProperty('--ce3-blue',Math.max(0,Math.round(cb.bottom-bot-32))+'px');};
+addEventListener('scroll',()=>{if(!t){t=true;requestAnimationFrame(upd)}},{passive:true});addEventListener('resize',upd);addEventListener('load',upd);upd();})();
+</script>
 </body>
 </html>
